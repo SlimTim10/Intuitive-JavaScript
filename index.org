@@ -3,25 +3,31 @@
 
 * JavaScript Fundamentals
 
-** Printing
+** Printing (WIP)
 
-Work in progress.
+** Variables and Values (WIP)
 
-** Variables and Values
+** Operators (WIP)
 
-Work in progress.
+** Conditionals (WIP)
 
-** Operators
+#+BEGIN_HTML
+<ul>
+	<li><a href="04-conditionals-exercises.js">View exercises</a></li>
+	<li><a href="04-conditionals-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="04-conditionals-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML
 
-Work in progress.
+** Functions (WIP)
 
-** Conditionals
-
-Work in progress.
-
-** Functions
-
-Work in progress.
+#+BEGIN_HTML
+<ul>
+	<li><a href="05-functions-exercises.js">View exercises</a></li>
+	<li><a href="05-functions-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="05-functions-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML
 
 ** [[file:06-strings.html][Strings]]
 
