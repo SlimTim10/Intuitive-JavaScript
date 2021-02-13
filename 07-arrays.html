@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>07-arrays</title>
-<!-- 2021-02-12 Fri 13:13 -->
+<title>Arrays</title>
+<!-- 2021-02-13 Sat 14:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -139,7 +139,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">07-arrays</h1>
+<h1 class="title">Arrays</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -489,7 +489,7 @@ console.log(moreNumbers); // [ [ 1, 2, 3 ], 4, 5, 6 ]
 </div>
 
 <p>
-The array is treated as a single value, put inside a new array, followed by the next few values.
+The array <code>someNumbers</code> is treated as a single value, put inside a new array, followed by the next few numbers.
 </p>
 
 <p>
@@ -511,6 +511,8 @@ The spread operator can be used on any array. Adding arrays together becomes ver
 <div class="org-src-container">
 
 <pre class="src src-js">console.log([...[1, 2, 3], ...[4, 5, 6], ...['apple', 'banana', 'cherry']]); // [ 1, 2, 3, 4, 5, 6, 'apple', 'banana', 'cherry' ]
+
+// Watch what happens without spread
 console.log([ [1, 2, 3], [4, 5, 6], ['apple', 'banana', 'cherry'] ]); // [ [1, 2, 3], [4, 5, 6], ['apple', 'banana', 'cherry'] ]
 </pre>
 </div>
@@ -602,11 +604,6 @@ console.log(staff);// [ 'Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace'
 </ul>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="date">Created: 2021-02-12 Fri 13:13</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

@@ -1,6 +1,5 @@
-#+HTML_HEAD: <link rel="stylesheet" href="highlight/styles/vs2015.css">
-#+HTML_HEAD: <script src="highlight/highlight.pack.js"></script>
-#+HTML_HEAD: <script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+#+SETUPFILE: setup.org
+#+TITLE: Arrays
 
 * Arrays
 What's more common than dealing with a single primitive value (like a number, boolean, or string), is dealing with a collection of values. That's where *arrays* come in. Arrays are values that are sort of like strings, but instead of holding a list of characters, they can hold a list of any values. If we have an array, we can deal with multiple values all at once. Arrays always have an order; just like writing down a list of groceries, there is an order (top to bottom), even if you don't care about it or use it.
@@ -208,7 +207,7 @@ const moreNumbers = [someNumbers, 4, 5, 6];
 console.log(moreNumbers); // [ [ 1, 2, 3 ], 4, 5, 6 ]
 #+END_SRC
 
-The array is treated as a single value, put inside a new array, followed by the next few values.
+The array ~someNumbers~ is treated as a single value, put inside a new array, followed by the next few numbers.
 
 We need to use some new syntax. The *spread* operator: ~...~ . We can spread out an array's elements as separate values.
 
@@ -222,6 +221,8 @@ The spread operator can be used on any array. Adding arrays together becomes ver
 
 #+BEGIN_SRC js
 console.log([...[1, 2, 3], ...[4, 5, 6], ...['apple', 'banana', 'cherry']]); // [ 1, 2, 3, 4, 5, 6, 'apple', 'banana', 'cherry' ]
+
+// Watch what happens without spread
 console.log([ [1, 2, 3], [4, 5, 6], ['apple', 'banana', 'cherry'] ]); // [ [1, 2, 3], [4, 5, 6], ['apple', 'banana', 'cherry'] ]
 #+END_SRC
 

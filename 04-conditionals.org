@@ -1,3 +1,7 @@
+#+HTML_HEAD: <link rel="stylesheet" href="highlight/styles/vs2015.css">
+#+HTML_HEAD: <script src="highlight/highlight.pack.js"></script>
+#+HTML_HEAD: <script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+
 * Conditionals
 
 Conditionals are one of the most common tools in programming. The simplest form looks like this:

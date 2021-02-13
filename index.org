@@ -1,0 +1,42 @@
+#+SETUPFILE: setup.org
+#+TITLE: JavaScript Fundamentals
+
+* JavaScript Fundamentals
+
+** Printing
+
+Work in progress.
+
+** Variables and Values
+
+Work in progress.
+
+** Operators
+
+Work in progress.
+
+** Conditionals
+
+Work in progress.
+
+** Functions
+
+Work in progress.
+
+** [[file:06-strings.html][Strings]]
+
+#+BEGIN_HTML
+<ul>
+<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML
+
+** [[file:07-arrays.html][Arrays]]
+
+#+BEGIN_HTML
+<ul>
+<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML

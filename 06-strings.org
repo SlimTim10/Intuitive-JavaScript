@@ -1,5 +1,8 @@
+#+SETUPFILE: setup.org
+#+TITLE: Strings
+
 * Strings
-Strings are values that have special properties other types of values don't have.
+Used for dealing with words and general text, strings are values that have special properties other types of values don't have.
 
 ** Index
 One such property allows us to access specific letters in a string. We call the position of a letter the *index*. For example, the string 'Alice' has the letter 'A' at index 0. Yes, 0. We can say that 'A' is the first letter of the string, so it is at the first position. But *indices* start at 0. In other words, the index of a letter is one less than its position.
@@ -87,3 +90,12 @@ console.log(name.slice(1, 4)); // lic
 ** Further reading
 Read more about strings on MDN:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+* Exercises
+
+#+BEGIN_HTML
+<ul>
+<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML
