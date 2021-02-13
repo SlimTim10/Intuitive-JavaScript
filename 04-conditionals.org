@@ -1,0 +1,51 @@
+* Conditionals
+
+Conditionals are one of the most common tools in programming. The simplest form looks like this:
+
+#+BEGIN_SRC js
+if (condition) {
+  console.log('the condition is true!');
+}
+#+END_SRC
+
+The condition goes inside the round brackets after 'if'. The code that we want to run if the condition is true goes in the curly brackets.
+
+===
+&&
+||
+!
+
+NUMBERS
+>
+>=
+<
+<=
+
+Just like in plain English, we can say "If I have less than 5 apples, then I should go buy some more."
+
+#+BEGIN_SRC js
+const apples = 2;
+if (apples < 5) {
+  console.log('I should go buy more apples.');
+}
+#+END_SRC
+
+The condition is "I have less than 5 apples" and if that condition is true, then I should go buy some more. The condition "I have less than 5 apples" is either true or false, regardless of what I know about my apples (even if I haven't checked how many apples I have in the kitchen). That's the way it works with computers. The condition must be either true or false.
+
+If I instead want to catch the case where the condition is false, I can check the opposite.
+
+#+BEGIN_SRC js
+const apples = 2;
+if (apples >= 5) {
+  console.log('I should go buy more apples.');
+}
+#+END_SRC
+
+#+BEGIN_SRC js
+const apples = 2;
+if (!(apples < 5)) {
+  console.log('I should go buy more apples.');
+}
+#+END_SRC
+
+Both of these blocks of code do the same thing.

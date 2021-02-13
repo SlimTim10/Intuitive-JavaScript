@@ -1,0 +1,9 @@
+* Functions
+
+Functions are a very powerful concept in programming. They give us a way to make code reusable. Consider the following.
+
+#+BEGIN_SRC js
+const name = 'Alice';
+console.log('Hello, ' + name + '!');
+#+END_SRC
+
