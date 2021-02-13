@@ -540,7 +540,61 @@ const moreFruits = ['date', 'elderberry'];
 console.log([...fruits, ...moreFruits]);
 
 /*
-7.81 Create a function called 'countUp' that takes an array of numbers counting up and returns the array with the next number added to the end.
+7.804 Print the following 2D array with another row added to the end.
+*/
+const matrix3 = [
+  [1, 2, 3],
+  [4, 5, 6]
+];
+
+console.log([...matrix3, [7, 8, 9]]);
+
+/*
+7.81 Create a function called 'nullHead' that takes an array and returns a new array with the first element replaced with null.
+
+The following lines should help you see if your function works correctly.
+*/
+const nullHead = xs => [null, ...tail(xs)];
+
+console.log('-- nullHead tests');
+console.log(nullHead([1, 2, 3]), '=== [null, 2, 3]');
+console.log(nullHead(['a', 'b', 'c']), '=== [null, b, c]');
+
+/*
+7.82 Create a function called 'append' that takes a value and an array, and returns a new array with the value added to the end.
+*/
+const append = (y, xs) => [...xs, y];
+
+console.log('-- append tests');
+console.log(append(3, [1, 2]), '=== [1, 2, 3]');
+console.log(append(4, [1, 2, 3]), '=== [1, 2, 3, 4]');
+
+/*
+7.821 Create a function called 'appendHead' that takes an array and returns a new array with its first value added to the end.
+*/
+const appendHead = xs => [...xs, head(xs)];
+
+console.log('-- appendHead tests');
+console.log(appendHead([1, 2, 3]), '=== [1, 2, 3, 1]');
+console.log(appendHead(['a', 'b', 'b']), '=== [a, b, b, a]');
+
+/*
+7.83 Create a function called 'swapEnds' that takes an array and returns a new array with the first and last elements swapped.
+
+Tip: Try using our head(), last(), and inner() functions to help.
+*/
+const swapEnds = xs => [last(xs), ...inner(xs), head(xs)];
+
+console.log('-- swapEnds tests');
+console.log(swapEnds([1, 2, 3]), '=== [3, 2, 1]');
+console.log(swapEnds([1, 2, 3, 4]), '=== [4, 2, 3, 1]');
+
+/*
+7.84 Create a function called 'countUp' that takes an array of numbers counting up and returns a new array with the next number added to the end.
+
+The following lines should help you see if your function works correctly.
+
+Tip: Try using our last() function to help.
 */
 const countUp = xs => [...xs, last(xs) + 1];
 
@@ -549,12 +603,13 @@ console.log(countUp([1, 2, 3]), '=== [1, 2, 3, 4]');
 console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
 
 /*
-7.811 Create a function called 'countMore' that takes an array of numbers in a sequence (with a constant interval) and returns the sequence with the next number in the sequence added to the end.
+7.841 Create a function called 'countMore' that takes an array of numbers in a sequence (with a constant interval) and returns a new array with the next number in the sequence added to the end.
 
 The following lines should help you see if your function works correctly.
 */
 const countMore = xs => {
-  const interval = last(xs) - last(init(xs));
+  const secondLast = last(init(xs));
+  const interval = last(xs) - secondLast;
   return [...xs, last(xs) + interval];
 };
 
@@ -566,17 +621,23 @@ console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');
 console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
 
 /*
-7.82 Create a function called 'insertAt' that takes an index, a value, and an array. It should return a new array with the given value inserted at the given index.
+7.85 Create a function called 'insertAt' that takes an index, a value, and an array. It should return a new array with the given value inserted at the given index.
+
+The following lines should help you see if your function works correctly.
+
+Tip: Try using our take() and drop() functions to help.
 */
 const insertAt = (index, y, xs) => {
-  return [...xs.slice(0, index), y, ...xs.slice(index + 1)];
+  return [...take(index, xs), y, ...drop(index, xs)];
 };
 
 console.log('-- insertAt tests');
-console.log(insertAt(3, 4, [1, 2, 3, 5]));
+console.log(insertAt(3, 4, [1, 2, 3, 5]), '=== [1, 2, 3, 4, 5]');
+console.log(insertAt(4, 5, [1, 2, 3, 4]), '=== [1, 2, 3, 4, 5]');
+console.log(insertAt(2, 'c', ['a', 'b', 'd']), '=== [a, b, c, d]');
 
 /*
-7.83 Create a function called 'addToShoppingList' that takes a shopping list (array of strings) and an item (string). It should return a shopping list with the new item added to it. If the item is already in the shopping list, return the shopping list unchanged.
+7.86 Create a function called 'addToShoppingList' that takes a shopping list (array of strings) and an item (string). It should return a shopping list with the new item added to it. If the item is already in the shopping list, return the shopping list unchanged.
 */
 const addToShoppingList = (item, list) => {
   if (!list.includes(item)) {
