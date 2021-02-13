@@ -367,6 +367,7 @@ console.log(someNumbers.filter(isEven)); // [ 2, 6, 8 ]
 <ul>
 	<li><a href="07-arrays-exercises.js">View exercises</a></li>
 	<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="07-arrays-solutions.js">View solutions</a></li>
 	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML

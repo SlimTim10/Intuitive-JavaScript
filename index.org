@@ -15,6 +15,7 @@
 <ul>
 	<li><a href="04-conditionals-exercises.js">View exercises</a></li>
 	<li><a href="04-conditionals-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="04-conditionals-solutions.js">View solutions</a></li>
 	<li><a href="04-conditionals-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
@@ -25,6 +26,7 @@
 <ul>
 	<li><a href="05-functions-exercises.js">View exercises</a></li>
 	<li><a href="05-functions-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="05-functions-solutions.js">View solutions</a></li>
 	<li><a href="05-functions-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
@@ -35,6 +37,7 @@
 <ul>
 	<li><a href="06-strings-exercises.js">View exercises</a></li>
 	<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="06-strings-solutions.js">View solutions</a></li>
 	<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
@@ -45,6 +48,7 @@
 <ul>
 	<li><a href="07-arrays-exercises.js">View exercises</a></li>
 	<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="07-arrays-solutions.js">View solutions</a></li>
 	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
