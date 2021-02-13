@@ -27,8 +27,9 @@ Work in progress.
 
 #+BEGIN_HTML
 <ul>
-<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
-<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+	<li><a href="06-strings-exercises.js">View exercises</a></li>
+	<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
 
@@ -36,7 +37,8 @@ Work in progress.
 
 #+BEGIN_HTML
 <ul>
-<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
-<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+	<li><a href="07-arrays-exercises.js">View exercises</a></li>
+	<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML

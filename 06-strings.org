@@ -95,7 +95,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 #+BEGIN_HTML
 <ul>
-<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
-<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+	<li><a href="06-strings-exercises.js">View exercises</a></li>
+	<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
