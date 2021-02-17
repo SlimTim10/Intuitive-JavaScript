@@ -1,3 +1,7 @@
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: Functions
+
 * Functions
 
 Functions are a very powerful concept in programming. They give us a way to make code reusable. Consider the following.

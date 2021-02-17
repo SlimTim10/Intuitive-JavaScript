@@ -1,6 +1,6 @@
-#+HTML_HEAD: <link rel="stylesheet" href="highlight/styles/vs2015.css">
-#+HTML_HEAD: <script src="highlight/highlight.pack.js"></script>
-#+HTML_HEAD: <script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: Conditionals
 
 * Conditionals
 
