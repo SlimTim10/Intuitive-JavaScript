@@ -469,12 +469,13 @@ console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
 
 The following lines should help you see if your function works correctly.
 */
-const bottom3 = xs => take(3, xs.sort());
+const bottom3 = xs => take(3, xs.sort((a, b) => a - b));
 
 console.log('-- bottom3 tests');
 console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
 console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
 console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
+console.log(bottom3([101, 19, 15, 18]), '=== [15, 18, 19]');
 
 /*
 7.61 Create a function called 'bottomN' that takes a number (n) and an array (of at least n elements). It should return the bottom n elements in ascending order.

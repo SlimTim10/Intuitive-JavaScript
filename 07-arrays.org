@@ -269,7 +269,7 @@ console.log(fakeCopyNumbers); // [ -6, 0, 10, 3, 99 ] -- not the original order 
 console.log(copyNumbers); // [3, 99, 0, -6, 10] -- still has the original order because it's a copy
 #+END_SRC
 
-The most common real-world uses of all this will be two things: adding an element to the end of an array, and adding two arrays together.
+The most common real-world uses of adding to arrays are: adding an element to the end of an array, and adding two arrays together.
 
 #+BEGIN_SRC js
 const teachers = ['Alice', 'Bob', 'Carol'];
@@ -280,94 +280,3 @@ const managers = ['Eve', 'Frank', 'Grace'];
 const staff = [...newTeachers, ...managers]; // gather all staff together
 console.log(staff);// [ 'Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace' ]
 #+END_SRC
-
-** Higher-order methods :noexport:
-A function (or method) that takes in a function as one of its arguments is called a *higher-order function (or method)*. There are a few commonly used higher-order methods for arrays, for handling common patterns.
-
-*** map()
-The most commonly used of these is ~map()~. Like any array method, it operates on an array. What it does is takes in a function and returns a new array after having applied that function to each element. Because the function we provide to ~map()~ is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.
-
-Let's say we have an array of numbers.
-
-#+BEGIN_SRC js
-const someNumbers = [3, 99, 0, -6, 10];
-#+END_SRC
-
-And we want to increase each number by 1. We can first define a function that takes in a single number and returns its value plus 1.
-
-#+BEGIN_SRC js
-const add1 = x => x + 1;
-console.log(add1(5)); // 6
-#+END_SRC
-
-We can try using this function on an element of our array.
-
-#+BEGIN_SRC js
-console.log(add1(someNumbers[0])); // 4
-#+END_SRC
-
-If we want to apply the function to each element of our array, we could write it out the long way.
-
-#+BEGIN_SRC js
-console.log( [ add1(someNumbers[0]), add1(someNumbers[1]), add1(someNumbers[2]), add1(someNumbers[3]), add1(someNumbers[4]) ] ); // [4, 100, 1, -5, 11]
-#+END_SRC
-
-This works, but it requires us to know exactly how many element are in the array. And it would take a lot of code for a long array. Instead, we can use ~map()~.
-
-#+BEGIN_SRC js
-console.log(someNumbers.map(add1)); // [4, 100, 1, -5, 11]
-#+END_SRC
-
-In fact, we can skip defining the add1 function and just put it all in one line.
-
-#+BEGIN_SRC js
-console.log(someNumbers.map(x => x + 1)); // [4, 100, 1, -5, 11]
-#+END_SRC
-
-In general, whenever we have some array ~xs~ and some function ~f~ (that operates on a single element ~x~), using ~xs.map(f)~ gives us ~[f(xs[0]), f(xs[1]), f(xs[2]), ...]~.
-
-Map is the method to use if we want to:
-- start with an array,
-- do the same thing to each element of the array,
-- and end up with a new array of the same size
-
-*** forEach()
-The ~forEach()~ method is /exactly/ the same as ~map()~ except it doesn't return the new array. It still takes in a function to operate on each element of the array, it simply leaves it at that and doesn't return anything. This is used for when we want to perform some /action/ on each element instead of ending up with a new array. The most common example of an action would be ~console.log()~.
-
-#+BEGIN_SRC js
-const names = ['Alice', 'Bob', 'Carol'];
-const sayHello = name => {
-  console.log(`Hello, ${name}!`);
-};
-names.forEach(sayHello);
-names.forEach(name => {
-  console.log(`Hello, ${name}!`);
-});
-#+END_SRC
-
-Notice that our function does not return anything. Even if it did, the return value wouldn't be used because ~forEach()~ won't keep track of it.
-
-*** filter()
-One of the less common, but still useful, higher-order array methods is ~filter()~. It also takes in a function to operate on each element of the array, except the function's job is to say whether to keep the element or not. After using ~filter()~, we end up with a new /filtered/ array that has only certain elements from the original array. Because we can only either keep an element or not, the given function should return a boolean value (true or false). The new array will only have the elements for which the function returned true.
-
-#+BEGIN_SRC js
-const someNumbers = [3, 1, 2, 5, 6, 9, 8];
-const isEven = num => num % 2 === 0; // returns true if num is even, otherwise false
-console.log(someNumbers.filter(isEven)); // [ 2, 6, 8 ]
-#+END_SRC
-
-*** reduce()
-
-
-** Methods with strings :noexport:
-
-* Exercises
-
-#+BEGIN_HTML
-<ul>
-	<li><a href="07-arrays-exercises.js">View exercises</a></li>
-	<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
-	<li><a href="07-arrays-solutions.js">View solutions</a></li>
-	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
-</ul>
-#+END_HTML

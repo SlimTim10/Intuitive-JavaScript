@@ -52,3 +52,14 @@
 	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_HTML
+
+** [[file:08-more-arrays.html][More Arrays]]
+
+#+BEGIN_HTML
+<ul>
+	<li><a href="08-more-arrays-exercises.js">View exercises</a></li>
+	<li><a href="08-more-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="08-more-arrays-solutions.js">View solutions</a></li>
+	<li><a href="08-more-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML
