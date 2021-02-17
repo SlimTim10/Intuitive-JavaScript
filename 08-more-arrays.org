@@ -1,0 +1,294 @@
+#+SETUPFILE: setup.org
+#+TITLE: More Arrays
+
+* More Arrays
+We're not done with arrays yet! Here, we will introduce two very common ways to use arrays: applying a single operation on each element of an array, and converting between arrays and strings.
+
+** Higher-order functions
+Methods that allow us to deal with an entire array as a whole, no matter how big, are invaluable for solving real problems. In order to do such a thing, we need to use *higher-order functions*. Keep in mind that methods are just functions with slightly different syntax, so we could call them *higher-order methods* but since this applies to functions in general, we'll stick to that.
+
+A higher-order function is one that takes in a function as an argument. That's right, functions can take other functions as arguments! And why shouldn't they? After all, functions are values just like any other.
+
+If you have heard of loops (e.g. the ~for~ loop, or the ~for...of~ loop), using these methods removes the need for writing our own loops. They do the looping internally (abstracting it) so we can focus on the problem at hand.
+
+*** every()
+The ~every()~ method checks if /every/ one of an array's elements passes a test and returns true if they all pass, otherwise false.
+
+The argument we need to pass to ~every()~ is a function that takes in one element and returns a boolean value (true or false). We get to define the function and give it a name, but we don't get to decide how it gets called. That's the trick to higher-order functions. Since the higher-order function gets to call our function, it already has an idea in mind of how it's going to be called and what arguments to pass to it. So we can just imagine that our function's argument will become each element of the array.
+
+In this case, ~every()~ is the higher order function. The function that we pass to it as an argument is called a *callback function*. The ~every()~ method is expecting the callback function to take a single argument and return a boolean value, so that's exactly how our callback function has to work.
+
+#+BEGIN_SRC js
+const isEven = x => x % 2 === 0;
+console.log(isEven(2)); // true
+console.log(isEven(5)); // false
+
+const someNumbers = [1, 2, 3, 4, 5];
+console.log(someNumbers.every(isEven)); // false
+
+const evenNumbers = [2, 4, 6, 8];
+console.log(evenNumbers.every(isEven)); // true
+#+END_SRC
+
+In this example, ~isEven()~ is our callback function. It takes a single argument, ~x~, and returns true if ~x~ is even, otherwise false. The argument ~x~ will become each element of the given array when ~every()~ runs, then we will get our final answer.
+
+It is commonplace to define the callback function directly inside of the higher-order function call if we don't need to keep it for reuse.
+
+#+BEGIN_SRC js
+const evenNumbers = [2, 4, 6, 8];
+console.log(evenNumbers.every(x => x % 2 === 0)); // true
+#+END_SRC
+
+How about checking if every name in an array starts with the letter 'A'?
+
+#+BEGIN_SRC js
+const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
+console.log(names1.every(name => name.startsWith('A'))); // false
+
+const names2 = ['Alice', 'Adam', 'April', 'Amy'];
+console.log(names2.every(name => name.startsWith('A'))); // true
+
+const names3 = ['Alice', 'Adam', 'April', 'Amy', 'Bob'];
+console.log(names3.every(name => name.startsWith('A'))); // false
+#+END_SRC
+
+A whole category of problems just got a lot easier with ~every()~!
+
+*** some()
+The ~some()~ method is like ~every()~, except only /one/ element needs to pass the test to return true. In other words, if /any/ element passes the test, return true, otherwise false.
+
+Let's take a look at similar examples as before, but using ~some()~ instead of ~every()~.
+
+#+BEGIN_SRC js
+const isEven = x => x % 2 === 0;
+
+const someNumbers = [1, 2, 3, 4, 5];
+console.log(someNumbers.some(isEven)); // true
+
+const evenNumbers = [2, 4, 6, 8];
+console.log(evenNumbers.some(isEven)); // true
+
+const oddNumbers = [1, 3, 5, 7];
+console.log(oddNumbers.some(isEven)); // false
+#+END_SRC
+
+#+BEGIN_SRC js
+const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
+console.log(names1.some(name => name.startsWith('A'))); // true
+
+const names2 = ['Alice', 'Adam', 'April', 'Amy'];
+console.log(names2.some(name => name.startsWith('A'))); // true
+
+const names3 = ['Bob', 'Carol', 'Dave', 'Eve'];
+console.log(names3.some(name => name.startsWith('A'))); // false
+#+END_SRC
+
+*** map()
+Probably the most commonly used of the higher-order array methods is ~map()~. It takes in a function and returns a new arrays after having applied that function to each element. Because the function we provide to ~map()~ is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.
+
+The kinds of problems that ~map()~ helps with are difficult to describe in words, so let's look at some examples.
+
+**** Example
+Let's say we have an array of numbers.
+
+#+BEGIN_SRC js
+const someNumbers = [3, 99, 0, -6, 10];
+#+END_SRC
+
+And we want to increase each number by 1. We can first define a function that takes in a single number and returns its value plus 1.
+
+#+BEGIN_SRC js
+const add1 = x => x + 1;
+console.log(add1(5)); // 6
+#+END_SRC
+
+We can try using this function on a single element of our array.
+
+#+BEGIN_SRC js
+console.log(add1(someNumbers[0])); // 4
+#+END_SRC
+
+If we want to apply the function to each element of our array, we could write it out the long way.
+
+#+BEGIN_SRC js
+console.log( [
+  add1(someNumbers[0]),
+  add1(someNumbers[1]),
+  add1(someNumbers[2]),
+  add1(someNumbers[3]),
+  add1(someNumbers[4])
+] ); // [ 4, 100, 1, -5, 11 ]
+#+END_SRC
+
+This works, but it requires us to know exactly how many element are in the array. And it would take a lot of code for a long array. Instead, we can use ~map()~.
+
+#+BEGIN_SRC js
+console.log(someNumbers.map(add1)); // [ 4, 100, 1, -5, 11 ]
+#+END_SRC
+
+As before, we can skip defining the add1 function as a variable and just define it in the ~map()~ call. The complete example is as follows.
+
+#+BEGIN_SRC js
+const someNumbers = [3, 99, 0, -6, 10];
+console.log(someNumbers.map(x => x + 1)); // [ 4, 100, 1, -5, 11 ]
+#+END_SRC
+
+**** Example
+Another use case is to extract a common property from each element. Let's say we have an array of names and we want to get the lengths of each name. Since each name is a string and has a ~length~ property, we can use ~map()~ here.
+
+#+BEGIN_SRC js
+const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
+const nameLengths = names.map(name => name.length);
+console.log(nameLengths); // [ 5, 3, 5, 4, 3, 5 ]
+#+END_SRC
+
+**** Summary
+In general, whenever we have some array ~xs~ and some function ~f~ (that operates on a single element ~x~), using ~xs.map(f)~ gives us ~[ f(xs[0]), f(xs[1]), f(xs[2]), ... ]~.
+
+Map is the method to use if we want to:
+- start with an array,
+- do the same thing to each element of the array,
+- and end up with a new array of the same size.
+
+*** forEach()
+The ~forEach()~ method is /exactly/ the same as ~map()~ except it doesn't return the new array. It takes in a function to operate on each element of the array, but it simply leaves it at that and doesn't return anything. This is used for when we want to perform some /action/ on each element instead of ending up with a new array. The simplest example of an action is printing, i.e. ~console.log()~.
+
+#+BEGIN_SRC js
+const names = ['Alice', 'Bob', 'Carol'];
+
+const sayHello = name => {
+  console.log(`Hello, ${name}!`);
+};
+
+names.forEach(sayHello);
+
+// Without defining the function separately
+names.forEach(name => {
+  console.log(`Hello, ${name}!`);
+});
+#+END_SRC
+
+Notice that our function does not return anything. Even if it did, the return value wouldn't be used because ~forEach()~ won't keep track of it.
+
+Printing the lengths of an array of names just became easier!
+
+#+BEGIN_SRC js
+const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
+names.forEach(name => console.log(name.length));
+#+END_SRC
+
+*** filter()
+One of the less common, but still useful, higher-order array methods is ~filter()~. It also takes in a function to operate on each element of the array, except the function's job is to say whether to keep the element or not. After using ~filter()~, we end up with a new /filtered/ array that has only certain elements from the original array. Because we can only either keep an element or not, the callback function should return a boolean value (true or false). The new array will only have the elements for which the function returned true.
+
+#+BEGIN_SRC js
+const someNumbers = [3, 1, 2, 5, 6, 9, 8];
+
+const isEven = num => num % 2 === 0; // returns true if num is even, otherwise false
+console.log(someNumbers.filter(isEven)); // [ 2, 6, 8 ]
+
+const isOdd = num => !isEven(num);
+console.log(someNumbers.filter(isOdd)); // [ 3, 1, 5, 9 ]
+#+END_SRC
+
+We can filter our array of names in different ways.
+
+#+BEGIN_SRC js
+const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
+
+console.log(names.filter(name => name.length <= 4)); // [ 'Bob', 'Dean', 'Eve' ]
+
+console.log(names.filter(name => {
+  return name.startsWith('A') || name.startsWith('E');
+})); // [ 'Alice', 'Eve' ]
+#+END_SRC
+
+With a clever use of ~some()~, we can filter for names that start with some vowel.
+
+#+BEGIN_SRC js
+const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank', 'Ingrid'];
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+console.log(names.filter(name => {
+  return vowels.some(vowel => name.toLowerCase().startsWith(vowel));
+})); // [ 'Alice', 'Eve', 'Ingrid' ]
+#+END_SRC
+
+Filter is the method to use if we want to:
+- start with an array,
+- and end up with a new array of less than or equal size as the original, without changing the elements.
+
+*** reduce()
+If the previous methods are for handling certain kinds of problems with arrays, then ~reduce()~ is for everything else. Being a very expressive method, ~reduce()~ can be difficult to master but very useful.
+
+The callback function passed to ~reduce()~ needs to take two arguments. Let's call them ~acc~ (short for "accumulator") and ~x~. Like the other methods, ~x~ will become each element of the array. ~acc~ gets an initial value, given by the argument after the callback function, then takes on the values of each successive result of the callback function. You can think of ~reduce()~ as starting with an array and reducing it to a single value (the last value of ~acc~). Some examples will make this more clear.
+
+**** Example
+We don't yet have a way to sum a bunch of numbers in an array. A great use case for ~reduce()~.
+
+#+BEGIN_SRC js
+const someNumbers = [1, 2, 3, 4, 5];
+console.log(someNumbers.reduce((acc, x) => acc + x, 0)); // 15
+#+END_SRC
+
+All we're doing here is adding each number to an accumulator until we reach the end. To break this down, we're giving ~reduce()~ two arguments: a callback function and the number 0. In our callback function, ~acc~ starts off as 0. The first call of our function uses the first element, 1, as the value for ~x~, so we get ~acc + x = 0 + 1 = 1~ as a result. Thus, the new value for ~acc~ is 1. Then ~x~ becomes the next element, 2. This time, we get ~acc + x = 1 + 2 = 3~ as a result. Thus, the new value for ~acc~ is 3. And repeat, ~x~ becomes 3. ~acc + x = 3 + 3 = 6~. Thus, the new value for ~acc~ is 6. Repeat, ~x~ becomes 4. ~acc + x = 6 + 4 = 10~. Thus, the new value for ~acc~ is 10. Finally, ~x~ becomes 5. ~acc + x = 10 + 5 = 15~. Thus, the final value for ~acc~ is 15 and that is the final result.
+
+Perhaps more clearly:
+
+| acc | x   |     acc + x |
+|-----+-----+-------------|
+| <l> | <c> |         <r> |
+| 0   | 1   |   0 + 1 = 1 |
+| 1   | 2   |   1 + 2 = 3 |
+| 3   | 3   |   3 + 3 = 6 |
+| 6   | 4   |  6 + 4 = 10 |
+| 10  | 5   | 10 + 5 = 15 |
+
+**** Example
+The result we end up with doesn't even have to be the same type as the elements. For example, we can sum the lengths of an array of strings all at once.
+
+#+BEGIN_SRC js
+const names = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
+console.log(names.reduce((acc, name) => acc + name.length, 0)); // 20
+#+END_SRC
+
+**** Example
+In fact, we can even end up with an array! For example, we can flatten a nested array.
+
+#+BEGIN_SRC js
+const nested = [ ['Alice', 'Bob'], ['Carol', 'Dave'] ];
+console.log(nested.reduce((acc, x) => [...acc, ...x], []));
+#+END_SRC
+
+**** Example
+In fact, ~reduce()~ is so expressive that we can define all of the previous methods just by using it alone.
+
+#+BEGIN_SRC js
+const reduceEvery = (xs, f) => xs.reduce((acc, x) => acc ? f(x) : false, true);
+console.log(reduceEvery([1, 2, 3, 4, 5], x => x % 2 === 0)); // false
+console.log(reduceEvery([2, 4, 6, 8], x => x % 2 === 0)); // true
+
+const reduceSome = (xs, f) => xs.reduce((acc, x) => acc ? true : f(x), false);
+console.log(reduceSome([1, 2, 3, 4, 5], x => x % 2 === 0)); // true
+console.log(reduceSome([1, 3, 5, 7], x => x % 2 === 0)); // false
+
+const reduceMap = (xs, f) => xs.reduce((acc, x) => [...acc, f(x)], []);
+console.log(reduceMap([1, 2, 3, 4, 5], x => x + 1)); // [ 2, 3, 4, 5, 6 ]
+console.log(reduceMap(['Alice', 'Bob', 'Carol'], name => name.length)); // [ 5, 3, 5 ]
+
+const reduceFilter = (xs, f) => xs.reduce((acc, x) => f(x) ? [...acc, x] : acc, []);
+console.log(reduceFilter([1, 2, 3, 4, 5], x => x % 2 === 0)); // [ 2, 4 ]
+console.log(reduceFilter(['Alice', 'Bob', 'Carol'], name => name.length < 4)); // [ 'Bob' ]
+#+END_SRC
+
+** Converting between arrays and strings 						   :noexport:
+
+* Exercises
+
+#+BEGIN_HTML
+<ul>
+	<li><a href="08-more-arrays-exercises.js">View exercises</a></li>
+	<li><a href="08-more-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="08-more-arrays-solutions.js">View solutions</a></li>
+	<li><a href="08-more-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML
