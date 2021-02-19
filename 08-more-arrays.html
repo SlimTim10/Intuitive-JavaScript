@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>More Arrays</title>
-<!-- 2021-02-17 Wed 17:34 -->
+<!-- 2021-02-19 Fri 12:40 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -141,22 +141,16 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">More Arrays</h1>
+<p>
+<b><a href="index.html">Home</a></b>
+</p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#sec-1">1. More Arrays</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Higher-order functions</a>
-<ul>
-<li><a href="#sec-1-1-1">1.1.1. every()</a></li>
-<li><a href="#sec-1-1-2">1.1.2. some()</a></li>
-<li><a href="#sec-1-1-3">1.1.3. map()</a></li>
-<li><a href="#sec-1-1-4">1.1.4. forEach()</a></li>
-<li><a href="#sec-1-1-5">1.1.5. filter()</a></li>
-<li><a href="#sec-1-1-6">1.1.6. reduce()</a></li>
-</ul>
-</li>
+<li><a href="#sec-1-1">1.1. Higher-order functions</a></li>
 </ul>
 </li>
 <li><a href="#sec-2">2. Exercises</a></li>
@@ -300,7 +294,7 @@ console.log(names3.some(name =&gt; name.startsWith('A'))); // false
 <h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> map()</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
-Probably the most commonly used of the higher-order array methods is <code>map()</code>. It takes in a function and returns a new arrays after having applied that function to each element. Because the function we provide to <code>map()</code> is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.
+Probably the most commonly used of the higher-order array methods is <code>map()</code>. It takes in a function and returns a new array after having applied that function to each element. Because the function we provide to <code>map()</code> is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.
 </p>
 
 <p>
@@ -506,12 +500,25 @@ console.log(names.filter(name =&gt; {
 </div>
 
 <p>
+A common use of <code>filter()</code> is to check how many of a certain kind of element exists in an array. For example, how many numbers are even?
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const someNumbers = [3, 1, 2, 5, 6, 9, 8];
+const isEven = num =&gt; num % 2 === 0;
+
+console.log(someNumbers.filter(isEven).length); // 3
+</pre>
+</div>
+
+<p>
 Filter is the method to use if we want to:
 </p>
 <ul class="org-ul">
 <li>start with an array,
 </li>
-<li>and end up with a new array of less than or equal size as the original, without changing the elements.
+<li>and end up with a new array of smaller or equal size as the original, without changing the elements.
 </li>
 </ul>
 </div>
