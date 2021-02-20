@@ -290,8 +290,6 @@ console.log(reduceFilter([1, 2, 3, 4, 5], x => x % 2 === 0)); // [ 2, 4 ]
 console.log(reduceFilter(['Alice', 'Bob', 'Carol'], name => name.length < 4)); // [ 'Bob' ]
 #+END_SRC
 
-** Converting between arrays and strings 						   :noexport:
-
 * Exercises
 
 #+BEGIN_HTML
