@@ -131,3 +131,26 @@ console.log(eqArrays(
   makeSquares([-1, 0, 99, 1000]),
   [ [-1, -1], [0, 0], [99, 99], [1000, 1000] ]
 ));
+
+// Practice using the forEach() method
+
+/*
+8.4 Say hello to each of the names in the following array (e.g. Hello, Alice!).
+*/
+const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
+
+
+
+/*
+8.41 Greet each person in their own language (e.g. Bonjour, Alice!).
+*/
+const people1 = [['Alice', 'French'], ['Bob', 'English'], ['Carol', 'German']];
+
+
+
+/*
+8.42 Create a function called 'manyLovers' that takes an array of couples and prints that the first names love the second names (e.g. Alice loves Bob).
+*/
+
+
+manyLovers([['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']]);

@@ -245,7 +245,7 @@ const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
 names1.forEach(name => console.log(`Hello, ${name}!`));
 
 /*
-Greet each person in their own language.
+8.41 Greet each person in their own language (e.g. Bonjour, Alice!).
 */
 const people1 = [['Alice', 'French'], ['Bob', 'English'], ['Carol', 'German']];
 
@@ -263,7 +263,7 @@ const greetLanguage = (name, language) => {
 people1.forEach(([name, language]) => greetLanguage(name, language));
 
 /*
-Print all the couples.
+8.42 Create a function called 'manyLovers' that takes an array of couples and prints that the first names love the second names (e.g. Alice loves Bob).
 */
 const lovers = (name1, name2) => {
   return name1 + ' loves ' + name2;
