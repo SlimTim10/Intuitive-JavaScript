@@ -1,3 +1,30 @@
+// We need a function that allows us to compare arrays so we can write better tests!
+
+/*
+8.01 Create a function called 'eqArrays' that takes two arrays and returns true if they are equal, otherwise false. Two arrays are considered equal if they are the same length and every element is equal (in the same order).
+
+Tip: The every() method can use the array indexes as a second argument of the callback function. See the documentation for more detail:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+const eqArrays = (xs, ys) => (xs.length === ys.length) && xs.every((_, i) => {
+  if (Array.isArray(xs[i]) && Array.isArray(ys[i])) {
+    return eqArrays(xs[i], ys[i]);
+  } else {
+    return ys[i] === xs[i];
+  }
+});
+
+console.log('-- eqArrays tests');
+console.log(eqArrays([], []));
+console.log(eqArrays([1, 2, 3], [1, 2, 3]));
+console.log(!eqArrays([1, 2, 3], [1, 3, 2]));
+console.log(!eqArrays([1, 2, 3], [1, 2, 3, 4]));
+console.log(!eqArrays([1, 2, 3, 4], [1, 2, 3]));
+console.log(eqArrays(['Alice', 'Bob', 'Carol'], ['Alice', 'Bob', 'Carol']));
+console.log(eqArrays([1, 2, 3, [4, 5, 6]], [1, 2, 3, [4, 5, 6]]));
+
 // Practice using the some() method
 
 /*
@@ -24,7 +51,7 @@ console.log(anyNegative([0, 1, 2, 3, 4, -5]));
 console.log(!anyNegative([0, 1, 2, 3, 4, 5]));
 
 /*
-8.12 Create a function called 'anyZs' that takes an array of words (strings) and returns true if the letter "z" is found in any of the words, otherwise false.
+8.12 Create a function called 'anyZs' that takes an array of words (strings) and returns true if the letter "z" (lowercase or uppercase) is found in any of the words, otherwise false.
 */
 const anyZs = words => words.some(word => word.includes('z'));
 
@@ -42,6 +69,29 @@ console.log('-- overTheLimit tests');
 console.log(overTheLimit(100, [2, 30, 99, 100, 101]));
 console.log(!overTheLimit(100, [2, 30, 99, 100, -5]));
 console.log(overTheLimit(100, [2, 3000, 99]));
+
+/*
+8.14 Create a function called 'addNewLetterName' that takes a new name (string) and an array of names (strings). The goal is to add the new name to the names if there isn't already a name that starts with the same letter. The function should return a new array of names that contains the original names plus the new one if it starts with a unique letter, otherwise return the original names.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+const addNewLetterName = (newName, names) => {
+  if (!names.some(name => name[0] === newName[0])) {
+    return [...names, newName];
+  } else {
+    return names;
+  }
+};
+
+console.log('-- addNewLetterName tests');
+console.log(eqArrays(
+  addNewLetterName('Bob', ['Alice', 'Carol', 'Dave']),
+  ['Alice', 'Carol', 'Dave', 'Bob']
+));
+console.log(eqArrays(
+  addNewLetterName('Bob', ['Alice', 'Beatrice', 'Carol', 'Dave']),
+  ['Alice', 'Beatrice', 'Carol', 'Dave']
+));
 
 // Practice using the every() method
 
@@ -78,29 +128,154 @@ console.log('-- britishGang tests');
 console.log(britishGang(['MacDonald', 'McSorley', 'Taylor', 'Davies']));
 console.log(!britishGang(['MacDonald', 'McSorley', 'Taylor', 'Davies', 'Freeman']));
 
-/*
-8.23 Create a function called 'eqArrays' that takes two arrays and returns true if they are equal, otherwise false. Two arrays are considered equal if they are the same length and every element is equal (in the same order).
+// Practice using the map() method
 
-Tip: The every() method can use the array indexes as a second argument of the callback function. See the documentation for more detail:
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+/*
+8.3 Create a function called 'convertMoney' to convert an array of values in dollars to an array of values in cents.
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const eqArrays = (xs, ys) => (xs.length === ys.length) && xs.every((_, i) => ys[i] === xs[i]);
+const dollarsToCents = dollars => dollars * 100;
+const convertMoney = dollarValues => dollarValues.map(dollarsToCents);
 
-console.log('-- eqArrays tests');
-console.log(eqArrays([], []));
-console.log(eqArrays([1, 2, 3], [1, 2, 3]));
-console.log(!eqArrays([1, 2, 3], [1, 3, 2]));
-console.log(!eqArrays([1, 2, 3], [1, 2, 3, 4]));
-console.log(!eqArrays([1, 2, 3, 4], [1, 2, 3]));
-console.log(eqArrays(['Alice', 'Bob', 'Carol'], ['Alice', 'Bob', 'Carol']));
+console.log('-- convertMoney tests');
+console.log(eqArrays(convertMoney([2, 3.5, 10]), [200, 350, 1000]));
+console.log(eqArrays(convertMoney([0, 0.25, 99.99]), [0, 25, 9999]));
 
+/*
+8.31 Create a function called 'convertTemperatures' that takes an array of temperatures (numbers) and either 'FtoC' or 'CtoF', and returns an array of the converted temperatures.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+const fToC = ftemp => (ftemp - 32) / 1.8;
+const cToF = ctemp => (ctemp * 1.8) + 32;
+const convertTemperature = (temp, conv) => {
+  if (conv === 'FtoC') {
+    return fToC(temp);
+  } else {
+    return cToF(temp);
+  }
+};
+const convertTemperatures = (temps, conv) => temps.map(temp => convertTemperature(temp, conv));
+
+console.log('-- convertTemperatures tests');
+console.log(eqArrays(convertTemperatures([32, 41], 'FtoC'), [0, 5]));
+console.log(eqArrays(convertTemperatures([0, -10], 'CtoF'), [32, 14]));
+
+/*
+8.32 Create a function called 'bonusSalaries' that takes an array of salary-bonus pairs and returns the new salaries. Each salary-bonus pair is an array with a salary and a boolean that says whether or not the salary receives a bonus. A bonus salary is the salary multiplied by 10.
+
+The following lines should help test if your function works correctly. They should print true.
+ */
+const bonusTime = (salary, bonus) => {
+  if (bonus) {
+    return salary * 10;
+  } else {
+    return salary;
+  }
+};
+const bonusSalaries = salaries => salaries.map(([salary, bonus]) => bonusTime(salary, bonus));
+
+console.log('-- bonusSalaries tests');
+console.log(eqArrays(
+  bonusSalaries([ [123, false], [123, true] ]),
+  [123, 1230]
+));
+console.log(eqArrays(
+  bonusSalaries([ [10000, true], [10000, false], [30000, true], [100000, false], [64000.99, true] ]),
+  [100000, 10000, 300000, 100000, 640009.9]
+));
+
+/*
+8.33 Create a function called 'rpsResults' that takes an array of "Rock, Paper, Scissors" games and returns an array of results. Each game is an array of two hands. Each hand is either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, the result is 1. If the first hand loses, the result is -1. In the case of a draw, the result is 0.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+const rps = (hand1, hand2) => {
+  if (
+    (hand1 === 'rock' && hand2 === 'scissors')
+      || (hand1 === 'paper' && hand2 === 'rock')
+      || (hand1 === 'scissors' && hand2 === 'paper')) {
+    return 1;
+  } else if (
+    (hand2 === 'rock' && hand1 === 'scissors')
+      || (hand2 === 'paper' && hand1 === 'rock')
+      || (hand2 === 'scissors' && hand1 === 'paper')) {
+    return -1;
+  } else {
+    return 0;
+  }
+};
+const rpsResults = games => games.map(([hand1, hand2]) => rps(hand1, hand2));
+
+console.log('-- rpsResults tests');
+console.log(eqArrays(
+  rpsResults([ ['rock', 'scissors'], ['paper', 'scissors'], ['scissors', 'scissors'] ]),
+  [1, -1, 0]
+));
+console.log(eqArrays(
+  rpsResults([ ['rock', 'rock'], ['paper', 'paper'], ['scissors', 'scissors'], ['scissors', 'paper'], ['paper', 'rock'] ]),
+  [0, 0, 0, 1, 1]
+));
+
+/*
+8.34 Create a function called 'makeSquares' that takes an array of numbers and returns an array of squares. A square is an array of two numbers: [length, width].
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+const makeSquares = xs => xs.map(x => [x, x]);
+
+console.log('-- makeSquares tests');
+console.log(eqArrays(
+  makeSquares([1, 2, 3, 4]),
+  [ [1, 1], [2, 2], [3, 3], [4, 4] ]
+));
+console.log(eqArrays(
+  makeSquares([-1, 0, 99, 1000]),
+  [ [-1, -1], [0, 0], [99, 99], [1000, 1000] ]
+));
+
+// Practice using the forEach() method
+
+/*
+8.4 Say hello to each of the names in the following array (e.g. Hello, Alice!).
+*/
+const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
+
+names1.forEach(name => console.log(`Hello, ${name}!`));
+
+/*
+Greet each person in their own language.
+*/
+const people1 = [['Alice', 'French'], ['Bob', 'English'], ['Carol', 'German']];
+
+const greetLanguage = (name, language) => {
+  if (language === 'English') {
+    console.log('Hello, ' + name + '!');
+  } else if (language === 'French') {
+    console.log('Bonjour, ' + name + '!');
+  } else if (language === 'German') {
+    console.log('Guten Tag, ' + name + '!');
+  } else {
+    console.log('Unknown language');
+  }
+};
+people1.forEach(([name, language]) => greetLanguage(name, language));
+
+/*
+Print all the couples.
+*/
+const lovers = (name1, name2) => {
+  return name1 + ' loves ' + name2;
+};
+const manyLovers = couples => couples.forEach(([name1, name2]) => console.log(lovers(name1, name2)));
+
+manyLovers([['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']]);
 
 // Practice using the filter() method
 
 /*
-8.? Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish. A Scottish surname is one that starts with "Mac".
+8.5? Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish. A Scottish surname is one that starts with "Mac".
 */
 const mostlyScottish = surnames => surnames.filter(surname => surname.startsWith('Mac')).length > (surnames.length / 2);
 
@@ -111,7 +286,18 @@ console.log(mostlyScottish(['MacDonald', 'MacQuarry', 'MacKenzie', 'Jones', 'Fre
 console.log(!mostlyScottish(['MacDonald', 'MacQuarry', 'MacKenzie', 'Jones', 'Freeman', 'Brown']));
 
 /*
-8.? Create a function called 'rpsPoints' that takes an array of rock-paper-scissors games and returns the number of games where the first player won.
+8.5? Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any name that starts with the given letter.
+*/
+const removeLetterNames = (letter, names) => names.filter(name => name[0] !== letter);
+
+console.log('-- removeLetterNames');
+console.log(eqArrays(
+  removeLetterNames('B', ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']),
+  ['Alice', 'Carol', 'Dave']
+));
+
+/*
+8.5? Create a function called 'rpsPoints' that takes an array of rock-paper-scissors games and returns the number of games where the first player won.
 
 The following lines should help test if your function works correctly. They should print true.
 */
