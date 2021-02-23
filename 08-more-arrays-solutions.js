@@ -275,7 +275,31 @@ manyLovers([['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']]);
 // Practice using the filter() method
 
 /*
-8.5? Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish. A Scottish surname is one that starts with "Mac".
+8.5 Create a function called 'wholeNumbers' that takes an array of numbers and returns a new array containing only the numbers that are whole. Whole numbers are the numbers starting from 0 and counting up forever: 0, 1, 2, 3, 4, 5, ... . Negative numbers and decimals (e.g. 1.5) are not whole numbers.
+*/
+const wholeNumbers = xs => xs.filter(x => x >= 0 && x === Math.floor(x));
+
+console.log('-- wholeNumbers tests');
+console.log(eqArrays(
+  wholeNumbers([-1, 0, 1, 2, 3, 4.5, 5, 6.01, 999]),
+  [0, 1, 2, 3, 5, 999]
+));
+console.log(eqArrays(
+  wholeNumbers([-1, 0.9, 1.2, 99.99]),
+  []
+));
+
+/*
+8.51 Create a function called 'countNulls' that takes an array and returns how many null values are in it.
+*/
+const countNulls = xs => xs.filter(x => x === null).length;
+
+console.log('-- countNulls tests');
+console.log(countNulls([1, 2, 3, null, 4, 5, null, null, null]) === 4);
+console.log(countNulls([1, 2, 3, 4, 5]) === 0);
+
+/*
+8.52 Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish, otherwise false. A Scottish surname is one that starts with "Mac".
 */
 const mostlyScottish = surnames => surnames.filter(surname => surname.startsWith('Mac')).length > (surnames.length / 2);
 
@@ -286,7 +310,7 @@ console.log(mostlyScottish(['MacDonald', 'MacQuarry', 'MacKenzie', 'Jones', 'Fre
 console.log(!mostlyScottish(['MacDonald', 'MacQuarry', 'MacKenzie', 'Jones', 'Freeman', 'Brown']));
 
 /*
-8.5? Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any name that starts with the given letter.
+8.53 Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any starting with the given letter.
 */
 const removeLetterNames = (letter, names) => names.filter(name => name[0] !== letter);
 
@@ -295,18 +319,17 @@ console.log(eqArrays(
   removeLetterNames('B', ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']),
   ['Alice', 'Carol', 'Dave']
 ));
+console.log(eqArrays(
+  removeLetterNames('Z', ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']),
+  ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']
+));
 
 /*
-8.5? Create a function called 'rpsPoints' that takes an array of rock-paper-scissors games and returns the number of games where the first player won.
+8.54 Create a function called 'rpsPoints' that takes an array of rock-paper-scissors games and returns the number of games where the first player won.
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const firstWon = ([player1, player2]) => (
-  (player1 === 'rock' && player2 === 'scissors')
-    || (player1 === 'paper' && player2 === 'rock')
-    || (player1 === 'scissors' && player2 === 'paper')
-);
-const rpsPoints = games => games.filter(firstWon).length;
+const rpsPoints = games => games.filter(([player1, player2]) => rps(player1, player2) === 1).length;
 
 console.log('-- rpsPoints tests');
 console.log(rpsPoints([ ['paper', 'rock'] ]) === 1);
