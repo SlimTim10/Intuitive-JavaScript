@@ -98,6 +98,16 @@ The following lines should help test if your function works correctly. They shou
  */
 
 
+console.log('-- bonusSalaries tests');
+console.log(eqArrays(
+  bonusSalaries([ [123, false], [123, true] ]),
+  [123, 1230]
+));
+console.log(eqArrays(
+  bonusSalaries([ [10000, true], [10000, false], [30000, true], [100000, false], [64000.99, true] ]),
+  [100000, 10000, 300000, 100000, 640009.9]
+));
+
 /*
 8.33 Create a function called 'rpsResults' that takes an array of "Rock, Paper, Scissors" games and returns an array of results. Each game is an array of two hands. Each hand is either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, the result is 1. If the first hand loses, the result is -1. In the case of a draw, the result is 0.
 
