@@ -198,3 +198,122 @@ console.log('-- rpsPoints tests');
 console.log(rpsPoints([ ['paper', 'rock'] ]) === 1);
 console.log(rpsPoints([ ['paper', 'rock'], ['paper', 'paper'], ['scissors', 'rock'] ]) === 1);
 console.log(rpsPoints([ ['paper', 'rock'], ['rock', 'scissors'], ['scissors', 'paper'] ]) === 3);
+
+// Practice using the reduce() method
+
+/*
+8.6 Create a function called 'sum' that takes an array of numbers and returns their sum, or 0 for an empty array.
+*/
+
+
+/*
+8.601 Create a function called 'product' that takes an array of numbers and returns their product, or 1 for an empty array.
+*/
+
+
+/*
+8.61 Create a function called 'duplicates' that takes an array and returns a new array containing each of the previous values twice.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+
+console.log('-- duplicates tests');
+console.log(eqArrays(
+  duplicates([1, 2, 3, 4]),
+  [1, 1, 2, 2, 3, 3, 4, 4]
+));
+console.log(eqArrays(
+  duplicates(['Alice', 'Bob', 'Carol']),
+  ['Alice', 'Alice', 'Bob', 'Bob', 'Carol', 'Carol']
+));
+
+/*
+8.62 Create a function called 'maximum' that takes an array of numbers and returns the highest number.
+*/
+
+
+/*
+8.621 Create a function called 'minimum' that takes an array of numbers and returns the lowest number.
+*/
+
+
+/*
+8.63 Create a function called 'dropRepeats' that takes an array and returns a new array without any repeating elements.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+
+console.log('-- dropRepeats tests');
+console.log(eqArrays(
+  dropRepeats([1, 1, 1, 2, 3, 4, 4, 2, 2]),
+  [1, 2, 3, 4]
+));
+console.log(eqArrays(
+  dropRepeats([9, 8, 7, 8, 9]),
+  [9, 8, 7]
+));
+
+/*
+8.64 Create a function called 'flatten' that takes a 2-dimensional array and returns a flattened (1-dimensional) array.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+
+console.log('-- flatten tests');
+console.log(eqArrays(
+  flatten([ [1, 2, 3], [4, 5, 6] ]),
+  [1, 2, 3, 4, 5, 6]
+));
+console.log(eqArrays(
+  flatten([ ['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve'] ]),
+  ['Alice', 'Bob', 'Carol', 'Dave', 'Eve']
+));
+console.log(eqArrays(
+  flatten([[1, 2, 3], [4, 5, 6]]),
+  [1, 2, 3, 4, 5, 6]
+));
+
+/*
+8.65 Create a function called 'totalMinutes' that takes an array of time pairs and returns the total minutes. Each time pair is two numbers: [hours, minutes].
+*/
+
+
+// Bonus exercises
+
+/*
+8.7 Create a function called 'intersperse' that takes a value and an array, and returns a new array with the value interspersed between each element of the original array.
+*/
+
+
+console.log('-- intersperse tests');
+console.log(eqArrays(
+  intersperse(0, [1, 2, 3]),
+  [1, 0, 2, 0, 3]
+));
+console.log(eqArrays(
+  intersperse('a', ['b', 'n', 'n', 's']),
+  ['b', 'a', 'n', 'a', 'n', 'a', 's']
+));
+
+/*
+8.71 Create a function called 'bigWordLetters' that takes an array of words (strings) and returns the total number of letters in all of the words that are more than 3 letters long.
+*/
+
+
+console.log('-- bigWordLetters tests');
+console.log(bigWordLetters(['only', 'the', 'big', 'words', 'should', 'be', 'counted']) === 22);
+console.log(bigWordLetters(['the', 'big', 'be']) === 0);
+
+/*
+8.72 Create a function called 'points' that takes an array of game results and returns the total points, according to the following description. Each game result is a pair of scores: [home team score, away team score]. Games where the home team won are worth 3 points. Games where the home team lost are worth 0 points. Tie games are worth 1 point.
+*/
+
+
+console.log('-- points tests');
+console.log(points([ [1, 0], [2, 0], [3, 0] ]) === 9);
+console.log(points([ [1, 1], [2, 2], [3, 3] ]) === 3);
+console.log(points([ [0, 1], [0, 2], [0, 3] ]) === 0);
+console.log(points([ [1, 0], [4, 2], [3, 2], [2, 3], [2, 2], [0, 2] ]) === 10);
