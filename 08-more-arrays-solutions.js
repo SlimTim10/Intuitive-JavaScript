@@ -301,7 +301,11 @@ console.log(countNulls([1, 2, 3, 4, 5]) === 0);
 /*
 8.52 Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish, otherwise false. A Scottish surname is one that starts with "Mac".
 */
-const mostlyScottish = surnames => surnames.filter(surname => surname.startsWith('Mac')).length > (surnames.length / 2);
+const mostlyScottish = surnames => {
+  const scots = surnames.filter(surname => surname.startsWith('Mac'));
+  const half = surnames.length / 2;
+  return scots.length > half;
+}
 
 console.log('-- mostlyScottish tests');
 console.log(mostlyScottish(['MacDonald', 'MacQuarry', 'MacKenzie']));
