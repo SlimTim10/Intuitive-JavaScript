@@ -184,7 +184,20 @@ manyLovers([['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']]);
 
 /*
 8.53 Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any starting with the given letter.
+
+The following lines should help test if your function works correctly. They should print true.
 */
+
+
+console.log('-- removeLetterNames');
+console.log(eqArrays(
+  removeLetterNames('B', ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']),
+  ['Alice', 'Carol', 'Dave']
+));
+console.log(eqArrays(
+  removeLetterNames('Z', ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']),
+  ['Alice', 'Bob', 'Carol', 'Dave', 'Beatrice']
+));
 
 
 /*

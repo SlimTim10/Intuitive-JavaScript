@@ -315,6 +315,8 @@ console.log(!mostlyScottish(['MacDonald', 'MacQuarry', 'MacKenzie', 'Jones', 'Fr
 
 /*
 8.53 Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any starting with the given letter.
+
+The following lines should help test if your function works correctly. They should print true.
 */
 const removeLetterNames = (letter, names) => names.filter(name => name[0] !== letter);
 
