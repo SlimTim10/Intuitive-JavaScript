@@ -253,6 +253,8 @@ Perhaps more clearly:
 | 6   | 4   |  6 + 4 = 10 |
 | 10  | 5   | 10 + 5 = 15 |
 
+.
+
 **** Example
 The result we end up with doesn't even have to be the same type as the elements. For example, we can sum the lengths of an array of strings all at once.
 
