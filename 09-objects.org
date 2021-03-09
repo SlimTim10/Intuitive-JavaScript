@@ -77,13 +77,32 @@ An object printed in the console sometimes looks slightly different than the sam
 #+BEGIN_SRC js
 console.log({name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'});
 
-console.log({
+const myCat = {
   name: 'Marvin',
   age: 8,
   species: 'cat',
   colors: ['black', 'white'],
   sex: 'female', friendly: true
-});
+};
+console.log(myCat);
+#+END_SRC
+
+If we have any key names inside of variables, we must use square brackets to use them.
+
+#+BEGIN_SRC js
+const key1 = 'name';
+const value1 = 'Marvin';
+const key2 = 'age';
+const value2 = 8;
+
+const myCat = {
+  [key1]: value1,
+  [key2]: value2,
+  species: 'cat',
+  colors: ['black', 'white'],
+  sex: 'female', friendly: true
+};
+console.log(myCat);
 #+END_SRC
 
 ** Accessing property values
@@ -127,7 +146,7 @@ console.log(product.b); // undefined -- this tries to use a key named 'b' of pro
 #+END_SRC
 
 *** Destructuring
-Sometimes we don't want to give an object a name, but rather go straight to its properties. Destructuring allows us to create variables whose names are the exact names of specific keys of an object.
+Sometimes we don't want to give an object a name, but rather go straight to its properties. Destructuring allows us to create variables whose names are the exact names of keys of a given object.
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
@@ -239,3 +258,13 @@ const obj = {a: 1, b: 2, c: 3};
 
 console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
 #+END_SRC
+* Exercises
+
+#+BEGIN_HTML
+<ul>
+	<li><a href="09-objects-exercises.js">View exercises</a></li>
+	<li><a href="09-objects-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="09-objects-solutions.js">View solutions</a></li>
+	<li><a href="09-objects-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_HTML

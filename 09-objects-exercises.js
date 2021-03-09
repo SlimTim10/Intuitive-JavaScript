@@ -9,7 +9,7 @@ Create a function called 'eqObjects' that takes two objects and returns true if 
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const eqObjects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
+
 
 console.log('-- eqObjects tests');
 console.log(eqObjects(
@@ -42,15 +42,12 @@ console.log(!eqObjects(
 /*
 9.1 Create and print an object that has your name, favorite color, and favorite food.
 */
-console.log({name: 'Tim Johns', favoriteColor: 'green', favoriteFood: 'ramen'});
+
 
 /*
 9.11 Create and print an array of objects of more people's information (as above).
 */
-console.log([
-  {name: 'Alice', favoriteColor: 'red', favoriteFood: 'sushi'},
-  {name: 'Bob', favoriteColor: 'grey', favoriteFood: 'bread'},
-]);
+
 
 /*
 9.12 Create and print an object using the following keys and values.
@@ -62,12 +59,7 @@ const value2 = 'Monitor stand';
 const key3 = 'price';
 const value3 = 57.99;
 
-const product = {
-  [key1]: value1,
-  [key2]: value2,
-  [key3]: value3,
-};
-console.log(product);
+
 
 // Practice accessing values of properties in objects
 
@@ -76,7 +68,7 @@ console.log(product);
 */
 const alice = {name: 'Alice', age: 81, favoriteColor: 'red'};
 
-console.log(alice.age);
+
 
 /*
 9.21 Print the value at the following key of the following email object.
@@ -89,14 +81,14 @@ const email = {
   message: 'Please meet in the meeting room at 10am today to discuss the quarterly report.'
 };
 
-console.log(email[key]);
+
 
 /*
 9.22 Create a function called 'speciesOf' that takes a pet (object with name, species, and age) and returns its species.
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const speciesOf = pet => pet.species;
+
 
 console.log('-- speciesOf tests');
 console.log(speciesOf({name: 'Nanimo', species: 'bearded dragon', age: 5}) === 'bearded dragon');
@@ -106,12 +98,7 @@ console.log(speciesOf({name: 'Carl', species: 'dog', age: 2}) === 'dog');
 /*
 9.23 Create a function called 'greetPerson' that takes a person (object with first name and last name) and prints a friendly greeting. For example, "Hello, Dennis Ritchie!"
 */
-const greetPerson = person => {
-  console.log(`Hello, ${person.firstName} ${person.lastName}!`);
-};
-const greetPersonAlternate = ({firstName, lastName}) => {
-  console.log(`Hello, ${firstName} ${lastName}!`);
-};
+
 
 console.log('-- greeting people');
 greetPerson({firstName: 'Dennis', lastName: 'Ritchie'});
@@ -123,7 +110,7 @@ greetPerson({age: 51, lastName: 'Torvalds', firstName: 'Linus'});
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const howManyCats = person => person.cats.length;
+
 
 console.log('-- howManyCats tests');
 console.log(howManyCats({name: 'Alice', age: 36, cats: ['Cinnamon', 'Nutmeg']}) === 2);
@@ -134,7 +121,7 @@ console.log(howManyCats({name: 'Bob', age: 39, cats: ['Frank', 'Zeus', 'Markle',
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const enoughSun = (currentSunlight, plant) => currentSunlight >= plant.sunlight;
+
 
 console.log('-- enoughSun tests');
 console.log(enoughSun(6, {name: 'blueberries', sunlight: 6}));
@@ -149,12 +136,7 @@ console.log(!enoughSun(4, {name: 'blueberries', sunlight: 6}));
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const resetScore = game => {
-  return {
-    ...game,
-    highScore: 0
-  };
-};
+
 
 console.log('-- resetScore tests');
 console.log(eqObjects(
@@ -169,29 +151,14 @@ console.log(eqObjects(
 /*
 9.31 Create a function called 'fillDefaults' that takes a game (object with title and price) and returns the game with the following properties added to it: platform, set to 'Steam'; players, set to 1; rating, set to 'T'.
 */
-const fillDefaults = game => {
-  return {
-    ...game,
-    platform: 'Steam',
-    players: 1,
-    rating: 'T'
-  };
-};
 
-console.log('-- fillDefaults tests');
-console.log(eqObjects(
-  fillDefaults({title: 'The Sims 4', price: 39.99}),
-  {title: 'The Sims 4', price: 39.99, platform: 'Steam', players: 1, rating: 'T'}
-));
 
 /*
 9.32 Create a function called 'setSalary' that takes a salary (number) and a person (object with name, title, and salary) and returns the person with the salary changed to the given value.
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const setSalary = (salary, person) => {
-  return {...person, salary};
-};
+
 
 console.log('-- setSalary tests');
 console.log(eqObjects(
@@ -206,39 +173,12 @@ console.log(eqObjects(
 /*
 9.33 Create a function called 'giveBonus' that takes a person (object with name, title, and salary) and returns the person with the salary multiplied by 10.
 */
-const giveBonus = person => {
-  return { ...person, salary: person.salary * 10 }
-};
 
-console.log('-- giveBonus tests');
-console.log(eqObjects(
-  giveBonus({name: 'Carol', title: 'Manager', salary: 80000}),
-  {name: 'Carol', title: 'Manager', salary: 800000}
-));
-console.log(eqObjects(
-  giveBonus({name: 'Dave', title: 'Intern', salary: 0}),
-  {name: 'Dave', title: 'Intern', salary: 0}
-));
 
 /*
 9.34 Create a function called 'halfOff' that takes a product (object with name and price) and returns the product with the price cut in half.
 */
-const halfOff = product => {
-  return {
-    ...product,
-    price: product.price / 2
-  };
-};
 
-console.log('-- halfOff tests');
-console.log(eqObjects(
-  halfOff({name: 'Fancy Pen', price: 100}),
-  {name: 'Fancy Pen', price: 50}
-));
-console.log(eqObjects(
-  halfOff({name: 'Paper Clip', price: 0.50}),
-  {name: 'Paper Clip', price: 0.25}
-));
 
 /*
 9.35 Create a function called 'resetDate' that takes an object and sets its 'date' property to the current time. Use Date.now() to get the current time.
@@ -247,12 +187,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const resetDate = obj => {
-  return {
-    ...obj,
-    date: Date.now()
-  };
-};
+
 
 console.log('-- resetDate tests');
 const task1 = {date: Date.parse('08 Mar 2021 18:00:00 EST'), text: 'do laundry'};
@@ -267,9 +202,7 @@ console.log(newTask2.date < task2.date);
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const removeProp = (prop, obj) => {
-  return {...obj, [prop]: undefined};
-};
+
 
 console.log('-- removeProp tests');
 console.log(eqObjects(
@@ -280,46 +213,3 @@ console.log(eqObjects(
   removeProp('password', {name: 'Tim', password: 'hunter2', title: 'Developer'}),
   {name: 'Tim', title:  'Developer'}
 ));
-
-// Practice using object methods (keys, values, entries)
-
-/*
-9.4 Create a function called 'validFarmAnimal' that takes an object and returns true if it is a valid farm animal, otherwise false. A farm animal object must have these keys to be valid: species, age, owner. Values don't matter.
-*/
-const validFarmAnimal = animal => {
-  const ks = Object.keys(animal);
-  return ks.includes('species') && ks.includes('age') && ks.includes('owner');
-};
-
-console.log('-- validFarmAnimal tests');
-console.log(validFarmAnimal({species: 'cow', age: 3, owner: 'Alice'}));
-console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob'}));
-console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({age: 1, owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({age: 1, species: 'chicken', name: 'Betty Boo'}));
-
-// Bonus exercises
-
-/*
-9.5 Create a function called 'makeAnimal' that takes a name (string) and returns a randomly generated farm animal.
-
-The animal should have the properties:
-- species: string of either horse, cow, chicken, or lamb
-- age: number between  0-10 (years)
-- name: the given name
-*/
-const rand = (min, max) => Math.floor(Math.random() * (max + 1 - min) + min);
-const makeAnimal = name => {
-  const possibleSpecies = ['horse', 'cow', 'chicken', 'lamb'];
-  const species = possibleSpecies[rand(0, possibleSpecies.length - 1)];
-  return {
-    name,
-    age: rand(0, 10),
-    species
-  };
-};
-
-console.log('-- makeAnimal tests');
-console.log(makeAnimal('Bessie'));
-console.log(makeAnimal('Henry'));
