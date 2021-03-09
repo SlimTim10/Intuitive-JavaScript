@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Objects</title>
-<!-- 2021-03-04 Thu 17:03 -->
+<!-- 2021-03-09 Tue 15:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -452,6 +452,20 @@ const newProduct = {...product, price: 79.95, name: 'Spirit Island', stock: 9};
 
 console.log(product); // (the original)
 console.log(newProduct); // (changed the price and name, and added stock)
+</pre>
+</div>
+
+<p>
+Changing a value based on its previous value is common too.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games', stock: 9};
+const moreProduct = {...product, stock: product.stock + 1};
+
+console.log(product); // (the original)
+console.log(moreProduct); // (increased stock by 1)
 </pre>
 </div>
 </div>

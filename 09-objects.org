@@ -200,6 +200,16 @@ console.log(product); // (the original)
 console.log(newProduct); // (changed the price and name, and added stock)
 #+END_SRC
 
+Changing a value based on its previous value is common too.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games', stock: 9};
+const moreProduct = {...product, stock: product.stock + 1};
+
+console.log(product); // (the original)
+console.log(moreProduct); // (increased stock by 1)
+#+END_SRC
+
 ** Functions
 There are a few very useful functions for dealing with objects. Each of the following functions take an object and return an array. After all, we have plenty of ways of dealing with arrays.
 
