@@ -82,7 +82,8 @@ const myCat = {
   age: 8,
   species: 'cat',
   colors: ['black', 'white'],
-  sex: 'female', friendly: true
+  sex: 'female',
+  friendly: true
 };
 console.log(myCat);
 #+END_SRC
@@ -100,7 +101,8 @@ const myCat = {
   [key2]: value2,
   species: 'cat',
   colors: ['black', 'white'],
-  sex: 'female', friendly: true
+  sex: 'female',
+  friendly: true
 };
 console.log(myCat);
 #+END_SRC
