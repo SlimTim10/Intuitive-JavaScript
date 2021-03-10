@@ -213,3 +213,71 @@ console.log(eqObjects(
   removeProp('password', {name: 'Tim', password: 'hunter2', title: 'Developer'}),
   {name: 'Tim', title:  'Developer'}
 ));
+
+// Practice using object methods: Object.keys(), Object.values(), Object.entries()
+
+/*
+9.4 Create a function called 'bigObject' that takes an object and returns true if it has 10 or more keys, otherwise false. Values don't matter.
+*/
+
+
+/*
+9.401 Create a function called 'validFarmAnimal' that takes an object and returns true if it is a valid farm animal, otherwise false. A farm animal object must have these keys to be valid: species, age, owner. Values don't matter.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+
+console.log('-- validFarmAnimal tests');
+console.log(validFarmAnimal({species: 'cow', age: 3, owner: 'Alice'}));
+console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob'}));
+console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
+console.log(!validFarmAnimal({species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
+console.log(!validFarmAnimal({age: 1, owner: 'Bob', name: 'Betty Boo'}));
+console.log(!validFarmAnimal({age: 1, species: 'chicken', name: 'Betty Boo'}));
+
+/*
+9.41 Create a function called 'anyDebt' that takes an account (object with multiple bank account balances) and returns true if any of the balances is negative.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+
+console.log('-- anyDebt tests');
+console.log(anyDebt({bank1: -100, bank2: 10000}));
+console.log(anyDebt({checking: 10000, creditCard: -100}));
+console.log(!anyDebt({checking: 10000, creditCard: 100}));
+
+/*
+9.411 Create a function called 'totalBalance' that takes an account (as before) and returns the sum of all balances.
+*/
+
+
+// Bonus exercises
+
+/*
+9.5 Create a function called 'makeAnimal' that takes a name (string) and returns a randomly generated farm animal.
+
+The animal should have the properties:
+- species: string of either 'horse', 'cow', 'chicken', or 'lamb'
+- age: number between 0-10 (years)
+- name: the given name
+*/
+
+
+/*
+9.51 Create a function called 'analyzeWardrobe' that takes a wardrobe object and prints some information to the user.
+
+A wardrobe is an object with the properties:
+- owner: object with name (string) and age (number)
+- tops: array of colors (strings)
+- pants: array of colors (strings)
+- shorts: array of colors (strings)
+- skirts: array of colors (strings)
+- desiredNumberOfOutfits: number
+
+The first thing it should print is a greeting to the owner of the wardrobe (e.g. "Hello, Alice!").
+
+The wardrobe's contains a desired number of outfits. The actual number of outfits can be calculated by the equation: (number of tops * number of pants) + (number of tops * number of shorts) + (number of tops * number of skirts). If the actual number of outfits is at least as high as the desired number of outfits, it should print "Your desired number of outfits works!", otherwise "You need to add more clothing for your desired number of outfits to work."
+*/
+
