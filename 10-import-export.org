@@ -2,14 +2,6 @@
 #+INCLUDE: header.org
 #+TITLE: Importing and Exporting
 
-* Scratch
-- module.exports for exporting
-- require() for imports
-- imports always at the top
-- Example: importing built-in modules
-- how to use npm for getting external packages
-- Example: importing external modules
-
 * Importing and Exporting
 Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]] and [[https://www.npmjs.com/][npm]].
 
@@ -136,7 +128,12 @@ if (isEven(x)) {
 }
 #+END_SRC
 
+It is considered good practice to put exports at the bottom of a file and imports at the top of a file.
+
 ** Packages
 A *package* is a collection of files that are packaged together to solve a single problem. Its purpose is to be imported into a project to add some specific functionality. In the world of JavaScript, virtually all packages are found at https://www.npmjs.com/. Node.js comes with npm, the "Node Package Manager" (so if you have the ~node~ command, you probably also have ~npm~). 
 
 WIP
+- importing built-in modules
+- how to use npm for getting external packages
+- importing external modules from npm
