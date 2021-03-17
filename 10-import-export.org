@@ -1,0 +1,142 @@
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: Importing and Exporting
+
+* Scratch
+- module.exports for exporting
+- require() for imports
+- imports always at the top
+- Example: importing built-in modules
+- how to use npm for getting external packages
+- Example: importing external modules
+
+* Importing and Exporting
+Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]] and [[https://www.npmjs.com/][npm]].
+
+REMOVE: A *module* is a single file of JavaScript (e.g. my-file.js). It may contain code which can be imported into another file. Every single JavaScript file you have right now is a module. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. In technical terms, we need to export certain code.
+
+** Exporting
+JavaScript code in our files is never automatically *exported*. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called ~module.exports~. If we don't explicitly set this variable to any value, its value is an empty object ~{}~. Whatever value we give to ~module.exports~ is what the file is exporting (meaning it can be imported by another file). (The reason for the name ~module.exports~ is because node considers every JavaScript file a *module*.) It is most common to export an object because, as we've seen, objects allow us to package many things into one value.
+
+Let's look at an example.
+
+#+BEGIN_SRC js
+const a = 1;
+const b = 2;
+
+module.exports = {
+  c: 3
+};
+#+END_SRC
+
+If we have a file with the above code, the file is exporting an object with a single property ~c: 3~. The variables ~a~ and ~b~ are not being exported, thus they cannot be shared with any other file. If we want to share them, we can add them to the exports as well:
+
+#+BEGIN_SRC js
+const a = 1;
+const b = 2;
+
+module.exports = {
+  a: a,
+  b: b,
+  c: 3
+};
+#+END_SRC
+
+It is common to use a shorthand notation in the object for this.
+
+#+BEGIN_SRC js
+const a = 1;
+const b = 2;
+
+module.exports = {
+  a,
+  b,
+  c: 3
+};
+#+END_SRC
+
+** Importing
+The special function for *importing* a module in node is ~require()~. We pass it the name of a module (a JavaScript file) and it retrieves the ~module.exports~ value of that module. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
+
+#+BEGIN_SRC js
+// inside numbers.js:
+const a = 1;
+const b = 2;
+
+module.exports = {
+  a,
+  b,
+  c: 3
+};
+
+// inside index.js:
+const someNumbers = require('./numbers.js');
+
+console.log(someNumbers.a); // 1
+console.log(someNumbers.b); // 2
+console.log(someNumbers.c); // 3
+#+END_SRC
+
+In the above example, we want to run the ~index.js~ file, since running ~numbers.js~ will not produce any output. So we run the command: ~node index.js~. (The name "index" is commonly used, for historical reasons.) It is important in this example that we write ~require('./numbers.js')~ instead of ~require('numbers.js')~ because we want to import a local file; the latter tells node to import an external package, which is explained in the next section.
+
+Object destructuring is commonly used when importing because it skips the step of needing to give the export object a name and also allows us to selectively import properties.
+
+#+BEGIN_SRC js
+// inside numbers.js:
+const a = 1;
+const b = 2;
+
+module.exports = {
+  a,
+  b,
+  c: 3
+};
+
+// inside index.js:
+const {a, c} = require('./numbers.js'); // Don't bother importing b
+
+console.log(a); // 1
+console.log(c); // 3
+#+END_SRC
+
+Finally, let's look at a more realistic example: sharing a little library of functions.
+
+#+BEGIN_SRC js
+//inside functions.js:
+const fToC = ftemp => (ftemp - 32) / 1.8;
+const cToF = ctemp => (ctemp * 1.8) + 32;
+
+const convertTemperature = (temp, conv) => {
+  if (conv === 'FtoC') {
+    return fToC(temp);
+  } else {
+    return cToF(temp);
+  }
+};
+
+const isEven = x => x % 2 === 0;
+const isOdd = (x) => !isEven(x);
+
+module.exports = {
+  convertTemperature,
+  isEven,
+  isOdd
+};
+
+// inside index.js:
+const {
+  isEven,
+  convertTemperature
+} = require('./functions.js');
+
+const x = 24;
+
+if (isEven(x)) {
+  console.log(convertTemperature(x, 'CtoF')); // 75.2
+}
+#+END_SRC
+
+** Packages
+A *package* is a collection of files that are packaged together to solve a single problem. Its purpose is to be imported into a project to add some specific functionality. In the world of JavaScript, virtually all packages are found at https://www.npmjs.com/. Node.js comes with npm, the "Node Package Manager" (so if you have the ~node~ command, you probably also have ~npm~). 
+
+WIP
