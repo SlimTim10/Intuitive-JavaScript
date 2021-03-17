@@ -321,7 +321,7 @@ console.log(bigWordLetters(['only', 'the', 'big', 'words', 'should', 'be', 'coun
 console.log(bigWordLetters(['the', 'big', 'be']) === 0);
 
 /*
-8.72 Create a function called 'points' that takes an array of game results and returns the total points, according to the following description. Each game result is a pair of scores: [home team score, away team score]. Games where the home team won are worth 3 points. Games where the home team lost are worth 0 points. Tie games are worth 1 point.
+8.72 Create a function called 'gamePoints' that takes an array of game results and returns the total points, according to the following description. Each game result is a pair of scores: [home team score, away team score]. Games where the home team won are worth 3 points. Games where the home team lost are worth 0 points. Tie games are worth 1 point.
 */
 
 
