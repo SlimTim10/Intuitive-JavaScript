@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Importing and Exporting</title>
-<!-- 2021-03-17 Wed 17:48 -->
+<!-- 2021-03-19 Fri 17:58 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -152,7 +152,8 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-1-1">1.1. Exporting</a></li>
 <li><a href="#sec-1-2">1.2. Importing</a></li>
-<li><a href="#sec-1-3">1.3. Packages</a></li>
+<li><a href="#sec-1-3">1.3. Built-in modules</a></li>
+<li><a href="#sec-1-4">1.4. Packages</a></li>
 </ul>
 </li>
 </ul>
@@ -164,10 +165,6 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-1">
 <p>
 Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with <a href="https://nodejs.org">Node.js</a> and <a href="https://www.npmjs.com/">npm</a>.
-</p>
-
-<p>
-REMOVE: A <b>module</b> is a single file of JavaScript (e.g. my-file.js). It may contain code which can be imported into another file. Every single JavaScript file you have right now is a module. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. In technical terms, we need to export certain code.
 </p>
 </div>
 
@@ -278,7 +275,7 @@ module.exports = {
 };
 
 // inside index.js:
-const {a, c} = require('./numbers.js'); // Don't bother importing b
+const {a, c} = require('./numbers.js'); // Import a and b from the numbers module
 
 console.log(a); // 1
 console.log(c); // 3
@@ -333,23 +330,87 @@ It is considered good practice to put exports at the bottom of a file and import
 </div>
 
 <div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Packages</h3>
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Built-in modules</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-A <b>package</b> is a collection of files that are packaged together to solve a single problem. Its purpose is to be imported into a project to add some specific functionality. In the world of JavaScript, virtually all packages are found at <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>. Node.js comes with npm, the "Node Package Manager" (so if you have the <code>node</code> command, you probably also have <code>npm</code>). 
+Now that we've seen how to import code from a module that we created, let's look at importing code from a module that we own but didn't create. Node.js comes with some built-in modules that are available for us to use but only if we import them. One such example is the <code>fs</code> module, for dealing with the file system. Importing a built-in module is the same as importing a module that we created, except the argument we give to <code>require()</code> should only have the exact name of the module; node knows where to look for built-in modules on our system.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs'); // No dots of slashes before the module name
+
+const fileContents = fs.readFileSync('my-test-file.txt', 'utf8'); // Read the contents of a file
+console.log(fileContents); // Print the file's contents
+</pre>
+</div>
+
+<p>
+The above example will read the contents of a file named <code>my-test-file.txt</code> that exists in the same directory as the JavaScript file we're running this code from, then print it out.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Packages</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+A <b>package</b> is a collection of modules that are packaged together to solve a single problem, such as adding colors to output in the terminal. Its purpose is to be imported into a project to add some specific functionality. In the JavaScript ecosystem, virtually all packages are found at <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>. Node.js comes with npm, the "Node Package Manager" (so if you have the <code>node</code> command, you should also have <code>npm</code>).
 </p>
 
 <p>
-WIP
+Before we can start to use packages with npm, we need to set up a project directory as recognized by npm:
 </p>
+
+<ol class="org-ol">
+<li>Create a new directory.
+</li>
+<li>Navigate to the directory in a terminal.
+</li>
+<li>In the terminal, enter the command <code>npm init</code>. Keep pressing <code>enter/return</code> for all of the prompts. (The default for every option is fine.)
+</li>
+<li>Create a file called <code>index.js</code>. This will be the main file of the project.
+</li>
+</ol>
+
+<p>
+npm should have created a <code>package.json</code> file. This contains information about our new project, including the packages that it uses (none yet).
+</p>
+
+<p>
+Let's try using the chalk package at <a href="https://www.npmjs.com/package/chalk">https://www.npmjs.com/package/chalk</a>. The package's page has information written by the owner of the package. Don't expect this to always be pretty or helpful; it is completely up to the individual what is written here, sort of like a blog post. To install the package, we enter the terminal command <code>npm install &lt;package_name&gt;</code>. So to install the chalk package in our project, we would make sure our terminal is in the project directory then enter the command <code>npm install chalk</code>. This will do a few things for us:
+</p>
+
 <ul class="org-ul">
-<li>importing built-in modules
+<li>Download the package's code.
 </li>
-<li>how to use npm for getting external packages
+<li>Create a <code>node_modules</code> directory within our project directory (if it does not already exist).
 </li>
-<li>importing external modules from npm
+<li>Put the package's code inside <code>node_modules</code>.
+</li>
+<li>Add the package name to the <code>package.json</code> file.
 </li>
 </ul>
+
+<p>
+Now that we have the package install, it is available for us to use! As per the chalk package's official example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const chalk = require('chalk'); // Import the chalk package
+
+console.log(chalk.blue('Hello world!')); // Print a message in blue
+</pre>
+</div>
+
+<p>
+Putting that code in our <code>index.js</code> file and running it with <code>node index.js</code>, we should see a blue "Hello world!" in the terminal.
+</p>
+
+<p>
+That's it! Try exploring <a href="https://www.npmjs.com/">npm</a> and playing around with more packages. You can install as many packages in a single project as you wish. You don't even need to use the ones you installed.
+</p>
 </div>
 </div>
 </div>

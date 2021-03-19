@@ -5,8 +5,6 @@
 * Importing and Exporting
 Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]] and [[https://www.npmjs.com/][npm]].
 
-REMOVE: A *module* is a single file of JavaScript (e.g. my-file.js). It may contain code which can be imported into another file. Every single JavaScript file you have right now is a module. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. In technical terms, we need to export certain code.
-
 ** Exporting
 JavaScript code in our files is never automatically *exported*. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called ~module.exports~. If we don't explicitly set this variable to any value, its value is an empty object ~{}~. Whatever value we give to ~module.exports~ is what the file is exporting (meaning it can be imported by another file). (The reason for the name ~module.exports~ is because node considers every JavaScript file a *module*.) It is most common to export an object because, as we've seen, objects allow us to package many things into one value.
 
@@ -85,7 +83,7 @@ module.exports = {
 };
 
 // inside index.js:
-const {a, c} = require('./numbers.js'); // Don't bother importing b
+const {a, c} = require('./numbers.js'); // Import a and b from the numbers module
 
 console.log(a); // 1
 console.log(c); // 3
@@ -130,10 +128,45 @@ if (isEven(x)) {
 
 It is considered good practice to put exports at the bottom of a file and imports at the top of a file.
 
-** Packages
-A *package* is a collection of files that are packaged together to solve a single problem. Its purpose is to be imported into a project to add some specific functionality. In the world of JavaScript, virtually all packages are found at https://www.npmjs.com/. Node.js comes with npm, the "Node Package Manager" (so if you have the ~node~ command, you probably also have ~npm~). 
+** Built-in modules
+Now that we've seen how to import code from a module that we created, let's look at importing code from a module that we own but didn't create. Node.js comes with some built-in modules that are available for us to use but only if we import them. One such example is the ~fs~ module, for dealing with the file system. Importing a built-in module is the same as importing a module that we created, except the argument we give to ~require()~ should only have the exact name of the module; node knows where to look for built-in modules on our system.
 
-WIP
-- importing built-in modules
-- how to use npm for getting external packages
-- importing external modules from npm
+#+BEGIN_SRC js
+const fs = require('fs'); // No dots of slashes before the module name
+
+const fileContents = fs.readFileSync('my-test-file.txt', 'utf8'); // Read the contents of a file
+console.log(fileContents); // Print the file's contents
+#+END_SRC
+
+The above example will read the contents of a file named ~my-test-file.txt~ that exists in the same directory as the JavaScript file we're running this code from, then print it out.
+
+** Packages
+A *package* is a collection of modules that are packaged together to solve a single problem, such as adding colors to output in the terminal. Its purpose is to be imported into a project to add some specific functionality. In the JavaScript ecosystem, virtually all packages are found at https://www.npmjs.com/. Node.js comes with npm, the "Node Package Manager" (so if you have the ~node~ command, you should also have ~npm~).
+
+Before we can start to use packages with npm, we need to set up a project directory as recognized by npm:
+
+1. Create a new directory.
+2. Navigate to the directory in a terminal.
+3. In the terminal, enter the command ~npm init~. Keep pressing ~enter/return~ for all of the prompts. (The default for every option is fine.)
+5. Create a file called ~index.js~. This will be the main file of the project.
+
+npm should have created a ~package.json~ file. This contains information about our new project, including the packages that it uses (none yet).
+
+Let's try using the chalk package at https://www.npmjs.com/package/chalk. The package's page has information written by the owner of the package. Don't expect this to always be pretty or helpful; it is completely up to the individual what is written here, sort of like a blog post. To install the package, we enter the terminal command ~npm install <package_name>~. So to install the chalk package in our project, we would make sure our terminal is in the project directory then enter the command ~npm install chalk~. This will do a few things for us:
+
+- Download the package's code.
+- Create a ~node_modules~ directory within our project directory (if it does not already exist).
+- Put the package's code inside ~node_modules~.
+- Add the package name to the ~package.json~ file.
+
+Now that we have the package install, it is available for us to use! As per the chalk package's official example:
+
+#+BEGIN_SRC js
+const chalk = require('chalk'); // Import the chalk package
+ 
+console.log(chalk.blue('Hello world!')); // Print a message in blue
+#+END_SRC
+
+Putting that code in our ~index.js~ file and running it with ~node index.js~, we should see a blue "Hello world!" in the terminal.
+
+That's it! Try exploring [[https://www.npmjs.com/][npm]] and playing around with more packages. You can install as many packages in a single project as you wish. You don't even need to use the ones you installed.
