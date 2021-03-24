@@ -1,0 +1,72 @@
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: Asynchronous Operations
+
+* Scratch
+- Using promises
+- async/await rules
+  - If a function is defined with "async", then it must be called with "await"
+  - If a function has "await" inside it, then it must be defined with "async"
+- Modules and packages
+  - node fs
+  - node readline
+  - npm request
+  - npm axios
+
+* Asynchronous Operations
+All of our code up until now has involved purely *synchronous* operations. Every operation we run, or function we call, gives us back a result (or produces some output) by the time it is finished running. Operations are normally synchronized with each other: each operation waits to start only after the previous one is finished.
+
+#+BEGIN_SRC js
+console.log('first');
+
+const fruits = ['apple', 'banana', 'cherry'];
+console.log(fruits);
+
+console.log('last');
+#+END_SRC
+
+If we run the above code, we will see the output in the order we expect: ~first~, followed by the fruits, and finally ~last~.
+
+On the other hand, *asynchronous* operations do not wait for other operations to finish; they run whenever they are ready. Asynchronous operations come about in two circumstances:
+- when specific timing is involved, or
+- when dealing with external data (any data from outside of our JavaScript code).
+
+There are three ways of handling asynchronous operations: callbacks, promises, and async/await (which is simplified syntax for using promises).
+
+** Using callbacks
+~setTimeout()~ is an asynchronous function that takes two arguments: a callback function and a number of milliseconds. The callback will run after the specified number of milliseconds. The reason ~setTimeout()~ takes a callback as an argument is to allow for some action to be performed after some time. To be flexible (i.e. to allow for any action), a function makes the most sense here. Callbacks are often used for asynchronous operations for exactly this reason. However, using callbacks is not evidence of asynchronous code. As we have seen before, callbacks are frequently used in synchronous code as well.
+
+Let's try mixing some asynchronous code into the previous example.
+
+#+BEGIN_SRC js
+console.log('first');
+
+const fruits = ['apple', 'banana', 'cherry'];
+
+setTimeout(() => {
+  console.log(fruits);
+}, 1000);
+
+console.log('last');
+#+END_SRC
+
+Now, even though the code to print the fruits comes before the code to print ~last~, we will see ~last~ show up before the fruits in the output. In fact, it will take one second (1000 milliseconds) before the fruits show up. Even if we set the timeout delay to 0, the fruits will still be the last to print. This is because /asynchronous code only runs after all of the synchronous code is finished/. In running the above example, when it comes to the ~setTimeout()~ code, the callback is put aside, into an imaginary asynchronous box, and then the program carries on with the rest of the synchronous code. After all of the synchronous code is finished, everything inside the asynchronous box gets to run.
+
+#+BEGIN_SRC js
+console.log('first');
+
+const fruits = ['apple', 'banana', 'cherry'];
+
+fruits.forEach(fruit => {
+  console.log(fruit);
+});
+
+console.log('last');
+#+END_SRC
+
+The above code uses a callback to print the fruit, but there are no asynchronous operations going on. The output order is the same as in the first example: ~first~, the fruits, then ~last~.
+
+** Using promises
+*Promises* are special objects for dealing with asynchronous operations. A promise has three potential states: pending, fulfilled, and rejected. This suits the pattern of what happens when dealing with external data. Let's say we want to simply read in the contents of a text file on our computer. The operation 'read in the contents of myFile.txt' will first be pending while node looks for ~myFile.txt~ (this is what makes it asynchronous). Once the file is found and its contents are read in, the operation is fulfilled and we can then do what we want with the contents. If instead the file is not found because it doesn't exist, the operation is rejected and we can print an message saying so.
+
+** Async/await
