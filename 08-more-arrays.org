@@ -10,7 +10,7 @@ Methods that allow us to deal with an entire array as a whole, no matter how big
 
 A higher-order function is one that takes in a function as an argument. That's right, functions can take other functions as arguments! And why shouldn't they? After all, functions are values just like any other.
 
-If you have heard of loops (e.g. the ~for~ loop, or the ~for...of~ loop), using these methods removes the need for writing our own loops. They do the looping internally (abstracting it) so we can focus on the problem at hand.
+If you have heard of loops (e.g., the ~for~ loop, or the ~for...of~ loop), using these methods removes the need for writing our own loops. They do the looping internally (abstracting it) so we can focus on the problem at hand.
 
 *** every()
 The ~every()~ method checks if /every/ one of an array's elements passes a test and returns true if they all pass, otherwise false.
