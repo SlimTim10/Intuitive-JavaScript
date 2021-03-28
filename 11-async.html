@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Asynchronous Operations</title>
-<!-- 2021-03-27 Sat 12:39 -->
+<!-- 2021-03-28 Sun 11:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -148,12 +148,12 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Scratch</a></li>
-<li><a href="#sec-2">2. Asynchronous Operations</a>
+<li><a href="#sec-1">1. Asynchronous Operations</a>
 <ul>
-<li><a href="#sec-2-1">2.1. Using callbacks</a></li>
-<li><a href="#sec-2-2">2.2. Using promises</a></li>
-<li><a href="#sec-2-3">2.3. Async/await</a></li>
+<li><a href="#sec-1-1">1.1. Using callbacks</a></li>
+<li><a href="#sec-1-2">1.2. Using promises</a></li>
+<li><a href="#sec-1-3">1.3. Using async/await</a></li>
+<li><a href="#sec-1-4">1.4. Comparison</a></li>
 </ul>
 </li>
 </ul>
@@ -161,52 +161,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Scratch</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Asynchronous Operations</h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>fs with callbacks
-</li>
-<li>Using promises
-<ul class="org-ul">
-<li>Not about how to create promises (we don't need to know that now, just like we don't need to know how to create console.log() or other built-in functions from scratch)
-</li>
-<li>.then()
-</li>
-<li>.catch()
-</li>
-<li>Chaining
-</li>
-<li>fs with promises
-</li>
-</ul>
-</li>
-<li>async/await rules
-<ul class="org-ul">
-<li>If a function is defined with "async", then it must be called with "await"
-</li>
-<li>If a function has "await" inside it, then it must be defined with "async"
-</li>
-</ul>
-</li>
-<li>Modules and packages
-<ul class="org-ul">
-<li>node fs
-</li>
-<li>node readline
-</li>
-<li>npm request
-</li>
-<li>npm axios
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Asynchronous Operations</h2>
-<div class="outline-text-2" id="text-2">
 <p>
 All of our code up until now has involved purely <b>synchronous</b> operations. Every operation we run, or function we call, gives us back a result (or produces some output) by the time it is finished running. Operations are normally synchronized with each other: each operation waits to start only after the previous one is finished.
 </p>
@@ -241,9 +197,9 @@ There are three ways of handling asynchronous operations: callbacks, promises, a
 </p>
 </div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Using callbacks</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Using callbacks</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 If a function performs an asynchronous operation, it is up to us to decide what to do after the operation is complete. In order to give us flexibility, the asynchronous function may take in a callback function as an argument. We define the callback function to do whatever it is we want to do after the asynchronous operation, and provide the callback to the asynchronous function. It is the asynchronous function's job to call our callback function (that's what makes it a 'callback').
 </p>
@@ -265,9 +221,9 @@ imaginaryAsyncFunc(afterOperation);
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-1" class="outline-4">
-<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> Timing example</h4>
-<div class="outline-text-4" id="text-2-1-1">
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Timing example</h4>
+<div class="outline-text-4" id="text-1-1-1">
 <p>
 <code>setTimeout()</code> is an asynchronous function that allows us to do something after a specified time. It takes two arguments: a callback function and a number of milliseconds. The callback will run after the specified number of milliseconds. The reason <code>setTimeout()</code> takes a callback as an argument is to allow for some action to be performed after some time. To be flexible (i.e. to allow for any action), a function makes the most sense here. Callbacks are often used for asynchronous operations for exactly this reason. However, using callbacks is not evidence of asynchronous code. As we have seen before, callbacks are frequently used in synchronous code as well.
 </p>
@@ -314,24 +270,22 @@ The above code uses a callback to print the fruit, but there are no asynchronous
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-2" class="outline-4">
-<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> External data example</h4>
-<div class="outline-text-4" id="text-2-1-2">
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> External data example</h4>
+<div class="outline-text-4" id="text-1-1-2">
 <p>
-Let's decide on a task: read in a file of text and copy all of the text before '&#x2014;' to a second file. For example, we can have a file <code>first.txt</code> that contains the lines:
+Let's decide on a task: read in a file of text and copy all of the text before '<code>---</code>' to a second file. For example, we can have a file 'first.txt' that contains the lines:
 </p>
-<blockquote>
-<p>
+<pre class="example">
 here
 are some lines
 to copy
-&#x2014;
+---
 but none of this
 should get copied
-</p>
-</blockquote>
+</pre>
 <p>
-Our program should copy only the first three lines to another file <code>second.txt</code>.
+Our program should copy only the first three lines to another file 'second.txt'.
 </p>
 
 <p>
@@ -359,7 +313,7 @@ fs.readFile('first.txt', 'utf8', afterRead);
 </div>
 
 <p>
-Try it out and see what happens when the file <code>first.txt</code> doesn't exist versus after you create it.
+Try it out and see what happens when the file 'first.txt' doesn't exist versus after you create it.
 </p>
 
 <p>
@@ -434,15 +388,15 @@ In the above code, the order of operations now matches the written order (top to
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Using promises</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Using promises</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 As a sidenote, this material will not be about <i>creating</i> promises. It is much more important to learn how to <i>use</i> them. Just like we don't need to know how to create <code>console.log()</code> or other built-in functions from scratch, even if the knowledge may be interesting. In practice, you can go a long way without ever needing to create your own promises. Once you are comfortable with using promises, you should be able to easily learn how to create them as well.
 </p>
 
 <p>
-<b>Promises</b> are special objects for dealing with asynchronous operations. A promise has three potential states: pending, fulfilled, and rejected. This suits the pattern of what happens when dealing with external data. Taking the previous example of reading in the contents of a text file on our computer, the operation 'read in the contents of first.txt' will first be pending while node looks for <code>first.txt</code> (this is what makes it asynchronous). Once the file is found and its contents are read in, the operation is fulfilled and we can then do what we want with the file's contents. If instead the file is not found because it doesn't exist, the operation is rejected and we can print a message saying so.
+<b>Promises</b> are special objects for dealing with asynchronous operations. A promise has three potential states: pending, fulfilled, and rejected. This suits the pattern of what happens when dealing with external data. Taking the previous example of reading in the contents of a text file on our computer, the operation 'read in the contents of first.txt' will first be pending while node looks for 'first.txt' (this is what makes it asynchronous). Once the file is found and its contents are read in, the operation is fulfilled and we can then do what we want with the file's contents. If instead the file is not found because it doesn't exist, the operation is rejected and we can print a message saying so.
 </p>
 
 <p>
@@ -454,11 +408,11 @@ Both <code>then()</code> and <code>catch()</code> do something interesting: they
 </p>
 </div>
 
-<div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> External data example</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> External data example</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <p>
-We use the same task as before: read in a file of text and copy all of the text before '&#x2014;' to a second file.
+We use the same task as before: read in a file of text and copy all of the text before '<code>---</code>' to a second file.
 </p>
 
 <p>
@@ -592,8 +546,258 @@ From here, we could continue the chaining pattern to add successive asynchronous
 </div>
 </div>
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Async/await</h3>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Using async/await</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+The <b>async</b> and <b>await</b> keywords are syntactic sugar over promises, meaning they use promises exactly the same way as described above but simply make the code look different. Instead of having a function explicitly return a promise, it can be defined with the word 'async' before it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const someFunc = async () =&gt; {
+  // ... do something asynchronous stuff ...
+};
+</pre>
+</div>
+
+<p>
+And instead of using <code>then()</code> on a function returning a promise, it can be called with the word 'await' before it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const data = await someFunc();
+</pre>
+</div>
+
+<p>
+There are two rules to using async/await:
+</p>
+<ol class="org-ol">
+<li>If a function is defined with 'async', then it can be called with 'await'.
+</li>
+<li>'await' can only be used inside a function defined with 'async'.
+</li>
+</ol>
+
+<p>
+So to transform the first part of our previous code from using explicit promises to async/await, we can 'await' the call to <code>readFile()</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs').promises;
+
+const data = await fs.readFile('first.txt', 'utf8');
+console.log('File contents:');
+console.log(data);
+</pre>
+</div>
+
+<p>
+However, there is a catch. The above code won't run in node because we violated rule 2. We have used 'await' outside of an async function. There is a simple trick to fix this: we can put the code inside an async function, then call the function.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs').promises;
+
+const go = async () =&gt; {
+  const data = await fs.readFile('first.txt', 'utf8');
+  console.log('File contents:');
+  console.log(data);
+};
+
+go();
+</pre>
+</div>
+
+<p>
+With the exception of the 'go' function, we already have a cleaner result than its promise or callback counterpart. The steps appear linear even though we are dealing with an asynchronous operation.
+</p>
+
+<p>
+Applying the async/await syntax to the rest of the task gives us the following result.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs').promises;
+
+const go = async () =&gt; {
+  console.log('Starting task...');
+  const data = await fs.readFile('first.txt', 'utf8');
+  const parts = data.split('---');
+  await fs.writeFile('second.txt', parts[0], 'utf8');
+  console.log('Successfully copied the contents!');
+};
+
+go();
+</pre>
+</div>
+
+<p>
+But there's still one thing missing. The above code will work so long as nothing goes wrong with either asynchronous operation. This is not a fair comparison to the final code using callbacks or promises unless we include error handling. With async/await, the way to handle errors is by using the <code>try...catch</code> statement. It works a lot like an <code>if...else</code> statement. The <code>try</code> block runs if there are no errors, otherwise the <code>catch</code> block runs and catches the error as well.
+</p>
+
+<p>
+The final code is as follows.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs').promises;
+
+const go = async () =&gt; {
+  try {
+	console.log('Starting task...');
+	const data = await fs.readFile('first.txt', 'utf8');
+	const parts = data.split('---');
+	await fs.writeFile('second.txt', parts[0], 'utf8');
+	console.log('Successfully copied the contents!');
+  } catch (err) {
+	console.log('Something went wrong:');
+	console.log(err);
+  }
+};
+
+go();
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Comparison</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Task</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+We start with a file 'notes.txt' that has public and private text, separated by a line '<code>---</code>'. Copy the public notes into a file 'public.txt', then copy the private notes into a file 'private.txt'. Finally, remove the original file 'notes.txt'.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Using callbacks</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs');
+
+const afterCopy = err =&gt; {
+  if (err) {
+	console.log('Something went wrong:');
+	throw err;
+  }
+
+  console.log('Removing original file...');
+  fs.unlink('notes.txt', err =&gt; {
+	if (err) {
+	  console.log('Something went wrong:');
+	  throw err;
+	}
+
+	console.log('Finished!');
+  });
+};
+
+const afterRead = (err, notes) =&gt; {
+  if (err) {
+	console.log('Something went wrong:');
+	throw err;
+  }
+
+  const [publicNotes, privateNotes] = notes.split('---');
+
+  console.log('Copying public notes...');
+  fs.writeFile('public.txt', publicNotes, 'utf8', err =&gt; {
+	if (err) {
+	  console.log('Something went wrong:');
+	  throw err;
+	}
+
+	console.log('Copying private notes...');
+	fs.writeFile('private.txt', privateNotes, 'utf8', afterCopy);
+  });
+};
+
+fs.readFile('notes.txt', 'utf8', afterRead);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Using promises</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs').promises;
+
+fs.readFile('notes.txt', 'utf8')
+  .then(notes =&gt; {
+	const [publicNotes, privateNotes] = notes.split('---');
+
+	console.log('Copying public notes...');
+	return fs.writeFile('public.txt', publicNotes, 'utf8')
+	  .then(() =&gt; {
+		console.log('Copying private notes...');
+		return fs.writeFile('private.txt', privateNotes, 'utf8');
+	  })
+  })
+  .then(() =&gt; {
+	console.log('Removing original file...');
+	return fs.unlink('notes.txt');
+  })
+  .then(() =&gt; {
+	console.log('Finished!');
+  })
+  .catch(err =&gt; {
+	console.log('Something went wrong:');
+	console.log(err);
+  });
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Using async/await</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<div class="org-src-container">
+
+<pre class="src src-js">const fs = require('fs').promises;
+
+const go = async () =&gt; {
+  try {
+	console.log('Gathering notes...');
+	const notes = await fs.readFile('notes.txt', 'utf8');
+	const [publicNotes, privateNotes] = notes.split('---');
+
+	console.log('Copying public notes...');
+	await fs.writeFile('public.txt', publicNotes, 'utf8');
+
+	console.log('Copying private notes...');
+	await fs.writeFile('private.txt', privateNotes, 'utf8');
+
+	console.log('Removing original file...');
+	await fs.unlink('notes.txt');
+
+	console.log('Finished!');
+  } catch (err) {
+	console.log('Something went wrong:');
+	console.log(err);
+  }
+};
+
+go();
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
