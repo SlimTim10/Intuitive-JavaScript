@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Asynchronous Operations</title>
-<!-- 2021-03-28 Sun 11:59 -->
+<!-- 2021-03-28 Sun 12:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -247,7 +247,7 @@ console.log('last');
 </div>
 
 <p>
-Now, even though the code to print the fruits comes before the code to print <code>last</code>, we will see <code>last</code> show up before the fruits in the output. In fact, it will take one second (1000 milliseconds) before the fruits show up. Even if we set the timeout delay to 0, the fruits will still be the last to print. This is because <i>asynchronous code only runs after all of the synchronous code is finished</i> (always!). In running the above example, when it comes to the <code>setTimeout()</code> code, the callback is put aside, into an imaginary asynchronous box, and then the program carries on with the rest of the synchronous code. After all of the synchronous code is finished, everything inside the asynchronous box gets to run.
+Now, even though the code to print the fruits comes before the code to print <code>last</code>, we will see <code>last</code> show up before the fruits in the output. In fact, it will take one second (1000 milliseconds) before the fruits show up. Even if we set the timeout delay to 0, the fruits will still be the last to print. This is because <b><i>asynchronous code only runs after all of the synchronous code is finished</i></b> (always!). In running the above example, when it comes to the <code>setTimeout()</code> code, the callback is put aside, into an imaginary asynchronous box, and then the program carries on with the rest of the synchronous code. After all of the synchronous code is finished, everything inside the asynchronous box gets to run.
 </p>
 
 <div class="org-src-container">

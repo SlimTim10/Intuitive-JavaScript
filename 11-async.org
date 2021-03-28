@@ -56,7 +56,7 @@ setTimeout(() => {
 console.log('last');
 #+END_SRC
 
-Now, even though the code to print the fruits comes before the code to print ~last~, we will see ~last~ show up before the fruits in the output. In fact, it will take one second (1000 milliseconds) before the fruits show up. Even if we set the timeout delay to 0, the fruits will still be the last to print. This is because /asynchronous code only runs after all of the synchronous code is finished/ (always!). In running the above example, when it comes to the ~setTimeout()~ code, the callback is put aside, into an imaginary asynchronous box, and then the program carries on with the rest of the synchronous code. After all of the synchronous code is finished, everything inside the asynchronous box gets to run.
+Now, even though the code to print the fruits comes before the code to print ~last~, we will see ~last~ show up before the fruits in the output. In fact, it will take one second (1000 milliseconds) before the fruits show up. Even if we set the timeout delay to 0, the fruits will still be the last to print. This is because */asynchronous code only runs after all of the synchronous code is finished/* (always!). In running the above example, when it comes to the ~setTimeout()~ code, the callback is put aside, into an imaginary asynchronous box, and then the program carries on with the rest of the synchronous code. After all of the synchronous code is finished, everything inside the asynchronous box gets to run.
 
 #+BEGIN_SRC js
 console.log('first');
