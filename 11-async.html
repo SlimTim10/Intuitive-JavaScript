@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Asynchronous Operations</title>
-<!-- 2021-03-28 Sun 12:54 -->
+<!-- 2021-04-02 Fri 12:49 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <style type="text/css">
@@ -289,7 +289,7 @@ Our program should copy only the first three lines to another file 'second.txt'.
 </p>
 
 <p>
-Node comes with a built-in module <code>fs</code> for dealing with any file system operations. Because these operations deal with data from outside of our code, they are asynchronous. The <code>readFile()</code> function will allow us to read in a file and store its contents. As per the <a href="https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback">documentation</a>, it takes in three arguments: a path to the file (string), an encoding of the file content (string), and a callback. The callback will run after the operation is complete. In order to provide the callback, we also need to know what arguments it takes in. Remember, this is it is not our job to call the callback; it is <code>readFile()</code> that will call it, passing it specific arguments. We only decide what to do with the information given to the callback's arguments. The documentation says the callback takes in two arguments: a possible error (object), and the file's contents (string). When dealing with external data, things can always go wrong and in many different ways (e.g., trying to read a file that doesn't exist). (Technically, the arguments to <code>readFile()</code> are more flexible than this but we can ignore that for our purposes.)
+Node comes with a built-in module <code>fs</code> for dealing with any file system operations. Because these operations deal with data from outside of our code, they are asynchronous. The <code>readFile()</code> function will allow us to read in a file and store its contents. As per the <a href="https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback">documentation</a>, it takes in three arguments: a path to the file (string), an encoding of the file content (string), and a callback. The callback will run after the operation is complete. In order to provide the callback, we also need to know what arguments it takes in. Remember, it is not our job to call the callback; it is <code>readFile()</code> that will call it, passing it specific arguments. We only decide what to do with the information given to the callback's arguments. The documentation says the callback takes in two arguments: a possible error (object), and the file's contents (string). When dealing with external data, things can always go wrong and in many different ways (e.g., trying to read a file that doesn't exist). (Technically, the arguments to <code>readFile()</code> are more flexible than this but we can ignore that for our purposes.)
 </p>
 
 <p>
