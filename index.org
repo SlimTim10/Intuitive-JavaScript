@@ -1,9 +1,9 @@
 #+SETUPFILE: setup.org
-#+TITLE: JavaScript Fundamentals
+#+TITLE: Practical Functional JavaScript
 
-* JavaScript Fundamentals
+* Practical Functional JavaScript
 
-** Printing (WIP)
+** First Steps (WIP)
 
 ** Variables and Values (WIP)
 
@@ -78,3 +78,5 @@
 ** [[file:10-import-export.html][Importing and Exporting]]
 
 ** [[file:11-async.html][Asynchronous Operations]]
+
+** [[file:12-batteries.html][Project: batteries.js]]
