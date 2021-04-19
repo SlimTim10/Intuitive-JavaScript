@@ -256,17 +256,7 @@ console.log(!anyDebt({checking: 10000, creditCard: 100}));
 // Bonus exercises
 
 /*
-9.5 Create a function called 'makeAnimal' that takes a name (string) and returns a randomly generated farm animal.
-
-The animal should have the properties:
-- species: string of either 'horse', 'cow', 'chicken', or 'lamb'
-- age: number between 0-10 (years)
-- name: the given name
-*/
-
-
-/*
-9.51 Create a function called 'analyzeWardrobe' that takes a wardrobe object and prints some information to the user.
+9.5 Create a function called 'analyzeWardrobe' that takes a wardrobe object and prints some information to the user.
 
 A wardrobe is an object with the properties:
 - owner: object with name (string) and age (number)
@@ -278,6 +268,16 @@ A wardrobe is an object with the properties:
 
 The first thing it should print is a greeting to the owner of the wardrobe (e.g. "Hello, Alice!").
 
-The wardrobe's contains a desired number of outfits. The actual number of outfits can be calculated by the equation: (number of tops * number of pants) + (number of tops * number of shorts) + (number of tops * number of skirts). If the actual number of outfits is at least as high as the desired number of outfits, it should print "Your desired number of outfits works!", otherwise "You need to add more clothing for your desired number of outfits to work."
+The wardrobe contains a desired number of outfits. The actual number of outfits can be calculated by the equation: (number of tops * number of pants) + (number of tops * number of shorts) + (number of tops * number of skirts). If the actual number of outfits is at least as high as the desired number of outfits, it should print "Your desired number of outfits works!", otherwise "You need to add more clothing for your desired number of outfits to work."
+*/
+
+
+/*
+9.51 Create a function called 'makeAnimal' that takes a name (string) and returns a randomly generated farm animal.
+
+The animal should have the properties:
+- species: string of either 'horse', 'cow', 'chicken', or 'lamb'
+- age: number between 0-10 (years)
+- name: the given name
 */
 
