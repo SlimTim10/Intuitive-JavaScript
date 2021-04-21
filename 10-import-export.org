@@ -132,9 +132,9 @@ It is considered good practice to put exports at the bottom of a file and import
 Now that we've seen how to import code from a module that we created, let's look at importing code from a module that we own but didn't create. Node.js comes with some built-in modules that are available for us to use but only if we import them. One such example is the ~fs~ module, for dealing with the file system. Importing a built-in module is the same as importing a module that we created, except the argument we give to ~require()~ should only have the exact name of the module; node knows where to look for built-in modules on our system.
 
 #+BEGIN_SRC js
-const fs = require('fs'); // No dots of slashes before the module name
+const {readFileSync} = require('fs'); // No dots of slashes before the module name
 
-const fileContents = fs.readFileSync('my-test-file.txt', 'utf8'); // Read the contents of a file
+const fileContents = readFileSync('my-test-file.txt', 'utf8'); // Read the contents of a file
 console.log(fileContents); // Print the file's contents
 #+END_SRC
 
