@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-04-23 Fri 11:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Project: batteries.js</title>
-<!-- 2021-04-14 Wed 16:30 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,6 +189,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
@@ -92,50 +197,26 @@
 <script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,22 +229,23 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Project: batteries.js</a>
+<li><a href="#orgbc326a3">1. Project: batteries.js</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Description</a></li>
-<li><a href="#sec-1-2">1.2. Functions</a></li>
-<li><a href="#sec-1-3">1.3. Usage</a></li>
+<li><a href="#orgedb91ee">1.1. Description</a></li>
+<li><a href="#org82a5a52">1.2. Functions</a></li>
+<li><a href="#org6c7d118">1.3. Usage</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Project: batteries.js</h2>
+<div id="outline-container-orgbc326a3" class="outline-2">
+<h2 id="orgbc326a3"><span class="section-number-2">1</span> Project: batteries.js</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Description</h3>
+</div>
+<div id="outline-container-orgedb91ee" class="outline-3">
+<h3 id="orgedb91ee"><span class="section-number-3">1.1</span> Description</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file <code>batteries.js</code> that exports the following functions.
@@ -171,245 +253,185 @@ When starting to code in a standard JavaScript environment, batteries are not in
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Functions</h3>
+<div id="outline-container-org82a5a52" class="outline-3">
+<h3 id="org82a5a52"><span class="section-number-3">1.2</span> Functions</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Numbers</h4>
+</div>
+<div id="outline-container-org11ff119" class="outline-4">
+<h4 id="org11ff119"><span class="section-number-4">1.2.1</span> Numbers</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>isEven
 <ul class="org-ul">
-<li>Arguments: <code>n</code> (number)
-</li>
-<li>Return: true if <code>n</code> is even, otherwise false
-</li>
-</ul>
-</li>
+<li>Arguments: <code>n</code> (number)</li>
+<li>Return: true if <code>n</code> is even, otherwise false</li>
+</ul></li>
 
 <li>isOdd
 <ul class="org-ul">
-<li>Arguments: <code>n</code> (number)
-</li>
-<li>Return: true if <code>n</code> is odd, otherwise false
-</li>
-</ul>
-</li>
+<li>Arguments: <code>n</code> (number)</li>
+<li>Return: true if <code>n</code> is odd, otherwise false</li>
+</ul></li>
 
 <li>divisibleBy
 <ul class="org-ul">
-<li>Arguments: <code>x</code> (number), <code>y</code> (number)
-</li>
-<li>Return: true if <code>x</code> is divisible by <code>y</code>, otherwise false
-</li>
-</ul>
-</li>
+<li>Arguments: <code>x</code> (number), <code>y</code> (number)</li>
+<li>Return: true if <code>x</code> is divisible by <code>y</code>, otherwise false</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Arrays</h4>
+<div id="outline-container-org4d22fde" class="outline-4">
+<h4 id="org4d22fde"><span class="section-number-4">1.2.2</span> Arrays</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>append
 <ul class="org-ul">
-<li>Arguments: <code>y</code> (any), <code>xs</code> (array)
-</li>
-<li>Return: array with <code>y</code> appended to <code>xs</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>y</code> (any), <code>xs</code> (array)</li>
+<li>Return: array with <code>y</code> appended to <code>xs</code></li>
+</ul></li>
 
 <li>eqArrays
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array), <code>ys</code> (array)
-</li>
-<li>Return: true if <code>xs</code> and <code>ys</code> are the same length and all of their elements are equal, otherwise false
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array), <code>ys</code> (array)</li>
+<li>Return: true if <code>xs</code> and <code>ys</code> are the same length and all of their elements are equal, otherwise false</li>
+</ul></li>
 
 <li>head
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array)
-</li>
-<li>Return: the first element of <code>xs</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: the first element of <code>xs</code></li>
+</ul></li>
 
 <li>tail
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array)
-</li>
-<li>Return: an array containing all of the elements of <code>xs</code> except the first one
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: an array containing all of the elements of <code>xs</code> except the first one</li>
+</ul></li>
 
 <li>last
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array)
-</li>
-<li>Return: the last element of <code>xs</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: the last element of <code>xs</code></li>
+</ul></li>
 
 <li>init
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array)
-</li>
-<li>Return: an array containing all of the elements of <code>xs</code> except the last one
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: an array containing all of the elements of <code>xs</code> except the last one</li>
+</ul></li>
 
 <li>isEmpty
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array)
-</li>
-<li>Return: true if <code>xs</code> contains no elements, otherwise false
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: true if <code>xs</code> contains no elements, otherwise false</li>
+</ul></li>
 
 <li>take
 <ul class="org-ul">
-<li>Arguments: <code>n</code> (number), <code>xs</code> (array)
-</li>
-<li>Return: an array containing the first <code>n</code> elements of <code>xs</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>n</code> (number), <code>xs</code> (array)</li>
+<li>Return: an array containing the first <code>n</code> elements of <code>xs</code></li>
+</ul></li>
 
 <li>drop
 <ul class="org-ul">
-<li>Arguments: <code>n</code> (number), <code>xs</code> (array)
-</li>
-<li>Return: an array containing the elements of <code>xs</code> without the first <code>n</code> elements
-</li>
-</ul>
-</li>
+<li>Arguments: <code>n</code> (number), <code>xs</code> (array)</li>
+<li>Return: an array containing the elements of <code>xs</code> without the first <code>n</code> elements</li>
+</ul></li>
 
 <li>flatten
 <ul class="org-ul">
-<li>Arguments: <code>xs</code> (array)
-</li>
-<li>Return: an array containing the elements of <code>xs</code> where any nested arrays have been pulled out (only needs to work with one level of nesting deep)
-</li>
-</ul>
-</li>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: an array containing the elements of <code>xs</code> where any nested arrays have been pulled out (only needs to work with one level of nesting deep)</li>
+</ul></li>
 
 <li>intersperse
 <ul class="org-ul">
-<li>Arguments: <code>sep</code> (any), <code>xs</code> (array)
-</li>
-<li>Return: an array containing the elements of <code>xs</code> with <code>sep</code> interspersed between the elements
-</li>
-</ul>
-</li>
+<li>Arguments: <code>sep</code> (any), <code>xs</code> (array)</li>
+<li>Return: an array containing the elements of <code>xs</code> with <code>sep</code> interspersed between the elements</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Number arrays</h4>
+<div id="outline-container-orgde85b33" class="outline-4">
+<h4 id="orgde85b33"><span class="section-number-4">1.2.3</span> Number arrays</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li>sum
 <ul class="org-ul">
-<li>Arguments: <code>ns</code> (array)
-</li>
-<li>Return: the sum of all numbers in <code>ns</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the sum of all numbers in <code>ns</code></li>
+</ul></li>
 
 <li>product
 <ul class="org-ul">
-<li>Arguments: <code>ns</code> (array)
-</li>
-<li>Return: the product of all numbers in <code>ns</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the product of all numbers in <code>ns</code></li>
+</ul></li>
 
 <li>maximum
 <ul class="org-ul">
-<li>Arguments: <code>ns</code> (array)
-</li>
-<li>Return: the highest number in <code>ns</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the highest number in <code>ns</code></li>
+</ul></li>
 
 <li>minimum
 <ul class="org-ul">
-<li>Arguments: <code>ns</code> (array)
-</li>
-<li>Return: the lowest number in <code>ns</code>
-</li>
-</ul>
-</li>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the lowest number in <code>ns</code></li>
+</ul></li>
+
+<li>buildArray
+<ul class="org-ul">
+<li>Arguments: <code>len</code> (number)</li>
+<li>Return: an array of size <code>len</code> (all elements can be <code>undefined</code>)</li>
+</ul></li>
 
 <li>range
 <ul class="org-ul">
-<li>Arguments: <code>start</code> (number), <code>end</code> (number)
-</li>
-<li>Return: an array of numbers counting up from <code>start</code> to <code>end</code> (inclusive)
-</li>
-</ul>
-</li>
+<li>Arguments: <code>start</code> (number), <code>end</code> (number)</li>
+<li>Return: an array of numbers counting up from <code>start</code> to <code>end</code> (inclusive)</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Objects</h4>
+<div id="outline-container-orge29b567" class="outline-4">
+<h4 id="orge29b567"><span class="section-number-4">1.2.4</span> Objects</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <ul class="org-ul">
 <li>eqObjects
 <ul class="org-ul">
-<li>Arguments: <code>a</code> (object), <code>b</code> (object)
-</li>
-<li>Return: true if <code>a</code> and <code>b</code> have all the same values at all of their keys, otherwise false
-</li>
-</ul>
-</li>
+<li>Arguments: <code>a</code> (object), <code>b</code> (object)</li>
+<li>Return: true if <code>a</code> and <code>b</code> have all the same values at all of their keys, otherwise false</li>
+</ul></li>
 
 <li>setProp
 <ul class="org-ul">
-<li>Arguments: k (string), v (any), o (object)
-</li>
-<li>Return: an object containing the properties of <code>o</code> but with the value at <code>k</code> set to <code>v</code>
-</li>
-</ul>
-</li>
+<li>Arguments: k (string), v (any), o (object)</li>
+<li>Return: an object containing the properties of <code>o</code> but with the value at <code>k</code> set to <code>v</code></li>
+</ul></li>
 
 <li>removeProp
 <ul class="org-ul">
-<li>Arguments: k (string), o (object)
-</li>
-<li>Return: an object containing the properties of <code>o</code> but with the value at <code>k</code> set to <code>undefined</code>
-</li>
-</ul>
-</li>
+<li>Arguments: k (string), o (object)</li>
+<li>Return: an object containing the properties of <code>o</code> but with the value at <code>k</code> set to <code>undefined</code></li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Usage</h3>
+<div id="outline-container-org6c7d118" class="outline-3">
+<h3 id="org6c7d118"><span class="section-number-3">1.3</span> Usage</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 If everything is done correctly, you should be able to run the following example in a file that is in the same directory as <code>batteries.js</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const {sum, range} = require('./batteries');
 
 console.log(sum(range(1, 5))); // should print 15
