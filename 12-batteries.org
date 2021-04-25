@@ -84,8 +84,8 @@ When starting to code in a standard JavaScript environment, batteries are not in
   - Return: the lowest number in ~ns~
 
 - buildArray
-  - Arguments: ~len~ (number)
-  - Return: an array of size ~len~ (all elements can be ~undefined~)
+  - Arguments: ~size~ (number)
+  - Return: an array of size ~size~ (all elements can be ~undefined~)
 
 - range
   - Arguments: ~start~ (number), ~end~ (number)
