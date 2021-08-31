@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-04-28 Wed 11:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Asynchronous Operations</title>
-<!-- 2021-04-02 Fri 12:49 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,6 +189,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
@@ -92,50 +197,26 @@
 <script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,27 +229,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Asynchronous Operations</a>
+<li><a href="#org19c7f7d">1. Asynchronous Operations</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Using callbacks</a></li>
-<li><a href="#sec-1-2">1.2. Using promises</a></li>
-<li><a href="#sec-1-3">1.3. Using async/await</a></li>
-<li><a href="#sec-1-4">1.4. Comparison</a></li>
+<li><a href="#org9dab194">1.1. Using callbacks</a></li>
+<li><a href="#orgef59e15">1.2. Using promises</a></li>
+<li><a href="#org1258d19">1.3. Using async/await</a></li>
+<li><a href="#orgb0f2c15">1.4. Comparison</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Asynchronous Operations</h2>
+<div id="outline-container-org19c7f7d" class="outline-2">
+<h2 id="org19c7f7d"><span class="section-number-2">1</span> Asynchronous Operations</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 All of our code up until now has involved purely <b>synchronous</b> operations. Every operation we run, or function we call, gives us back a result (or produces some output) by the time it is finished running. Operations are normally synchronized with each other: each operation waits to start only after the previous one is finished.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log('first');
 
 const fruits = ['apple', 'banana', 'cherry'];
@@ -186,10 +266,8 @@ If we run the above code, we will see the output in the order we expect: <code>f
 On the other hand, <b>asynchronous</b> operations do not wait for other operations to finish; they run whenever they are ready. Asynchronous operations come about in two circumstances:
 </p>
 <ul class="org-ul">
-<li>when specific timing is involved, or
-</li>
-<li>when dealing with external data (any data from outside of our JavaScript code).
-</li>
+<li>when specific timing is involved, or</li>
+<li>when dealing with external data (any data from outside of our JavaScript code).</li>
 </ul>
 
 <p>
@@ -197,15 +275,14 @@ There are three ways of handling asynchronous operations: callbacks, promises, a
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Using callbacks</h3>
+<div id="outline-container-org9dab194" class="outline-3">
+<h3 id="org9dab194"><span class="section-number-3">1.1</span> Using callbacks</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 If a function performs an asynchronous operation, it is up to us to decide what to do after the operation is complete. In order to give us flexibility, the asynchronous function may take in a callback function as an argument. We define the callback function to do whatever it is we want to do after the asynchronous operation, and provide the callback to the asynchronous function. It is the asynchronous function's job to call our callback function (that's what makes it a 'callback').
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const imaginaryAsyncFunc = (callback) =&gt; {
   // ... do some asynchronous work here ...
 
@@ -221,8 +298,8 @@ imaginaryAsyncFunc(afterOperation);
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Timing example</h4>
+<div id="outline-container-org65a788e" class="outline-4">
+<h4 id="org65a788e"><span class="section-number-4">1.1.1</span> Timing example</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <code>setTimeout()</code> is an asynchronous function that allows us to do something after a specified time. It takes two arguments: a callback function and a number of milliseconds. The callback will run after the specified number of milliseconds. The reason <code>setTimeout()</code> takes a callback as an argument is to allow for some action to be performed after some time. To be flexible (i.e. to allow for any action), a function makes the most sense here. Callbacks are often used for asynchronous operations for exactly this reason. However, using callbacks is not evidence of asynchronous code. As we have seen before, callbacks are frequently used in synchronous code as well.
@@ -233,7 +310,6 @@ Let's try mixing some asynchronous code into the previous example.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log('first');
 
 const fruits = ['apple', 'banana', 'cherry'];
@@ -251,7 +327,6 @@ Now, even though the code to print the fruits comes before the code to print <co
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log('first');
 
 const fruits = ['apple', 'banana', 'cherry'];
@@ -270,13 +345,13 @@ The above code uses a callback to print the fruit, but there are no asynchronous
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> External data example</h4>
+<div id="outline-container-org17615f9" class="outline-4">
+<h4 id="org17615f9"><span class="section-number-4">1.1.2</span> External data example</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Let's decide on a task: read in a file of text and copy all of the text before '<code>---</code>' to a second file. For example, we can have a file 'first.txt' that contains the lines:
 </p>
-<pre class="example">
+<pre class="example" id="orga34e6ca">
 here
 are some lines
 to copy
@@ -297,7 +372,6 @@ We now have enough information to start. Let's print the file's contents.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs'); // Import the module as one big object
 
 const afterRead = (err, data) =&gt; {
@@ -321,7 +395,6 @@ The next step is to extract from the content the part we want to copy. At this p
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs'); // Import the module as one big object
 
 const afterRead = (err, data) =&gt; {
@@ -340,7 +413,6 @@ Now for dealing with the second file, the <code>writeFile()</code> function allo
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs'); // Import the module as one big object
 
 const afterWrite = err =&gt; {
@@ -365,7 +437,6 @@ There are two important things to notice with our finished code. First, the line
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs'); // Import the module as one big object
 
 fs.readFile('first.txt', 'utf8', (err, data) =&gt; {
@@ -388,8 +459,8 @@ In the above code, the order of operations now matches the written order (top to
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Using promises</h3>
+<div id="outline-container-orgef59e15" class="outline-3">
+<h3 id="orgef59e15"><span class="section-number-3">1.2</span> Using promises</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 As a sidenote, this material will not be about <i>creating</i> promises. It is much more important to learn how to <i>use</i> them. Just like we don't need to know how to create <code>console.log()</code> or other built-in functions from scratch, even if the knowledge may be interesting. In practice, you can go a long way without ever needing to create your own promises. Once you are comfortable with using promises, you should be able to easily learn how to create them as well.
@@ -408,8 +479,8 @@ Both <code>then()</code> and <code>catch()</code> do something interesting: they
 </p>
 </div>
 
-<div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> External data example</h4>
+<div id="outline-container-orge749545" class="outline-4">
+<h4 id="orge749545"><span class="section-number-4">1.2.1</span> External data example</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 We use the same task as before: read in a file of text and copy all of the text before '<code>---</code>' to a second file.
@@ -420,7 +491,6 @@ Node also includes a version of the <code>fs</code> module that uses promises in
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs/promises');
 </pre>
 </div>
@@ -430,7 +500,6 @@ Or:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 </pre>
 </div>
@@ -444,7 +513,6 @@ Let's print the file's contents, this time using promises.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises; // Import the module as one big object
 
 const readPromise = fs.readFile('first.txt', 'utf8');
@@ -452,7 +520,7 @@ const readPromise = fs.readFile('first.txt', 'utf8');
 readPromise.then(data =&gt; {
   console.log('File contents:');
   console.log(data);
-})
+});
 
 readPromise.catch(err =&gt; { // Catch any errors with readFile
   console.log('Something went wrong with readFile:');
@@ -466,7 +534,6 @@ As different as it may look, this code works the same as the corresponding step 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises; // Import the module as one big object
 
 fs.readFile('first.txt', 'utf8')
@@ -490,7 +557,6 @@ The rest of the task can be completed using <code>writeFile()</code> similarly a
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises; // Import the module as one big object
 
 fs.readFile('first.txt', 'utf8')
@@ -503,7 +569,7 @@ fs.readFile('first.txt', 'utf8')
 	  .catch(err =&gt; { // Catch any errors with writeFile
 		console.log('Something went wrong with writeFile:');
 		console.log(err);
-	  })
+	  });
   })
   .catch(err =&gt; { // Catch any errors with readFile
 	console.log('Something went wrong with readFile:');
@@ -519,7 +585,6 @@ The above code can be cleaned up by again taking advantage of chaining. If we in
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises; // Import the module as one big object
 
 fs.readFile('first.txt', 'utf8')
@@ -546,15 +611,14 @@ From here, we could continue the chaining pattern to add successive asynchronous
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Using async/await</h3>
+<div id="outline-container-org1258d19" class="outline-3">
+<h3 id="org1258d19"><span class="section-number-3">1.3</span> Using async/await</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 The <b>async</b> and <b>await</b> keywords are syntactic sugar over promises, meaning they use promises exactly the same way as described above but simply make the code look different. Instead of having a function explicitly return a promise, it can be defined with the word 'async' before it.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someFunc = async () =&gt; {
   // ... do something asynchronous stuff ...
 };
@@ -566,7 +630,6 @@ And instead of using <code>then()</code> on a function returning a promise, it c
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const data = await someFunc();
 </pre>
 </div>
@@ -575,10 +638,8 @@ And instead of using <code>then()</code> on a function returning a promise, it c
 There are two rules to using async/await:
 </p>
 <ol class="org-ol">
-<li>If a function is defined with 'async', then it can be called with 'await'.
-</li>
-<li>'await' can only be used inside a function defined with 'async'.
-</li>
+<li>If a function is defined with 'async', then it can be called with 'await'.</li>
+<li>'await' can only be used inside a function defined with 'async'.</li>
 </ol>
 
 <p>
@@ -586,7 +647,6 @@ So to transform the first part of our previous code from using explicit promises
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 
 const data = await fs.readFile('first.txt', 'utf8');
@@ -600,7 +660,6 @@ However, there is a catch. The above code won't run in node because we violated 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 
 const go = async () =&gt; {
@@ -622,7 +681,6 @@ Applying the async/await syntax to the rest of the task gives us the following r
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 
 const go = async () =&gt; {
@@ -646,7 +704,6 @@ The final code is as follows.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 
 const go = async () =&gt; {
@@ -668,11 +725,12 @@ go();
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Comparison</h3>
+<div id="outline-container-orgb0f2c15" class="outline-3">
+<h3 id="orgb0f2c15"><span class="section-number-3">1.4</span> Comparison</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-sec-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Task</h4>
+</div>
+<div id="outline-container-orge7686dd" class="outline-4">
+<h4 id="orge7686dd"><span class="section-number-4">1.4.1</span> Task</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 We start with a file 'notes.txt' that has public and private text, separated by a line '<code>---</code>'. Copy the public notes into a file 'public.txt', then copy the private notes into a file 'private.txt'. Finally, remove the original file 'notes.txt'.
@@ -680,11 +738,10 @@ We start with a file 'notes.txt' that has public and private text, separated by 
 </div>
 </div>
 
-<div id="outline-container-sec-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Using callbacks</h4>
+<div id="outline-container-orgcdf837a" class="outline-4">
+<h4 id="orgcdf837a"><span class="section-number-4">1.4.2</span> Using callbacks</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs');
 
 const afterCopy = err =&gt; {
@@ -730,11 +787,10 @@ fs.readFile('notes.txt', 'utf8', afterRead);
 </div>
 </div>
 
-<div id="outline-container-sec-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Using promises</h4>
+<div id="outline-container-orgc35ef09" class="outline-4">
+<h4 id="orgc35ef09"><span class="section-number-4">1.4.3</span> Using promises</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 
 fs.readFile('notes.txt', 'utf8')
@@ -764,11 +820,10 @@ fs.readFile('notes.txt', 'utf8')
 </div>
 </div>
 
-<div id="outline-container-sec-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Using async/await</h4>
+<div id="outline-container-org40781ae" class="outline-4">
+<h4 id="org40781ae"><span class="section-number-4">1.4.4</span> Using async/await</h4>
 <div class="outline-text-4" id="text-1-4-4">
 <div class="org-src-container">
-
 <pre class="src src-js">const fs = require('fs').promises;
 
 const go = async () =&gt; {

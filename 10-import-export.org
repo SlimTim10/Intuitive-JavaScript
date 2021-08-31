@@ -46,7 +46,7 @@ module.exports = {
 #+END_SRC
 
 ** Importing
-The special function for *importing* a module in node is ~require()~. We pass it the name of a module (a JavaScript file) and it retrieves the ~module.exports~ value of that module. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
+The special function for *importing* a module in node is ~require()~. We pass it the name of a module (a JavaScript file) and it runs that module, then retrieves the ~module.exports~ value of that module. Note that if you have any ~console.log~  in the imported module, it will be printed even if you don't run the file directly. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
 
 #+BEGIN_SRC js
 // inside numbers.js:

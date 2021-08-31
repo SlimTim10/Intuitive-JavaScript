@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-08-24 Tue 19:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Importing and Exporting</title>
-<!-- 2021-04-21 Wed 11:23 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,6 +189,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
@@ -92,50 +197,26 @@
 <script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,28 +229,28 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Importing and Exporting</a>
+<li><a href="#org1028c9e">1. Importing and Exporting</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Exporting</a></li>
-<li><a href="#sec-1-2">1.2. Importing</a></li>
-<li><a href="#sec-1-3">1.3. Built-in modules</a></li>
-<li><a href="#sec-1-4">1.4. Packages</a></li>
+<li><a href="#org6bff64d">1.1. Exporting</a></li>
+<li><a href="#org9c41a9a">1.2. Importing</a></li>
+<li><a href="#org2923040">1.3. Built-in modules</a></li>
+<li><a href="#orgd1d0899">1.4. Packages</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Importing and Exporting</h2>
+<div id="outline-container-org1028c9e" class="outline-2">
+<h2 id="org1028c9e"><span class="section-number-2">1</span> Importing and Exporting</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with <a href="https://nodejs.org">Node.js</a>, familiarly known as 'node', and <a href="https://www.npmjs.com/">npm</a>.
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Exporting</h3>
+<div id="outline-container-org6bff64d" class="outline-3">
+<h3 id="org6bff64d"><span class="section-number-3">1.1</span> Exporting</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 JavaScript code in our files is never automatically <b>exported</b>. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called <code>module.exports</code>. If we don't explicitly set this variable to any value, its value is an empty object <code>{}</code>. Whatever value we give to <code>module.exports</code> is what the file is exporting (meaning it can be imported by another file). (The reason for the name <code>module.exports</code> is because node considers every JavaScript file a <b>module</b>.) It is most common to export an object because, as we've seen, objects allow us to package many things into one value.
@@ -180,7 +261,6 @@ Let's look at an example.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const a = 1;
 const b = 2;
 
@@ -195,7 +275,6 @@ If we have a file with the above code, the file is exporting an object with a si
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const a = 1;
 const b = 2;
 
@@ -212,7 +291,6 @@ It is common to use a shorthand notation in the object for this.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const a = 1;
 const b = 2;
 
@@ -226,15 +304,14 @@ module.exports = {
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Importing</h3>
+<div id="outline-container-org9c41a9a" class="outline-3">
+<h3 id="org9c41a9a"><span class="section-number-3">1.2</span> Importing</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-The special function for <b>importing</b> a module in node is <code>require()</code>. We pass it the name of a module (a JavaScript file) and it retrieves the <code>module.exports</code> value of that module. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
+The special function for <b>importing</b> a module in node is <code>require()</code>. We pass it the name of a module (a JavaScript file) and it runs that module, then retrieves the <code>module.exports</code> value of that module. Note that if you have any <code>console.log</code>  in the imported module, it will be printed even if you don't run the file directly. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">// inside numbers.js:
 const a = 1;
 const b = 2;
@@ -263,7 +340,6 @@ Object destructuring is commonly used when importing because it skips the step o
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">// inside numbers.js:
 const a = 1;
 const b = 2;
@@ -287,7 +363,6 @@ Finally, let's look at a more realistic example: sharing a little library of fun
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">//inside functions.js:
 const fToC = ftemp =&gt; (ftemp - 32) / 1.8;
 const cToF = ctemp =&gt; (ctemp * 1.8) + 32;
@@ -329,16 +404,15 @@ It is considered good practice to put exports at the bottom of a file and import
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Built-in modules</h3>
+<div id="outline-container-org2923040" class="outline-3">
+<h3 id="org2923040"><span class="section-number-3">1.3</span> Built-in modules</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Now that we've seen how to import code from a module that we created, let's look at importing code from a module that we own but didn't create. Node.js comes with some built-in modules that are available for us to use but only if we import them. One such example is the <code>fs</code> module, for dealing with the file system. Importing a built-in module is the same as importing a module that we created, except the argument we give to <code>require()</code> should only have the exact name of the module; node knows where to look for built-in modules on our system.
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-js">const { readFileSync } = require('fs'); // No dots of slashes before the module name
+<pre class="src src-js">const {readFileSync} = require('fs'); // No dots of slashes before the module name
 
 const fileContents = readFileSync('my-test-file.txt', 'utf8'); // Read the contents of a file
 console.log(fileContents); // Print the file's contents
@@ -351,8 +425,8 @@ The above example will read the contents of a file named <code>my-test-file.txt<
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Packages</h3>
+<div id="outline-container-orgd1d0899" class="outline-3">
+<h3 id="orgd1d0899"><span class="section-number-3">1.4</span> Packages</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 A <b>package</b> is a collection of modules that are packaged together to solve a single problem, such as adding colors to output in the terminal. Its purpose is to be imported into a project to add some specific functionality. In the JavaScript ecosystem, virtually all packages are found at <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>. Node.js comes with npm, the "Node Package Manager" (so if you have the <code>node</code> command, you should also have <code>npm</code>).
@@ -363,14 +437,10 @@ Before we can start to use packages with npm, we need to set up a project direct
 </p>
 
 <ol class="org-ol">
-<li>Create a new directory.
-</li>
-<li>Navigate to the directory in a terminal.
-</li>
-<li>In the terminal, enter the command <code>npm init</code>. Keep pressing <code>enter/return</code> for all of the prompts. (The default for every option is fine.)
-</li>
-<li>Create a file called <code>index.js</code>. This will be the main file of the project.
-</li>
+<li>Create a new directory.</li>
+<li>Navigate to the directory in a terminal.</li>
+<li>In the terminal, enter the command <code>npm init</code>. Keep pressing <code>enter/return</code> for all of the prompts. (The default for every option is fine.)</li>
+<li>Create a file called <code>index.js</code>. This will be the main file of the project.</li>
 </ol>
 
 <p>
@@ -382,14 +452,10 @@ Let's try using the chalk package at <a href="https://www.npmjs.com/package/chal
 </p>
 
 <ul class="org-ul">
-<li>Download the package's code.
-</li>
-<li>Create a <code>node_modules</code> directory within our project directory (if it does not already exist).
-</li>
-<li>Put the package's code inside <code>node_modules</code>.
-</li>
-<li>Add the package name to the <code>package.json</code> file.
-</li>
+<li>Download the package's code.</li>
+<li>Create a <code>node_modules</code> directory within our project directory (if it does not already exist).</li>
+<li>Put the package's code inside <code>node_modules</code>.</li>
+<li>Add the package name to the <code>package.json</code> file.</li>
 </ul>
 
 <p>
@@ -397,7 +463,6 @@ Now that we have the package install, it is available for us to use! As per the 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const chalk = require('chalk'); // Import the chalk package
 
 console.log(chalk.blue('Hello world!')); // Print a message in blue

@@ -195,7 +195,7 @@ const readPromise = fs.readFile('first.txt', 'utf8');
 readPromise.then(data => {
   console.log('File contents:');
   console.log(data);
-})
+});
 
 readPromise.catch(err => { // Catch any errors with readFile
   console.log('Something went wrong with readFile:');
@@ -236,7 +236,7 @@ fs.readFile('first.txt', 'utf8')
       .catch(err => { // Catch any errors with writeFile
         console.log('Something went wrong with writeFile:');
         console.log(err);
-      })
+      });
   })
   .catch(err => { // Catch any errors with readFile
     console.log('Something went wrong with readFile:');

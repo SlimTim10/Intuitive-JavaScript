@@ -1,0 +1,102 @@
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: First Steps
+
+* First Steps
+
+** Command Line
+Up until now, you may have thought of the Finder (on macOS), or the File Explorer (on Windows), as the only way to access your files. The *command line* is an older, but still common, way to interact with the files on your computer. With the command line, you can browse, read, copy, move, edit, and do anything with your files just like with the Finder or File Explorer. The difference is, instead of having a graphical representation of your files and clicking around with your mouse, the command line is entirely text-based; meaning you only get to see and type words.
+
+On macOS, the command line interpreter is the Terminal app. On Windows, it is the Command Prompt.
+
+There are a few commands and tricks you will need to learn. All commands are run by typing something then pressing /return/.
+
+*** The ~ls~ command
+In the terminal, you are always operating from a specific directory that exists on your computer. To see a *list* of the files in the current directory, type ~ls~ then press /return/. For advanced usage, try ~ls -alh~.
+
+*** The ~cd~ command
+To *change directories*, type ~cd~ followed by the name of the directory you want to enter then press /return/. For example, ~cd Desktop~. Note that the directory typed this way must be a subdirectory of the current directory (i.e., one of the directories that is listed by ~ls~). If you want to go up a level, use ~cd ..~. You can go to a directory that is not a subdirectory, but you need to type the entire path; e.g., ~cd /Users/Tim/Desktop/Media~.
+
+I typically use the ~ls~ command every time after changing directories as a way of orienting myself.
+
+*** Tab completion
+Like all programming-related things, precision is important. If you mistype any part of a command, it won't do what you want it to. Fortunately, the terminal has a feature that reduces mistypes. When you are typing some part of a command, you can try pressing /tab/ and the terminal will try to expand it for you. This is most useful when used with ~cd~. For example, if you type ~cd Des~ then press /tab/, the terminal will expand it to ~cd Desktop~. Note that this may not work if there is more than one option for expanding (e.g., ~cd D~ can expand to ~cd Desktop~ or ~cd Documents~ because both begin with "D"), but you can always type a bit more and try /tab/ again.
+
+*** Command history
+It can be tedious to type a new command every time, especially when it's a command you used moments ago. The terminal keeps a history of the commands you've used and you can access it with the /up/ and /down/ arrow keys.
+
+*** Example session on a Mac
+#+begin_src sh
+  Tims-Computer:~ tim$ ls
+  Applications Documents Library Music Public
+  Desktop Downloads Movies Pictures
+  Tims-Computer:~ tim$ cd Desktop
+  Tims-Computer:Desktop tim$ cd Desktop
+  Tims-Computer:Desktop tim$ ls
+  Media
+  Tims-Computer:Desktop tim$ cd Media
+  Tims-Computer:Media tim$ ls
+  yt-video-01.mp4
+  Tims-Computer:Media tim$ cd ..
+  Tims-Computer:Desktop tim$ ls
+  Media
+  Tims-Computer:Desktop tim$ cd ..
+  Tims-Computer:~ tim$ ls
+  Applications Documents Library Music Public
+  Desktop Downloads Movies Pictures
+  Tims-Computer:~ tim$ /Users/tim/Desktop/Media
+  Tims-Computer:Media tim$ ls
+  yt-video-01.mp4
+  Tims-Computer:Media tim$ 
+#+end_src
+
+** Editor
+Using a featureful text editor is crucial for an enjoyable programming experience. My recommendation is [[https://code.visualstudio.com/download][Visual Studio Code]] (VS Code). Don't worry, it's completely free! VS Code is great because it's more than just a text editor; it's an [[https://en.wikipedia.org/wiki/Integrated_development_environment][integrated development environment]] (IDE), meaning its features go beyond editing text. It even has a built-in terminal, so you can do all your work solely within VS Code.
+
+Other text editors popular among programmers include [[https://www.gnu.org/software/emacs/][Emacs]] (my favourite!), [[https://www.vim.org/][Vim]], [[https://www.sublimetext.com/][Sublime Text]], [[https://atom.io/][Atom]], and [[https://notepad-plus-plus.org/downloads/][Notepad++]].
+
+** Node.js
+[[https://nodejs.org/en/][Node.js]] is the industry standard JavaScript interpreter. You will need to download and install it to start programming with JavaScript in your terminal. After it is installed, open a new terminal window and run the command ~node -v~. It should say the version of Node.js that you installed. If it doesn't, make sure you open a new terminal window before running the command.
+
+*** REPL
+Node.js comes with a sometimes useful feature called a read-eval-print-loop (REPL). If you simply run the ~node~ command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You can not type regular command-line commands in this mode.
+
+- Try entering the command ~2 + 2~ or ~console.log('Hello, world!')~.
+- To exit the REPL, press /control+c/ twice.
+
+#+begin_src
+Welcome to Node.js v12.16.1.
+Type ".help" for more information.
+> 2 + 2
+4
+> console.log('Hello, world!')
+Hello, world!
+undefined
+>
+(To exit, press ^C again or ^D or type .exit)
+>
+
+C:\Users\Tim>
+#+end_src
+
+*** Running a file
+Much more useful than the REPL is the ability to have Node.js interpret an entire text file full of JavaScript code. To do this, you can type ~node~ followed by the name of the file you want to run. For example, ~node first.js~ will run a file called "first.js" that exists in the current directory.
+
+As a brief walkthrough, go ahead and save a new text file with VS Code named "first.js" and write the following text in it:
+#+begin_src js
+console.log('Hello, world!');
+#+end_src
+In the terminal, navigate to the directory that contains "first.js" (using ~cd~), then run the command ~node first.js~. You should see ~Hello, world!~ appear in your terminal.
+
+
+#+begin_src sh
+  Tims-Computer:~ tim$ ls
+  Applications Documents Library Music Public
+  Desktop Downloads Movies Pictures
+  Tims-Computer:~ tim$ cd Documents
+  Tims-Computer:Documents tim$ ls
+  first.js
+  Tims-Computer:Documents tim$ node first.js
+  Hello, world!
+  Tims-Computer:Documents tim$ 
+#+end_src

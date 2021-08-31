@@ -3,7 +3,7 @@
 
 * Practical Functional JavaScript
 
-** First Steps (WIP)
+** [[file:01-first-steps.html][First Steps]]
 
 ** Variables and Values (WIP)
 
