@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-16 Thu 18:46 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Values, Types, and Variables</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="highlight/styles/vs2015.css">
+<script src="highlight/highlight.pack.js"></script>
+<script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
+<style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Values, Types, and Variables</h1>
+<p>
+<b><a href="index.html">Home</a></b>
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1e16698">1. Values, Types, and Variables</a>
+<ul>
+<li><a href="#orgecee326">1.1. Introduction</a></li>
+<li><a href="#org67b1a24">1.2. Values and Types</a></li>
+<li><a href="#orgb10d3c3">1.3. Variables</a></li>
+<li><a href="#org3dd69e4">1.4. Example REPL session</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1e16698" class="outline-2">
+<h2 id="org1e16698"><span class="section-number-2">1</span> Values, Types, and Variables</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgecee326" class="outline-3">
+<h3 id="orgecee326"><span class="section-number-3">1.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org67b1a24" class="outline-3">
+<h3 id="org67b1a24"><span class="section-number-3">1.2</span> Values and Types</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<b>Values</b> represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain <b>type</b>. In other words, a value does not exist on its own without a type.
+</p>
+
+<p>
+Here is a list of the types that will be used throughout these lessons:
+</p>
+<ul class="org-ul">
+<li>undefined</li>
+<li>null</li>
+<li>number</li>
+<li>boolean</li>
+<li>function</li>
+<li>string</li>
+<li>array</li>
+<li>object</li>
+</ul>
+
+<blockquote>
+<p>
+Note: The list of types above differs from the technical list of types in JavaScript. The above types are the intuitive types, meaning it's closer to what goes on in our head when programming with JavaScript. For the technical types in JavaScript, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">MDN</a>.
+</p>
+</blockquote>
+
+<p>
+Although values can represent any piece of information, in JavaScript there are rules for how we can write values. In general, the ways that we can properly write JavaScript are referred to as <b>syntax</b> rules. Writing something that isn't understood by the JavaScript interpreter is called a syntax error and will cause the interpreter to show the error.
+</p>
+
+<p>
+Let's look at a brief meaning of each type and some possible values.
+</p>
+</div>
+
+<div id="outline-container-org21576c9" class="outline-4">
+<h4 id="org21576c9"><span class="section-number-4">1.2.1</span> undefined</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+<b>undefined</b> exists sort of as a catch-all for when no other value and type fits the situation. Most commonly, it is the value and type given to a variable that hasn't explicitly been given any other value, or a function that doesn't return any other value.
+</p>
+
+<p>
+There is only one possible value of the undefined type, of the same name: <code>undefined</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgce21bdd" class="outline-4">
+<h4 id="orgce21bdd"><span class="section-number-4">1.2.2</span> null</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+<b>null</b> is similar to undefined. It is commonly used in the scenario where a value is expected to be an object that may not exist. If the object doesn't exist, null is used. It is preferred to use null when setting a value to mean "this doesn't exist" instead of undefined because undefined gets used by the JavaScript interpreter automatically.
+</p>
+
+<p>
+There is only one possible value of the null type, of the same name: <code>null</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgddb42a0" class="outline-4">
+<h4 id="orgddb42a0"><span class="section-number-4">1.2.3</span> number</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+The <b>number</b> type is self-explanatory. Anytime we want to represent a number of any sort, we would want to use the number type.
+</p>
+
+<p>
+Possible values:
+</p>
+<ul class="org-ul">
+<li><code>0</code></li>
+<li><code>1</code></li>
+<li><code>-1234</code></li>
+<li><code>0.65</code></li>
+<li>(virtually any number)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgacb5ab8" class="outline-4">
+<h4 id="orgacb5ab8"><span class="section-number-4">1.2.4</span> boolean</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+The <b>boolean</b> type is for representing something that can only be one of two values:
+</p>
+<ul class="org-ul">
+<li><code>true</code></li>
+<li><code>false</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org46cc822" class="outline-4">
+<h4 id="org46cc822"><span class="section-number-4">1.2.5</span> function</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+The <b>function</b> type is for representing a sort of operation that can be applied to values to produce another value.
+</p>
+
+<p>
+A function may look something like this: <code>(x) =&gt; x + 1</code>.
+</p>
+
+<p>
+Functions will be covered later in depth.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org947c1a5" class="outline-4">
+<h4 id="org947c1a5"><span class="section-number-4">1.2.6</span> string</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+The <b>string</b> type is for representing words and general text.
+</p>
+
+<p>
+Possible values:
+</p>
+<ul class="org-ul">
+<li><code>'a'</code></li>
+<li><code>'1'</code></li>
+<li><code>'Hello, world!'</code></li>
+<li>(virtually anything surrounded by quotes)</li>
+</ul>
+
+<p>
+Strings will be covered later in depth.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4c48b8f" class="outline-4">
+<h4 id="org4c48b8f"><span class="section-number-4">1.2.7</span> array</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<p>
+The <b>array</b> type is for holding a list of values. The values inside of an array can be any type (including arrays themselves).
+</p>
+
+<p>
+Arrays look something like this:
+</p>
+<ul class="org-ul">
+<li><code>[1, 2, 3]</code></li>
+<li><code>['apple', 'banana', 'cherry']</code></li>
+<li><code>[]</code></li>
+<li><code>[false]</code></li>
+<li>(virtually anything in square brackets separated by commas)</li>
+</ul>
+
+<p>
+Arrays will be covered later in depth.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf46d680" class="outline-4">
+<h4 id="orgf46d680"><span class="section-number-4">1.2.8</span> object</h4>
+<div class="outline-text-4" id="text-1-2-8">
+<p>
+The <b>object</b> type is for representing a more complex structure that doesn't fit into any of the other types. Defining an object of a particular structure can be thought of as defining a new type.
+</p>
+
+<p>
+Objects look something like this:
+</p>
+<ul class="org-ul">
+<li><code>{a: 1, b: 2}</code></li>
+<li><code>{name: 'Alice', age: 30}</code></li>
+<li><code>{}</code></li>
+</ul>
+
+<p>
+Objects will be covered later in depth.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb10d3c3" class="outline-3">
+<h3 id="orgb10d3c3"><span class="section-number-3">1.3</span> Variables</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<b>Variables</b> let us assign a name to a value and reuse it wherever we want.
+</p>
+
+<p>
+In functional JavaScript, variables are always declared with <code>const</code>. You may see <code>var</code> or <code>let</code> used in other JavaScript code, but not in these lessons. This is great because there's less to think about when declaring a variable and there are stricter rules about how variables work.
+</p>
+
+<p>
+The syntax to define a variable looks like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">const favNumber = 10;
+</pre>
+</div>
+
+<p>
+The line must start with the word "const", followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end all JavaScript statements with a semicolon. In this example, we are defining a variable named "favNumber" and assigning it the number 10 as its value. This variable will always be 10. The equals is the same as in math; left side equals right side. Wherever else in the code we use "favNumber", we can substitute 10, and vice versa.
+</p>
+
+<p>
+Variable names are conventionally written in <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>. It is encouraged to give variables meaningful names, as we will do throughout the lessons.
+</p>
+
+<p>
+This kind of line is a kind of <b>statement</b>, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. Thus, a variable cannot be used before it is defined.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3dd69e4" class="outline-3">
+<h3 id="org3dd69e4"><span class="section-number-3">1.4</span> Example REPL session</h3>
+<div class="outline-text-3" id="text-1-4">
+<pre class="example">
+C:\Users\Tim&gt;node
+Welcome to Node.js v12.16.1.
+Type ".help" for more information.
+&gt; undefined
+undefined
+&gt; null
+null
+&gt; 1
+1
+&gt; true
+true
+&gt; (x) =&gt; x + 1;
+[Function]
+&gt; 'hello'
+'hello'
+&gt; [1, 2, 3]
+[ 1, 2, 3 ]
+&gt; {a: 1, b: 2}
+{ a: 1, b: 2 }
+&gt; const x = 5;
+undefined
+&gt; x
+5
+&gt; y
+Uncaught ReferenceError: y is not defined
+&gt; const y = 10;
+undefined
+&gt; y
+10
+&gt; const sameAsX = x;
+undefined
+&gt; sameAsX
+5
+&gt; const alice = {name: 'Alice', age: 30};
+undefined
+&gt; alice
+{ name: 'Alice', age: 30 }
+&gt; const fruits = ['apple', 'banana', 'cherry'];
+undefined
+&gt; fruits
+[ 'apple', 'banana', 'cherry' ]
+&gt;
+(To exit, press ^C again or ^D or type .exit)
+&gt;
+
+C:\Users\Tim&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
