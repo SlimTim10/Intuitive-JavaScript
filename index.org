@@ -5,7 +5,7 @@
 
 ** [[file:01-first-steps.html][First Steps]]
 
-** Variables and Values (WIP)
+** [[file:02-values-types-variables.html][Values, Types, and Variables]]
 
 ** Operators (WIP)
 

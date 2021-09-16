@@ -1,0 +1,161 @@
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: Values, Types, and Variables
+
+* Values, Types, and Variables
+
+** Introduction
+Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.
+
+** Values and Types
+*Values* represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain *type*. In other words, a value does not exist on its own without a type.
+
+Here is a list of the types that will be used throughout these lessons:
+- undefined
+- null
+- number
+- boolean
+- function
+- string
+- array
+- object
+
+#+begin_quote
+Note: The list of types above differs from the technical list of types in JavaScript. The above types are the intuitive types, meaning it's closer to what goes on in our head when programming with JavaScript. For the technical types in JavaScript, see [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures][MDN]].
+#+end_quote
+
+Although values can represent any piece of information, in JavaScript there are rules for how we can write values. In general, the ways that we can properly write JavaScript are referred to as *syntax* rules. Writing something that isn't understood by the JavaScript interpreter is called a syntax error and will cause the interpreter to show the error.
+
+Let's look at a brief meaning of each type and some possible values.
+
+*** undefined
+*undefined* exists sort of as a catch-all for when no other value and type fits the situation. Most commonly, it is the value and type given to a variable that hasn't explicitly been given any other value, or a function that doesn't return any other value.
+
+There is only one possible value of the undefined type, of the same name: ~undefined~.
+
+*** null
+*null* is similar to undefined. It is commonly used in the scenario where a value is expected to be an object that may not exist. If the object doesn't exist, null is used. It is preferred to use null when setting a value to mean "this doesn't exist" instead of undefined because undefined gets used by the JavaScript interpreter automatically.
+
+There is only one possible value of the null type, of the same name: ~null~.
+
+*** number
+The *number* type is self-explanatory. Anytime we want to represent a number of any sort, we would want to use the number type.
+
+Possible values:
+- ~0~
+- ~1~
+- ~-1234~
+- ~0.65~
+- (virtually any number)
+
+*** boolean
+The *boolean* type is for representing something that can only be one of two values:
+- ~true~
+- ~false~
+
+*** function
+The *function* type is for representing a sort of operation that can be applied to values to produce another value.
+
+A function may look something like this: ~(x) => x + 1~.
+
+Functions will be covered later in depth.
+
+*** string
+The *string* type is for representing words and general text.
+
+Possible values:
+- ~'a'~
+- ~'1'~
+- ~'Hello, world!'~
+- (virtually anything surrounded by quotes)
+
+Strings will be covered later in depth.
+
+*** array
+The *array* type is for holding a list of values. The values inside of an array can be any type (including arrays themselves).
+
+Arrays look something like this:
+- ~[1, 2, 3]~
+- ~['apple', 'banana', 'cherry']~
+- ~[]~
+- ~[false]~
+- (virtually anything in square brackets separated by commas)
+
+Arrays will be covered later in depth.
+
+*** object
+The *object* type is for representing a more complex structure that doesn't fit into any of the other types. Defining an object of a particular structure can be thought of as defining a new type.
+
+Objects look something like this:
+- ~{a: 1, b: 2}~
+- ~{name: 'Alice', age: 30}~
+- ~{}~
+
+Objects will be covered later in depth.
+
+** Variables
+*Variables* let us assign a name to a value and reuse it wherever we want.
+
+In functional JavaScript, variables are always declared with ~const~. You may see ~var~ or ~let~ used in other JavaScript code, but not in these lessons. This is great because there's less to think about when declaring a variable and there are stricter rules about how variables work.
+
+The syntax to define a variable looks like this:
+
+#+begin_src js
+const favNumber = 10;
+#+end_src
+
+The line must start with the word "const", followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end all JavaScript statements with a semicolon. In this example, we are defining a variable named "favNumber" and assigning it the number 10 as its value. This variable will always be 10. The equals is the same as in math; left side equals right side. Wherever else in the code we use "favNumber", we can substitute 10, and vice versa.
+
+Variable names are conventionally written in [[https://en.wikipedia.org/wiki/Camel_case][camelCase]]. It is encouraged to give variables meaningful names, as we will do throughout the lessons.
+
+This kind of line is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. Thus, a variable cannot be used before it is defined.
+
+** Example REPL session
+#+begin_src
+C:\Users\Tim>node
+Welcome to Node.js v12.16.1.
+Type ".help" for more information.
+> undefined
+undefined
+> null
+null
+> 1
+1
+> true
+true
+> (x) => x + 1;
+[Function]
+> 'hello'
+'hello'
+> [1, 2, 3]
+[ 1, 2, 3 ]
+> {a: 1, b: 2}
+{ a: 1, b: 2 }
+> const x = 5;
+undefined
+> x
+5
+> y
+Uncaught ReferenceError: y is not defined
+> const y = 10;
+undefined
+> y
+10
+> const sameAsX = x;
+undefined
+> sameAsX
+5
+> const alice = {name: 'Alice', age: 30};
+undefined
+> alice
+{ name: 'Alice', age: 30 }
+> const fruits = ['apple', 'banana', 'cherry'];
+undefined
+> fruits
+[ 'apple', 'banana', 'cherry' ]
+>
+(To exit, press ^C again or ^D or type .exit)
+>
+
+C:\Users\Tim>
+#+end_src
