@@ -65,6 +65,7 @@ Node.js comes with a sometimes useful feature called a read-eval-print-loop (REP
 - To exit the REPL, press /control+c/ twice.
 
 #+begin_src
+C:\Users\Tim>node
 Welcome to Node.js v12.16.1.
 Type ".help" for more information.
 > 2 + 2
