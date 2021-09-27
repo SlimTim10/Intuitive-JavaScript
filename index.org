@@ -1,15 +1,13 @@
 #+SETUPFILE: setup.org
 #+TITLE: Practical Functional JavaScript
 
-* Practical Functional JavaScript
+* [[file:01-first-steps.html][First Steps]]
 
-** [[file:01-first-steps.html][First Steps]]
+* [[file:02-values-types-variables.html][Values, Types, and Variables]]
 
-** [[file:02-values-types-variables.html][Values, Types, and Variables]]
+* Operators (WIP)
 
-** Operators (WIP)
-
-** Conditionals (WIP)
+* Conditionals (WIP)
 
 #+BEGIN_EXPORT HTML
 <ul>
@@ -20,7 +18,7 @@
 </ul>
 #+END_EXPORT
 
-** Functions (WIP)
+* Functions (WIP)
 
 #+BEGIN_EXPORT HTML
 <ul>
@@ -31,7 +29,7 @@
 </ul>
 #+END_EXPORT
 
-** [[file:06-strings.html][Strings]]
+* [[file:06-strings.html][Strings]]
 
 #+BEGIN_EXPORT HTML
 <ul>
@@ -42,7 +40,7 @@
 </ul>
 #+END_EXPORT
 
-** [[file:07-arrays.html][Arrays]]
+* [[file:07-arrays.html][Arrays]]
 
 #+BEGIN_EXPORT HTML
 <ul>
@@ -53,7 +51,7 @@
 </ul>
 #+END_EXPORT
 
-** [[file:08-more-arrays.html][More Arrays]]
+* [[file:08-more-arrays.html][More Arrays]]
 
 #+BEGIN_EXPORT HTML
 <ul>
@@ -64,7 +62,7 @@
 </ul>
 #+END_EXPORT
 
-** [[file:09-objects.html][Objects]]
+* [[file:09-objects.html][Objects]]
 
 #+BEGIN_EXPORT HTML
 <ul>
@@ -75,8 +73,8 @@
 </ul>
 #+END_EXPORT
 
-** [[file:10-import-export.html][Importing and Exporting]]
+* [[file:10-import-export.html][Importing and Exporting]]
 
-** [[file:11-async.html][Asynchronous Operations]]
+* [[file:11-async.html][Asynchronous Operations]]
 
-** [[file:12-batteries.html][Project: batteries.js]]
+* [[file:12-batteries.html][Project: batteries.js]]
