@@ -104,11 +104,11 @@ The syntax to define a variable looks like this:
 const favNumber = 10;
 #+end_src
 
-The line must start with the word "const", followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end all JavaScript statements with a semicolon. In this example, we are defining a variable named "favNumber" and assigning it the number 10 as its value. This variable will always be 10. The equals is the same as in math; left side equals right side. Wherever else in the code we use "favNumber", we can substitute 10, and vice versa.
+The line must start with the word "const", followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end JavaScript statements like this with a semicolon. In this example, we are defining a variable named "favNumber" and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use "favNumber", we can substitute 10, and vice versa.
 
 Variable names are conventionally written in [[https://en.wikipedia.org/wiki/Camel_case][camelCase]]. It is encouraged to give variables meaningful names, as we will do throughout the lessons.
 
-This kind of line is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. Thus, a variable cannot be used before it is defined.
+Defining a variable is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. A variable cannot be used before it is defined.
 
 ** Example REPL session
 #+begin_src
