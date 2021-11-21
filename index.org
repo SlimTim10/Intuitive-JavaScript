@@ -5,7 +5,7 @@
 
 * [[file:02-values-types-variables.html][Values, Types, and Variables]]
 
-* Operators (WIP)
+* [[file:03-operators.html][Operators]]
 
 * Conditionals (WIP)
 
