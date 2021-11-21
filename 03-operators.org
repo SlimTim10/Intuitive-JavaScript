@@ -1,0 +1,264 @@
+#+SETUPFILE: setup.org
+#+INCLUDE: header.org
+#+TITLE: Operators
+
+* Operators
+
+** Introduction
+In the last lesson, we talked about programming being a matter of computing information. Using operators is a big part of doing computations. After all, we haven't yet covered any tools that allow us to combine values together. As you will see in a moment, operators are symbols that operate on values to obtain a new value. Syntactically, spaces don't make much difference but it can be easier to read.
+
+Remember that variables hold values, which means we can either use operators on plain values or on variables. Also, operators will only make sense when applied to values of a specific type.
+
+The code examples here will use comments (~//~) to show what the ~console.log~ lines should print. Instead of reading passively, I encourage you to follow along by running this code in your node REPL or copying it into a JavaScript file (and running it with node).
+
+** Arithmetic operators
+These operators allow us to perform basic arithmetic on values of the *number* type. You should already be familiar with how most of these operators work.
+
+*** Addition (~+~)
+Add two numbers together.
+
+#+begin_src js
+  console.log(3 + 4); // prints 7
+
+  const x = 3 + 4;
+  console.log(x); // prints 7
+
+  const a = 3;
+  const b = 4;
+  const c = a + b;
+  console.log(c); // prints 7
+#+end_src
+
+*** Subtraction (~-~)
+Subtract one number from another.
+
+#+begin_src js
+  console.log(5 - 3); // 2
+  console.log(5 - 7); // -2
+#+end_src
+
+*** Division (~/~)
+Divide one number by another.
+
+#+begin_src js
+  console.log(6 / 3); // 2
+  console.log(6 / -5); // -1.2
+  console.log(10 / 9); // 1.1111111111111112
+#+end_src
+
+*** Multiplication (~*~)
+Multiply two numbers together.
+
+#+begin_src js
+  console.log(2 * 2); // 4
+  console.log(3 * 10); // -30
+#+end_src
+
+*** Exponentiation (~**~)
+Raise one number to the power of another.
+
+#+begin_src js
+  console.log(2**3); // 8
+  console.log(9**0.5); // 3
+  console.log(2**0.5); // 1.4142135623730951
+#+end_src
+
+*** Remainder (~%~)
+Get the remainder left over from dividing one number by another. Using the result of ~n % 2~ is a neat trick to check if ~n~ is even (the result is 0 for even, 1 for odd).
+
+#+begin_src js
+  console.log(2 % 2); // 0
+  console.log(3 % 2); // 1
+  console.log(4 % 2); // 0
+  console.log(10 % 5); // 0
+  console.log(5 % 10); // 5
+#+end_src
+
+** Logical (Boolean) operators
+These operators work on *boolean* type values (true or false). These kinds of operations might feel a bit foreign, but you actually use them on a regular basis even if you don't notice it. Whenever you say something that would be considered true or false, you can use one of the following operators to get a new true-or-false result. We will look at plain English examples along the way.
+
+*** Not (~!~)
+As in plain English, *not* simply inverts a boolean value. When true and false are the only choices, anything not true is false, and anything not false is true.
+
+"January is the first month of the year" is true.
+
+"January is *not* the first month of the year" is false.
+
+"February is the first month of the year" is false.
+
+"February is *not* the first month of the year" is true.
+
+#+begin_src js
+  console.log(!true); // false
+  console.log(!false); // true
+
+  const a = true;
+  const b = !a;
+  console.log(b); // false
+  const c = !b;
+  console.log(c); // true
+#+end_src
+
+*** And (~&&~)
+A way to combine two boolean values that results in true only when both values are true. Otherwise, the result is false.
+
+"January is the first month of the year *and* February is the second month of the year" is true, because both parts are true.
+
+"January is the first month of the year *and* February is the first month of the year" is false, because the second part is false.
+
+"January is the second month of the year *and* February is the second month of the year" is false, because the first part is false.
+
+"January is the second month of the year *and* February is the first month of the year" is false, because both parts are false.
+
+#+begin_src js
+  console.log(true && true); // true
+  console.log(true && false); // false
+  console.log(false && true); // false
+  console.log(false && false); // false
+
+  const a = true;
+  const b = false;
+  const c = a && b;
+  console.log(c); // false
+#+end_src
+
+*** Or (~||~)
+A way to combine two boolean values that results in true when either value is true. Otherwise, the result is false. In other words, it is only false when both values are false.
+
+"January is the first month of the year *or* February is the second month of the year" is true, because both parts are true.
+
+"January is the first month of the year *or* February is the first month of the year" is true, because the first part is true.
+
+"January is the second month of the year *or* February is the second month of the year" is true, because the second part is true.
+
+"January is the second month of the year *or* February is the first month of the year" is false, because both parts are false.
+
+#+begin_src js
+  console.log(true || true); // true
+  console.log(true || false); // true
+  console.log(false || true); // true
+  console.log(false || false); // false
+
+  const a = true;
+  const b = false;
+  const c = a || b;
+  console.log(c); // true
+#+end_src
+
+** Relational and equality operators
+What these operators do will also be familiar in an intuitive sense. These will allow us to compare various types of values, but always give a *boolean* value (true or false) as a result.
+
+*** Less than (~<~), less than or equal (~<=~)
+Checks that a number is less than (or equal to) another number. Results in a boolean value (true or false). These operators can technically work on other types of values, but it's not commonly used. [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than][Read more on MDN]].
+
+#+begin_src js
+  console.log(1 < 2); // true
+  console.log(2 < 1); // false
+  console.log(2 < 2); // false
+  console.log(2 <= 2); // true
+  console.log(1 <= 2); // true
+  console.log(3 <= 2); // false
+#+end_src
+
+*** Greater than (~>~), greater than or equal (~>=~)
+Checks that a number is greater than (or equal to) another number. Results in a boolean value (true or false).
+
+#+begin_src js
+  console.log(1 > 2); // false
+  console.log(2 > 1); // true
+  console.log(2 > 2); // false
+  console.log(2 >= 2); // true
+  console.log(1 >= 2); // false
+  console.log(3 >= 2); // true
+#+end_src
+
+*** Equality (~===~)
+Checks that two values are equal. Results in true if they are equal, otherwise false.
+
+For the most part, this comparison works the way you would expect it to. If the two values are different types, they can't be considered equal. If they are the same type, they must be the exact same value to be considered equal. Unfortunately for anything that JavaScript considers an object internally, the intuition breaks down; so it's best not to use equality operators on values of type function, array, or object. [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality][Read more on MDN]]. There is also a [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality][less strict equality]] (~==~), but it works unintuitively so it is advised not to use it.
+
+#+begin_src js
+console.log(undefined === undefined); // true
+console.log(undefined === null); // false
+console.log(null === null); // true
+console.log(null === 1); // false
+console.log(1 === 1); // true
+console.log(1 === 2); // false
+console.log(false === false); // true
+console.log(true === true); // true
+console.log(true === false); // false
+console.log('apple' === 'apple'); // true
+console.log('apple' === 'orange'); // false
+console.log([] === []); // false
+console.log({} === {}); // false
+#+end_src
+
+*** Inequality (~!==~)
+Checks that two values are not equal. Results in true if they are equal, otherwise false. This is the opposite of equality.
+
+#+begin_src js
+console.log(undefined !== undefined); // false
+console.log(undefined !== null); // true
+console.log(null !== null); // false
+console.log(null !== 1); // true
+console.log(1 !== 1); // false
+console.log(1 !== 2); // true
+console.log(false !== false); // false
+console.log(true !== true); // false
+console.log(true !== false); // true
+console.log('apple' !== 'apple'); // false
+console.log('apple' !== 'orange'); // true
+console.log([] !== []); // true
+console.log({} !== {}); // true
+#+end_src
+
+** Using operators
+Naturally, we don't have to use these operators in isolation. They can be combined in countless ways to do achieve different results.
+
+Now that we have some interesting tools to use, it's a good time to try executing a JavaScript file full of code instead of using the REPL. While the REPL allows us to write code directly in it, it's not so great for general programming where we want to write chunks of code and re-run it with changes. Instead of the REPL, we should write our code in a file and run it all at once with node. Try copying the following block of code into a file called "script.js", then run the file with node using the terminal command: ~node script.js~.
+
+#+begin_src js
+  // This is a comment because it begins with two slashes. It has no effect on the code and is only for humans to read.
+  // You will see many comments in code as a way of adding clarification or helpful notes
+  const temperatureF = 77;
+  const temperatureC = (temperatureF - 32) * (5 / 9);
+  console.log(temperatureC); // should be 25
+  console.log(temperatureF > temperatureC); // true
+
+  const weatherToday = 'rain';
+  const weatherTomorrow = 'sunny';
+  const rainTodayOrTomorrow = (weatherToday === 'rain') || (weatherTomorrow === 'rain'); // brackets for clarity
+  console.log(rainTodayOrTomorrow); // true, because today is rainy
+  const rainTodayAndTomorrow = (weatherToday === 'rainy') && (weatherTomorrow === 'rain');
+  console.log(rainTodayAndTomorrow); // false, because tomorrow is sunny
+
+  const berry = 'nightshade';
+  const berryIsEdible =
+    berry === 'blueberry'
+      || berry === 'raspberry'
+      || berry === 'blackberry'
+      || berry === 'strawberry'
+      || berry === 'cranberry';
+  console.log(berryIsEdible); // only true if it's one of the edible berries
+
+  const pokeBowlSize = 'small';
+  const pokeBowlBase = 'mixed rice';
+  const pokeBowlProtein = 'salmon';
+  const pokeBowlSauce = 'shoyu';
+  // This is a long one, but with clever formatting it is easy to read
+  const validPokeBowl = (
+    (pokeBowlSize === 'small' || pokeBowlSize === 'medium' || pokeBowlSize === 'large')
+    && (pokeBowlBase === 'sushi rice' || pokeBowlBase === 'mixed rice' || pokeBowlBase === 'zucchini')
+    && (pokeBowlProtein === 'tuna' || pokeBowlProtein === 'salmon' || pokeBowlProtein === 'shrimp' || pokeBowlProtein === 'beef')
+    && (pokeBowlSauce === 'sesame' || pokeBowlSauce === 'shoyu' || pokeBowlSauce === 'ginger honey' || pokeBowlSauce === 'hot sauce')
+  );
+  console.log(validPokeBowl);
+#+end_src
+
+When you run this code, you should notice that the ~console.log~ statements are printed in your terminal in the same order they're written here.
+
+Try changing the values and adding more code. Get creative!
+
+* A word about errors
+
+Sometimes when you run your code, you may see node produce an error instead of the expected result. That's not a bad thing! Node is trying to help make sure your code is unambiguous and doesn't contain any silly mistakes that may cause unexpected problems. Think of errors as a gentle way of pointing out that something needs to be fixed in your code. Understanding the errors that node produces can take a lot of practice. Every error will have a message to attempt to let you know why there is an error in the first place and approximately where the problem is in your code (by telling you a line number). Because of the complexity of the code interpretation process, the error message and line number may not actually point you in the right direction! That being said, you should first assume that the error message is helpful and use its guidance, but just be aware that it's not a guarantee and you might need to look elsewhere. You will get to know the common errors with practice.
