@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-11-22 Mon 15:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Conditionals</title>
-<!-- 2021-03-03 Wed 13:32 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,57 +189,34 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
 <script src="highlight/highlight.pack.js"></script>
-<script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+<script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,20 +229,37 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Conditionals</a></li>
+<li><a href="#orgeab8cc8">1. Conditionals</a>
+<ul>
+<li><a href="#org5731737">1.1. If-else</a></li>
+<li><a href="#org1670398">1.2. Ternary operator</a></li>
+</ul>
+</li>
+<li><a href="#orgb2d9daf">2. Exercises</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Conditionals</h2>
+<div id="outline-container-orgeab8cc8" class="outline-2">
+<h2 id="orgeab8cc8"><span class="section-number-2">1</span> Conditionals</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Conditionals are one of the most common tools in programming. The simplest form looks like this:
+Conditionals are an essential tool in programming. We need a way for our code to take different paths depending on some value.
 </p>
 
-<div class="org-src-container">
+<p>
+For instance, let's say we're developing the visual part of a weather app and we have a value representing the temperature (a number). If it's below a certain number, meaning it's cold, we want to show it in blue. Otherwise, we want to show it in red. The condition is that the temperature is either below a certain number or not. Our two branches are: show the temperature in blue or show the temperature in red. For something with more conditions, let's say we have the weather forecast, which can be "rain", "clouds", "sunny", "snow", or "thunderstorm". For each of these values we want to show a different icon, so we actually have five different conditions.
+</p>
 
+<p>
+A condition is an expression that results in a boolean value (either true or false), like we saw in the previous lesson. A conditional statement is when we use a condition to take different paths. Let's look at two forms of conditional statements in JavaScript: <code>if-else</code> and the ternary operator.
+</p>
+</div>
+
+<div id="outline-container-org5731737" class="outline-3">
+<h3 id="org5731737"><span class="section-number-3">1.1</span> If-else</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
 <pre class="src src-js">if (condition) {
   console.log('the condition is true!');
 }
@@ -173,39 +271,10 @@ The condition goes inside the round brackets after 'if'. The code that we want t
 </p>
 
 <p>
-<code>=</code>
-&amp;&amp;
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-<p>
-!
-</p>
-
-<p>
-NUMBERS
-&gt;
-&gt;=
-&lt;
-&lt;=
-</p>
-
-<p>
 Just like in plain English, we can say "If I have less than 5 apples, then I should go buy some more."
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const apples = 2;
 if (apples &lt; 5) {
   console.log('I should go buy more apples.');
@@ -214,7 +283,7 @@ if (apples &lt; 5) {
 </div>
 
 <p>
-The condition is "I have less than 5 apples" and if that condition is true, then I should go buy some more. The condition "I have less than 5 apples" is either true or false, regardless of what I know about my apples (even if I haven't checked how many apples I have in the kitchen). That's the way it works with computers. The condition must be either true or false.
+The condition is "I have less than 5 apples". If that condition is true, then I should go buy some more. The condition "I have less than 5 apples" is either true or false, regardless of what I know about my apples (even if I haven't checked how many apples I have in the kitchen). That's the way it works with computers. The condition must be a boolean value (either true or false).
 </p>
 
 <p>
@@ -222,19 +291,17 @@ If I instead want to catch the case where the condition is false, I can check th
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const apples = 2;
 if (apples &gt;= 5) {
-  console.log('I should go buy more apples.');
+  console.log('I have enough apples.');
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const apples = 2;
 if (!(apples &lt; 5)) {
-  console.log('I should go buy more apples.');
+  console.log('I have enough apples.');
 }
 </pre>
 </div>
@@ -242,6 +309,86 @@ if (!(apples &lt; 5)) {
 <p>
 Both of these blocks of code do the same thing.
 </p>
+
+<p>
+There is an optional second part: the <code>else</code>. Instead of only handling the <code>true</code> branch, we can handle the <code>false</code> branch as well.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">const apples = 2;
+if (apples &lt; 5) {
+  console.log('I should go buy more apples.');
+} else {
+  console.log('I have enough apples.');
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1670398" class="outline-3">
+<h3 id="org1670398"><span class="section-number-3">1.2</span> Ternary operator</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The ternary operator works a lot like the if-else statement, except it allows us to write an expression that results in a value. This is very useful, since we often want to use a resulting value depending on a condition.
+</p>
+
+<p>
+There are three parts to a ternary operator expression: the condition, the <code>true</code> branch result, and the <code>false</code> branch result. It's like a shortcut for the <code>if-else</code> statement (except the <code>else</code> is mandatory). In pseudocode, it looks like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">const x = CONDITION ? TRUE-BRANCH-RESULT : FALSE-BRANCH-RESULT;
+</pre>
+</div>
+
+<p>
+Working with a similar example as before:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">const apples = 2;
+const message = (apples &lt; 5) ? 'I should go buy more apples.' : 'I have enough apples.';
+console.log(message);
+</pre>
+</div>
+
+<p>
+See how in the above example we can store a new value depending on the condition. Why wouldn't this work with <code>if-else</code>? Let's see&#x2026;
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">const apples = 2;
+if (apples &lt; 5) {
+  const message = 'I should go buy more apples.';
+} else {
+  const message = 'I have enough apples.';
+}
+console.log(message); // ReferenceError: message is not defined
+</pre>
+</div>
+
+<p>
+Running the above code results in an error because the scope of <code>message</code> is restricted to inside the curly brackets.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb2d9daf" class="outline-2">
+<h2 id="orgb2d9daf"><span class="section-number-2">2</span> Exercises</h2>
+<div class="outline-text-2" id="text-2">
+<div class="HTML" id="orgd31058a">
+<p>
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href="04-conditionals-exercises.js"&gt;View exercises&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="04-conditionals-exercises.js" download type="application/octet-stream"&gt;Download exercises&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="04-conditionals-solutions.js"&gt;View solutions&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="04-conditionals-solutions.js" download type="application/octet-stream"&gt;Download solutions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</p>
+
+</div>
 </div>
 </div>
 </div>

@@ -7,7 +7,7 @@
 
 * [[file:03-operators.html][Operators]]
 
-* Conditionals (WIP)
+* [[file:04-conditionals.html][Conditionals]]
 
 #+BEGIN_EXPORT HTML
 <ul>
