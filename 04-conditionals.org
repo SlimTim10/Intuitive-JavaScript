@@ -3,7 +3,6 @@
 #+TITLE: Conditionals
 
 * Conditionals
-
 Conditionals are an essential tool in programming. We need a way for our code to take different paths depending on some value.
 
 For instance, let's say we're developing the visual part of a weather app and we have a value representing the temperature (a number). If it's below a certain number, meaning it's cold, we want to show it in blue. Otherwise, we want to show it in red. The condition is that the temperature is either below a certain number or not. Our two branches are: show the temperature in blue or show the temperature in red. For something with more conditions, let's say we have the weather forecast, which can be "rain", "clouds", "sunny", "snow", or "thunderstorm". For each of these values we want to show a different icon, so we actually have five different conditions.
@@ -11,7 +10,6 @@ For instance, let's say we're developing the visual part of a weather app and we
 A condition is an expression that results in a boolean value (either true or false), like we saw in the previous lesson. A conditional statement is when we use a condition to take different paths. Let's look at two forms of conditional statements in JavaScript: ~if-else~ and the ternary operator.
 
 ** If-else
-
 #+BEGIN_SRC js
   if (condition) {
 	console.log('the condition is true!');
@@ -60,8 +58,7 @@ There is an optional second part: the ~else~. Instead of only handling the ~true
   }
 #+END_SRC
 
-** Ternary operator
-
+** Ternary Operator
 The ternary operator works a lot like the if-else statement, except it allows us to write an expression that results in a value. This is very useful, since we often want to use a resulting value depending on a condition.
 
 There are three parts to a ternary operator expression: the condition, the ~true~ branch result, and the ~false~ branch result. It's like a shortcut for the ~if-else~ statement (except the ~else~ is mandatory). In pseudocode, it looks like this:
@@ -94,11 +91,11 @@ Running the above code results in an error because the scope of ~message~ is res
 
 * Exercises
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT HTML
 <ul>
 	<li><a href="04-conditionals-exercises.js">View exercises</a></li>
 	<li><a href="04-conditionals-exercises.js" download type="application/octet-stream">Download exercises</a></li>
 	<li><a href="04-conditionals-solutions.js">View solutions</a></li>
 	<li><a href="04-conditionals-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
-#+END_HTML
+#+END_EXPORT

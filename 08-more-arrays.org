@@ -5,7 +5,7 @@
 * More Arrays
 We're not done with arrays yet! Here, we will introduce two very common ways to use arrays: applying a single operation on each element of an array, and converting between arrays and strings.
 
-** Higher-order functions
+** Higher-Order Functions
 Methods that allow us to deal with an entire array as a whole, no matter how big, are invaluable for solving real problems. In order to do such a thing, we need to use *higher-order functions*. Keep in mind that methods are just functions with slightly different syntax, so we could call them *higher-order methods* but since this applies to functions in general, we'll stick to that.
 
 A higher-order function is one that takes in a function as an argument. That's right, functions can take other functions as arguments! And why shouldn't they? After all, functions are values just like any other.
@@ -294,11 +294,11 @@ console.log(reduceFilter(['Alice', 'Bob', 'Carol'], name => name.length < 4)); /
 
 * Exercises
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT HTML
 <ul>
 	<li><a href="08-more-arrays-exercises.js">View exercises</a></li>
 	<li><a href="08-more-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
 	<li><a href="08-more-arrays-solutions.js">View solutions</a></li>
 	<li><a href="08-more-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
-#+END_HTML
+#+END_EXPORT

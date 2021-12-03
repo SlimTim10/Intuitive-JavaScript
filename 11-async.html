@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-28 Wed 11:20 -->
+<!-- 2021-11-24 Wed 16:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Asynchronous Operations</title>
@@ -229,20 +229,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org19c7f7d">1. Asynchronous Operations</a>
+<li><a href="#org38d75da">1. Asynchronous Operations</a>
 <ul>
-<li><a href="#org9dab194">1.1. Using callbacks</a></li>
-<li><a href="#orgef59e15">1.2. Using promises</a></li>
-<li><a href="#org1258d19">1.3. Using async/await</a></li>
-<li><a href="#orgb0f2c15">1.4. Comparison</a></li>
+<li><a href="#orgfef2067">1.1. Using Callbacks</a></li>
+<li><a href="#org0a00868">1.2. Using Promises</a></li>
+<li><a href="#orgb436e3f">1.3. Using Async/Await</a></li>
+<li><a href="#orgb632993">1.4. Comparison</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org19c7f7d" class="outline-2">
-<h2 id="org19c7f7d"><span class="section-number-2">1</span> Asynchronous Operations</h2>
+<div id="outline-container-org38d75da" class="outline-2">
+<h2 id="org38d75da"><span class="section-number-2">1</span> Asynchronous Operations</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 All of our code up until now has involved purely <b>synchronous</b> operations. Every operation we run, or function we call, gives us back a result (or produces some output) by the time it is finished running. Operations are normally synchronized with each other: each operation waits to start only after the previous one is finished.
@@ -275,8 +275,8 @@ There are three ways of handling asynchronous operations: callbacks, promises, a
 </p>
 </div>
 
-<div id="outline-container-org9dab194" class="outline-3">
-<h3 id="org9dab194"><span class="section-number-3">1.1</span> Using callbacks</h3>
+<div id="outline-container-orgfef2067" class="outline-3">
+<h3 id="orgfef2067"><span class="section-number-3">1.1</span> Using Callbacks</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 If a function performs an asynchronous operation, it is up to us to decide what to do after the operation is complete. In order to give us flexibility, the asynchronous function may take in a callback function as an argument. We define the callback function to do whatever it is we want to do after the asynchronous operation, and provide the callback to the asynchronous function. It is the asynchronous function's job to call our callback function (that's what makes it a 'callback').
@@ -285,7 +285,7 @@ If a function performs an asynchronous operation, it is up to us to decide what 
 <div class="org-src-container">
 <pre class="src src-js">const imaginaryAsyncFunc = (callback) =&gt; {
   // ... do some asynchronous work here ...
-
+  
   callback();
 };
 
@@ -298,8 +298,8 @@ imaginaryAsyncFunc(afterOperation);
 </div>
 </div>
 
-<div id="outline-container-org65a788e" class="outline-4">
-<h4 id="org65a788e"><span class="section-number-4">1.1.1</span> Timing example</h4>
+<div id="outline-container-orgdfb6d5c" class="outline-4">
+<h4 id="orgdfb6d5c"><span class="section-number-4">1.1.1</span> Timing example</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <code>setTimeout()</code> is an asynchronous function that allows us to do something after a specified time. It takes two arguments: a callback function and a number of milliseconds. The callback will run after the specified number of milliseconds. The reason <code>setTimeout()</code> takes a callback as an argument is to allow for some action to be performed after some time. To be flexible (i.e. to allow for any action), a function makes the most sense here. Callbacks are often used for asynchronous operations for exactly this reason. However, using callbacks is not evidence of asynchronous code. As we have seen before, callbacks are frequently used in synchronous code as well.
@@ -345,13 +345,13 @@ The above code uses a callback to print the fruit, but there are no asynchronous
 </div>
 </div>
 
-<div id="outline-container-org17615f9" class="outline-4">
-<h4 id="org17615f9"><span class="section-number-4">1.1.2</span> External data example</h4>
+<div id="outline-container-orgb1e9cef" class="outline-4">
+<h4 id="orgb1e9cef"><span class="section-number-4">1.1.2</span> External data example</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Let's decide on a task: read in a file of text and copy all of the text before '<code>---</code>' to a second file. For example, we can have a file 'first.txt' that contains the lines:
 </p>
-<pre class="example" id="orga34e6ca">
+<pre class="example" id="org0f1ac8f">
 here
 are some lines
 to copy
@@ -443,8 +443,8 @@ fs.readFile('first.txt', 'utf8', (err, data) =&gt; {
   if (err) throw err; // Print the error and quit
   const parts = data.split('---');
   fs.writeFile('second.txt', parts[0], 'utf8', err =&gt; {
-	if (err) throw err; // Print the error and quit
-	console.log('Successfully copied the contents!');
+    if (err) throw err; // Print the error and quit
+    console.log('Successfully copied the contents!');
   });
 });
 
@@ -459,8 +459,8 @@ In the above code, the order of operations now matches the written order (top to
 </div>
 </div>
 
-<div id="outline-container-orgef59e15" class="outline-3">
-<h3 id="orgef59e15"><span class="section-number-3">1.2</span> Using promises</h3>
+<div id="outline-container-org0a00868" class="outline-3">
+<h3 id="org0a00868"><span class="section-number-3">1.2</span> Using Promises</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 As a sidenote, this material will not be about <i>creating</i> promises. It is much more important to learn how to <i>use</i> them. Just like we don't need to know how to create <code>console.log()</code> or other built-in functions from scratch, even if the knowledge may be interesting. In practice, you can go a long way without ever needing to create your own promises. Once you are comfortable with using promises, you should be able to easily learn how to create them as well.
@@ -479,8 +479,8 @@ Both <code>then()</code> and <code>catch()</code> do something interesting: they
 </p>
 </div>
 
-<div id="outline-container-orge749545" class="outline-4">
-<h4 id="orge749545"><span class="section-number-4">1.2.1</span> External data example</h4>
+<div id="outline-container-orge05cb84" class="outline-4">
+<h4 id="orge05cb84"><span class="section-number-4">1.2.1</span> External data example</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 We use the same task as before: read in a file of text and copy all of the text before '<code>---</code>' to a second file.
@@ -538,12 +538,12 @@ As different as it may look, this code works the same as the corresponding step 
 
 fs.readFile('first.txt', 'utf8')
   .then(data =&gt; {
-	console.log('File contents:');
-	console.log(data);
+    console.log('File contents:');
+    console.log(data);
   })
   .catch(err =&gt; { // Catch any errors with readFile
-	console.log('Something went wrong with readFile:');
-	console.log(err);
+    console.log('Something went wrong with readFile:');
+    console.log(err);
   });
 </pre>
 </div>
@@ -561,19 +561,19 @@ The rest of the task can be completed using <code>writeFile()</code> similarly a
 
 fs.readFile('first.txt', 'utf8')
   .then(data =&gt; {
-	const parts = data.split('---');
-	fs.writeFile('second.txt', parts[0], 'utf8')
-	  .then(() =&gt; {
-		console.log('Successfully copied the contents!');
-	  })
-	  .catch(err =&gt; { // Catch any errors with writeFile
-		console.log('Something went wrong with writeFile:');
-		console.log(err);
-	  });
+    const parts = data.split('---');
+    fs.writeFile('second.txt', parts[0], 'utf8')
+      .then(() =&gt; {
+        console.log('Successfully copied the contents!');
+      })
+      .catch(err =&gt; { // Catch any errors with writeFile
+        console.log('Something went wrong with writeFile:');
+        console.log(err);
+      });
   })
   .catch(err =&gt; { // Catch any errors with readFile
-	console.log('Something went wrong with readFile:');
-	console.log(err);
+    console.log('Something went wrong with readFile:');
+    console.log(err);
   });
 
 console.log('Starting task...');
@@ -589,15 +589,15 @@ The above code can be cleaned up by again taking advantage of chaining. If we in
 
 fs.readFile('first.txt', 'utf8')
   .then(data =&gt; {
-	const parts = data.split('---');
-	return fs.writeFile('second.txt', parts[0], 'utf8');
+    const parts = data.split('---');
+    return fs.writeFile('second.txt', parts[0], 'utf8');
   })
   .then(() =&gt; {
-	console.log('Successfully copied the contents!');
+    console.log('Successfully copied the contents!');
   })
   .catch(err =&gt; { // Catch any errors
-	console.log('Something went wrong:');
-	console.log(err);
+    console.log('Something went wrong:');
+    console.log(err);
   });
 
 console.log('Starting task...');
@@ -611,8 +611,8 @@ From here, we could continue the chaining pattern to add successive asynchronous
 </div>
 </div>
 
-<div id="outline-container-org1258d19" class="outline-3">
-<h3 id="org1258d19"><span class="section-number-3">1.3</span> Using async/await</h3>
+<div id="outline-container-orgb436e3f" class="outline-3">
+<h3 id="orgb436e3f"><span class="section-number-3">1.3</span> Using Async/Await</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 The <b>async</b> and <b>await</b> keywords are syntactic sugar over promises, meaning they use promises exactly the same way as described above but simply make the code look different. Instead of having a function explicitly return a promise, it can be defined with the word 'async' before it.
@@ -708,14 +708,14 @@ The final code is as follows.
 
 const go = async () =&gt; {
   try {
-	console.log('Starting task...');
-	const data = await fs.readFile('first.txt', 'utf8');
-	const parts = data.split('---');
-	await fs.writeFile('second.txt', parts[0], 'utf8');
-	console.log('Successfully copied the contents!');
+    console.log('Starting task...');
+    const data = await fs.readFile('first.txt', 'utf8');
+    const parts = data.split('---');
+    await fs.writeFile('second.txt', parts[0], 'utf8');
+    console.log('Successfully copied the contents!');
   } catch (err) {
-	console.log('Something went wrong:');
-	console.log(err);
+    console.log('Something went wrong:');
+    console.log(err);
   }
 };
 
@@ -725,12 +725,12 @@ go();
 </div>
 </div>
 
-<div id="outline-container-orgb0f2c15" class="outline-3">
-<h3 id="orgb0f2c15"><span class="section-number-3">1.4</span> Comparison</h3>
+<div id="outline-container-orgb632993" class="outline-3">
+<h3 id="orgb632993"><span class="section-number-3">1.4</span> Comparison</h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-orge7686dd" class="outline-4">
-<h4 id="orge7686dd"><span class="section-number-4">1.4.1</span> Task</h4>
+<div id="outline-container-orgb5ad120" class="outline-4">
+<h4 id="orgb5ad120"><span class="section-number-4">1.4.1</span> Task</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 We start with a file 'notes.txt' that has public and private text, separated by a line '<code>---</code>'. Copy the public notes into a file 'public.txt', then copy the private notes into a file 'private.txt'. Finally, remove the original file 'notes.txt'.
@@ -738,46 +738,46 @@ We start with a file 'notes.txt' that has public and private text, separated by 
 </div>
 </div>
 
-<div id="outline-container-orgcdf837a" class="outline-4">
-<h4 id="orgcdf837a"><span class="section-number-4">1.4.2</span> Using callbacks</h4>
+<div id="outline-container-orgf0b48ea" class="outline-4">
+<h4 id="orgf0b48ea"><span class="section-number-4">1.4.2</span> Using callbacks</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <div class="org-src-container">
 <pre class="src src-js">const fs = require('fs');
 
 const afterCopy = err =&gt; {
   if (err) {
-	console.log('Something went wrong:');
-	throw err;
+    console.log('Something went wrong:');
+    throw err;
   }
-
+  
   console.log('Removing original file...');
   fs.unlink('notes.txt', err =&gt; {
-	if (err) {
-	  console.log('Something went wrong:');
-	  throw err;
-	}
+    if (err) {
+      console.log('Something went wrong:');
+      throw err;
+    }
 
-	console.log('Finished!');
+    console.log('Finished!');
   });
 };
 
 const afterRead = (err, notes) =&gt; {
   if (err) {
-	console.log('Something went wrong:');
-	throw err;
+    console.log('Something went wrong:');
+    throw err;
   }
-
+  
   const [publicNotes, privateNotes] = notes.split('---');
 
   console.log('Copying public notes...');
   fs.writeFile('public.txt', publicNotes, 'utf8', err =&gt; {
-	if (err) {
-	  console.log('Something went wrong:');
-	  throw err;
-	}
-
-	console.log('Copying private notes...');
-	fs.writeFile('private.txt', privateNotes, 'utf8', afterCopy);
+    if (err) {
+      console.log('Something went wrong:');
+      throw err;
+    }
+    
+    console.log('Copying private notes...');
+    fs.writeFile('private.txt', privateNotes, 'utf8', afterCopy);
   });
 };
 
@@ -787,64 +787,64 @@ fs.readFile('notes.txt', 'utf8', afterRead);
 </div>
 </div>
 
-<div id="outline-container-orgc35ef09" class="outline-4">
-<h4 id="orgc35ef09"><span class="section-number-4">1.4.3</span> Using promises</h4>
+<div id="outline-container-org9061140" class="outline-4">
+<h4 id="org9061140"><span class="section-number-4">1.4.3</span> Using promises</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
 <pre class="src src-js">const fs = require('fs').promises;
 
 fs.readFile('notes.txt', 'utf8')
   .then(notes =&gt; {
-	const [publicNotes, privateNotes] = notes.split('---');
-
-	console.log('Copying public notes...');
-	return fs.writeFile('public.txt', publicNotes, 'utf8')
-	  .then(() =&gt; {
-		console.log('Copying private notes...');
-		return fs.writeFile('private.txt', privateNotes, 'utf8');
-	  })
+    const [publicNotes, privateNotes] = notes.split('---');
+    
+    console.log('Copying public notes...');
+    return fs.writeFile('public.txt', publicNotes, 'utf8')
+      .then(() =&gt; {
+        console.log('Copying private notes...');
+        return fs.writeFile('private.txt', privateNotes, 'utf8');
+      })
   })
   .then(() =&gt; {
-	console.log('Removing original file...');
-	return fs.unlink('notes.txt');
+    console.log('Removing original file...');
+    return fs.unlink('notes.txt');
   })
   .then(() =&gt; {
-	console.log('Finished!');
+    console.log('Finished!');
   })
   .catch(err =&gt; {
-	console.log('Something went wrong:');
-	console.log(err);
+    console.log('Something went wrong:');
+    console.log(err);
   });
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org40781ae" class="outline-4">
-<h4 id="org40781ae"><span class="section-number-4">1.4.4</span> Using async/await</h4>
+<div id="outline-container-orgad38e74" class="outline-4">
+<h4 id="orgad38e74"><span class="section-number-4">1.4.4</span> Using async/await</h4>
 <div class="outline-text-4" id="text-1-4-4">
 <div class="org-src-container">
 <pre class="src src-js">const fs = require('fs').promises;
 
 const go = async () =&gt; {
   try {
-	console.log('Gathering notes...');
-	const notes = await fs.readFile('notes.txt', 'utf8');
-	const [publicNotes, privateNotes] = notes.split('---');
+    console.log('Gathering notes...');
+    const notes = await fs.readFile('notes.txt', 'utf8');
+    const [publicNotes, privateNotes] = notes.split('---');
 
-	console.log('Copying public notes...');
-	await fs.writeFile('public.txt', publicNotes, 'utf8');
+    console.log('Copying public notes...');
+    await fs.writeFile('public.txt', publicNotes, 'utf8');
 
-	console.log('Copying private notes...');
-	await fs.writeFile('private.txt', privateNotes, 'utf8');
+    console.log('Copying private notes...');
+    await fs.writeFile('private.txt', privateNotes, 'utf8');
 
-	console.log('Removing original file...');
-	await fs.unlink('notes.txt');
-
-	console.log('Finished!');
+    console.log('Removing original file...');
+    await fs.unlink('notes.txt');
+    
+    console.log('Finished!');
   } catch (err) {
-	console.log('Something went wrong:');
-	console.log(err);
+    console.log('Something went wrong:');
+    console.log(err);
   }
 };
 

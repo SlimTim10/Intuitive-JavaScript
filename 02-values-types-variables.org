@@ -110,7 +110,7 @@ Variable names are conventionally written in [[https://en.wikipedia.org/wiki/Cam
 
 Defining a variable is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. A variable cannot be used before it is defined.
 
-** Example REPL session
+** Example REPL Session
 #+begin_src
 C:\Users\Tim>node
 Welcome to Node.js v12.16.1.

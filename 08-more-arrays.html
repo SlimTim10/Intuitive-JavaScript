@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-11-25 Thu 13:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>More Arrays</title>
-<!-- 2021-03-26 Fri 16:20 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,57 +189,34 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
 <script src="highlight/highlight.pack.js"></script>
-<script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+<script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,26 +229,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. More Arrays</a>
+<li><a href="#org91e1d96">1. More Arrays</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Higher-order functions</a></li>
+<li><a href="#org15c3820">1.1. Higher-Order Functions</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. Exercises</a></li>
+<li><a href="#orgc289d63">2. Exercises</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> More Arrays</h2>
+<div id="outline-container-org91e1d96" class="outline-2">
+<h2 id="org91e1d96"><span class="section-number-2">1</span> More Arrays</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 We're not done with arrays yet! Here, we will introduce two very common ways to use arrays: applying a single operation on each element of an array, and converting between arrays and strings.
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Higher-order functions</h3>
+<div id="outline-container-org15c3820" class="outline-3">
+<h3 id="org15c3820"><span class="section-number-3">1.1</span> Higher-Order Functions</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Methods that allow us to deal with an entire array as a whole, no matter how big, are invaluable for solving real problems. In order to do such a thing, we need to use <b>higher-order functions</b>. Keep in mind that methods are just functions with slightly different syntax, so we could call them <b>higher-order methods</b> but since this applies to functions in general, we'll stick to that.
@@ -182,8 +263,8 @@ If you have heard of loops (e.g., the <code>for</code> loop, or the <code>for...
 </p>
 </div>
 
-<div id="outline-container-sec-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> every()</h4>
+<div id="outline-container-orga0f3dc0" class="outline-4">
+<h4 id="orga0f3dc0"><span class="section-number-4">1.1.1</span> every()</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 The <code>every()</code> method checks if <i>every</i> one of an array's elements passes a test and returns true if they all pass, otherwise false.
@@ -198,7 +279,6 @@ In this case, <code>every()</code> is the higher order function. The function th
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const isEven = x =&gt; x % 2 === 0;
 console.log(isEven(2)); // true
 console.log(isEven(5)); // false
@@ -220,7 +300,6 @@ It is commonplace to define the callback function directly inside of the higher-
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const evenNumbers = [2, 4, 6, 8];
 console.log(evenNumbers.every(x =&gt; x % 2 === 0)); // true
 </pre>
@@ -231,7 +310,6 @@ How about checking if every name in an array starts with the letter 'A'?
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
 console.log(names1.every(name =&gt; name.startsWith('A'))); // false
 
@@ -249,8 +327,8 @@ A whole category of problems just got a lot easier with <code>every()</code>!
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> some()</h4>
+<div id="outline-container-org6574797" class="outline-4">
+<h4 id="org6574797"><span class="section-number-4">1.1.2</span> some()</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 The <code>some()</code> method is like <code>every()</code>, except only <i>one</i> element needs to pass the test to return true. In other words, if <i>any</i> element passes the test, return true, otherwise false.
@@ -261,7 +339,6 @@ Let's take a look at similar examples as before, but using <code>some()</code> i
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const isEven = x =&gt; x % 2 === 0;
 
 const someNumbers = [1, 2, 3, 4, 5];
@@ -276,7 +353,6 @@ console.log(oddNumbers.some(isEven)); // false
 </div>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
 console.log(names1.some(name =&gt; name.startsWith('A'))); // true
 
@@ -290,8 +366,8 @@ console.log(names3.some(name =&gt; name.startsWith('A'))); // false
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> map()</h4>
+<div id="outline-container-orgbd53f6a" class="outline-4">
+<h4 id="orgbd53f6a"><span class="section-number-4">1.1.3</span> map()</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Probably the most commonly used of the higher-order array methods is <code>map()</code>. It takes in a function and returns a new array after having applied that function to each element. Because the function we provide to <code>map()</code> is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.
@@ -302,13 +378,14 @@ The kinds of problems that <code>map()</code> helps with are difficult to descri
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="sec-1-1-3-1" name="sec-1-1-3-1"></a>Example<br  /><div class="outline-text-5" id="text-1-1-3-1">
+<ol class="org-ol">
+<li><a id="org79430ad"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-3-1">
 <p>
 Let's say we have an array of numbers.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 99, 0, -6, 10];
 </pre>
 </div>
@@ -318,7 +395,6 @@ And we want to increase each number by 1. We can first define a function that ta
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const add1 = x =&gt; x + 1;
 console.log(add1(5)); // 6
 </pre>
@@ -329,7 +405,6 @@ We can try using this function on a single element of our array.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log(add1(someNumbers[0])); // 4
 </pre>
 </div>
@@ -339,7 +414,6 @@ If we want to apply the function to each element of our array, we could write it
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log( [
   add1(someNumbers[0]),
   add1(someNumbers[1]),
@@ -355,7 +429,6 @@ This works, but it requires us to know exactly how many element are in the array
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log(someNumbers.map(add1)); // [ 4, 100, 1, -5, 11 ]
 </pre>
 </div>
@@ -365,7 +438,6 @@ As before, we can skip defining the add1 function as a variable and just define 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 99, 0, -6, 10];
 console.log(someNumbers.map(x =&gt; x + 1)); // [ 4, 100, 1, -5, 11 ]
 </pre>
@@ -373,13 +445,13 @@ console.log(someNumbers.map(x =&gt; x + 1)); // [ 4, 100, 1, -5, 11 ]
 </div>
 </li>
 
-<li><a id="sec-1-1-3-2" name="sec-1-1-3-2"></a>Example<br  /><div class="outline-text-5" id="text-1-1-3-2">
+<li><a id="orge1e22b4"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-3-2">
 <p>
 Another use case is to extract a common property from each element. Let's say we have an array of names and we want to get the lengths of each name. Since each name is a string and has a <code>length</code> property, we can use <code>map()</code> here.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
 const nameLengths = names.map(name =&gt; name.length);
 console.log(nameLengths); // [ 5, 3, 5, 4, 3, 5 ]
@@ -388,7 +460,8 @@ console.log(nameLengths); // [ 5, 3, 5, 4, 3, 5 ]
 </div>
 </li>
 
-<li><a id="sec-1-1-3-3" name="sec-1-1-3-3"></a>Summary<br  /><div class="outline-text-5" id="text-1-1-3-3">
+<li><a id="orgb08333f"></a>Summary<br />
+<div class="outline-text-5" id="text-1-1-3-3">
 <p>
 In general, whenever we have some array <code>xs</code> and some function <code>f</code> (that operates on a single element <code>x</code>), using <code>xs.map(f)</code> gives us <code>[ f(xs[0]), f(xs[1]), f(xs[2]), ... ]</code>.
 </p>
@@ -397,26 +470,23 @@ In general, whenever we have some array <code>xs</code> and some function <code>
 Map is the method to use if we want to:
 </p>
 <ul class="org-ul">
-<li>start with an array,
-</li>
-<li>do the same thing to each element of the array,
-</li>
-<li>and end up with a new array of the same size.
-</li>
+<li>start with an array,</li>
+<li>do the same thing to each element of the array,</li>
+<li>and end up with a new array of the same size.</li>
 </ul>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
 
-<div id="outline-container-sec-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> forEach()</h4>
+<div id="outline-container-orgbb02949" class="outline-4">
+<h4 id="orgbb02949"><span class="section-number-4">1.1.4</span> forEach()</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 The <code>forEach()</code> method is <i>exactly</i> the same as <code>map()</code> except it doesn't return the new array. It takes in a function to operate on each element of the array, but it simply leaves it at that and doesn't return anything. This is used for when we want to perform some <i>action</i> on each element instead of ending up with a new array. The simplest example of an action is printing, i.e. <code>console.log()</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names = ['Alice', 'Bob', 'Carol'];
 
 const sayHello = name =&gt; {
@@ -441,7 +511,6 @@ Printing the lengths of an array of names just became easier!
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
 names.forEach(name =&gt; console.log(name.length));
 </pre>
@@ -449,15 +518,14 @@ names.forEach(name =&gt; console.log(name.length));
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> filter()</h4>
+<div id="outline-container-orgb54cae7" class="outline-4">
+<h4 id="orgb54cae7"><span class="section-number-4">1.1.5</span> filter()</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <p>
 One of the less common, but still useful, higher-order array methods is <code>filter()</code>. It also takes in a function to operate on each element of the array, except the function's job is to say whether to keep the element or not. After using <code>filter()</code>, we end up with a new <i>filtered</i> array that has only certain elements from the original array. Because we can only either keep an element or not, the callback function should return a boolean value (true or false). The new array will only have the elements for which the function returned true.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 1, 2, 5, 6, 9, 8];
 
 const isEven = num =&gt; num % 2 === 0; // returns true if num is even, otherwise false
@@ -473,7 +541,6 @@ We can filter our array of names in different ways.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
 
 console.log(names.filter(name =&gt; name.length &lt;= 4)); // [ 'Bob', 'Dean', 'Eve' ]
@@ -489,7 +556,6 @@ With a clever use of <code>some()</code>, we can filter for names that start wit
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank', 'Ingrid'];
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 
@@ -504,7 +570,6 @@ A common use of <code>filter()</code> is to check how many of a certain kind of 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 1, 2, 5, 6, 9, 8];
 const isEven = num =&gt; num % 2 === 0;
 
@@ -516,16 +581,14 @@ console.log(someNumbers.filter(isEven).length); // 3
 Filter is the method to use if we want to:
 </p>
 <ul class="org-ul">
-<li>start with an array,
-</li>
-<li>and end up with a new array of smaller or equal size as the original, without changing the elements.
-</li>
+<li>start with an array,</li>
+<li>and end up with a new array of smaller or equal size as the original, without changing the elements.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> reduce()</h4>
+<div id="outline-container-orgb3f24f6" class="outline-4">
+<h4 id="orgb3f24f6"><span class="section-number-4">1.1.6</span> reduce()</h4>
 <div class="outline-text-4" id="text-1-1-6">
 <p>
 If the previous methods are for handling certain kinds of problems with arrays, then <code>reduce()</code> is for everything else. Being a very expressive method, <code>reduce()</code> can be difficult to master but very useful.
@@ -536,13 +599,14 @@ The callback function passed to <code>reduce()</code> needs to take two argument
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="sec-1-1-6-1" name="sec-1-1-6-1"></a>Example<br  /><div class="outline-text-5" id="text-1-1-6-1">
+<ol class="org-ol">
+<li><a id="orgc691eb7"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-6-1">
 <p>
 We don't yet have a way to sum a bunch of numbers in an array. A great use case for <code>reduce()</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [1, 2, 3, 4, 5];
 console.log(someNumbers.reduce((acc, x) =&gt; acc + x, 0)); // 15
 </pre>
@@ -560,48 +624,48 @@ Perhaps more clearly:
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="center" />
+<col  class="org-center" />
 
-<col  class="right" />
+<col  class="org-right" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">acc</th>
-<th scope="col" class="center">x</th>
-<th scope="col" class="right">acc + x</th>
+<th scope="col" class="org-left">acc</th>
+<th scope="col" class="org-center">x</th>
+<th scope="col" class="org-right">acc + x</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">0</td>
-<td class="center">1</td>
-<td class="right">0 + 1 = 1</td>
+<td class="org-left">0</td>
+<td class="org-center">1</td>
+<td class="org-right">0 + 1 = 1</td>
 </tr>
 
 <tr>
-<td class="left">1</td>
-<td class="center">2</td>
-<td class="right">1 + 2 = 3</td>
+<td class="org-left">1</td>
+<td class="org-center">2</td>
+<td class="org-right">1 + 2 = 3</td>
 </tr>
 
 <tr>
-<td class="left">3</td>
-<td class="center">3</td>
-<td class="right">3 + 3 = 6</td>
+<td class="org-left">3</td>
+<td class="org-center">3</td>
+<td class="org-right">3 + 3 = 6</td>
 </tr>
 
 <tr>
-<td class="left">6</td>
-<td class="center">4</td>
-<td class="right">6 + 4 = 10</td>
+<td class="org-left">6</td>
+<td class="org-center">4</td>
+<td class="org-right">6 + 4 = 10</td>
 </tr>
 
 <tr>
-<td class="left">10</td>
-<td class="center">5</td>
-<td class="right">10 + 5 = 15</td>
+<td class="org-left">10</td>
+<td class="org-center">5</td>
+<td class="org-right">10 + 5 = 15</td>
 </tr>
 </tbody>
 </table>
@@ -612,13 +676,13 @@ Perhaps more clearly:
 </div>
 </li>
 
-<li><a id="sec-1-1-6-2" name="sec-1-1-6-2"></a>Example<br  /><div class="outline-text-5" id="text-1-1-6-2">
+<li><a id="org74b72c9"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-6-2">
 <p>
 The result we end up with doesn't even have to be the same type as the elements. For example, we can sum the lengths of an array of strings all at once.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const names = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
 console.log(names.reduce((acc, name) =&gt; acc + name.length, 0)); // 20
 </pre>
@@ -626,13 +690,13 @@ console.log(names.reduce((acc, name) =&gt; acc + name.length, 0)); // 20
 </div>
 </li>
 
-<li><a id="sec-1-1-6-3" name="sec-1-1-6-3"></a>Example<br  /><div class="outline-text-5" id="text-1-1-6-3">
+<li><a id="orgf6919a5"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-6-3">
 <p>
 In fact, we can even end up with an array! For example, we can flatten a nested array.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const nested = [ ['Alice', 'Bob'], ['Carol', 'Dave'] ];
 console.log(nested.reduce((acc, x) =&gt; [...acc, ...x], []));
 </pre>
@@ -640,13 +704,13 @@ console.log(nested.reduce((acc, x) =&gt; [...acc, ...x], []));
 </div>
 </li>
 
-<li><a id="sec-1-1-6-4" name="sec-1-1-6-4"></a>Example<br  /><div class="outline-text-5" id="text-1-1-6-4">
+<li><a id="org490e221"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-6-4">
 <p>
 In fact, <code>reduce()</code> is so expressive that we can define all of the previous methods just by using it alone.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const reduceEvery = (xs, f) =&gt; xs.reduce((acc, x) =&gt; acc ? f(x) : false, true);
 console.log(reduceEvery([1, 2, 3, 4, 5], x =&gt; x % 2 === 0)); // false
 console.log(reduceEvery([2, 4, 6, 8], x =&gt; x % 2 === 0)); // true
@@ -665,19 +729,20 @@ console.log(reduceFilter(['Alice', 'Bob', 'Carol'], name =&gt; name.length &lt; 
 </pre>
 </div>
 </div>
-</li></ol>
+</li>
+</ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Exercises</h2>
+<div id="outline-container-orgc289d63" class="outline-2">
+<h2 id="orgc289d63"><span class="section-number-2">2</span> Exercises</h2>
 <div class="outline-text-2" id="text-2">
 <ul>
-    <li><a href="08-more-arrays-exercises.js">View exercises</a></li>
-    <li><a href="08-more-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
-    <li><a href="08-more-arrays-solutions.js">View solutions</a></li>
-    <li><a href="08-more-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+	<li><a href="08-more-arrays-exercises.js">View exercises</a></li>
+	<li><a href="08-more-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="08-more-arrays-solutions.js">View solutions</a></li>
+	<li><a href="08-more-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 </div>
 </div>

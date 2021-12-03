@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-21 Sun 18:32 -->
+<!-- 2021-11-24 Wed 16:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Operators</title>
@@ -229,26 +229,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7f11553">1. Operators</a>
+<li><a href="#org0dbec63">1. Operators</a>
 <ul>
-<li><a href="#org652eb63">1.1. Introduction</a></li>
-<li><a href="#org998044b">1.2. Arithmetic operators</a></li>
-<li><a href="#org61ebe9e">1.3. Logical (Boolean) operators</a></li>
-<li><a href="#org9fdddad">1.4. Relational and equality operators</a></li>
-<li><a href="#org7f7b08e">1.5. Using operators</a></li>
+<li><a href="#orgb936606">1.1. Introduction</a></li>
+<li><a href="#org40a8ffb">1.2. Arithmetic operators</a></li>
+<li><a href="#org6c38e48">1.3. Logical (Boolean) Operators</a></li>
+<li><a href="#org6933684">1.4. Relational and Equality Operators</a></li>
+<li><a href="#org53f8157">1.5. String Operators</a></li>
+<li><a href="#org8e26568">1.6. Using Operators</a></li>
 </ul>
 </li>
-<li><a href="#org1d4aa83">2. A word about errors</a></li>
+<li><a href="#orgc460891">2. A Word About Errors</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7f11553" class="outline-2">
-<h2 id="org7f11553"><span class="section-number-2">1</span> Operators</h2>
+<div id="outline-container-org0dbec63" class="outline-2">
+<h2 id="org0dbec63"><span class="section-number-2">1</span> Operators</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org652eb63" class="outline-3">
-<h3 id="org652eb63"><span class="section-number-3">1.1</span> Introduction</h3>
+<div id="outline-container-orgb936606" class="outline-3">
+<h3 id="orgb936606"><span class="section-number-3">1.1</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 In the last lesson, we talked about programming being a matter of computing information. Using operators is a big part of doing computations. After all, we haven't yet covered any tools that allow us to combine values together. As you will see in a moment, operators are symbols that operate on values to obtain a new value. Syntactically, spaces don't make much difference but it can be easier to read.
@@ -264,127 +265,127 @@ The code examples here will use comments (<code>//</code>) to show what the <cod
 </div>
 </div>
 
-<div id="outline-container-org998044b" class="outline-3">
-<h3 id="org998044b"><span class="section-number-3">1.2</span> Arithmetic operators</h3>
+<div id="outline-container-org40a8ffb" class="outline-3">
+<h3 id="org40a8ffb"><span class="section-number-3">1.2</span> Arithmetic operators</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 These operators allow us to perform basic arithmetic on values of the <b>number</b> type. You should already be familiar with how most of these operators work.
 </p>
 </div>
 
-<div id="outline-container-orgcb5b5c6" class="outline-4">
-<h4 id="orgcb5b5c6"><span class="section-number-4">1.2.1</span> Addition (<code>+</code>)</h4>
+<div id="outline-container-orgee1c745" class="outline-4">
+<h4 id="orgee1c745"><span class="section-number-4">1.2.1</span> Addition (<code>+</code>)</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Add two numbers together.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(3 + 4); // prints 7
+<pre class="src src-js">  console.log(3 + 4); // prints 7
 
-const x = 3 + 4;
-console.log(x); // prints 7
+  const x = 3 + 4;
+  console.log(x); // prints 7
 
-const a = 3;
-const b = 4;
-const c = a + b;
-console.log(c); // prints 7
+  const a = 3;
+  const b = 4;
+  const c = a + b;
+  console.log(c); // prints 7
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge88a544" class="outline-4">
-<h4 id="orge88a544"><span class="section-number-4">1.2.2</span> Subtraction (<code>-</code>)</h4>
+<div id="outline-container-orge6d0b5c" class="outline-4">
+<h4 id="orge6d0b5c"><span class="section-number-4">1.2.2</span> Subtraction (<code>-</code>)</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Subtract one number from another.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(5 - 3); // 2
-console.log(5 - 7); // -2
+<pre class="src src-js">  console.log(5 - 3); // 2
+  console.log(5 - 7); // -2
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org56d45c1" class="outline-4">
-<h4 id="org56d45c1"><span class="section-number-4">1.2.3</span> Division (<code>/</code>)</h4>
+<div id="outline-container-org10f0083" class="outline-4">
+<h4 id="org10f0083"><span class="section-number-4">1.2.3</span> Division (<code>/</code>)</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Divide one number by another.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(6 / 3); // 2
-console.log(6 / -5); // -1.2
-console.log(10 / 9); // 1.1111111111111112
+<pre class="src src-js">  console.log(6 / 3); // 2
+  console.log(6 / -5); // -1.2
+  console.log(10 / 9); // 1.1111111111111112
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3428ecb" class="outline-4">
-<h4 id="org3428ecb"><span class="section-number-4">1.2.4</span> Multiplication (<code>*</code>)</h4>
+<div id="outline-container-org55c754d" class="outline-4">
+<h4 id="org55c754d"><span class="section-number-4">1.2.4</span> Multiplication (<code>*</code>)</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 Multiply two numbers together.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(2 * 2); // 4
-console.log(3 * 10); // -30
+<pre class="src src-js">  console.log(2 * 2); // 4
+  console.log(3 * 10); // -30
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcf18e1f" class="outline-4">
-<h4 id="orgcf18e1f"><span class="section-number-4">1.2.5</span> Exponentiation (<code>**</code>)</h4>
+<div id="outline-container-orge35dcce" class="outline-4">
+<h4 id="orge35dcce"><span class="section-number-4">1.2.5</span> Exponentiation (<code>**</code>)</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Raise one number to the power of another.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(2**3); // 8
-console.log(9**0.5); // 3
-console.log(2**0.5); // 1.4142135623730951
+<pre class="src src-js">  console.log(2**3); // 8
+  console.log(9**0.5); // 3
+  console.log(2**0.5); // 1.4142135623730951
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0f3bef9" class="outline-4">
-<h4 id="org0f3bef9"><span class="section-number-4">1.2.6</span> Remainder (<code>%</code>)</h4>
+<div id="outline-container-org03b6e02" class="outline-4">
+<h4 id="org03b6e02"><span class="section-number-4">1.2.6</span> Remainder (<code>%</code>)</h4>
 <div class="outline-text-4" id="text-1-2-6">
 <p>
 Get the remainder left over from dividing one number by another. Using the result of <code>n % 2</code> is a neat trick to check if <code>n</code> is even (the result is 0 for even, 1 for odd).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(2 % 2); // 0
-console.log(3 % 2); // 1
-console.log(4 % 2); // 0
-console.log(10 % 5); // 0
-console.log(5 % 10); // 5
+<pre class="src src-js">  console.log(2 % 2); // 0
+  console.log(3 % 2); // 1
+  console.log(4 % 2); // 0
+  console.log(10 % 5); // 0
+  console.log(5 % 10); // 5
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org61ebe9e" class="outline-3">
-<h3 id="org61ebe9e"><span class="section-number-3">1.3</span> Logical (Boolean) operators</h3>
+<div id="outline-container-org6c38e48" class="outline-3">
+<h3 id="org6c38e48"><span class="section-number-3">1.3</span> Logical (Boolean) Operators</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 These operators work on <b>boolean</b> type values (true or false). These kinds of operations might feel a bit foreign, but you actually use them on a regular basis even if you don't notice it. Whenever you say something that would be considered true or false, you can use one of the following operators to get a new true-or-false result. We will look at plain English examples along the way.
 </p>
 </div>
 
-<div id="outline-container-orgd6573b3" class="outline-4">
-<h4 id="orgd6573b3"><span class="section-number-4">1.3.1</span> Not (<code>!</code>)</h4>
+<div id="outline-container-orged02439" class="outline-4">
+<h4 id="orged02439"><span class="section-number-4">1.3.1</span> Not (<code>!</code>)</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 As in plain English, <b>not</b> simply inverts a boolean value. When true and false are the only choices, anything not true is false, and anything not false is true.
@@ -407,21 +408,21 @@ As in plain English, <b>not</b> simply inverts a boolean value. When true and fa
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(!true); // false
-console.log(!false); // true
+<pre class="src src-js">  console.log(!true); // false
+  console.log(!false); // true
 
-const a = true;
-const b = !a;
-console.log(b); // false
-const c = !b;
-console.log(c); // true
+  const a = true;
+  const b = !a;
+  console.log(b); // false
+  const c = !b;
+  console.log(c); // true
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org261fbb3" class="outline-4">
-<h4 id="org261fbb3"><span class="section-number-4">1.3.2</span> And (<code>&amp;&amp;</code>)</h4>
+<div id="outline-container-orgf5a4a45" class="outline-4">
+<h4 id="orgf5a4a45"><span class="section-number-4">1.3.2</span> And (<code>&amp;&amp;</code>)</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 A way to combine two boolean values that results in true only when both values are true. Otherwise, the result is false.
@@ -444,22 +445,22 @@ A way to combine two boolean values that results in true only when both values a
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(true &amp;&amp; true); // true
-console.log(true &amp;&amp; false); // false
-console.log(false &amp;&amp; true); // false
-console.log(false &amp;&amp; false); // false
+<pre class="src src-js">  console.log(true &amp;&amp; true); // true
+  console.log(true &amp;&amp; false); // false
+  console.log(false &amp;&amp; true); // false
+  console.log(false &amp;&amp; false); // false
 
-const a = true;
-const b = false;
-const c = a &amp;&amp; b;
-console.log(c); // false
+  const a = true;
+  const b = false;
+  const c = a &amp;&amp; b;
+  console.log(c); // false
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org36ea8c3" class="outline-4">
-<h4 id="org36ea8c3"><span class="section-number-4">1.3.3</span> Or (<code>||</code>)</h4>
+<div id="outline-container-org5baad03" class="outline-4">
+<h4 id="org5baad03"><span class="section-number-4">1.3.3</span> Or (<code>||</code>)</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <p>
 A way to combine two boolean values that results in true when either value is true. Otherwise, the result is false. In other words, it is only false when both values are false.
@@ -482,69 +483,69 @@ A way to combine two boolean values that results in true when either value is tr
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(true || true); // true
-console.log(true || false); // true
-console.log(false || true); // true
-console.log(false || false); // false
+<pre class="src src-js">  console.log(true || true); // true
+  console.log(true || false); // true
+  console.log(false || true); // true
+  console.log(false || false); // false
 
-const a = true;
-const b = false;
-const c = a || b;
-console.log(c); // true
+  const a = true;
+  const b = false;
+  const c = a || b;
+  console.log(c); // true
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9fdddad" class="outline-3">
-<h3 id="org9fdddad"><span class="section-number-3">1.4</span> Relational and equality operators</h3>
+<div id="outline-container-org6933684" class="outline-3">
+<h3 id="org6933684"><span class="section-number-3">1.4</span> Relational and Equality Operators</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 What these operators do will also be familiar in an intuitive sense. These will allow us to compare various types of values, but always give a <b>boolean</b> value (true or false) as a result.
 </p>
 </div>
 
-<div id="outline-container-orgc42f239" class="outline-4">
-<h4 id="orgc42f239"><span class="section-number-4">1.4.1</span> Less than (<code>&lt;</code>), less than or equal (<code>&lt;=</code>)</h4>
+<div id="outline-container-org0e4b0b4" class="outline-4">
+<h4 id="org0e4b0b4"><span class="section-number-4">1.4.1</span> Less than (<code>&lt;</code>), less than or equal (<code>&lt;=</code>)</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 Checks that a number is less than (or equal to) another number. Results in a boolean value (true or false). These operators can technically work on other types of values, but it's not commonly used. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than">Read more on MDN</a>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(1 &lt; 2); // true
-console.log(2 &lt; 1); // false
-console.log(2 &lt; 2); // false
-console.log(2 &lt;= 2); // true
-console.log(1 &lt;= 2); // true
-console.log(3 &lt;= 2); // false
+<pre class="src src-js">  console.log(1 &lt; 2); // true
+  console.log(2 &lt; 1); // false
+  console.log(2 &lt; 2); // false
+  console.log(2 &lt;= 2); // true
+  console.log(1 &lt;= 2); // true
+  console.log(3 &lt;= 2); // false
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc99681c" class="outline-4">
-<h4 id="orgc99681c"><span class="section-number-4">1.4.2</span> Greater than (<code>&gt;</code>), greater than or equal (<code>&gt;=</code>)</h4>
+<div id="outline-container-orgd5f73dc" class="outline-4">
+<h4 id="orgd5f73dc"><span class="section-number-4">1.4.2</span> Greater than (<code>&gt;</code>), greater than or equal (<code>&gt;=</code>)</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 Checks that a number is greater than (or equal to) another number. Results in a boolean value (true or false).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">console.log(1 &gt; 2); // false
-console.log(2 &gt; 1); // true
-console.log(2 &gt; 2); // false
-console.log(2 &gt;= 2); // true
-console.log(1 &gt;= 2); // false
-console.log(3 &gt;= 2); // true
+<pre class="src src-js">  console.log(1 &gt; 2); // false
+  console.log(2 &gt; 1); // true
+  console.log(2 &gt; 2); // false
+  console.log(2 &gt;= 2); // true
+  console.log(1 &gt;= 2); // false
+  console.log(3 &gt;= 2); // true
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge278f5a" class="outline-4">
-<h4 id="orge278f5a"><span class="section-number-4">1.4.3</span> Equality (<code>===</code>)</h4>
+<div id="outline-container-orga0bc025" class="outline-4">
+<h4 id="orga0bc025"><span class="section-number-4">1.4.3</span> Equality (<code>===</code>)</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <p>
 Checks that two values are equal. Results in true if they are equal, otherwise false.
@@ -573,8 +574,8 @@ console.log({} === {}); // false
 </div>
 </div>
 
-<div id="outline-container-org5c2f94a" class="outline-4">
-<h4 id="org5c2f94a"><span class="section-number-4">1.4.4</span> Inequality (<code>!==</code>)</h4>
+<div id="outline-container-org768e133" class="outline-4">
+<h4 id="org768e133"><span class="section-number-4">1.4.4</span> Inequality (<code>!==</code>)</h4>
 <div class="outline-text-4" id="text-1-4-4">
 <p>
 Checks that two values are not equal. Results in true if they are equal, otherwise false. This is the opposite of equality.
@@ -600,9 +601,30 @@ console.log({} !== {}); // true
 </div>
 </div>
 
-<div id="outline-container-org7f7b08e" class="outline-3">
-<h3 id="org7f7b08e"><span class="section-number-3">1.5</span> Using operators</h3>
+<div id="outline-container-org53f8157" class="outline-3">
+<h3 id="org53f8157"><span class="section-number-3">1.5</span> String Operators</h3>
 <div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orga099931" class="outline-4">
+<h4 id="orga099931"><span class="section-number-4">1.5.1</span> Concatenation (<code>+</code>)</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+Put two strings together. This is the same symbol as addition for numbers.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">const a = 'Hello, ';
+const b = 'world!';
+console.log(a + b); // prints "Hello, world!"
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8e26568" class="outline-3">
+<h3 id="org8e26568"><span class="section-number-3">1.6</span> Using Operators</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
 Naturally, we don't have to use these operators in isolation. They can be combined in countless ways to do achieve different results.
 </p>
@@ -612,41 +634,41 @@ Now that we have some interesting tools to use, it's a good time to try executin
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">// This is a comment because it begins with two slashes. It has no effect on the code and is only for humans to read.
-// You will see many comments in code as a way of adding clarification or helpful notes
-const temperatureF = 77;
-const temperatureC = (temperatureF - 32) * (5 / 9);
-console.log(temperatureC); // should be 25
-console.log(temperatureF &gt; temperatureC); // true
+<pre class="src src-js">  // This is a comment because it begins with two slashes. It has no effect on the code and is only for humans to read.
+  // You will see many comments in code as a way of adding clarification or helpful notes
+  const temperatureF = 77;
+  const temperatureC = (temperatureF - 32) * (5 / 9);
+  console.log(temperatureC); // should be 25
+  console.log(temperatureF &gt; temperatureC); // true
 
-const weatherToday = 'rain';
-const weatherTomorrow = 'sunny';
-const rainTodayOrTomorrow = (weatherToday === 'rain') || (weatherTomorrow === 'rain'); // brackets for clarity
-console.log(rainTodayOrTomorrow); // true, because today is rainy
-const rainTodayAndTomorrow = (weatherToday === 'rainy') &amp;&amp; (weatherTomorrow === 'rain');
-console.log(rainTodayAndTomorrow); // false, because tomorrow is sunny
+  const weatherToday = 'rain';
+  const weatherTomorrow = 'sunny';
+  const rainTodayOrTomorrow = (weatherToday === 'rain') || (weatherTomorrow === 'rain'); // brackets for clarity
+  console.log(rainTodayOrTomorrow); // true, because today is rainy
+  const rainTodayAndTomorrow = (weatherToday === 'rainy') &amp;&amp; (weatherTomorrow === 'rain');
+  console.log(rainTodayAndTomorrow); // false, because tomorrow is sunny
 
-const berry = 'nightshade';
-const berryIsEdible =
-  berry === 'blueberry'
-	|| berry === 'raspberry'
-	|| berry === 'blackberry'
-	|| berry === 'strawberry'
-	|| berry === 'cranberry';
-console.log(berryIsEdible); // only true if it's one of the edible berries
+  const berry = 'nightshade';
+  const berryIsEdible =
+    berry === 'blueberry'
+      || berry === 'raspberry'
+      || berry === 'blackberry'
+      || berry === 'strawberry'
+      || berry === 'cranberry';
+  console.log(berryIsEdible); // only true if it's one of the edible berries
 
-const pokeBowlSize = 'small';
-const pokeBowlBase = 'mixed rice';
-const pokeBowlProtein = 'salmon';
-const pokeBowlSauce = 'shoyu';
-// This is a long one, but with clever formatting it is easy to read
-const validPokeBowl = (
-  (pokeBowlSize === 'small' || pokeBowlSize === 'medium' || pokeBowlSize === 'large')
-  &amp;&amp; (pokeBowlBase === 'sushi rice' || pokeBowlBase === 'mixed rice' || pokeBowlBase === 'zucchini')
-  &amp;&amp; (pokeBowlProtein === 'tuna' || pokeBowlProtein === 'salmon' || pokeBowlProtein === 'shrimp' || pokeBowlProtein === 'beef')
-  &amp;&amp; (pokeBowlSauce === 'sesame' || pokeBowlSauce === 'shoyu' || pokeBowlSauce === 'ginger honey' || pokeBowlSauce === 'hot sauce')
-);
-console.log(validPokeBowl);
+  const pokeBowlSize = 'small';
+  const pokeBowlBase = 'mixed rice';
+  const pokeBowlProtein = 'salmon';
+  const pokeBowlSauce = 'shoyu';
+  // This is a long one, but with clever formatting it is easy to read
+  const validPokeBowl = (
+    (pokeBowlSize === 'small' || pokeBowlSize === 'medium' || pokeBowlSize === 'large')
+    &amp;&amp; (pokeBowlBase === 'sushi rice' || pokeBowlBase === 'mixed rice' || pokeBowlBase === 'zucchini')
+    &amp;&amp; (pokeBowlProtein === 'tuna' || pokeBowlProtein === 'salmon' || pokeBowlProtein === 'shrimp' || pokeBowlProtein === 'beef')
+    &amp;&amp; (pokeBowlSauce === 'sesame' || pokeBowlSauce === 'shoyu' || pokeBowlSauce === 'ginger honey' || pokeBowlSauce === 'hot sauce')
+  );
+  console.log(validPokeBowl);
 </pre>
 </div>
 
@@ -661,8 +683,8 @@ Try changing the values and adding more code. Get creative!
 </div>
 </div>
 
-<div id="outline-container-org1d4aa83" class="outline-2">
-<h2 id="org1d4aa83"><span class="section-number-2">2</span> A word about errors</h2>
+<div id="outline-container-orgc460891" class="outline-2">
+<h2 id="orgc460891"><span class="section-number-2">2</span> A Word About Errors</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Sometimes when you run your code, you may see node produce an error instead of the expected result. That's not a bad thing! Node is trying to help make sure your code is unambiguous and doesn't contain any silly mistakes that may cause unexpected problems. Think of errors as a gentle way of pointing out that something needs to be fixed in your code. Understanding the errors that node produces can take a lot of practice. Every error will have a message to attempt to let you know why there is an error in the first place and approximately where the problem is in your code (by telling you a line number). Because of the complexity of the code interpretation process, the error message and line number may not actually point you in the right direction! That being said, you should first assume that the error message is helpful and use its guidance, but just be aware that it's not a guarantee and you might need to look elsewhere. You will get to know the common errors with practice.

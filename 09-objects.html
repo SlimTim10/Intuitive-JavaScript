@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-11-24 Wed 13:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Objects</title>
-<!-- 2021-03-09 Tue 16:19 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,57 +189,34 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
 <script src="highlight/highlight.pack.js"></script>
-<script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+<script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,28 +229,27 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Objects</a>
+<li><a href="#org02b708b">1. Objects</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Creating</a></li>
-<li><a href="#sec-1-2">1.2. Accessing property values</a></li>
-<li><a href="#sec-1-3">1.3. Updating properties</a></li>
-<li><a href="#sec-1-4">1.4. Functions</a></li>
+<li><a href="#orgac45480">1.1. Creating</a></li>
+<li><a href="#org6c450bd">1.2. Accessing property values</a></li>
+<li><a href="#orgaf57488">1.3. Updating properties</a></li>
+<li><a href="#org7e8a027">1.4. Functions</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. Exercises</a></li>
+<li><a href="#org8fe2590">2. Exercises</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Objects</h2>
+<div id="outline-container-org02b708b" class="outline-2">
+<h2 id="org02b708b"><span class="section-number-2">1</span> Objects</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Objects</b> are values useful for grouping pieces of information together. When it comes to representing real-world information in code, we often have pieces of information that are intuitively grouped together. For example, a person has a name, favorite color, and favorite food. How can we group this information about one person together, using the tools we have so far? One option would be to create separate variable for each value.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const personName = 'Alice';
 const favoriteColor = 'red';
 const favoriteFood = 'sushi';
@@ -183,7 +263,6 @@ This works fine for such a trivial example, but what about when we want to pass 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const coupleDining = (name1, color1, food1, name2, color2, food2) =&gt; {
   console.log(`${name1} and ${name2} would enjoy a meal consisting of ${food1} and ${food2} in a ${color1} and ${color2} room.`);
 };
@@ -197,7 +276,6 @@ This works, but it's different from how we think about the problem. We want this
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">// Using indexing
 const coupleDining = (person1, person2) =&gt; {
   console.log(`${person1[0]} and ${person2[0]} would enjoy a meal consisting of ${person1[2]} and ${person2[2]} in a ${person1[1]} and ${person2[1]} room.`);
@@ -219,7 +297,6 @@ This is a bit better, since we are now grouping the information of each person t
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const coupleDining = (person1, person2) =&gt; {
   console.log(`${person1.name} and ${person2.name} would enjoy a meal consisting of ${person1.favoriteFood} and ${person2.favoriteFood} in a ${person1.favoriteColor} and ${person2.favoriteColor} room.`);
 };
@@ -236,15 +313,14 @@ Now our code reads more clearly! Each person has named properties and the order 
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Creating</h3>
+<div id="outline-container-orgac45480" class="outline-3">
+<h3 id="orgac45480"><span class="section-number-3">1.1</span> Creating</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 An object is comprised of <b>key-value pairs</b>. The keys are strings and their corresponding values can be any type (even objects!). Each key-value pair represents a property of the object. In a single line, an object representing a store product could look like this: <code>{name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'}</code>. Bigger objects are more pleasant to look at when written on multiple lines:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">{
   name: 'Marvin',
   age: 8,
@@ -265,7 +341,6 @@ An object printed in the console sometimes looks slightly different than the sam
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log({name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'});
 
 const myCat = {
@@ -273,7 +348,8 @@ const myCat = {
   age: 8,
   species: 'cat',
   colors: ['black', 'white'],
-  sex: 'female', friendly: true
+  sex: 'female',
+  friendly: true
 };
 console.log(myCat);
 </pre>
@@ -284,7 +360,6 @@ If we have any key names inside of variables, we must use square brackets to use
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const key1 = 'name';
 const value1 = 'Marvin';
 const key2 = 'age';
@@ -295,7 +370,8 @@ const myCat = {
   [key2]: value2,
   species: 'cat',
   colors: ['black', 'white'],
-  sex: 'female', friendly: true
+  sex: 'female',
+  friendly: true
 };
 console.log(myCat);
 </pre>
@@ -303,23 +379,22 @@ console.log(myCat);
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Accessing property values</h3>
+<div id="outline-container-org6c450bd" class="outline-3">
+<h3 id="org6c450bd"><span class="section-number-3">1.2</span> Accessing property values</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 There are three ways to access the values of an object's properties.
 </p>
 </div>
 
-<div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Dot notation</h4>
+<div id="outline-container-org7489112" class="outline-4">
+<h4 id="org7489112"><span class="section-number-4">1.2.1</span> Dot notation</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Dot notation is most similar to plain English. If <code>product</code> holds an object with a name property, we can use <code>product.name</code> to access the product's name.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 
 console.log(product.name); // Spirit Island Board Game
@@ -330,15 +405,14 @@ console.log(product.brand); // Greater Than Games
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Square bracket notation</h4>
+<div id="outline-container-org2e5c7b6" class="outline-4">
+<h4 id="org2e5c7b6"><span class="section-number-4">1.2.2</span> Square bracket notation</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Using square brackets is similar to using index numbers with arrays.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 
 console.log(product['name']); // Spirit Island Board Game
@@ -352,7 +426,6 @@ This may seem like unnecessary syntax when we have the dot notation at our dispo
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 const n = 'name';
 const p = 'price';
@@ -368,15 +441,14 @@ console.log(product.b); // undefined -- this tries to use a key named 'b' of pro
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Destructuring</h4>
+<div id="outline-container-org03c1374" class="outline-4">
+<h4 id="org03c1374"><span class="section-number-4">1.2.3</span> Destructuring</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Sometimes we don't want to give an object a name, but rather go straight to its properties. Destructuring allows us to create variables whose names are the exact names of keys of a given object.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 
 const {name, price, brand} = product; // Destructuring happens on the left
@@ -396,7 +468,6 @@ This can come in handy when we're not interested in all the properties of an obj
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const myCat = {
   name: 'Marvin',
   age: 8,
@@ -422,8 +493,8 @@ In the end, dot notation and object destructuring are simply shortcuts. We could
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Updating properties</h3>
+<div id="outline-container-orgaf57488" class="outline-3">
+<h3 id="orgaf57488"><span class="section-number-3">1.3</span> Updating properties</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 When we need to update a property's value in an object, we can make a copy of the object and change only what we need to.
@@ -434,7 +505,6 @@ To copy an object, we can use the <b>spread</b> operator: <code>...</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 const productCopy = {...product};
 
@@ -452,7 +522,6 @@ Let's lower the price of our product object.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 const productSale = {...product, price: 47.97};
 
@@ -470,7 +539,6 @@ We can update as many properties as we want in a single operation, even adding n
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 const newProduct = {...product, price: 79.95, name: 'Spirit Island', stock: 9};
 
@@ -484,7 +552,6 @@ Changing a value based on its previous value is common too.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games', stock: 9};
 const moreProduct = {...product, stock: product.stock + 1};
 
@@ -495,23 +562,22 @@ console.log(moreProduct); // (increased stock by 1)
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Functions</h3>
+<div id="outline-container-org7e8a027" class="outline-3">
+<h3 id="org7e8a027"><span class="section-number-3">1.4</span> Functions</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 There are a few very useful functions for dealing with objects. Each of the following functions take an object and return an array. After all, we have plenty of ways of dealing with arrays.
 </p>
 </div>
 
-<div id="outline-container-sec-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Object.keys()</h4>
+<div id="outline-container-orga9afaba" class="outline-4">
+<h4 id="orga9afaba"><span class="section-number-4">1.4.1</span> Object.keys()</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 Get the keys of an object.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 
 console.log(Object.keys(product)); // [ 'name', 'price', 'brand' ]
@@ -520,15 +586,14 @@ console.log(Object.keys(product)); // [ 'name', 'price', 'brand' ]
 </div>
 </div>
 
-<div id="outline-container-sec-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Object.values()</h4>
+<div id="outline-container-org6676a10" class="outline-4">
+<h4 id="org6676a10"><span class="section-number-4">1.4.2</span> Object.values()</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 Get the values of an object.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
 
 console.log(Object.values(product)); // [ 'Spirit Island Board Game', 95.95, 'Greater Than Games' ]
@@ -537,15 +602,14 @@ console.log(Object.values(product)); // [ 'Spirit Island Board Game', 95.95, 'Gr
 </div>
 </div>
 
-<div id="outline-container-sec-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Object.entries()</h4>
+<div id="outline-container-org411edf6" class="outline-4">
+<h4 id="org411edf6"><span class="section-number-4">1.4.3</span> Object.entries()</h4>
 <div class="outline-text-4" id="text-1-4-3">
 <p>
 Get the key-value pairs of an object. Returns an array of pairs (each pair is an array of two elements).
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const obj = {a: 1, b: 2, c: 3};
 
 console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
@@ -555,14 +619,15 @@ console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
 </div>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Exercises</h2>
+
+<div id="outline-container-org8fe2590" class="outline-2">
+<h2 id="org8fe2590"><span class="section-number-2">2</span> Exercises</h2>
 <div class="outline-text-2" id="text-2">
 <ul>
-    <li><a href="09-objects-exercises.js">View exercises</a></li>
-    <li><a href="09-objects-exercises.js" download type="application/octet-stream">Download exercises</a></li>
-    <li><a href="09-objects-solutions.js">View solutions</a></li>
-    <li><a href="09-objects-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+	<li><a href="09-objects-exercises.js">View exercises</a></li>
+	<li><a href="09-objects-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="09-objects-solutions.js">View solutions</a></li>
+	<li><a href="09-objects-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 </div>
 </div>

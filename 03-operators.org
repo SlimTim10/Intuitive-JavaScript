@@ -74,7 +74,7 @@ Get the remainder left over from dividing one number by another. Using the resul
   console.log(5 % 10); // 5
 #+end_src
 
-** Logical (Boolean) operators
+** Logical (Boolean) Operators
 These operators work on *boolean* type values (true or false). These kinds of operations might feel a bit foreign, but you actually use them on a regular basis even if you don't notice it. Whenever you say something that would be considered true or false, you can use one of the following operators to get a new true-or-false result. We will look at plain English examples along the way.
 
 *** Not (~!~)
@@ -145,7 +145,7 @@ A way to combine two boolean values that results in true when either value is tr
   console.log(c); // true
 #+end_src
 
-** Relational and equality operators
+** Relational and Equality Operators
 What these operators do will also be familiar in an intuitive sense. These will allow us to compare various types of values, but always give a *boolean* value (true or false) as a result.
 
 *** Less than (~<~), less than or equal (~<=~)
@@ -212,7 +212,18 @@ console.log([] !== []); // true
 console.log({} !== {}); // true
 #+end_src
 
-** Using operators
+** String Operators
+
+*** Concatenation (~+~)
+Put two strings together. This is the same symbol as addition for numbers.
+
+#+begin_src js
+const a = 'Hello, ';
+const b = 'world!';
+console.log(a + b); // prints "Hello, world!"
+#+end_src
+
+** Using Operators
 Naturally, we don't have to use these operators in isolation. They can be combined in countless ways to do achieve different results.
 
 Now that we have some interesting tools to use, it's a good time to try executing a JavaScript file full of code instead of using the REPL. While the REPL allows us to write code directly in it, it's not so great for general programming where we want to write chunks of code and re-run it with changes. Instead of the REPL, we should write our code in a file and run it all at once with node. Try copying the following block of code into a file called "script.js", then run the file with node using the terminal command: ~node script.js~.
@@ -259,6 +270,5 @@ When you run this code, you should notice that the ~console.log~ statements are 
 
 Try changing the values and adding more code. Get creative!
 
-* A word about errors
-
+* A Word About Errors
 Sometimes when you run your code, you may see node produce an error instead of the expected result. That's not a bad thing! Node is trying to help make sure your code is unambiguous and doesn't contain any silly mistakes that may cause unexpected problems. Think of errors as a gentle way of pointing out that something needs to be fixed in your code. Understanding the errors that node produces can take a lot of practice. Every error will have a message to attempt to let you know why there is an error in the first place and approximately where the problem is in your code (by telling you a line number). Because of the complexity of the code interpretation process, the error message and line number may not actually point you in the right direction! That being said, you should first assume that the error message is helpful and use its guidance, but just be aware that it's not a guarantee and you might need to look elsewhere. You will get to know the common errors with practice.

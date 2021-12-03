@@ -5,7 +5,7 @@ const num = 12;
 process.stdout.write('1. ');
 
 /*
-1. Only print this message if num is greater than 10.
+1. Only print the following message if num is greater than 10.
 Try changing the value of num to make sure your code works.
 */
 if (num > 10) {

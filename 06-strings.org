@@ -88,17 +88,17 @@ console.log(name.slice(2)); // ice
 console.log(name.slice(1, 4)); // lic
 #+END_SRC
 
-** Further reading
+** Further Reading
 Read more about strings on MDN:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 * Exercises
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT HTML
 <ul>
 	<li><a href="06-strings-exercises.js">View exercises</a></li>
 	<li><a href="06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
 	<li><a href="06-strings-solutions.js">View solutions</a></li>
 	<li><a href="06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
-#+END_HTML
+#+END_EXPORT

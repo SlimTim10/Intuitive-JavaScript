@@ -260,13 +260,14 @@ const obj = {a: 1, b: 2, c: 3};
 
 console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
 #+END_SRC
+
 * Exercises
 
-#+BEGIN_HTML
+#+BEGIN_EXPORT HTML
 <ul>
 	<li><a href="09-objects-exercises.js">View exercises</a></li>
 	<li><a href="09-objects-exercises.js" download type="application/octet-stream">Download exercises</a></li>
 	<li><a href="09-objects-solutions.js">View solutions</a></li>
 	<li><a href="09-objects-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
-#+END_HTML
+#+END_EXPORT

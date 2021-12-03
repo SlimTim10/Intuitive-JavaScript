@@ -183,7 +183,7 @@ const fruits = ['banana', 'cherry', 'fig', 'apple', 'date', 'elderberry'];
 console.log(fruits.sort().reverse()); // [ 'fig', 'elderberry', 'date', 'cherry', 'banana', 'apple' ]
 #+END_SRC
 
-** Gotcha! Sneaky methods
+** Gotcha! Sneaky Methods
 The ~sort()~ and ~reverse()~ methods do something sneaky that you probably didn't realize. They /change the original array/. That means, after using ~sort()~ or ~reverse()~ on an array, you no longer have the original order! You can't stop them from doing this, but being aware of it can help you track down tricky bugs caused by it.
 
 #+BEGIN_SRC js
@@ -197,7 +197,7 @@ console.log(someNumbers); // [ -6, 0, 10, 3, 99 ] -- updated again!
 
 We can know that ~sort()~ behaves this way because the [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort][MDN documentation]] says it sorts the array /in place/.
 
-** Adding to arrays
+** Adding to Arrays
 We have seen how we can extract a single element from an array using its index. And we can take a portion of an array using ~slice()~, ending up with fewer elements. But what if we want to add more elements to an array?
 
 If we try to do something like the following, we won't end up with the array we want.
@@ -281,3 +281,14 @@ const managers = ['Eve', 'Frank', 'Grace'];
 const staff = [...newTeachers, ...managers]; // gather all staff together
 console.log(staff);// [ 'Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace' ]
 #+END_SRC
+
+* Exercises
+
+#+BEGIN_EXPORT HTML
+<ul>
+	<li><a href="07-arrays-exercises.js">View exercises</a></li>
+	<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="07-arrays-solutions.js">View solutions</a></li>
+	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_EXPORT

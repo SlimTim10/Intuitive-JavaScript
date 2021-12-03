@@ -1,5 +1,7 @@
 #+SETUPFILE: setup.org
-#+TITLE: Practical Functional JavaScript
+#+TITLE: Intuitive JavaScript
+
+* Preface (WIP)
 
 * [[file:01-first-steps.html][First Steps]]
 
@@ -18,7 +20,7 @@
 </ul>
 #+END_EXPORT
 
-* Functions (WIP)
+* [[file:05-functions.html][Functions]]
 
 #+BEGIN_EXPORT HTML
 <ul>

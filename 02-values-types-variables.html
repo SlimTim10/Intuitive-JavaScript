@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-21 Sun 09:32 -->
+<!-- 2021-11-24 Wed 16:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Values, Types, and Variables</title>
@@ -229,24 +229,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8e40b5a">1. Values, Types, and Variables</a>
+<li><a href="#org8d54692">1. Values, Types, and Variables</a>
 <ul>
-<li><a href="#org39c6efe">1.1. Introduction</a></li>
-<li><a href="#org63dee53">1.2. Values and Types</a></li>
-<li><a href="#orgec4bad5">1.3. Variables</a></li>
-<li><a href="#orgc680e6a">1.4. Example REPL session</a></li>
+<li><a href="#org074330f">1.1. Introduction</a></li>
+<li><a href="#orgefc2866">1.2. Values and Types</a></li>
+<li><a href="#org9420a28">1.3. Variables</a></li>
+<li><a href="#orgee0b05a">1.4. Example REPL Session</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8e40b5a" class="outline-2">
-<h2 id="org8e40b5a"><span class="section-number-2">1</span> Values, Types, and Variables</h2>
+<div id="outline-container-org8d54692" class="outline-2">
+<h2 id="org8d54692"><span class="section-number-2">1</span> Values, Types, and Variables</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org39c6efe" class="outline-3">
-<h3 id="org39c6efe"><span class="section-number-3">1.1</span> Introduction</h3>
+<div id="outline-container-org074330f" class="outline-3">
+<h3 id="org074330f"><span class="section-number-3">1.1</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.
@@ -254,8 +254,8 @@ Programming, by and large, is a matter of computing information. While that may 
 </div>
 </div>
 
-<div id="outline-container-org63dee53" class="outline-3">
-<h3 id="org63dee53"><span class="section-number-3">1.2</span> Values and Types</h3>
+<div id="outline-container-orgefc2866" class="outline-3">
+<h3 id="orgefc2866"><span class="section-number-3">1.2</span> Values and Types</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <b>Values</b> represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain <b>type</b>. In other words, a value does not exist on its own without a type.
@@ -290,8 +290,8 @@ Let's look at a brief meaning of each type and some possible values.
 </p>
 </div>
 
-<div id="outline-container-org8a08d92" class="outline-4">
-<h4 id="org8a08d92"><span class="section-number-4">1.2.1</span> undefined</h4>
+<div id="outline-container-org9e27797" class="outline-4">
+<h4 id="org9e27797"><span class="section-number-4">1.2.1</span> undefined</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 <b>undefined</b> exists sort of as a catch-all for when no other value and type fits the situation. Most commonly, it is the value and type given to a variable that hasn't explicitly been given any other value, or a function that doesn't return any other value.
@@ -303,8 +303,8 @@ There is only one possible value of the undefined type, of the same name: <code>
 </div>
 </div>
 
-<div id="outline-container-org1301aa9" class="outline-4">
-<h4 id="org1301aa9"><span class="section-number-4">1.2.2</span> null</h4>
+<div id="outline-container-org213d118" class="outline-4">
+<h4 id="org213d118"><span class="section-number-4">1.2.2</span> null</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 <b>null</b> is similar to undefined. It is commonly used in the scenario where a value is expected to be an object that may not exist. If the object doesn't exist, null is used. It is preferred to use null when setting a value to mean "this doesn't exist" instead of undefined because undefined gets used by the JavaScript interpreter automatically.
@@ -316,8 +316,8 @@ There is only one possible value of the null type, of the same name: <code>null<
 </div>
 </div>
 
-<div id="outline-container-org9db8cd0" class="outline-4">
-<h4 id="org9db8cd0"><span class="section-number-4">1.2.3</span> number</h4>
+<div id="outline-container-org57dc84a" class="outline-4">
+<h4 id="org57dc84a"><span class="section-number-4">1.2.3</span> number</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 The <b>number</b> type is self-explanatory. Anytime we want to represent a number of any sort, we would want to use the number type.
@@ -336,8 +336,8 @@ Possible values:
 </div>
 </div>
 
-<div id="outline-container-org96578c7" class="outline-4">
-<h4 id="org96578c7"><span class="section-number-4">1.2.4</span> boolean</h4>
+<div id="outline-container-org26e36ce" class="outline-4">
+<h4 id="org26e36ce"><span class="section-number-4">1.2.4</span> boolean</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 The <b>boolean</b> type is for representing something that can only be one of two values:
@@ -349,8 +349,8 @@ The <b>boolean</b> type is for representing something that can only be one of tw
 </div>
 </div>
 
-<div id="outline-container-org033b94a" class="outline-4">
-<h4 id="org033b94a"><span class="section-number-4">1.2.5</span> function</h4>
+<div id="outline-container-orgd9535d5" class="outline-4">
+<h4 id="orgd9535d5"><span class="section-number-4">1.2.5</span> function</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 The <b>function</b> type is for representing a sort of operation that can be applied to values to produce another value.
@@ -366,8 +366,8 @@ Functions will be covered later in depth.
 </div>
 </div>
 
-<div id="outline-container-org496f66b" class="outline-4">
-<h4 id="org496f66b"><span class="section-number-4">1.2.6</span> string</h4>
+<div id="outline-container-orgb49a7eb" class="outline-4">
+<h4 id="orgb49a7eb"><span class="section-number-4">1.2.6</span> string</h4>
 <div class="outline-text-4" id="text-1-2-6">
 <p>
 The <b>string</b> type is for representing words and general text.
@@ -389,8 +389,8 @@ Strings will be covered later in depth.
 </div>
 </div>
 
-<div id="outline-container-org93523d5" class="outline-4">
-<h4 id="org93523d5"><span class="section-number-4">1.2.7</span> array</h4>
+<div id="outline-container-org047afd6" class="outline-4">
+<h4 id="org047afd6"><span class="section-number-4">1.2.7</span> array</h4>
 <div class="outline-text-4" id="text-1-2-7">
 <p>
 The <b>array</b> type is for holding a list of values. The values inside of an array can be any type (including arrays themselves).
@@ -413,8 +413,8 @@ Arrays will be covered later in depth.
 </div>
 </div>
 
-<div id="outline-container-org1a5c94d" class="outline-4">
-<h4 id="org1a5c94d"><span class="section-number-4">1.2.8</span> object</h4>
+<div id="outline-container-org1716868" class="outline-4">
+<h4 id="org1716868"><span class="section-number-4">1.2.8</span> object</h4>
 <div class="outline-text-4" id="text-1-2-8">
 <p>
 The <b>object</b> type is for representing a more complex structure that doesn't fit into any of the other types. Defining an object of a particular structure can be thought of as defining a new type.
@@ -436,8 +436,8 @@ Objects will be covered later in depth.
 </div>
 </div>
 
-<div id="outline-container-orgec4bad5" class="outline-3">
-<h3 id="orgec4bad5"><span class="section-number-3">1.3</span> Variables</h3>
+<div id="outline-container-org9420a28" class="outline-3">
+<h3 id="org9420a28"><span class="section-number-3">1.3</span> Variables</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <b>Variables</b> let us assign a name to a value and reuse it wherever we want.
@@ -470,8 +470,8 @@ Defining a variable is a kind of <b>statement</b>, which is an expression that J
 </div>
 </div>
 
-<div id="outline-container-orgc680e6a" class="outline-3">
-<h3 id="orgc680e6a"><span class="section-number-3">1.4</span> Example REPL session</h3>
+<div id="outline-container-orgee0b05a" class="outline-3">
+<h3 id="orgee0b05a"><span class="section-number-3">1.4</span> Example REPL Session</h3>
 <div class="outline-text-3" id="text-1-4">
 <pre class="example">
 C:\Users\Tim&gt;node

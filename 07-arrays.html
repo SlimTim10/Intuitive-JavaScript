@@ -3,22 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2021-11-24 Wed 16:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Arrays</title>
-<!-- 2021-03-03 Wed 13:32 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -32,7 +39,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -44,31 +51,128 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -85,57 +189,34 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" href="highlight/styles/vs2015.css">
 <script src="highlight/highlight.pack.js"></script>
-<script>document.addEventListener('DOMContentLoaded', (event) => document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)))</script>
+<script>document.addEventListener('DOMContentLoaded', (event) => { hljs.configure({tabReplace: '    '}); document.querySelectorAll('pre.src').forEach((block) => hljs.highlightBlock(block)) })</script>
 <style type="text/css">code { background: #ddd; } pre.src { white-space: pre-wrap; }</style>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -148,38 +229,38 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Arrays</a>
+<li><a href="#orge32b1f6">1. Arrays</a>
 <ul>
-<li><a href="#sec-1-1">1.1. Create</a></li>
-<li><a href="#sec-1-2">1.2. Index</a></li>
-<li><a href="#sec-1-3">1.3. Length</a></li>
-<li><a href="#sec-1-4">1.4. Gotcha! Equality</a></li>
-<li><a href="#sec-1-5">1.5. Methods</a></li>
-<li><a href="#sec-1-6">1.6. Gotcha! Sneaky methods</a></li>
-<li><a href="#sec-1-7">1.7. Adding to arrays</a></li>
+<li><a href="#orgba39c1d">1.1. Create</a></li>
+<li><a href="#orge829d0c">1.2. Index</a></li>
+<li><a href="#org2d75d02">1.3. Length</a></li>
+<li><a href="#orge06c2c2">1.4. Gotcha! Equality</a></li>
+<li><a href="#orgc87269f">1.5. Methods</a></li>
+<li><a href="#org50ec29d">1.6. Gotcha! Sneaky Methods</a></li>
+<li><a href="#org0a18df4">1.7. Adding to Arrays</a></li>
 </ul>
 </li>
+<li><a href="#orgb740a94">2. Exercises</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Arrays</h2>
+<div id="outline-container-orge32b1f6" class="outline-2">
+<h2 id="orge32b1f6"><span class="section-number-2">1</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 What's more common than dealing with a single primitive value (like a number, boolean, or string), is dealing with a collection of values. That's where <b>arrays</b> come in. Arrays are values that are sort of like strings, but instead of holding a list of characters, they can hold a list of any values. If we have an array, we can deal with multiple values all at once. Arrays always have an order; just like writing down a list of groceries, there is an order (top to bottom), even if you don't care about it or use it.
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Create</h3>
+<div id="outline-container-orgba39c1d" class="outline-3">
+<h3 id="orgba39c1d"><span class="section-number-3">1.1</span> Create</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 To create an array is easy! We use square brackets to surround a bunch of values separated by commas, like so: <code>[2, 3, 4, 5]</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log([2, 3, 4, 5]); // print the array
 </pre>
 </div>
@@ -189,7 +270,6 @@ Naturally, an array itself is a value (even though it holds multiple values insi
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const evenNumbers = [2, 4, 6, 8, 10];
 console.log(evenNumbers);
 </pre>
@@ -200,7 +280,6 @@ Of course, we don't have to limit ourselves to numbers. Any values work in array
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fruits = ['apple', 'banana', 'cherry'];
 console.log(fruits);
 
@@ -214,7 +293,6 @@ We can also put different types of values in the same array, although it may not
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const mix = [1, 2, 'apple', true, undefined, null, false, -1000];
 console.log(mix);
 </pre>
@@ -225,7 +303,6 @@ We can even put arrays in arrays. This <i>is</i> often useful!
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 console.log(matrix);
 </pre>
@@ -233,15 +310,14 @@ console.log(matrix);
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Index</h3>
+<div id="outline-container-orge829d0c" class="outline-3">
+<h3 id="orge829d0c"><span class="section-number-3">1.2</span> Index</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Because an array is a list of values, we often need to get one element from that list. Like strings, we can get an element by its <b>index</b> number. Remember that index numbers start from 0, not 1.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fruits = ['apple', 'banana', 'cherry'];
 console.log(fruits[0]); // apple
 console.log(fruits[1]); // banana
@@ -254,7 +330,6 @@ This also works for nested arrays.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 console.log(matrix[1]); // [4, 5, 6]
 console.log(matrix[1][0]); // 4
@@ -263,15 +338,14 @@ console.log(matrix[1][0]); // 4
 </div>
 </div>
 
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Length</h3>
+<div id="outline-container-org2d75d02" class="outline-3">
+<h3 id="org2d75d02"><span class="section-number-3">1.3</span> Length</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Also like strings, arrays have the <b>length</b> property.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const empty = [];
 console.log(empty.length); // 0
 
@@ -298,15 +372,14 @@ console.log(matrix[0].length); // 3 -- because the first row of the matrix is an
 </div>
 </div>
 
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Gotcha! Equality</h3>
+<div id="outline-container-orge06c2c2" class="outline-3">
+<h3 id="orge06c2c2"><span class="section-number-3">1.4</span> Gotcha! Equality</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Checking if two arrays are equal (i.e. the same values) is counter-intuitive in JavaScript. Let's look at an example.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const numbers = [1, 2, 3];
 const sameNumbers = [1, 2, 3];
 console.log(numbers === numbers); // true
@@ -320,23 +393,22 @@ What? How could this be false? The two arrays are clearly identical. It turns ou
 </div>
 </div>
 
-<div id="outline-container-sec-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Methods</h3>
+<div id="outline-container-orgc87269f" class="outline-3">
+<h3 id="orgc87269f"><span class="section-number-3">1.5</span> Methods</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Let's look at some array methods we can get a lot of use out of.
 </p>
 </div>
 
-<div id="outline-container-sec-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> includes()</h4>
+<div id="outline-container-org20414e3" class="outline-4">
+<h4 id="org20414e3"><span class="section-number-4">1.5.1</span> includes()</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 The <code>includes()</code> method lets us check if a specific value is included in an array, returning true or false.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const empty = [];
 console.log(empty.includes(0)); // false
 
@@ -367,15 +439,14 @@ console.log(matrix[2].includes(9)); // true
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> slice()</h4>
+<div id="outline-container-orga0e0070" class="outline-4">
+<h4 id="orga0e0070"><span class="section-number-4">1.5.2</span> slice()</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <p>
 The <code>slice()</code> method lets us grab just a portion of an array. The first argument is the index to start from. The optional second argument is the index to stop at (without the second argument, it goes until the end). It returns an array containing the elements between. It will always return an array, even if it's empty.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const empty = [];
 console.log(empty.slice(0)); // []
 
@@ -401,15 +472,14 @@ console.log(matrix.slice(1, 2)[0].slice(0, 1)); // [4]
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> sort()</h4>
+<div id="outline-container-orgae5d95d" class="outline-4">
+<h4 id="orgae5d95d"><span class="section-number-4">1.5.3</span> sort()</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <p>
 It's often that we have a list of numbers, words, or other things that need to be sorted into order. The <code>sort()</code> method lets us do exactly that!
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 99, 0, -6, 10];
 console.log(someNumbers.sort()); // [ -6, 0, 10, 3, 99 ]
 
@@ -420,15 +490,14 @@ console.log(fruits.sort()); // [ 'apple', 'banana', 'cherry', 'date', 'elderberr
 </div>
 </div>
 
-<div id="outline-container-sec-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> reverse()</h4>
+<div id="outline-container-orgee6c197" class="outline-4">
+<h4 id="orgee6c197"><span class="section-number-4">1.5.4</span> reverse()</h4>
 <div class="outline-text-4" id="text-1-5-4">
 <p>
 We can use <code>reverse()</code> to reverse the order of an array.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 99, 0, -6, 10];
 console.log(someNumbers.reverse()); // [ 10, -6, 0, 99, 3 ]
 console.log(someNumbers.sort().reverse()); // [ 99, 3, 10, 0, -6 ]
@@ -441,15 +510,14 @@ console.log(fruits.sort().reverse()); // [ 'fig', 'elderberry', 'date', 'cherry'
 </div>
 </div>
 
-<div id="outline-container-sec-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Gotcha! Sneaky methods</h3>
+<div id="outline-container-org50ec29d" class="outline-3">
+<h3 id="org50ec29d"><span class="section-number-3">1.6</span> Gotcha! Sneaky Methods</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 The <code>sort()</code> and <code>reverse()</code> methods do something sneaky that you probably didn't realize. They <i>change the original array</i>. That means, after using <code>sort()</code> or <code>reverse()</code> on an array, you no longer have the original order! You can't stop them from doing this, but being aware of it can help you track down tricky bugs caused by it.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 99, 0, -6, 10];
 console.log(someNumbers); // [ 3, 99, 0, -6, 10 ]
 console.log(someNumbers.reverse()); // [ 10, -6, 0, 99, 3 ]
@@ -465,8 +533,8 @@ We can know that <code>sort()</code> behaves this way because the <a href="https
 </div>
 </div>
 
-<div id="outline-container-sec-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Adding to arrays</h3>
+<div id="outline-container-org0a18df4" class="outline-3">
+<h3 id="org0a18df4"><span class="section-number-3">1.7</span> Adding to Arrays</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 We have seen how we can extract a single element from an array using its index. And we can take a portion of an array using <code>slice()</code>, ending up with fewer elements. But what if we want to add more elements to an array?
@@ -477,7 +545,6 @@ If we try to do something like the following, we won't end up with the array we 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [1, 2, 3];
 const moreNumbers = [someNumbers, 4, 5, 6];
 console.log(moreNumbers); // [ [ 1, 2, 3 ], 4, 5, 6 ]
@@ -493,7 +560,6 @@ We need to use some new syntax. The <b>spread</b> operator: <code>...</code> . W
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [1, 2, 3];
 const moreNumbers = [...someNumbers, 4, 5, 6];
 console.log(moreNumbers); // [ 1, 2, 3, 4, 5, 6 ]
@@ -505,7 +571,6 @@ The spread operator can be used on any array. Adding arrays together becomes ver
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">console.log([...[1, 2, 3], ...[4, 5, 6], ...['apple', 'banana', 'cherry']]); // [ 1, 2, 3, 4, 5, 6, 'apple', 'banana', 'cherry' ]
 
 // Watch what happens without spread
@@ -518,7 +583,6 @@ Adding a new element to an array is easy now. We can even add it to the start or
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const fruits = ['banana', 'cherry'];
 
 const moreFruits = ['apple', ...fruits];
@@ -534,7 +598,6 @@ With a bit of cleverness, we can even add an element somewhere in the middle!
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [1, 2, 3, 5, 6, 7];
 const moreNumbers = [...someNumbers.slice(0, 3), 4, ...someNumbers.slice(3)];
 console.log(moreNumbers); // [ 1, 2, 3, 4, 5, 6, 7 ]
@@ -546,7 +609,6 @@ Or replace the first element.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [99, 2, 3, 4];
 const betterNumbers = [1, ...someNumbers.slice(1)];
 console.log(betterNumbers); // [ 1, 2, 3, 4 ]
@@ -558,7 +620,6 @@ In fact, the spread operator can be used to copy arrays so the <code>sort()</cod
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const someNumbers = [3, 99, 0, -6, 10];
 const fakeCopyNumbers = someNumbers; // not a real copy
 const copyNumbers = [...someNumbers]; // exact copy of someNumbers
@@ -577,7 +638,6 @@ The most common real-world uses of adding to arrays are: adding an element to th
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-js">const teachers = ['Alice', 'Bob', 'Carol'];
 const newTeachers = [...teachers, 'Dave']; // add the new teacher Dave
 console.log(newTeachers); // [ 'Alice', 'Bob', 'Carol', 'Dave' ]
@@ -588,6 +648,18 @@ console.log(staff);// [ 'Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace'
 </pre>
 </div>
 </div>
+</div>
+</div>
+
+<div id="outline-container-orgb740a94" class="outline-2">
+<h2 id="orgb740a94"><span class="section-number-2">2</span> Exercises</h2>
+<div class="outline-text-2" id="text-2">
+<ul>
+	<li><a href="07-arrays-exercises.js">View exercises</a></li>
+	<li><a href="07-arrays-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="07-arrays-solutions.js">View solutions</a></li>
+	<li><a href="07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
 </div>
 </div>
 </div>

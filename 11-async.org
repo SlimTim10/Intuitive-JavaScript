@@ -22,7 +22,7 @@ On the other hand, *asynchronous* operations do not wait for other operations to
 
 There are three ways of handling asynchronous operations: callbacks, promises, and async/await (which is simplified syntax for using promises).
 
-** Using callbacks
+** Using Callbacks
 If a function performs an asynchronous operation, it is up to us to decide what to do after the operation is complete. In order to give us flexibility, the asynchronous function may take in a callback function as an argument. We define the callback function to do whatever it is we want to do after the asynchronous operation, and provide the callback to the asynchronous function. It is the asynchronous function's job to call our callback function (that's what makes it a 'callback').
 
 #+BEGIN_SRC js
@@ -159,7 +159,7 @@ console.log('Starting task...'); // This prints first!
 
 In the above code, the order of operations now matches the written order (top to bottom), with the exception of the last line. However, there is a cascading effect. As more asynchronous operations are added (and we follow standard code styling), their callbacks are indented more and more. If we added ten more successive asynchronous operations, the last one's code would be indented quite a lot! It seems we have to make a decision with unfortunate tradeoffs. This is where promises help.
 
-** Using promises
+** Using Promises
 As a sidenote, this material will not be about /creating/ promises. It is much more important to learn how to /use/ them. Just like we don't need to know how to create ~console.log()~ or other built-in functions from scratch, even if the knowledge may be interesting. In practice, you can go a long way without ever needing to create your own promises. Once you are comfortable with using promises, you should be able to easily learn how to create them as well.
 
 *Promises* are special objects for dealing with asynchronous operations. A promise has three potential states: pending, fulfilled, and rejected. This suits the pattern of what happens when dealing with external data. Taking the previous example of reading in the contents of a text file on our computer, the operation 'read in the contents of first.txt' will first be pending while node looks for 'first.txt' (this is what makes it asynchronous). Once the file is found and its contents are read in, the operation is fulfilled and we can then do what we want with the file's contents. If instead the file is not found because it doesn't exist, the operation is rejected and we can print a message saying so.
@@ -269,7 +269,7 @@ console.log('Starting task...');
 
 From here, we could continue the chaining pattern to add successive asynchronous operations and our code would remain linear without increasing indentation. While this is an improvement on the pure callback approach, we are still dealing with callbacks inside of ~then()~ and ~catch()~. The following section shows how we can avoid callbacks altogether and write linear-reading code that involves asynchronous operations.
 
-** Using async/await
+** Using Async/Await
 The *async* and *await* keywords are syntactic sugar over promises, meaning they use promises exactly the same way as described above but simply make the code look different. Instead of having a function explicitly return a promise, it can be defined with the word 'async' before it.
 
 #+BEGIN_SRC js

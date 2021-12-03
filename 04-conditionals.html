@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-22 Mon 15:50 -->
+<!-- 2021-11-24 Wed 16:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Conditionals</title>
@@ -229,19 +229,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgeab8cc8">1. Conditionals</a>
+<li><a href="#org592a044">1. Conditionals</a>
 <ul>
-<li><a href="#org5731737">1.1. If-else</a></li>
-<li><a href="#org1670398">1.2. Ternary operator</a></li>
+<li><a href="#org8bb7893">1.1. If-else</a></li>
+<li><a href="#org61a8753">1.2. Ternary Operator</a></li>
 </ul>
 </li>
-<li><a href="#orgb2d9daf">2. Exercises</a></li>
+<li><a href="#orgf5fefff">2. Exercises</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgeab8cc8" class="outline-2">
-<h2 id="orgeab8cc8"><span class="section-number-2">1</span> Conditionals</h2>
+<div id="outline-container-org592a044" class="outline-2">
+<h2 id="org592a044"><span class="section-number-2">1</span> Conditionals</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Conditionals are an essential tool in programming. We need a way for our code to take different paths depending on some value.
@@ -256,13 +256,13 @@ A condition is an expression that results in a boolean value (either true or fal
 </p>
 </div>
 
-<div id="outline-container-org5731737" class="outline-3">
-<h3 id="org5731737"><span class="section-number-3">1.1</span> If-else</h3>
+<div id="outline-container-org8bb7893" class="outline-3">
+<h3 id="org8bb7893"><span class="section-number-3">1.1</span> If-else</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-js">if (condition) {
-  console.log('the condition is true!');
-}
+<pre class="src src-js">  if (condition) {
+	console.log('the condition is true!');
+  }
 </pre>
 </div>
 
@@ -275,10 +275,10 @@ Just like in plain English, we can say "If I have less than 5 apples, then I sho
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const apples = 2;
-if (apples &lt; 5) {
-  console.log('I should go buy more apples.');
-}
+<pre class="src src-js">  const apples = 2;
+  if (apples &lt; 5) {
+	console.log('I should go buy more apples.');
+  }
 </pre>
 </div>
 
@@ -291,18 +291,18 @@ If I instead want to catch the case where the condition is false, I can check th
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const apples = 2;
-if (apples &gt;= 5) {
-  console.log('I have enough apples.');
-}
+<pre class="src src-js">  const apples = 2;
+  if (apples &gt;= 5) {
+	console.log('I have enough apples.');
+  }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-js">const apples = 2;
-if (!(apples &lt; 5)) {
-  console.log('I have enough apples.');
-}
+<pre class="src src-js">  const apples = 2;
+  if (!(apples &lt; 5)) {
+	console.log('I have enough apples.');
+  }
 </pre>
 </div>
 
@@ -315,19 +315,19 @@ There is an optional second part: the <code>else</code>. Instead of only handlin
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const apples = 2;
-if (apples &lt; 5) {
-  console.log('I should go buy more apples.');
-} else {
-  console.log('I have enough apples.');
-}
+<pre class="src src-js">  const apples = 2;
+  if (apples &lt; 5) {
+	console.log('I should go buy more apples.');
+  } else {
+	console.log('I have enough apples.');
+  }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1670398" class="outline-3">
-<h3 id="org1670398"><span class="section-number-3">1.2</span> Ternary operator</h3>
+<div id="outline-container-org61a8753" class="outline-3">
+<h3 id="org61a8753"><span class="section-number-3">1.2</span> Ternary Operator</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The ternary operator works a lot like the if-else statement, except it allows us to write an expression that results in a value. This is very useful, since we often want to use a resulting value depending on a condition.
@@ -347,9 +347,9 @@ Working with a similar example as before:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const apples = 2;
-const message = (apples &lt; 5) ? 'I should go buy more apples.' : 'I have enough apples.';
-console.log(message);
+<pre class="src src-js">  const apples = 2;
+  const message = (apples &lt; 5) ? 'I should go buy more apples.' : 'I have enough apples.';
+  console.log(message);
 </pre>
 </div>
 
@@ -358,13 +358,13 @@ See how in the above example we can store a new value depending on the condition
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const apples = 2;
-if (apples &lt; 5) {
-  const message = 'I should go buy more apples.';
-} else {
-  const message = 'I have enough apples.';
-}
-console.log(message); // ReferenceError: message is not defined
+<pre class="src src-js">  const apples = 2;
+  if (apples &lt; 5) {
+	const message = 'I should go buy more apples.';
+  } else {
+	const message = 'I have enough apples.';
+  }
+  console.log(message); // ReferenceError: message is not defined
 </pre>
 </div>
 
@@ -375,20 +375,15 @@ Running the above code results in an error because the scope of <code>message</c
 </div>
 </div>
 
-<div id="outline-container-orgb2d9daf" class="outline-2">
-<h2 id="orgb2d9daf"><span class="section-number-2">2</span> Exercises</h2>
+<div id="outline-container-orgf5fefff" class="outline-2">
+<h2 id="orgf5fefff"><span class="section-number-2">2</span> Exercises</h2>
 <div class="outline-text-2" id="text-2">
-<div class="HTML" id="orgd31058a">
-<p>
-&lt;ul&gt;
-	&lt;li&gt;&lt;a href="04-conditionals-exercises.js"&gt;View exercises&lt;/a&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;a href="04-conditionals-exercises.js" download type="application/octet-stream"&gt;Download exercises&lt;/a&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;a href="04-conditionals-solutions.js"&gt;View solutions&lt;/a&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;a href="04-conditionals-solutions.js" download type="application/octet-stream"&gt;Download solutions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</p>
-
-</div>
+<ul>
+	<li><a href="04-conditionals-exercises.js">View exercises</a></li>
+	<li><a href="04-conditionals-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="04-conditionals-solutions.js">View solutions</a></li>
+	<li><a href="04-conditionals-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
 </div>
 </div>
 </div>
