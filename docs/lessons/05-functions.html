@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Functions - Intuitive JavaScript</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/vs2015.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="../">Intuitive JavaScript</a>
+			</nav>
+		</header>
+
+		<main role="main">
+			<h1>Functions</h1>
+			<article>
+	<section>
+		<p>As you probably guessed, functions are a very important concept in functional programming. The good news is functions are not a complicated matter. In fact, the core concept of a function is quite simple; that’s what makes it powerful.</p>
+<p>Functions are everywhere in code, right from the start. We’ve been using node’s built-in <code>console.log()</code> function to print messages. Any JavaScript interpreter you use (node or a web browser) comes with tons of built-in functions ready to use. This lesson is about creating our own functions.</p>
+<p>One thing to keep in mind is: functions are a type of value just like the others. Recall that the possible types of values are as follows:</p>
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>number</li>
+<li>boolean</li>
+<li>function</li>
+<li>string</li>
+<li>array</li>
+<li>object</li>
+</ul>
+<p>This means we can set a variable to be equal to a function, just like any other value. What makes functions different from the other types is their ability to perform some action and return a result.</p>
+<h2 id="what-is-a-function">What is a function?</h2>
+<p>A function takes things in (called <strong>arguments</strong>) and <strong>returns</strong> something. When we define a function, we need to say how many things it takes in and what it returns. The thing it returns doesn’t necessarily need to make use of the things it takes in. Unlike the other types of values, functions have a particular way of being used: they’re meant to <em>do</em> something. When we want a function to do its action and return a value, we need to <strong>call</strong> (or “run”) the function. Calling a function makes the code inside the function run until it reaches a <code>return</code> statement (or the end of the function) and returns the value to the place where the function was called.</p>
+<p>The arguments that a function takes in can be any type of value (including functions) and the thing that a function returns can also be any type of value (it can even return a function).</p>
+<h2 id="anatomy-of-a-function">Anatomy of a function</h2>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">const</span> f <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">};</span></span></code></pre></div>
+<ul>
+<li>The above code defines a variable named <code>f</code> and assigns its value to be a function.</li>
+<li>The <code>(a, b)</code> part means the function accepts two <strong>arguments</strong> when we <strong>call</strong> it, and they will be referred to as <code>a</code> and <code>b</code> inside the scope of the <strong>function body</strong> (between the curly brackets). <strong>Arguments are variables</strong> that a function uses when it is called. Functions can have any number of arguments, most commonly between 0-4.</li>
+<li>The arrow <code>=&gt;</code> comes after the list of arguments and the curly brackets <code>{ }</code> denote the function body.</li>
+<li>In the function body, the <code>return</code> statement says what value is returned when the function is called; in this case, the result of adding the two given arguments, <code>a</code> and <code>b</code>. Functions often have a lot more code in their bodies.</li>
+</ul>
+<p>To make use of this function, we need to <strong>call</strong> it. The syntax for calling a function is writing the function’s name directly followed by round brackets with values inside, something like: <code>f(1, 2)</code>. The values we put inside the round brackets are given as the arguments to the function, so we should put as many values as the function has arguments (two in the above example). We could call the above function like so:</p>
+<div class="sourceCode" id="cb2" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">const</span> three <span class="op">=</span> <span class="at">f</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// store the function's result of 1 + 2 in a variable</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="va">console</span>.<span class="at">log</span>(three)<span class="op">;</span> <span class="co">// 3</span></span></code></pre></div>
+<p>In the above code, the function is being called on the right side of the equals sign: <code>f(1, 2)</code>. We are calling the function <code>f</code> and passing it two numbers as arguments. In this instance of calling the function, <code>a</code> takes on the value <code>1</code>, and <code>b</code> takes on the value <code>2</code>. Then, the result of <code>a + b</code> gets returned to the place where the function was called, setting the variable named <code>three</code> equal to <code>3</code>.</p>
+<p>Each time a function is called, it executes the body with the newly given values for arguments and produces a new result. In functional programming, functions don’t have a memory so each time they’re called is a brand new instance. That means whatever values are given as arguments when calling a function have no impact on subsequent calls to the same function. Consequently, this makes it easy to tell what a function is going to return when we call it because we don’t have to worry about how the function was used on other lines, and only focus on the line we’re interested in and the function itself.</p>
+<p>Calling the function a few more times:</p>
+<div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">const</span> five <span class="op">=</span> <span class="at">f</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="va">console</span>.<span class="at">log</span>(five)<span class="op">;</span> <span class="co">// 5</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">f</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>))<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">f</span>(<span class="dv">1</span><span class="op">,</span> <span class="at">f</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>)))<span class="op">;</span> <span class="co">// 6</span></span></code></pre></div>
+<h2 id="function-definition-vs-function-call">Function definition vs function call</h2>
+<p>Because functions are values that can be called, there are two ways to use them: you can pass them as a value or you can call them. This is illustrated by the following example. Notice the subtly different syntax of <code>func</code> and <code>func()</code>:</p>
+<div class="sourceCode" id="cb4" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">const</span> func <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="cf">return</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="op">};</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="va">console</span>.<span class="at">log</span>(func)<span class="op">;</span> <span class="co">// prints [Function: func]</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">func</span>())<span class="op">;</span> <span class="co">// prints the result of calling the function: 10</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">const</span> x <span class="op">=</span> func<span class="op">;</span> <span class="co">// x is the same as func</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">const</span> y <span class="op">=</span> <span class="at">func</span>()<span class="op">;</span> <span class="co">// y is the result of calling func</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span> <span class="co">// [Function: func]</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">x</span>())<span class="op">;</span> <span class="co">// 10</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="va">console</span>.<span class="at">log</span>(y)<span class="op">;</span> <span class="co">// 10</span></span></code></pre></div>
+<h2 id="motivation">Motivation</h2>
+<p>What makes functions so important is <strong>reusability</strong> and <strong>composability</strong>.</p>
+<h3 id="reusability">Reusability</h3>
+<p>Let’s say we have the following code for printing a greeting message to a person:</p>
+<div class="sourceCode" id="cb5" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="va">console</span>.<span class="at">log</span>(name <span class="op">+</span> <span class="st">', what</span><span class="sc">\'</span><span class="st">s up?'</span>)<span class="op">;</span> <span class="co">// Alice, what's up?</span></span></code></pre></div>
+<p>No problems there. What if we have more people and we want to print the same message each time?</p>
+<div class="sourceCode" id="cb6" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">const</span> name1 <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">const</span> name2 <span class="op">=</span> <span class="st">'Bob'</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">const</span> name3 <span class="op">=</span> <span class="st">'Carol'</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="va">console</span>.<span class="at">log</span>(name1 <span class="op">+</span> <span class="st">', what</span><span class="sc">\'</span><span class="st">s up?'</span>)<span class="op">;</span> <span class="co">// Alice, what's up?</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="va">console</span>.<span class="at">log</span>(name2 <span class="op">+</span> <span class="st">', what</span><span class="sc">\'</span><span class="st">s up?'</span>)<span class="op">;</span> <span class="co">// Bob, what's up?</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="va">console</span>.<span class="at">log</span>(name3 <span class="op">+</span> <span class="st">', what</span><span class="sc">\'</span><span class="st">s up?'</span>)<span class="op">;</span> <span class="co">// Carol, what's up?</span></span></code></pre></div>
+<p>This works, but now we have an obvious repeated pattern in our code. All three of the <code>console.log</code> lines look the same except for the name. What if we want to make a change to the greeting message? Let’s say we want the messages to read, “(name), how’s it going?” Well, we need to change the three <code>console.log</code> lines.</p>
+<div class="sourceCode" id="cb7" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">const</span> name1 <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">const</span> name2 <span class="op">=</span> <span class="st">'Bob'</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">const</span> name3 <span class="op">=</span> <span class="st">'Carol'</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="va">console</span>.<span class="at">log</span>(name1 <span class="op">+</span> <span class="st">', how</span><span class="sc">\'</span><span class="st">s it going?'</span>)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="va">console</span>.<span class="at">log</span>(name2 <span class="op">+</span> <span class="st">', how</span><span class="sc">\'</span><span class="st">s it going?'</span>)<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="va">console</span>.<span class="at">log</span>(name3 <span class="op">+</span> <span class="st">', how</span><span class="sc">\'</span><span class="st">s it going?'</span>)<span class="op">;</span></span></code></pre></div>
+<p>This is unnecessarily repetitive work. The more lines we have that use the same pattern, the more code we have to update if we want to make even a small change. By making a function and using the name as an argument, we can have one piece of code to reuse and update:</p>
+<div class="sourceCode" id="cb8" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">const</span> name1 <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">const</span> name2 <span class="op">=</span> <span class="st">'Bob'</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">const</span> name3 <span class="op">=</span> <span class="st">'Carol'</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">const</span> printGreeting <span class="op">=</span> name <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="va">console</span>.<span class="at">log</span>(name <span class="op">+</span> <span class="st">', what</span><span class="sc">\'</span><span class="st">s up?'</span>)<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="op">};</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="at">printGreeting</span>(name1)<span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="at">printGreeting</span>(name2)<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="at">printGreeting</span>(name3)<span class="op">;</span></span></code></pre></div>
+<p>Now, whenever we want to make a change to the messages we only need to update the single <code>console.log</code> line inside the function.</p>
+<h3 id="composability">Composability</h3>
+<p>Functions being composable enables us to break down problems into smaller, easier-to-solve pieces that we can put back together (compose) for the final solution.</p>
+<p>As an example, let’s look at creating a function to return the <a href="https://en.wikipedia.org/wiki/Factorial">factorial</a> of a number (e.g., 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720). We will also create a function to return the “even factorial” of a number, where we only multiply even numbers (e.g., even factorial of 6 = 2 * 4 * 6 = 48). Some of the techniques in the following example have not been covered in the previous lessons, but you don’t need to understand the details of each function in order to see how they are composed. Comments have been added for clarity.</p>
+<div class="sourceCode" id="cb9" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">// Return a list of numbers from 1 up to n (inclusive)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">const</span> upTo <span class="op">=</span> n <span class="kw">=&gt;</span> [...<span class="at">Array</span>(n)].<span class="at">map</span>((_<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">// Multiply a list of numbers</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="kw">const</span> multiply <span class="op">=</span> ns <span class="kw">=&gt;</span> <span class="va">ns</span>.<span class="at">reduce</span>((acc<span class="op">,</span> n) <span class="kw">=&gt;</span> acc <span class="op">*</span> n<span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">// Return n! (from 1 up to n multiplied together)</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="kw">const</span> factorial <span class="op">=</span> n <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="kw">const</span> xs <span class="op">=</span> <span class="at">upTo</span>(n)<span class="op">;</span> <span class="co">// Get a list of numbers from 1 up to n (e.g., [1, 2, 3, 4, 5, 6])</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="cf">return</span> <span class="at">multiply</span>(xs)<span class="op">;</span> <span class="co">// Multiply the numbers together (e.g., 1 * 2 * 3 * 4 * 5 * 6)</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="op">};</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">// Condensed version</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="kw">const</span> factorialV2 <span class="op">=</span> n <span class="kw">=&gt;</span> <span class="at">multiply</span>(<span class="at">upTo</span>(n))<span class="op">;</span> <span class="co">// Multiply the numbers from 1 up to n</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">factorial</span>(<span class="dv">6</span>))<span class="op">;</span> <span class="co">// 720</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">factorialV2</span>(<span class="dv">6</span>))<span class="op">;</span> <span class="co">// 720</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="co">// Return true if n is even, otherwise false</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="kw">const</span> isEven <span class="op">=</span> n <span class="kw">=&gt;</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">===</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="co">// Return the even numbers from 1 up to n multiplied together</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="kw">const</span> evenFactorial <span class="op">=</span> n <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a>  <span class="kw">const</span> xs <span class="op">=</span> <span class="at">upTo</span>(n)<span class="op">;</span> <span class="co">// Get a list of numbers from 1 up to n (e.g., [1, 2, 3, 4, 5, 6])</span></span>
+<span id="cb9-25"><a href="#cb9-25"></a>  <span class="kw">const</span> evens <span class="op">=</span> <span class="va">xs</span>.<span class="at">filter</span>(isEven)<span class="op">;</span> <span class="co">// Keep only the even numbers in the list (e.g., [2, 4, 6])</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>  <span class="cf">return</span> <span class="at">multiply</span>(evens)<span class="op">;</span> <span class="co">// Multiply the numbers together (e.g., 2 * 4 * 6)</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a><span class="op">};</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="co">// Condensed version</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="kw">const</span> evenFactorialV2 <span class="op">=</span> n <span class="kw">=&gt;</span> <span class="at">multiply</span>(<span class="at">upTo</span>(n).<span class="at">filter</span>(isEven))<span class="op">;</span> <span class="co">// Multiply the even numbers from 1 up to n</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">evenFactorial</span>(<span class="dv">6</span>))<span class="op">;</span> <span class="co">// 48</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">evenFactorialV2</span>(<span class="dv">6</span>))<span class="op">;</span> <span class="co">// 48</span></span></code></pre></div>
+<p>What’s important to note in the code above is how small functions were made to handle small steps of the overall problem. For example, <code>upTo()</code> has the job of building a list of numbers from 1 up to the given number. This allows us to focus on small problems (make a list of numbers, multiply a list of numbers, check if a number is even), then compose them together to solve a bigger problem (factorial, even factorial). To get the factorial of a number, n, we can make a list of numbers from 1 up to n, then multiply those numbers together. This is composing <code>multiply()</code> with <code>upTo()</code>.</p>
+<p>The condensed versions of factorial and even factorial work the same way as their uncondensed counterparts; they simply skip the steps of using intermediate variables. Either way is fine, so long as you can read and understand the code. You may find that you prefer the uncondensed versions now, and later after you gain more experience you may prefer the condensed versions.</p>
+<h2 id="more-details">More Details</h2>
+<h3 id="implicit-return-shortcut">Implicit return shortcut</h3>
+<p>When we want to define a short function, there’s a more compact way of writing it. If we omit the curly brackets <code>{ }</code>, then the expression directly following the arrow <code>=&gt;</code> becomes the function’s return value.</p>
+<div class="sourceCode" id="cb10" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">const</span> longVersion <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">};</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">const</span> shortVersion <span class="op">=</span> (a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">;</span></span></code></pre></div>
+<p>However, this doesn’t help if we want to do more things in the function body before the return.</p>
+<h3 id="no-return-value">No return value</h3>
+<p>Functions don’t always need to explicitly return a result. However, if a function doesn’t explicitly have a <code>return</code> statement, it will still return a value: <code>undefined</code>. In fact, <code>console.log()</code> is one such function; it doesn’t return a value other than <code>undefined</code> because its job is to simply perform an action (print to the console).</p>
+<p>An example would be something like the following function, which only prints something:</p>
+<div class="sourceCode" id="cb11" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">const</span> printMessage <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'Hello, world!'</span>)<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="op">};</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="at">printMessage</span>()<span class="op">;</span> <span class="co">// prints &quot;Hello, world!&quot;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="kw">const</span> x <span class="op">=</span> <span class="at">printMessage</span>()<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span> <span class="co">// undefined</span></span></code></pre></div>
+<p>To be clear, the <code>console.log</code> is not what this function returns. That is an action that the function is performing, along with implicitly returning <code>undefined</code>. You can imagine that the function has a hidden <code>return</code> statement inside it:</p>
+<div class="sourceCode" id="cb12" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">const</span> printMessage <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'Hello, world!'</span>)<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="cf">return</span> <span class="kw">undefined</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="op">};</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="at">printMessage</span>()<span class="op">;</span> <span class="co">// prints &quot;Hello, world!&quot;</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="kw">const</span> x <span class="op">=</span> <span class="at">printMessage</span>()<span class="op">;</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span> <span class="co">// undefined</span></span></code></pre></div>
+<h3 id="synonymous-syntax">Synonymous syntax</h3>
+<p>The following functions work exactly the same, written with different syntax.</p>
+<div class="sourceCode" id="cb13" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">// Return true if b is between a and c, otherwise false</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">const</span> betweenV1 <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="cf">if</span> (a <span class="op">&lt;</span> b <span class="op">&amp;&amp;</span> b <span class="op">&lt;</span> c) <span class="op">{</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="op">}</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="op">};</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">betweenV1</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span> <span class="co">// true, because 2 is between 1 and 3</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="kw">const</span> betweenV2 <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="cf">if</span> (a <span class="op">&lt;</span> b <span class="op">&amp;&amp;</span> b <span class="op">&lt;</span> c) <span class="op">{</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>    <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="op">}</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a></span>
+<span id="cb13-16"><a href="#cb13-16"></a>  <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a><span class="op">};</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">betweenV2</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a></span>
+<span id="cb13-20"><a href="#cb13-20"></a><span class="kw">const</span> betweenV3 <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>  <span class="cf">return</span> a <span class="op">&lt;</span> b <span class="op">&amp;&amp;</span> b <span class="op">&lt;</span> c<span class="op">;</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a><span class="op">};</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">betweenV3</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a></span>
+<span id="cb13-25"><a href="#cb13-25"></a><span class="kw">const</span> betweenV4 <span class="op">=</span> (a<span class="op">,</span> b<span class="op">,</span> c) <span class="kw">=&gt;</span> a <span class="op">&lt;</span> b <span class="op">&amp;&amp;</span> b <span class="op">&lt;</span> c<span class="op">;</span></span>
+<span id="cb13-26"><a href="#cb13-26"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">betweenV4</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<p>The reason that <code>betweenV2()</code> works is due to the fact that when the code execution reaches a <code>return</code> statement, it returns the value and stops the rest of the function’s code from executing (remember, returning a value is always the last thing a function does). So the <code>return false;</code> statement will only execute if the previous <code>return</code> was not reached, that is, when the <code>if</code> condition is false.</p>
+<h2 id="exercises">Exercises</h2>
+<ul>
+    <li><a href="../exercises/05-functions-exercises.js">View exercises</a></li>
+    <li><a href="../exercises/05-functions-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+    <li><a href="../exercises/05-functions-solutions.js">View solutions</a></li>
+    <li><a href="../exercises/05-functions-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+
+	</section>
+</article>
+
+		</main>
+
+		<footer>
+			Site proudly generated by
+			<a href="http://jaspervdj.be/hakyll">Hakyll</a>
+		</footer>
+	</body>
+</html>

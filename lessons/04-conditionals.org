@@ -1,0 +1,100 @@
+---
+title: Conditionals
+---
+
+Conditionals are an essential tool in programming. We need a way for our code to take different paths depending on some value.
+
+For instance, let's say we're developing the visual part of a weather app and we have a value representing the temperature (a number). If it's below a certain number, meaning it's cold, we want to show it in blue. Otherwise, we want to show it in red. The condition is that the temperature is either below a certain number or not. Our two branches are: show the temperature in blue or show the temperature in red. For something with more conditions, let's say we have the weather forecast, which can be "rain", "clouds", "sunny", "snow", or "thunderstorm". For each of these values we want to show a different icon, so we actually have five different conditions.
+
+A condition is an expression that results in a boolean value (either true or false), like we saw in the previous lesson. A conditional statement is when we use a condition to take different paths. Let's look at two forms of conditional statements in JavaScript: ~if-else~ and the ternary operator.
+
+** ~if-else~
+#+BEGIN_SRC js
+  if (condition) {
+	console.log('the condition is true!');
+  }
+#+END_SRC
+
+The condition goes inside the round brackets after 'if'. The code that we want to run if the condition is true goes in the curly brackets.
+
+Just like in plain English, we can say "If I have less than 5 apples, then I should go buy some more."
+
+#+BEGIN_SRC js
+  const apples = 2;
+  if (apples < 5) {
+	console.log('I should go buy more apples.');
+  }
+#+END_SRC
+
+The condition is "I have less than 5 apples". If that condition is true, then I should go buy some more. The condition "I have less than 5 apples" is either true or false, regardless of what I know about my apples (even if I haven't checked how many apples I have in the kitchen). That's the way it works with computers. The condition must be a boolean value (either true or false).
+
+If I instead want to catch the case where the condition is false, I can check the opposite.
+
+#+BEGIN_SRC js
+  const apples = 2;
+  if (apples >= 5) {
+	console.log('I have enough apples.');
+  }
+#+END_SRC
+
+#+BEGIN_SRC js
+  const apples = 2;
+  if (!(apples < 5)) {
+	console.log('I have enough apples.');
+  }
+#+END_SRC
+
+Both of these blocks of code do the same thing.
+
+There is an optional second part: the ~else~. Instead of only handling the ~true~ branch, we can handle the ~false~ branch as well.
+
+#+BEGIN_SRC js
+  const apples = 2;
+  if (apples < 5) {
+	console.log('I should go buy more apples.');
+  } else {
+	console.log('I have enough apples.');
+  }
+#+END_SRC
+
+** Ternary Operator
+The ternary operator works a lot like the if-else statement, except it allows us to write an expression that results in a value. This is very useful, since we often want to use a resulting value depending on a condition.
+
+There are three parts to a ternary operator expression: the condition, the ~true~ branch result, and the ~false~ branch result. It's like a shortcut for the ~if-else~ statement (except the ~else~ is mandatory). In pseudocode, it looks like this:
+
+#+begin_src js
+const x = CONDITION ? TRUE-BRANCH-RESULT : FALSE-BRANCH-RESULT;
+#+end_src
+
+Working with a similar example as before:
+
+#+begin_src js
+  const apples = 2;
+  const message = (apples < 5) ? 'I should go buy more apples.' : 'I have enough apples.';
+  console.log(message);
+#+end_src
+
+See how in the above example we can store a new value depending on the condition. Why wouldn't this work with ~if-else~? Let's see...
+
+#+begin_src js
+  const apples = 2;
+  if (apples < 5) {
+	const message = 'I should go buy more apples.';
+  } else {
+	const message = 'I have enough apples.';
+  }
+  console.log(message); // ReferenceError: message is not defined
+#+end_src
+
+Running the above code results in an error because the scope of ~message~ is restricted to inside the curly brackets.
+
+** Exercises
+
+#+BEGIN_EXPORT HTML
+<ul>
+	<li><a href="/exercises/04-conditionals-exercises.js">View exercises</a></li>
+	<li><a href="/exercises/04-conditionals-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="/exercises/04-conditionals-solutions.js">View solutions</a></li>
+	<li><a href="/exercises/04-conditionals-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_EXPORT

@@ -1,0 +1,272 @@
+---
+title: Objects
+---
+
+*Objects* are values useful for grouping pieces of information together. When it comes to representing real-world information in code, we often have pieces of information that are intuitively grouped together. For example, a person has a name, favorite color, and favorite food. How can we group this information about one person together, using the tools we have so far? One option would be to create separate variable for each value.
+
+#+BEGIN_SRC js
+const personName = 'Alice';
+const favoriteColor = 'red';
+const favoriteFood = 'sushi';
+
+console.log(`${personName}'s favorite color is ${favoriteColor} and favorite food is ${favoriteFood}.`);
+#+END_SRC
+
+This works fine for such a trivial example, but what about when we want to pass this information to a function, particularly one that expects information about two people?
+
+#+BEGIN_SRC js
+const coupleDining = (name1, color1, food1, name2, color2, food2) => {
+  console.log(`${name1} and ${name2} would enjoy a meal consisting of ${food1} and ${food2} in a ${color1} and ${color2} room.`);
+};
+
+coupleDining('Alice', 'red', 'sushi', 'Bob', 'grey', 'bread');
+#+END_SRC
+
+This works, but it's different from how we think about the problem. We want this function to take 2 person arguments and say something about their information, but we're passing it 6 arguments. An option to get around this issue is to involve arrays.
+
+#+BEGIN_SRC js
+// Using indexing
+const coupleDining = (person1, person2) => {
+  console.log(`${person1[0]} and ${person2[0]} would enjoy a meal consisting of ${person1[2]} and ${person2[2]} in a ${person1[1]} and ${person2[1]} room.`);
+};
+
+coupleDining(['Alice', 'red', 'sushi'], ['Bob', 'grey', 'bread']);
+
+// Using array destructuring
+const coupleDiningAlternate = ([name1, color1, food1], [name2, color2, food2]) => {
+  console.log(`${name1} and ${name2} would enjoy a meal consisting of ${food1} and ${food2} in a ${color1} and ${color2} room.`);
+};
+
+coupleDiningAlternate(['Alice', 'red', 'sushi'], ['Bob', 'grey', 'bread']);
+#+END_SRC
+
+This is a bit better, since we are now grouping the information of each person thus passing only 2 arguments, each representing one person. However, in either case we have to keep track of the order of the information in a person array (the first value is the name, second is color, and third is food). We either use array destructuring for descriptive variable names, or give names to the arrays themselves and use careful indexing. Neither option is ideal. Fortunately, this is where *objects* can help.
+
+#+BEGIN_SRC js
+const coupleDining = (person1, person2) => {
+  console.log(`${person1.name} and ${person2.name} would enjoy a meal consisting of ${person1.favoriteFood} and ${person2.favoriteFood} in a ${person1.favoriteColor} and ${person2.favoriteColor} room.`);
+};
+
+coupleDining(
+  {name: 'Alice', favoriteColor: 'red', favoriteFood: 'sushi'},
+  {name: 'Bob', favoriteFood: 'bread', favoriteColor: 'grey'}
+);
+#+END_SRC
+
+Now our code reads more clearly! Each person has named properties and the order of those properties doesn't matter.
+
+** Creating
+An object is comprised of *key-value pairs*. The keys are strings and their corresponding values can be any type (even objects!). Each key-value pair represents a property of the object. In a single line, an object representing a store product could look like this: ~{name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'}~. Bigger objects are more pleasant to look at when written on multiple lines:
+
+#+BEGIN_SRC js
+{
+  name: 'Marvin',
+  age: 8,
+  species: 'cat',
+  colors: ['black', 'white'],
+  sex: 'female',
+  friendly: true
+}
+#+END_SRC
+
+Syntactically, curly brackets enclose the entire object. Inside, we have key-value pairs separated by commas. In each key-value pair, the key and value are separated by a colon (keys on the left, values on the right). The keys don't need to have quotation marks like typical strings because they are /always/ strings.
+
+An object printed in the console sometimes looks slightly different than the same object in your code, but rest assured that if the general structure and syntax are the same, there is no logical difference.
+
+#+BEGIN_SRC js
+console.log({name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'});
+
+const myCat = {
+  name: 'Marvin',
+  age: 8,
+  species: 'cat',
+  colors: ['black', 'white'],
+  sex: 'female',
+  friendly: true
+};
+console.log(myCat);
+#+END_SRC
+
+If we have any key names inside of variables, we must use square brackets to use them.
+
+#+BEGIN_SRC js
+const key1 = 'name';
+const value1 = 'Marvin';
+const key2 = 'age';
+const value2 = 8;
+
+const myCat = {
+  [key1]: value1,
+  [key2]: value2,
+  species: 'cat',
+  colors: ['black', 'white'],
+  sex: 'female',
+  friendly: true
+};
+console.log(myCat);
+#+END_SRC
+
+** Accessing property values
+There are three ways to access the values of an object's properties.
+
+*** Dot notation
+Dot notation is most similar to plain English. If ~product~ holds an object with a name property, we can use ~product.name~ to access the product's name.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+
+console.log(product.name); // Spirit Island Board Game
+console.log(product.price); // 95.95
+console.log(product.brand); // Greater Than Games
+#+END_SRC
+
+*** Square bracket notation
+Using square brackets is similar to using index numbers with arrays.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+
+console.log(product['name']); // Spirit Island Board Game
+console.log(product['price']); // 95.95
+console.log(product['brand']); // Greater Than Games
+#+END_SRC
+
+This may seem like unnecessary syntax when we have the dot notation at our disposal. However, we /must/ use square bracket notation when the key itself is stored a variable.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+const n = 'name';
+const p = 'price';
+const b = 'brand';
+
+console.log(product[n]); // Spirit Island Board Game
+console.log(product[p]); // 95.95
+console.log(product[b]); // Greater Than Games
+
+console.log(product.b); // undefined -- this tries to use a key named 'b' of product, not the variable b
+#+END_SRC
+
+*** Destructuring
+Sometimes we don't want to give an object a name, but rather go straight to its properties. Destructuring allows us to create variables whose names are the exact names of keys of a given object.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+
+const {name, price, brand} = product; // Destructuring happens on the left
+
+console.log(name); // Spirit Island Board Game
+console.log(price); // 95.95
+console.log(brand); // Greater Than Games
+#+END_SRC
+
+Notice that the destructuring looks like the same shape as the object, but without the values.
+
+This can come in handy when we're not interested in all the properties of an object.
+
+#+BEGIN_SRC js
+const myCat = {
+  name: 'Marvin',
+  age: 8,
+  species: 'cat',
+  colors: ['black', 'white'],
+  sex: 'female', friendly: true
+};
+
+// Destructuring in the arguments
+const describeAnimal = ({name, species, colors}) => {
+  const colorString = colors.join(' and ');
+  console.log(`${name} is a ${colorString} ${species}.`);
+};
+
+describeAnimal(myCat);
+#+END_SRC
+
+In the end, dot notation and object destructuring are simply shortcuts. We could do all we need with square bracket notation. Choosing between the three comes down to personal preference in any scenario.
+
+** Updating properties
+When we need to update a property's value in an object, we can make a copy of the object and change only what we need to.
+
+To copy an object, we can use the *spread* operator: ~...~.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+const productCopy = {...product};
+
+console.log(product); // (the original)
+console.log(productCopy); // (an exact copy)
+#+END_SRC
+
+This spreads out all of the object's key-value pairs into a new object.
+
+Let's lower the price of our product object.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+const productSale = {...product, price: 47.97};
+
+console.log(product); // (the original)
+console.log(productSale); // (the product on sale)
+#+END_SRC
+
+It's important that the /spread comes first/ in the updated object, otherwise our desired change will be overridden.
+
+We can update as many properties as we want in a single operation, even adding new properties.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+const newProduct = {...product, price: 79.95, name: 'Spirit Island', stock: 9};
+
+console.log(product); // (the original)
+console.log(newProduct); // (changed the price and name, and added stock)
+#+END_SRC
+
+Changing a value based on its previous value is common too.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games', stock: 9};
+const moreProduct = {...product, stock: product.stock + 1};
+
+console.log(product); // (the original)
+console.log(moreProduct); // (increased stock by 1)
+#+END_SRC
+
+** Functions
+There are a few very useful functions for dealing with objects. Each of the following functions take an object and return an array. After all, we have plenty of ways of dealing with arrays.
+
+*** Object.keys()
+Get the keys of an object.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+
+console.log(Object.keys(product)); // [ 'name', 'price', 'brand' ]
+#+END_SRC
+
+*** Object.values()
+Get the values of an object.
+
+#+BEGIN_SRC js
+const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
+
+console.log(Object.values(product)); // [ 'Spirit Island Board Game', 95.95, 'Greater Than Games' ]
+#+END_SRC
+
+*** Object.entries()
+Get the key-value pairs of an object. Returns an array of pairs (each pair is an array of two elements).
+
+#+BEGIN_SRC js
+const obj = {a: 1, b: 2, c: 3};
+
+console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
+#+END_SRC
+
+** Exercises
+
+#+BEGIN_EXPORT HTML
+<ul>
+	<li><a href="/exercises/09-objects-exercises.js">View exercises</a></li>
+	<li><a href="/exercises/09-objects-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+	<li><a href="/exercises/09-objects-solutions.js">View solutions</a></li>
+	<li><a href="/exercises/09-objects-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+#+END_EXPORT

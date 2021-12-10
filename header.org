@@ -1,3 +1,0 @@
-#+OPTIONS: toc:nil
-*[[file:index.html][Home]]*
-#+TOC: headlines 2

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Project - batteries.js - Intuitive JavaScript</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/vs2015.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="../">Intuitive JavaScript</a>
+			</nav>
+		</header>
+
+		<main role="main">
+			<h1>Project - batteries.js</h1>
+			<article>
+	<section>
+		<p>When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file <code>batteries.js</code> that exports the following functions.</p>
+<h2 id="functions">Functions</h2>
+<h3 id="numbers">Numbers</h3>
+<ul>
+<li>isEven
+<ul>
+<li>Arguments: <code>n</code> (number)</li>
+<li>Return: true if <code>n</code> is even, otherwise false</li>
+</ul></li>
+<li>isOdd
+<ul>
+<li>Arguments: <code>n</code> (number)</li>
+<li>Return: true if <code>n</code> is odd, otherwise false</li>
+</ul></li>
+<li>divisibleBy
+<ul>
+<li>Arguments: <code>x</code> (number), <code>y</code> (number)</li>
+<li>Return: true if <code>x</code> is divisible by <code>y</code>, otherwise false</li>
+</ul></li>
+</ul>
+<h3 id="arrays">Arrays</h3>
+<ul>
+<li>append
+<ul>
+<li>Arguments: <code>y</code> (any), <code>xs</code> (array)</li>
+<li>Return: array with <code>y</code> appended to <code>xs</code></li>
+</ul></li>
+<li>eqArrays
+<ul>
+<li>Arguments: <code>xs</code> (array), <code>ys</code> (array)</li>
+<li>Return: true if <code>xs</code> and <code>ys</code> are the same length and all of their elements are equal, otherwise false</li>
+</ul></li>
+<li>head
+<ul>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: the first element of <code>xs</code></li>
+</ul></li>
+<li>tail
+<ul>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: an array containing all of the elements of <code>xs</code> except the first one</li>
+</ul></li>
+<li>last
+<ul>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: the last element of <code>xs</code></li>
+</ul></li>
+<li>init
+<ul>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: an array containing all of the elements of <code>xs</code> except the last one</li>
+</ul></li>
+<li>isEmpty
+<ul>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: true if <code>xs</code> contains no elements, otherwise false</li>
+</ul></li>
+<li>take
+<ul>
+<li>Arguments: <code>n</code> (number), <code>xs</code> (array)</li>
+<li>Return: an array containing the first <code>n</code> elements of <code>xs</code></li>
+</ul></li>
+<li>drop
+<ul>
+<li>Arguments: <code>n</code> (number), <code>xs</code> (array)</li>
+<li>Return: an array containing the elements of <code>xs</code> without the first <code>n</code> elements</li>
+</ul></li>
+<li>flatten
+<ul>
+<li>Arguments: <code>xs</code> (array)</li>
+<li>Return: an array containing the elements of <code>xs</code> where any nested arrays have been pulled out (only needs to work with one level of nesting deep)</li>
+</ul></li>
+<li>intersperse
+<ul>
+<li>Arguments: <code>sep</code> (any), <code>xs</code> (array)</li>
+<li>Return: an array containing the elements of <code>xs</code> with <code>sep</code> interspersed between the elements</li>
+</ul></li>
+</ul>
+<h3 id="number-arrays">Number arrays</h3>
+<ul>
+<li>sum
+<ul>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the sum of all numbers in <code>ns</code></li>
+</ul></li>
+<li>product
+<ul>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the product of all numbers in <code>ns</code></li>
+</ul></li>
+<li>maximum
+<ul>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the highest number in <code>ns</code></li>
+</ul></li>
+<li>minimum
+<ul>
+<li>Arguments: <code>ns</code> (array)</li>
+<li>Return: the lowest number in <code>ns</code></li>
+</ul></li>
+<li>buildArray
+<ul>
+<li>Arguments: <code>size</code> (number)</li>
+<li>Return: an array of size <code>size</code> (all elements can be <code>undefined</code>)</li>
+</ul></li>
+<li>range
+<ul>
+<li>Arguments: <code>start</code> (number), <code>end</code> (number)</li>
+<li>Return: an array of numbers counting up from <code>start</code> to <code>end</code> (inclusive)</li>
+</ul></li>
+</ul>
+<h3 id="objects">Objects</h3>
+<ul>
+<li>eqObjects
+<ul>
+<li>Arguments: <code>a</code> (object), <code>b</code> (object)</li>
+<li>Return: true if <code>a</code> and <code>b</code> have all the same values at all of their keys, otherwise false</li>
+</ul></li>
+<li>setProp
+<ul>
+<li>Arguments: k (string), v (any), o (object)</li>
+<li>Return: an object containing the properties of <code>o</code> but with the value at <code>k</code> set to <code>v</code></li>
+</ul></li>
+<li>removeProp
+<ul>
+<li>Arguments: k (string), o (object)</li>
+<li>Return: an object containing the properties of <code>o</code> but with the value at <code>k</code> set to <code>undefined</code></li>
+</ul></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>If everything is done correctly, you should be able to run the following example in a file that is in the same directory as <code>batteries.js</code>.</p>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">const</span> <span class="op">{</span>sum<span class="op">,</span> range<span class="op">}</span> <span class="op">=</span> <span class="at">require</span>(<span class="st">'./batteries'</span>)<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="va">console</span>.<span class="at">log</span>(<span class="at">sum</span>(<span class="at">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">5</span>)))<span class="op">;</span> <span class="co">// should print 15</span></span></code></pre></div>
+	</section>
+</article>
+
+		</main>
+
+		<footer>
+			Site proudly generated by
+			<a href="http://jaspervdj.be/hakyll">Hakyll</a>
+		</footer>
+	</body>
+</html>

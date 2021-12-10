@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Conditionals - Intuitive JavaScript</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/vs2015.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="../">Intuitive JavaScript</a>
+			</nav>
+		</header>
+
+		<main role="main">
+			<h1>Conditionals</h1>
+			<article>
+	<section>
+		<p>Conditionals are an essential tool in programming. We need a way for our code to take different paths depending on some value.</p>
+<p>For instance, let’s say we’re developing the visual part of a weather app and we have a value representing the temperature (a number). If it’s below a certain number, meaning it’s cold, we want to show it in blue. Otherwise, we want to show it in red. The condition is that the temperature is either below a certain number or not. Our two branches are: show the temperature in blue or show the temperature in red. For something with more conditions, let’s say we have the weather forecast, which can be “rain”, “clouds”, “sunny”, “snow”, or “thunderstorm”. For each of these values we want to show a different icon, so we actually have five different conditions.</p>
+<p>A condition is an expression that results in a boolean value (either true or false), like we saw in the previous lesson. A conditional statement is when we use a condition to take different paths. Let’s look at two forms of conditional statements in JavaScript: <code>if-else</code> and the ternary operator.</p>
+<h2 id="if-else"><code>if-else</code></h2>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span> (condition) <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'the condition is true!'</span>)<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">}</span></span></code></pre></div>
+<p>The condition goes inside the round brackets after ‘if’. The code that we want to run if the condition is true goes in the curly brackets.</p>
+<p>Just like in plain English, we can say “If I have less than 5 apples, then I should go buy some more.”</p>
+<div class="sourceCode" id="cb2" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">const</span> apples <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="cf">if</span> (apples <span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'I should go buy more apples.'</span>)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="op">}</span></span></code></pre></div>
+<p>The condition is “I have less than 5 apples”. If that condition is true, then I should go buy some more. The condition “I have less than 5 apples” is either true or false, regardless of what I know about my apples (even if I haven’t checked how many apples I have in the kitchen). That’s the way it works with computers. The condition must be a boolean value (either true or false).</p>
+<p>If I instead want to catch the case where the condition is false, I can check the opposite.</p>
+<div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">const</span> apples <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="cf">if</span> (apples <span class="op">&gt;=</span> <span class="dv">5</span>) <span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'I have enough apples.'</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">const</span> apples <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="cf">if</span> (<span class="op">!</span>(apples <span class="op">&lt;</span> <span class="dv">5</span>)) <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'I have enough apples.'</span>)<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">}</span></span></code></pre></div>
+<p>Both of these blocks of code do the same thing.</p>
+<p>There is an optional second part: the <code>else</code>. Instead of only handling the <code>true</code> branch, we can handle the <code>false</code> branch as well.</p>
+<div class="sourceCode" id="cb5" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">const</span> apples <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="cf">if</span> (apples <span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'I should go buy more apples.'</span>)<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="va">console</span>.<span class="at">log</span>(<span class="st">'I have enough apples.'</span>)<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="ternary-operator">Ternary Operator</h2>
+<p>The ternary operator works a lot like the if-else statement, except it allows us to write an expression that results in a value. This is very useful, since we often want to use a resulting value depending on a condition.</p>
+<p>There are three parts to a ternary operator expression: the condition, the <code>true</code> branch result, and the <code>false</code> branch result. It’s like a shortcut for the <code>if-else</code> statement (except the <code>else</code> is mandatory). In pseudocode, it looks like this:</p>
+<div class="sourceCode" id="cb6" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">const</span> x <span class="op">=</span> CONDITION <span class="op">?</span> TRUE<span class="op">-</span>BRANCH<span class="op">-</span>RESULT : FALSE<span class="op">-</span>BRANCH<span class="op">-</span>RESULT<span class="op">;</span></span></code></pre></div>
+<p>Working with a similar example as before:</p>
+<div class="sourceCode" id="cb7" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">const</span> apples <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">const</span> message <span class="op">=</span> (apples <span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">?</span> <span class="st">'I should go buy more apples.'</span> : <span class="st">'I have enough apples.'</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="va">console</span>.<span class="at">log</span>(message)<span class="op">;</span></span></code></pre></div>
+<p>See how in the above example we can store a new value depending on the condition. Why wouldn’t this work with <code>if-else</code>? Let’s see…</p>
+<div class="sourceCode" id="cb8" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">const</span> apples <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="cf">if</span> (apples <span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="kw">const</span> message <span class="op">=</span> <span class="st">'I should go buy more apples.'</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="kw">const</span> message <span class="op">=</span> <span class="st">'I have enough apples.'</span><span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="op">}</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="va">console</span>.<span class="at">log</span>(message)<span class="op">;</span> <span class="co">// ReferenceError: message is not defined</span></span></code></pre></div>
+<p>Running the above code results in an error because the scope of <code>message</code> is restricted to inside the curly brackets.</p>
+<h2 id="exercises">Exercises</h2>
+<ul>
+    <li><a href="../exercises/04-conditionals-exercises.js">View exercises</a></li>
+    <li><a href="../exercises/04-conditionals-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+    <li><a href="../exercises/04-conditionals-solutions.js">View solutions</a></li>
+    <li><a href="../exercises/04-conditionals-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+
+	</section>
+</article>
+
+		</main>
+
+		<footer>
+			Site proudly generated by
+			<a href="http://jaspervdj.be/hakyll">Hakyll</a>
+		</footer>
+	</body>
+</html>

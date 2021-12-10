@@ -1,0 +1,111 @@
+---
+title: Project - batteries.js
+---
+
+When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file ~batteries.js~ that exports the following functions.
+
+** Functions
+*** Numbers
+- isEven
+  - Arguments: ~n~ (number)
+  - Return: true if ~n~ is even, otherwise false
+
+- isOdd
+  - Arguments: ~n~ (number)
+  - Return: true if ~n~ is odd, otherwise false
+
+- divisibleBy
+  - Arguments: ~x~ (number), ~y~ (number)
+  - Return: true if ~x~ is divisible by ~y~, otherwise false
+
+*** Arrays
+- append
+  - Arguments: ~y~ (any), ~xs~ (array)
+  - Return: array with ~y~ appended to ~xs~
+
+- eqArrays
+  - Arguments: ~xs~ (array), ~ys~ (array)
+  - Return: true if ~xs~ and ~ys~ are the same length and all of their elements are equal, otherwise false
+
+- head
+  - Arguments: ~xs~ (array)
+  - Return: the first element of ~xs~
+
+- tail
+  - Arguments: ~xs~ (array)
+  - Return: an array containing all of the elements of ~xs~ except the first one
+
+- last
+  - Arguments: ~xs~ (array)
+  - Return: the last element of ~xs~
+
+- init
+  - Arguments: ~xs~ (array)
+  - Return: an array containing all of the elements of ~xs~ except the last one
+
+- isEmpty
+  - Arguments: ~xs~ (array)
+  - Return: true if ~xs~ contains no elements, otherwise false
+
+- take
+  - Arguments: ~n~ (number), ~xs~ (array)
+  - Return: an array containing the first ~n~ elements of ~xs~
+
+- drop
+  - Arguments: ~n~ (number), ~xs~ (array)
+  - Return: an array containing the elements of ~xs~ without the first ~n~ elements
+
+- flatten
+  - Arguments: ~xs~ (array)
+  - Return: an array containing the elements of ~xs~ where any nested arrays have been pulled out (only needs to work with one level of nesting deep)
+
+- intersperse
+  - Arguments: ~sep~ (any), ~xs~ (array)
+  - Return: an array containing the elements of ~xs~ with ~sep~ interspersed between the elements
+
+*** Number arrays
+- sum
+  - Arguments: ~ns~ (array)
+  - Return: the sum of all numbers in ~ns~
+
+- product
+  - Arguments: ~ns~ (array)
+  - Return: the product of all numbers in ~ns~
+
+- maximum
+  - Arguments: ~ns~ (array)
+  - Return: the highest number in ~ns~
+
+- minimum
+  - Arguments: ~ns~ (array)
+  - Return: the lowest number in ~ns~
+
+- buildArray
+  - Arguments: ~size~ (number)
+  - Return: an array of size ~size~ (all elements can be ~undefined~)
+
+- range
+  - Arguments: ~start~ (number), ~end~ (number)
+  - Return: an array of numbers counting up from ~start~ to ~end~ (inclusive)
+
+*** Objects
+- eqObjects
+  - Arguments: ~a~ (object), ~b~ (object)
+  - Return: true if ~a~ and ~b~ have all the same values at all of their keys, otherwise false
+
+- setProp
+  - Arguments: k (string), v (any), o (object)
+  - Return: an object containing the properties of ~o~ but with the value at ~k~ set to ~v~
+
+- removeProp
+  - Arguments: k (string), o (object)
+  - Return: an object containing the properties of ~o~ but with the value at ~k~ set to ~undefined~
+
+** Usage
+If everything is done correctly, you should be able to run the following example in a file that is in the same directory as ~batteries.js~.
+
+#+BEGIN_SRC js
+const {sum, range} = require('./batteries');
+
+console.log(sum(range(1, 5))); // should print 15
+#+END_SRC
