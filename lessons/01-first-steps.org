@@ -59,7 +59,7 @@ Other text editors popular among programmers include [[https://www.gnu.org/softw
 *** REPL
 Node.js comes with a sometimes useful feature called a read-eval-print-loop (REPL). If you simply run the ~node~ command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You can not type regular command-line commands in this mode.
 
-Try entering the command ~2 + 2~ or ~console.log('Hello, world!')~. To exit the REPL, press /control+c/ twice. You should see something like the following:
+Try entering the command ~2 + 2~ or ~console.log('Hello, world!')~. To exit the REPL, press /control+c/ twice. You should see something like the following.
 
 #+begin_src sh
 C:\Users\Tim>node
@@ -80,12 +80,11 @@ C:\Users\Tim>
 *** Running a file
 Much more useful than the REPL is the ability to have Node.js interpret an entire text file full of JavaScript code. To do this, you can type ~node~ followed by the name of the file you want to run. For example, ~node first.js~ will run a file called "first.js" that exists in the current directory.
 
-As a brief walkthrough, go ahead and save a new text file with VS Code named "first.js" and write the following text in it:
+As a brief walkthrough, go ahead and save a new text file with VS Code named "first.js" and write the following text in it.
 #+begin_src js
 console.log('Hello, world!');
 #+end_src
 In the terminal, navigate to the directory that contains "first.js" (using ~cd~), then run the command ~node first.js~. You should see ~Hello, world!~ appear in your terminal.
-
 
 #+begin_src sh
   Tims-Computer:~ tim$ ls

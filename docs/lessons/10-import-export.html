@@ -25,7 +25,7 @@
 			<h1>Importing and Exporting</h1>
 			<article>
 	<section>
-		<p>Whether we’re writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with <a href="https://nodejs.org">Node.js</a>, familiarly known as ‘node’, and <a href="https://www.npmjs.com/">npm</a>.</p>
+		<p>Whether we’re writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with <a href="https://nodejs.org">Node.js</a>, familiarly known as “node”, and <a href="https://www.npmjs.com/">npm</a>.</p>
 <h2 id="exporting">Exporting</h2>
 <p>JavaScript code in our files is never automatically <strong>exported</strong>. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called <code>module.exports</code>. If we don’t explicitly set this variable to any value, its value is an empty object <code>{}</code>. Whatever value we give to <code>module.exports</code> is what the file is exporting (meaning it can be imported by another file). (The reason for the name <code>module.exports</code> is because node considers every JavaScript file a <strong>module</strong>.) It is most common to export an object because, as we’ve seen, objects allow us to package many things into one value.</p>
 <p>Let’s look at an example.</p>
@@ -152,6 +152,9 @@
 <span id="cb8-3"><a href="#cb8-3"></a><span class="va">console</span>.<span class="at">log</span>(<span class="va">chalk</span>.<span class="at">blue</span>(<span class="st">'Hello world!'</span>))<span class="op">;</span> <span class="co">// Print a message in blue</span></span></code></pre></div>
 <p>Putting that code in our <code>index.js</code> file and running it with <code>node index.js</code>, we should see a blue “Hello world!” in the terminal.</p>
 <p>That’s it! Try exploring <a href="https://www.npmjs.com/">npm</a> and playing around with more packages. You can install as many packages in a single project as you wish. You don’t even need to use the ones you installed.</p>
+	</section>
+	<section>
+		test
 	</section>
 </article>
 

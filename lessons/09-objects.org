@@ -2,7 +2,9 @@
 title: Objects
 ---
 
-*Objects* are values useful for grouping pieces of information together. When it comes to representing real-world information in code, we often have pieces of information that are intuitively grouped together. For example, a person has a name, favorite color, and favorite food. How can we group this information about one person together, using the tools we have so far? One option would be to create separate variable for each value.
+*Objects* are values useful for grouping pieces of information together. When it comes to representing real-world information in code, we often have pieces of information that are intuitively grouped together. For example, a person has a name, favorite color, and favorite food.
+
+Without objects, how could we group information about one person together, using the tools we have so far? One option would be to create separate variable for each value.
 
 #+BEGIN_SRC js
 const personName = 'Alice';
@@ -106,7 +108,7 @@ const myCat = {
 console.log(myCat);
 #+END_SRC
 
-** Accessing property values
+** Accessing properties
 There are three ways to access the values of an object's properties.
 
 *** Dot notation

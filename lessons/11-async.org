@@ -356,7 +356,7 @@ go();
 *** Task
 We start with a file 'notes.txt' that has public and private text, separated by a line '~---~'. Copy the public notes into a file 'public.txt', then copy the private notes into a file 'private.txt'. Finally, remove the original file 'notes.txt'.
 
-*** Using callbacks
+*** With callbacks
 #+BEGIN_SRC js
 const fs = require('fs');
 
@@ -400,7 +400,7 @@ const afterRead = (err, notes) => {
 fs.readFile('notes.txt', 'utf8', afterRead);
 #+END_SRC
 
-*** Using promises
+*** With promises
 #+BEGIN_SRC js
 const fs = require('fs').promises;
 
@@ -428,7 +428,7 @@ fs.readFile('notes.txt', 'utf8')
   });
 #+END_SRC
 
-*** Using async/await
+*** With async/await
 #+BEGIN_SRC js
 const fs = require('fs').promises;
 

@@ -35,21 +35,6 @@ main = do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            lessons <- loadAll "lessons/*"
-            let archiveCtx =
-                    listField "lessons" defaultContext (return lessons) `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-
-
     match "index.html" $ do
         route idRoute
         compile $ do

@@ -88,8 +88,7 @@ Probably the most commonly used of the higher-order array methods is ~map()~. It
 
 The kinds of problems that ~map()~ helps with are difficult to describe in words, so let's look at some examples.
 
-**** Example
-Let's say we have an array of numbers.
+Let's say we have an array of numbers:
 
 #+BEGIN_SRC js
 const someNumbers = [3, 99, 0, -6, 10];
@@ -133,7 +132,6 @@ const someNumbers = [3, 99, 0, -6, 10];
 console.log(someNumbers.map(x => x + 1)); // [ 4, 100, 1, -5, 11 ]
 #+END_SRC
 
-**** Example
 Another use case is to extract a common property from each element. Let's say we have an array of names and we want to get the lengths of each name. Since each name is a string and has a ~length~ property, we can use ~map()~ here.
 
 #+BEGIN_SRC js
@@ -142,7 +140,6 @@ const nameLengths = names.map(name => name.length);
 console.log(nameLengths); // [ 5, 3, 5, 4, 3, 5 ]
 #+END_SRC
 
-**** Summary
 In general, whenever we have some array ~xs~ and some function ~f~ (that operates on a single element ~x~), using ~xs.map(f)~ gives us ~[ f(xs[0]), f(xs[1]), f(xs[2]), ... ]~.
 
 Map is the method to use if we want to:
@@ -231,7 +228,6 @@ If the previous methods are for handling certain kinds of problems with arrays, 
 
 The callback function passed to ~reduce()~ needs to take two arguments. Let's call them ~acc~ (short for "accumulator") and ~x~. Like the other methods, ~x~ will become each element of the array. ~acc~ gets an initial value, given by the argument after the callback function, then takes on the values of each successive result of the callback function. You can think of ~reduce()~ as starting with an array and reducing it to a single value (the last value of ~acc~). Some examples will make this more clear.
 
-**** Example
 We don't yet have a way to sum a bunch of numbers in an array. A great use case for ~reduce()~.
 
 #+BEGIN_SRC js
@@ -239,39 +235,39 @@ const someNumbers = [1, 2, 3, 4, 5];
 console.log(someNumbers.reduce((acc, x) => acc + x, 0)); // 15
 #+END_SRC
 
-All we're doing here is adding each number to an accumulator until we reach the end. To break this down, we're giving ~reduce()~ two arguments: a callback function and the number 0. In our callback function, ~acc~ starts off as 0. The first call of our function uses the first element, 1, as the value for ~x~, so we get ~acc + x = 0 + 1 = 1~ as a result. Thus, the new value for ~acc~ is 1. Then ~x~ becomes the next element, 2. This time, we get ~acc + x = 1 + 2 = 3~ as a result. Thus, the new value for ~acc~ is 3. And repeat, ~x~ becomes 3. ~acc + x = 3 + 3 = 6~. Thus, the new value for ~acc~ is 6. Repeat, ~x~ becomes 4. ~acc + x = 6 + 4 = 10~. Thus, the new value for ~acc~ is 10. Finally, ~x~ becomes 5. ~acc + x = 10 + 5 = 15~. Thus, the final value for ~acc~ is 15 and that is the final result.
+All we're doing here is adding each number to an accumulator until we reach the end. To break this down, we're giving ~reduce()~ two arguments: a callback function and the number 0. In our callback function, ~acc~ starts off as 0. The first call of our function uses the first element, 1, as the value for ~x~, so we get ~acc + x = 0 + 1 = 1~ as a result. Then the new value for ~acc~ is 1. Then ~x~ becomes the next element, 2. This time, we get ~acc + x = 1 + 2 = 3~ as a result. Then the new value for ~acc~ is 3. And repeat, ~x~ becomes 3. Now, ~acc + x = 3 + 3 = 6~. Then the new value for ~acc~ is 6. Repeat, ~x~ becomes 4. ~acc + x = 6 + 4 = 10~. Then the new value for ~acc~ is 10. Finally, ~x~ becomes 5. ~acc + x = 10 + 5 = 15~. Then the final value for ~acc~ is 15 and that is the final result because there are no more elements in the array.
 
 Perhaps more clearly:
 
-| acc | x   |     acc + x |
+| acc |  x  |     acc + x |
 |-----+-----+-------------|
 | <l> | <c> |         <r> |
-| 0   | 1   |   0 + 1 = 1 |
-| 1   | 2   |   1 + 2 = 3 |
-| 3   | 3   |   3 + 3 = 6 |
-| 6   | 4   |  6 + 4 = 10 |
-| 10  | 5   | 10 + 5 = 15 |
+| 0   |  1  |   0 + 1 = 1 |
+| 1   |  2  |   1 + 2 = 3 |
+| 3   |  3  |   3 + 3 = 6 |
+| 6   |  4  |  6 + 4 = 10 |
+| 10  |  5  | 10 + 5 = 15 |
+| 15  | N/A |         N/A |
 
-.
+#+BEGIN_EXPORT HTML
+<br>
+#+END_EXPORT
 
-**** Example
-The result we end up with doesn't even have to be the same type as the elements. For example, we can sum the lengths of an array of strings all at once.
+The result we end up with doesn't have to be the same type as the elements. For example, we can sum the lengths of an array of strings all at once:
 
 #+BEGIN_SRC js
 const names = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
 console.log(names.reduce((acc, name) => acc + name.length, 0)); // 20
 #+END_SRC
 
-**** Example
-In fact, we can even end up with an array! For example, we can flatten a nested array.
+We can also end up with an array! For example, we can flatten a nested array:
 
 #+BEGIN_SRC js
 const nested = [ ['Alice', 'Bob'], ['Carol', 'Dave'] ];
 console.log(nested.reduce((acc, x) => [...acc, ...x], []));
 #+END_SRC
 
-**** Example
-In fact, ~reduce()~ is so expressive that we can define all of the previous methods just by using it alone.
+In fact, ~reduce()~ is so expressive that we can define all of the previous methods just by using it alone:
 
 #+BEGIN_SRC js
 const reduceEvery = (xs, f) => xs.reduce((acc, x) => acc ? f(x) : false, true);

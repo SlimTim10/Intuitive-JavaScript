@@ -30,16 +30,16 @@ h3 {
 }
 
 a:link {
-  color: #841F84;
+  color: #70532c;
 }
 a:active {
-  color: #841F84;
+  color: #70532c;
 }
 a:visited {
-  color: #841F84;
+  color: #70532c;
 }
 a:hover {
-  color: #841F84;
+  color: #70532c;
 }
 
 code {
@@ -49,7 +49,7 @@ code {
 header {
   height: 4em;
   background: #155915;
-  color: #FFF;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,29 +57,30 @@ header {
 
 header nav a {
   font-size: 3em;
+  font-weight: 300;
 }
 header nav a:link {
-  color: #FFF;
+  color: white;
   text-decoration: none;
 }
 header nav a:active {
-  color: #FFF;
+  color: white;
   text-decoration: none;
 }
 header nav a:visited {
-  color: #FFF;
+  color: white;
   text-decoration: none;
 }
 header nav a:hover {
-  color: #FFF;
+  color: white;
   text-decoration: none;
 }
 
 main {
-  padding: 0.7em;
+  padding: 1.5em;
   margin: 0 auto;
   max-width: 60em;
-  background: #FFF;
+  background: white;
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.25));
 }
 
@@ -113,9 +114,7 @@ article section ul {
   display: flex;
   flex-direction: column;
   gap: 0.3em;
-}
-
-article section ul {
+  font-weight: 300;
   list-style: disc outside none;
   padding-left: 2em;
 }
@@ -131,4 +130,23 @@ article section pre {
 
 article section p > code {
   background: #EAEAEA;
+}
+
+
+table {
+  background: white;
+  border: 1px solid #E0E0E0;
+  border-collapse: collapse;
+}
+table thead th,
+table tfoot th {
+  background: #EAEAEA;
+}
+table caption {
+  padding: 0.5em;
+}
+table th,
+table td {
+  padding: 0.5em;
+  border: 1px solid #E0E0E0;
 }

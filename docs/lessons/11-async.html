@@ -281,7 +281,7 @@ should get copied
 <h2 id="comparison">Comparison</h2>
 <h3 id="task">Task</h3>
 <p>We start with a file ‘notes.txt’ that has public and private text, separated by a line ‘<code>---</code>’. Copy the public notes into a file ‘public.txt’, then copy the private notes into a file ‘private.txt’. Finally, remove the original file ‘notes.txt’.</p>
-<h3 id="using-callbacks-1">Using callbacks</h3>
+<h3 id="with-callbacks">With callbacks</h3>
 <div class="sourceCode" id="cb22" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="at">require</span>(<span class="st">'fs'</span>)<span class="op">;</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="kw">const</span> afterCopy <span class="op">=</span> err <span class="kw">=&gt;</span> <span class="op">{</span></span>
@@ -322,7 +322,7 @@ should get copied
 <span id="cb22-38"><a href="#cb22-38"></a><span class="op">};</span></span>
 <span id="cb22-39"><a href="#cb22-39"></a></span>
 <span id="cb22-40"><a href="#cb22-40"></a><span class="va">fs</span>.<span class="at">readFile</span>(<span class="st">'notes.txt'</span><span class="op">,</span> <span class="st">'utf8'</span><span class="op">,</span> afterRead)<span class="op">;</span></span></code></pre></div>
-<h3 id="using-promises-1">Using promises</h3>
+<h3 id="with-promises">With promises</h3>
 <div class="sourceCode" id="cb23" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="at">require</span>(<span class="st">'fs'</span>).<span class="at">promises</span><span class="op">;</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="va">fs</span>.<span class="at">readFile</span>(<span class="st">'notes.txt'</span><span class="op">,</span> <span class="st">'utf8'</span>)</span>
@@ -347,7 +347,7 @@ should get copied
 <span id="cb23-22"><a href="#cb23-22"></a>    <span class="va">console</span>.<span class="at">log</span>(<span class="st">'Something went wrong:'</span>)<span class="op">;</span></span>
 <span id="cb23-23"><a href="#cb23-23"></a>    <span class="va">console</span>.<span class="at">log</span>(err)<span class="op">;</span></span>
 <span id="cb23-24"><a href="#cb23-24"></a>  <span class="op">}</span>)<span class="op">;</span></span></code></pre></div>
-<h3 id="using-asyncawait-1">Using async/await</h3>
+<h3 id="with-asyncawait">With async/await</h3>
 <div class="sourceCode" id="cb24" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">const</span> fs <span class="op">=</span> <span class="at">require</span>(<span class="st">'fs'</span>).<span class="at">promises</span><span class="op">;</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a></span>
 <span id="cb24-3"><a href="#cb24-3"></a><span class="kw">const</span> go <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> <span class="op">{</span></span>
@@ -373,6 +373,9 @@ should get copied
 <span id="cb24-23"><a href="#cb24-23"></a><span class="op">};</span></span>
 <span id="cb24-24"><a href="#cb24-24"></a></span>
 <span id="cb24-25"><a href="#cb24-25"></a><span class="at">go</span>()<span class="op">;</span></span></code></pre></div>
+	</section>
+	<section>
+		test
 	</section>
 </article>
 

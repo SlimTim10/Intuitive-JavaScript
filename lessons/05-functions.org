@@ -80,7 +80,7 @@ console.log(y); // 10
 What makes functions so important is *reusability* and *composability*.
 
 *** Reusability
-Let's say we have the following code for printing a greeting message to a person:
+Let's say we have the following code for printing a greeting message to a person.
 
 #+BEGIN_SRC js
 const name = 'Alice';
@@ -189,7 +189,7 @@ However, this doesn't help if we want to do more things in the function body bef
 *** No return value
 Functions don't always need to explicitly return a result. However, if a function doesn't explicitly have a ~return~ statement, it will still return a value: ~undefined~. In fact, ~console.log()~ is one such function; it doesn't return a value other than ~undefined~ because its job is to simply perform an action (print to the console).
 
-An example would be something like the following function, which only prints something:
+An example would be something like the following function, which only prints something.
 
 #+begin_src js
 const printMessage = () => {
