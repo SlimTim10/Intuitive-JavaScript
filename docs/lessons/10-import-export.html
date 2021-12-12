@@ -9,7 +9,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="../css/reset.css" />
 		<link rel="stylesheet" href="../css/default.css" />
 		<link rel="stylesheet" href="../css/vs2015.css" />
@@ -24,7 +25,7 @@
 		<main role="main">
 			<h1>Importing and Exporting</h1>
 			<article>
-	<section>
+	<section id="lesson-body">
 		<p>Whether we’re writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with <a href="https://nodejs.org">Node.js</a>, familiarly known as “node”, and <a href="https://www.npmjs.com/">npm</a>.</p>
 <h2 id="exporting">Exporting</h2>
 <p>JavaScript code in our files is never automatically <strong>exported</strong>. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called <code>module.exports</code>. If we don’t explicitly set this variable to any value, its value is an empty object <code>{}</code>. Whatever value we give to <code>module.exports</code> is what the file is exporting (meaning it can be imported by another file). (The reason for the name <code>module.exports</code> is because node considers every JavaScript file a <strong>module</strong>.) It is most common to export an object because, as we’ve seen, objects allow us to package many things into one value.</p>
@@ -153,9 +154,14 @@
 <p>Putting that code in our <code>index.js</code> file and running it with <code>node index.js</code>, we should see a blue “Hello world!” in the terminal.</p>
 <p>That’s it! Try exploring <a href="https://www.npmjs.com/">npm</a> and playing around with more packages. You can install as many packages in a single project as you wish. You don’t even need to use the ones you installed.</p>
 	</section>
-	<section>
-		test
+	
+	<section id="next-lesson">
+		<a href="../lessons/11-async.html">
+			<h2>Next<i class="fas fa-long-arrow-alt-right"></i></h2>
+			<h3>Asynchronous Operations</h3>
+		</a>
 	</section>
+	
 </article>
 
 		</main>

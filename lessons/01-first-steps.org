@@ -1,5 +1,7 @@
 ---
 title: First Steps
+next-title: Values, Types, and Variables
+file: 02-values-types-variables.html
 ---
 
 ** Command Line

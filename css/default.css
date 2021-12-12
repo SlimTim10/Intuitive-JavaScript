@@ -88,7 +88,7 @@ article {
   margin-top: 1em;
 }
 
-article section {
+article section#lesson-body {
   display: flex;
   flex-direction: column;
   gap: 0.6em;
@@ -149,4 +149,18 @@ table th,
 table td {
   padding: 0.5em;
   border: 1px solid #E0E0E0;
+}
+
+#next-lesson {
+  border-top: 8px solid #D2B48C;
+  margin-top: 1em;
+}
+
+#next-lesson a {
+  text-decoration: none;
+  color: #282828;
+}
+
+#next-lesson i {
+  margin-left: 0.5em;
 }

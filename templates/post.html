@@ -1,8 +1,13 @@
 <article>
-	<section>
+	<section id="lesson-body">
 		$body$
 	</section>
-	<section>
-		test
+	$if(nextLessonUrl)$$if(nextLessonTitle)$
+	<section id="next-lesson">
+		<a href="$nextLessonUrl$">
+			<h2>Next<i class="fas fa-long-arrow-alt-right"></i></h2>
+			<h3>$nextLessonTitle$</h3>
+		</a>
 	</section>
+	$endif$$endif$
 </article>

@@ -9,7 +9,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="../css/reset.css" />
 		<link rel="stylesheet" href="../css/default.css" />
 		<link rel="stylesheet" href="../css/vs2015.css" />
@@ -24,7 +25,7 @@
 		<main role="main">
 			<h1>Operators</h1>
 			<article>
-	<section>
+	<section id="lesson-body">
 		<p>In the last lesson, we talked about programming being a matter of computing information. Using operators is a big part of doing computations. After all, we haven’t yet covered any tools that allow us to combine values together. As you will see in a moment, operators are symbols that operate on values to obtain a new value. Syntactically, spaces don’t make much difference but it can be easier to read.</p>
 <p>Remember that variables hold values, which means we can either use operators on plain values or on variables. Also, operators will only make sense when applied to values of a specific type.</p>
 <p>The code examples here will use comments (<code>//</code>) to show what the <code>console.log</code> lines should print. Instead of reading passively, I encourage you to follow along by running this code in your node REPL or copying it into a JavaScript file (and running it with node).</p>
@@ -210,9 +211,14 @@
 <h2 id="a-word-about-errors">A Word About Errors</h2>
 <p>Sometimes when you run your code, you may see node produce an error instead of the expected result. That’s not a bad thing! Node is trying to help make sure your code is unambiguous and doesn’t contain any silly mistakes that may cause unexpected problems. Think of errors as a gentle way of pointing out that something needs to be fixed in your code. Understanding the errors that node produces can take a lot of practice. Every error will have a message to attempt to let you know why there is an error in the first place and approximately where the problem is in your code (by telling you a line number). Because of the complexity of the code interpretation process, the error message and line number may not actually point you in the right direction! That being said, you should first assume that the error message is helpful and use its guidance, but just be aware that it’s not a guarantee and you might need to look elsewhere. You will get to know the common errors with practice.</p>
 	</section>
-	<section>
-		test
+	
+	<section id="next-lesson">
+		<a href="../lessons/04-conditionals.html">
+			<h2>Next<i class="fas fa-long-arrow-alt-right"></i></h2>
+			<h3>Conditionals</h3>
+		</a>
 	</section>
+	
 </article>
 
 		</main>
