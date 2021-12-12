@@ -63,7 +63,7 @@ The ternary operator works a lot like the if-else statement, except it allows us
 There are three parts to a ternary operator expression: the condition, the ~true~ branch result, and the ~false~ branch result. It's like a shortcut for the ~if-else~ statement (except the ~else~ is mandatory). In pseudocode, it looks like this:
 
 #+begin_src js
-const x = CONDITION ? TRUE-BRANCH-RESULT : FALSE-BRANCH-RESULT;
+CONDITION ? TRUE-BRANCH-RESULT : FALSE-BRANCH-RESULT
 #+end_src
 
 Working with a similar example as before:
