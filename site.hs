@@ -25,10 +25,11 @@ main = do
         compile compressCssCompiler
 
     match (fromList ["preface.org"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+      route $ (gsubRoute "preface.org" (const "index")) `composeRoutes` (setExtension "html")
+      compile $ pandocCompiler
+        >>= loadAndApplyTemplate "templates/post.html" defaultContext
+        >>= loadAndApplyTemplate "templates/default.html" defaultContext
+        >>= relativizeUrls
 
     match "lessons/*" $ do
         route $ setExtension "html"
@@ -42,19 +43,19 @@ main = do
             >>= loadAndApplyTemplate "templates/default.html" lessonContext
             >>= relativizeUrls
 
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            lessons <- loadAll "lessons/*"
-            let indexCtx =
-                    listField "lessons" defaultContext (return lessons) <>
-                    constField "title" "Home"                <>
-                    defaultContext
+    -- match "index.html" $ do
+    --     route idRoute
+    --     compile $ do
+    --         lessons <- loadAll "lessons/*"
+    --         let indexCtx =
+    --                 listField "lessons" defaultContext (return lessons) <>
+    --                 constField "title" "Preface"                <>
+    --                 defaultContext
 
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
+    --         getResourceBody
+    --             >>= applyAsTemplate indexCtx
+    --             >>= loadAndApplyTemplate "templates/default.html" indexCtx
+    --             >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
 

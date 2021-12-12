@@ -1,8 +1,6 @@
-#+SETUPFILE: setup.org
-#+INCLUDE: header.org
-#+TITLE: Preface
-
-* Preface
+---
+title: Preface
+---
 
 Modern JavaScript lessons with practice exercises.
 
