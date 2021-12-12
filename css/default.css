@@ -151,16 +151,30 @@ table td {
   border: 1px solid #E0E0E0;
 }
 
-#next-lesson {
+#prev-and-next-links {
   border-top: 8px solid #D2B48C;
   margin-top: 1em;
+  padding-top: 1em;
 }
 
-#next-lesson a {
+#prev-and-next-links a {
   text-decoration: none;
   color: #282828;
 }
+#prev-and-next-links a:hover * {
+  color: #70532c;
+}
 
-#next-lesson i {
-  margin-left: 0.5em;
+#prev-and-next-links i {
+  font-size: 1.5em;
+  color: #666;
+}
+
+#next-link {
+  display: flex;
+  align-items: center;
+}
+
+#next-link i {
+  margin-left: 1em;
 }

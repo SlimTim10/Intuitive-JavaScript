@@ -3,10 +3,13 @@
 		$body$
 	</section>
 	$if(nextLessonUrl)$$if(nextLessonTitle)$
-	<section id="next-lesson">
-		<a href="$nextLessonUrl$">
-			<h2>Next<i class="fas fa-long-arrow-alt-right"></i></h2>
-			<h3>$nextLessonTitle$</h3>
+	<section id="prev-and-next-links">
+		<a id="next-link" href="$nextLessonUrl$">
+			<div>
+				<p>Next lesson</p>
+				<h2>$nextLessonTitle$</h2>
+			</div>
+			<i class="fas fa-arrow-right"></i>
 		</a>
 	</section>
 	$endif$$endif$
