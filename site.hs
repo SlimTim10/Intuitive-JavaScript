@@ -24,6 +24,10 @@ main = do
       route   idRoute
       compile compressCssCompiler
 
+    match (fromList ["CNAME"]) $ do
+      route idRoute
+      compile copyFileCompiler
+
     match (fromList ["preface.org"]) $ do
       route $ (gsubRoute "preface.org" (const "index")) `composeRoutes` (setExtension "html")
       compile $ do
