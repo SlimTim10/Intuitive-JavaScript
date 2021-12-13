@@ -5,3 +5,4 @@ stack exec site build
 git add -A
 git commit -m "Publish."
 git push origin master:master
+pause
