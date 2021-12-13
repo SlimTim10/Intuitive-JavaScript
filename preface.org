@@ -2,13 +2,26 @@
 title: Preface
 ---
 
-Modern JavaScript lessons with practice exercises.
+Another resource to learn JavaScript. As if there aren't enough already, right? I know. But, as a teacher, I still can't find any lessons that I can confidently recommend or use with my students. Every JavaScript resource I find either has missing pieces, outdated concepts, verbose explanations, or a lack of exercises. I wrote these lessons to fill the gap. And, because it's so difficult to find satisfactory lessons that are free, it only makes sense to make these lessons free as well.
+
+Because these lessons are a work in progress maintained on [[https://github.com/SlimTim10/Intuitive-JavaScript][GitHub]], they may be modified without warning. Feel free to fork the repository if you wish to keep a copy of the lessons frozen at a certain state. I intend to update the lesson content and exercises until the material as a whole can be used independently to learn JavaScript from start to finish.
+
+These lessons take a novel approach to introducing JavaScript in a practical, functional, and strongly typed way. While the lessons are aimed at beginners, experienced programmers will find much to appreciate as well. Material such as this is only possible now that JavaScript has adopted modern functional programming techniques in recent times. As a result, the content is both modern and timeless, connecting new techniques to old foundations.
 
 ** Practical
-These lessons are aimed at giving you practical skills to build real projects in JavaScript. In addition, the techniques covered here will enable you to adapt to other programming languages and styles. An important skill for any programmer is being able to *break problems down*. From lesson 04-Conditionals onwards, each lesson has many exercises (and solutions) for you to practice on to make sure you understand the concepts.
+These lessons are aimed at giving you practical skills to confidently build real projects in JavaScript. In addition, the techniques covered here will empower you to adapt to other programming languages and styles with ease. An essential part to learning programming is practice. From lesson 04-Conditionals onwards, each lesson has many exercises (and solutions) for you to practice on to make sure you understand the concepts.
 
 ** Functional
-Functional programming has a long history rooted in math developed in the 1930s. The values that functional programming brings to development have been realized and adopted to traditionally non-functional languages and frameworks, greatly accelerating in the recent years. As an example, [[https://reactjs.org/][React]], the most popular frontend library/framework (as of writing this), has changed from being object-oriented to functional. I personally find that functional programming is a lot of fun to learn and apply.
+Functional programming has a long history rooted in math developed in the 1930s. The values that functional programming brings to development have been realized and adopted to traditionally non-functional languages and frameworks, greatly accelerating in the recent years. As an example, [[https://reactjs.org/][React]], the most popular frontend library/framework (as of writing this), has changed from being object-oriented to functional. The greatest benefit that functional programming has to offer is providing a framework for *breaking problems down*; an important skill for any programmer.
 
-** Typed
-JavaScript is known for having a messy and unintuitive type system. These lessons will teach you how to think about types in an intuitive way that will help you write clean and maintainable code. You will also be better prepared to learn other programming languages that will likely have stronger type systems or be statically typed, such as TypeScript, C, C++, Rust, Haskell, Elixir, etc.
+I find that functional programming is a fascinating subject with a low barrier of entry and a high ceiling. Best of all, it keeps programming fun!
+
+*** Characteristics of functional programming
+
+- Immutability (variables don't change their value)
+- Functions as values
+- Higher-order functions (functions as arguments or return values)
+- Pure functions (functions don't cause side effects)
+
+** Strongly Typed
+JavaScript is known for having a messy and unintuitive type system. These lessons will teach you how to think about types in an intuitive way that will help you write clean and maintainable code. You will also be better prepared to learn other programming languages that will likely have strong and/or static type systems, such as TypeScript, C, C++, Rust, Haskell, Elixir, etc.
