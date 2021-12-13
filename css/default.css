@@ -91,7 +91,11 @@ article {
 article section#lesson-body {
   display: flex;
   flex-direction: column;
-  gap: 0.6em;
+}
+
+article section#lesson-body > * {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 article section p {
@@ -111,9 +115,13 @@ article section h3 {
 article section ul {
   display: flex;
   flex-direction: column;
-  gap: 0.3em;
   list-style: disc outside none;
   padding-left: 2em;
+}
+
+article section ul li {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 article section ul li::marker {
@@ -182,7 +190,6 @@ footer {
   border-top: 1px solid #155915;
   display: flex;
   flex-direction: column;
-  gap: 1em;
 }
 
 footer > div:first-of-type {
@@ -203,7 +210,10 @@ footer > div:first-of-type {
 
 #social-links {
   display: flex;
-  gap: 1em;
+}
+
+#social-links > * {
+  margin-left: 1em;
 }
 
 footer div:nth-of-type(2) {
@@ -211,7 +221,11 @@ footer div:nth-of-type(2) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em;
+}
+
+footer div:nth-of-type(2) > * {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 #created-by {
