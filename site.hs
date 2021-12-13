@@ -5,6 +5,7 @@ import           Hakyll
 import qualified GHC.IO.Encoding as E
 import Control.Applicative (empty)
 import Data.Maybe (fromMaybe)
+import Data.List (isPrefixOf)
 
 
 --------------------------------------------------------------------------------
@@ -46,6 +47,7 @@ main = do
         let lessonContext =
               field "nextLessonUrl" nextLessonUrl <>
               field "nextLessonTitle" nextLessonTitle <>
+              field "lessonNumber" lessonNumber <>
               defaultContext
         pandocCompiler
           >>= loadAndApplyTemplate "templates/lesson.html"    lessonContext
@@ -68,8 +70,15 @@ firstLessonUrl _ = do
 firstLessonTitle :: Item String -> Compiler String
 firstLessonTitle _ = do
   lessons <- getMatches "lessons/*.org"
-  metadata <- getMetadata $ head lessons
-  return $ fromMaybe "No title" $ lookupString "title" metadata
+  getMetadataField (head lessons) "title"
+    >>= return . fromMaybe "No title"
+
+lessonNumber :: Item String -> Compiler String
+lessonNumber lesson = do
+  let path = toFilePath (itemIdentifier lesson)
+  if "lessons/" `isPrefixOf` path
+    then return . take 2 . drop (length ("lessons/" :: String)) $ path
+    else empty
 
 nextLessonUrl :: Item String -> Compiler String
 nextLessonUrl lesson = do

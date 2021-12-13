@@ -21,7 +21,12 @@
 		</header>
 
 		<main role="main">
+			$if(lessonNumber)$
+			<h1>$lessonNumber$ - $title$</h1>
+			$else$
 			<h1>$title$</h1>
+			$endif$
+			
 			$body$
 		</main>
 
