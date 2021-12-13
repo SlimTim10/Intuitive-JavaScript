@@ -1,0 +1,21 @@
+* Intuitive JavaScript
+
+** About
+Modern JavaScript lessons with practice exercises.
+
+Live at https://intuitivejs.info/ .
+
+** Development
+Built with [[https://github.com/jaspervdj/hakyll][Hakyll]]. Site files are served from ~docs/~.
+
+First build the project with [[https://www.haskellstack.org][Stack]]:
+
+~stack build~
+
+To build the site:
+
+~stack exec site clean && stack exec site build~
+
+To run a preview server:
+
+~stack exec site clean && stack exec site watch~
