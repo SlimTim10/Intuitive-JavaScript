@@ -1,12 +1,6 @@
 html {
   font-size: 17px;
 }
-/* @media (max-width: 900px) { */
-/*   html { font-size: 15px; } */
-/* } */
-/* @media (max-width: 400px) { */
-/*   html { font-size: 13px; } */
-/* } */
 
 body {
   font-family: 'Inter', sans-serif;
@@ -59,6 +53,11 @@ header {
 
 header nav a {
   font-size: 3em;
+}
+@media (max-width: 500px) {
+  header nav a {
+    font-size: 2em;
+  }
 }
 header nav a:link {
   color: white;
