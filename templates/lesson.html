@@ -2,6 +2,19 @@
 	<section id="lesson-body">
 		$body$
 	</section>
+
+	$if(firstLessonUrl)$$if(firstLessonTitle)$
+	<section id="prev-and-next-links">
+		<a id="next-link" href="$firstLessonUrl$">
+			<div>
+				<p>First lesson</p>
+				<h2>$firstLessonTitle$</h2>
+			</div>
+			<i class="fas fa-arrow-right"></i>
+		</a>
+	</section>
+	$endif$$endif$
+	
 	$if(nextLessonUrl)$$if(nextLessonTitle)$
 	<section id="prev-and-next-links">
 		<a id="next-link" href="$nextLessonUrl$">
@@ -13,4 +26,5 @@
 		</a>
 	</section>
 	$endif$$endif$
+	
 </article>

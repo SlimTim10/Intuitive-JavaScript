@@ -13,58 +13,59 @@ main = do
   E.setLocaleEncoding E.utf8
   hakyllWith config $ do
     match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+      route   idRoute
+      compile copyFileCompiler
 
     match "exercises/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+      route   idRoute
+      compile copyFileCompiler
 
     match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
+      route   idRoute
+      compile compressCssCompiler
 
     match (fromList ["preface.org"]) $ do
       route $ (gsubRoute "preface.org" (const "index")) `composeRoutes` (setExtension "html")
-      compile $ pandocCompiler
-        >>= loadAndApplyTemplate "templates/post.html" defaultContext
-        >>= loadAndApplyTemplate "templates/default.html" defaultContext
-        >>= relativizeUrls
+      compile $ do
+        let prefaceContext =
+              field "firstLessonUrl" firstLessonUrl <>
+              field "firstLessonTitle" firstLessonTitle <>
+              defaultContext
+        pandocCompiler
+          >>= loadAndApplyTemplate "templates/lesson.html" prefaceContext
+          >>= loadAndApplyTemplate "templates/default.html" prefaceContext
+          >>= relativizeUrls
 
     match "lessons/*" $ do
-        route $ setExtension "html"
-        compile $ do
-          let lessonContext =
-                field "nextLessonUrl" nextLessonUrl <>
-                field "nextLessonTitle" nextLessonTitle <>
-                defaultContext
-          pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    lessonContext
-            >>= loadAndApplyTemplate "templates/default.html" lessonContext
-            >>= relativizeUrls
-
-    -- match "index.html" $ do
-    --     route idRoute
-    --     compile $ do
-    --         lessons <- loadAll "lessons/*"
-    --         let indexCtx =
-    --                 listField "lessons" defaultContext (return lessons) <>
-    --                 constField "title" "Preface"                <>
-    --                 defaultContext
-
-    --         getResourceBody
-    --             >>= applyAsTemplate indexCtx
-    --             >>= loadAndApplyTemplate "templates/default.html" indexCtx
-    --             >>= relativizeUrls
+      route $ setExtension "html"
+      compile $ do
+        let lessonContext =
+              field "nextLessonUrl" nextLessonUrl <>
+              field "nextLessonTitle" nextLessonTitle <>
+              defaultContext
+        pandocCompiler
+          >>= loadAndApplyTemplate "templates/lesson.html"    lessonContext
+          >>= loadAndApplyTemplate "templates/default.html" lessonContext
+          >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
-
 
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration
   { destinationDirectory = "docs"
   }
+
+firstLessonUrl :: Item String -> Compiler String
+firstLessonUrl _ = do
+  lessons <- getMatches "lessons/*.org"
+  fmap (maybe empty toUrl) . getRoute $ head lessons
+
+firstLessonTitle :: Item String -> Compiler String
+firstLessonTitle _ = do
+  lessons <- getMatches "lessons/*.org"
+  metadata <- getMetadata $ head lessons
+  return $ fromMaybe "No title" $ lookupString "title" metadata
 
 nextLessonUrl :: Item String -> Compiler String
 nextLessonUrl lesson = do

@@ -1,5 +1,5 @@
 ---
-title: First Steps
+title: Getting Started
 next-title: Values, Types, and Variables
 file: 02-values-types-variables.html
 ---

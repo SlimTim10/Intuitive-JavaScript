@@ -16,7 +16,7 @@ Functional programming has a long history rooted in math developed in the 1930s.
 
 I find that functional programming is a fascinating subject with a low barrier of entry and a high ceiling. Best of all, it keeps programming fun!
 
-*** Characteristics of functional programming
+*** What are the characteristics of functional programming?
 
 - Immutability (variables don't change their value)
 - Functions as values
