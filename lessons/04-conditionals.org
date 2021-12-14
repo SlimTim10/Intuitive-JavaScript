@@ -2,6 +2,7 @@
 title: Conditionals
 ---
 
+* Conditionals
 Conditionals are an essential tool in programming. We need a way for our code to take different paths depending on some value.
 
 For instance, let's say we're developing the visual part of a weather app and we have a value representing the temperature (a number). If it's below a certain number, meaning it's cold, we want to show it in blue. Otherwise, we want to show it in red. The condition is that the temperature is either below a certain number or not. Our two branches are: show the temperature in blue or show the temperature in red. For something with more conditions, let's say we have the weather forecast, which can be "rain", "clouds", "sunny", "snow", or "thunderstorm". For each of these values we want to show a different icon, so we actually have five different conditions.

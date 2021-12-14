@@ -2,6 +2,7 @@
 title: Operators
 ---
 
+* Operators
 In the last lesson, we talked about programming being a matter of computing information. Using operators is a big part of doing computations. After all, we haven't yet covered any tools that allow us to combine values together. As you will see in a moment, operators are symbols that operate on values to obtain a new value. Syntactically, spaces don't make much difference but it can be easier to read.
 
 Remember that variables hold values, which means we can either use operators on plain values or on variables. Also, operators will only make sense when applied to values of a specific type.

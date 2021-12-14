@@ -2,6 +2,7 @@
 title: Preface
 ---
 
+* Preface
 Another resource to learn JavaScript. As if there aren't enough already, right? I know. But, as a teacher, I still can't find any lessons that I can confidently recommend or use with my students. Every JavaScript resource I find either has missing pieces, outdated concepts, verbose explanations, or a lack of exercises. I wrote these lessons to fill the gap. And, because it's so difficult to find satisfactory lessons that are free, it only makes sense to make these lessons free as well.
 
 Because these lessons are a work in progress maintained on [[https://github.com/SlimTim10/Intuitive-JavaScript][GitHub]], they may be modified without warning. Feel free to fork the repository if you wish to keep a copy of the lessons frozen at a certain state. I intend to update the lesson content and exercises until the material as a whole can be used independently to learn JavaScript from start to finish.

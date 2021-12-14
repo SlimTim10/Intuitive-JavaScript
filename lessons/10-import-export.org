@@ -2,6 +2,7 @@
 title: Importing and Exporting
 ---
 
+* Importing and Exporting
 Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]], familiarly known as "node", and [[https://www.npmjs.com/][npm]].
 
 ** Exporting

@@ -2,6 +2,7 @@
 title: Asynchronous Operations
 ---
 
+* Asynchronous Operations
 All of our code up until now has involved purely *synchronous* operations. Every operation we run, or function we call, gives us back a result (or produces some output) by the time it is finished running. Operations are normally synchronized with each other: each operation waits to start only after the previous one is finished.
 
 #+BEGIN_SRC js

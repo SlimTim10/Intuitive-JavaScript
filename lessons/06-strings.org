@@ -2,6 +2,7 @@
 title: Strings
 ---
 
+* Strings
 Used for dealing with words and general text, strings are values that have special properties other types of values don't have.
 
 ** Index

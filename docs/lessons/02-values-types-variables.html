@@ -22,12 +22,24 @@
 
 		<main role="main">
 			
-			<h1>02 - Values, Types, and Variables</h1>
+			<p class="lesson-number">2</p>
 			
 			
-			<article>
-	<section id="lesson-body">
-		<p>Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.</p>
+			
+
+<nav id="toc" class="card">
+<h1>Contents</h1>
+<ul>
+<li><a href="#values-types-and-variables">Values, Types, and Variables</a>
+<ul>
+<li><a href="#values-and-types">Values and Types</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#example-repl-session">Example REPL Session</a></li>
+</ul></li>
+</ul>
+</nav>
+<article class="card"><section id="lesson-body"><h1 id="values-types-and-variables">Values, Types, and Variables</h1>
+<p>Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.</p>
 <h2 id="values-and-types">Values and Types</h2>
 <p><strong>Values</strong> represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain <strong>type</strong>. In other words, a value does not exist on its own without a type.</p>
 <p>Here is a list of the types that will be used throughout these lessons:</p>
@@ -106,74 +118,72 @@
 <p><strong>Variables</strong> let us assign a name to a value and reuse it wherever we want.</p>
 <p>In functional JavaScript, variables are always declared with <code>const</code>. You may see <code>var</code> or <code>let</code> used in other JavaScript code, but not in these lessons. This is great because there’s less to think about when declaring a variable and there are stricter rules about how variables work.</p>
 <p>The syntax to define a variable looks like this:</p>
-<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">const</span> favNumber <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> favNumber <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span></code></pre></div>
 <p>The line must start with the word “const”, followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end JavaScript statements like this with a semicolon. In this example, we are defining a variable named “favNumber” and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use “favNumber”, we can substitute 10, and vice versa.</p>
 <p>Variable names are conventionally written in <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>. It is encouraged to give variables meaningful names, as we will do throughout the lessons.</p>
 <p>Defining a variable is a kind of <strong>statement</strong>, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. A variable cannot be used before it is defined.</p>
 <h2 id="example-repl-session">Example REPL Session</h2>
-<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">C</span>:\Users\Tim<span class="op">&gt;</span>node</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">Type</span> <span class="st">&quot;.help&quot;</span> for more information.</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="op">&gt;</span> <span class="ex">undefined</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">undefined</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="op">&gt;</span> <span class="ex">null</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">null</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="op">&gt;</span> <span class="ex">1</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">1</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="op">&gt;</span> <span class="fu">true</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">true</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="op">&gt;</span> <span class="kw">(</span><span class="ex">x</span><span class="kw">)</span> =<span class="op">&gt;</span> <span class="ex">x</span> + 1<span class="kw">;</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>[<span class="ex">Function</span>]</span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="op">&gt;</span> <span class="st">'hello'</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="st">'hello'</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="op">&gt;</span> [<span class="ex">1</span>, 2, 3]</span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="bu">[</span> 1, 2, 3<span class="bu"> ]</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="op">&gt;</span> {<span class="ex">a</span>: 1, b: 2}</span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">{</span> <span class="ex">a</span>: 1, b: 2 <span class="kw">}</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="op">&gt;</span> <span class="ex">const</span> x = 5<span class="kw">;</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="ex">undefined</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="op">&gt;</span> <span class="ex">x</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="ex">5</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="op">&gt;</span> <span class="ex">y</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="ex">Uncaught</span> ReferenceError: y is not defined</span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="op">&gt;</span> <span class="ex">const</span> y = 10<span class="kw">;</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="ex">undefined</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="op">&gt;</span> <span class="ex">y</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="ex">10</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="op">&gt;</span> <span class="ex">const</span> sameAsX = x<span class="kw">;</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="ex">undefined</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="op">&gt;</span> <span class="ex">sameAsX</span></span>
-<span id="cb2-33"><a href="#cb2-33"></a><span class="ex">5</span></span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="op">&gt;</span> <span class="ex">const</span> alice = {name: <span class="st">'Alice'</span>, age: 30};</span>
-<span id="cb2-35"><a href="#cb2-35"></a><span class="ex">undefined</span></span>
-<span id="cb2-36"><a href="#cb2-36"></a><span class="op">&gt;</span> <span class="ex">alice</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a><span class="kw">{</span> <span class="ex">name</span>: <span class="st">'Alice'</span>, age: 30 <span class="kw">}</span></span>
-<span id="cb2-38"><a href="#cb2-38"></a><span class="op">&gt;</span> <span class="ex">const</span> fruits = [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span>]<span class="kw">;</span></span>
-<span id="cb2-39"><a href="#cb2-39"></a><span class="ex">undefined</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="op">&gt;</span> <span class="ex">fruits</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a><span class="bu">[</span> <span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span><span class="bu"> ]</span></span>
-<span id="cb2-42"><a href="#cb2-42"></a><span class="op">&gt;</span></span>
-<span id="cb2-43"><a href="#cb2-43"></a><span class="kw">(</span><span class="ex">To</span> exit, press ^C again or ^D or type .exit<span class="kw">)</span></span>
-<span id="cb2-44"><a href="#cb2-44"></a><span class="op">&gt;</span></span>
-<span id="cb2-45"><a href="#cb2-45"></a></span>
-<span id="cb2-46"><a href="#cb2-46"></a><span class="ex">C</span>:\Users\Tim<span class="op">&gt;</span></span></code></pre></div>
-	</section>
+<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span>node</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">&quot;.help&quot;</span> for more information.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> undefined</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> null</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">null</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> 1</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> true</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">(</span><span class="ex">x</span><span class="kw">)</span> <span class="ex">=</span><span class="op">&gt;</span> x + 1<span class="kw">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">[Function]</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="st">'hello'</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">'hello'</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [1, <span class="ex">2,</span> 3]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 1, 2, 3 <span class="bu">]</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="ex">{a:</span> 1, b: 2}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span> <span class="ex">a:</span> 1, b: 2 }</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">x</span> = 5<span class="kw">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> x</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ex">5</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> y</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ex">Uncaught</span> ReferenceError: y is not defined</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">y</span> = 10<span class="kw">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> y</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ex">10</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">sameAsX</span> = x<span class="kw">;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> sameAsX</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ex">5</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">alice</span> = {name: <span class="st">'Alice'</span>, age: 30}<span class="kw">;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> alice</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span> <span class="ex">name:</span> <span class="st">'Alice'</span>, age: 30 }</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">fruits</span> = [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span>]<span class="kw">;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> fruits</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span> <span class="bu">]</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">To</span> exit, press ^C again or ^D or type .exit<span class="kw">)</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span></span></code></pre></div></section>
 
-	
-	
-	
-	<section id="prev-and-next-links">
-		<a id="next-link" href="../lessons/03-operators.html">
-			<div>
-				<p>Next lesson</p>
-				<h2>Operators</h2>
-			</div>
-			<i class="fas fa-arrow-right"></i>
-		</a>
-	</section>
-	
-	
+
+<section id="prev-and-next-links">
+	<a id="next-link" href="../lessons/03-operators.html">
+		<div>
+			<p>Next lesson</p>
+			<h2>Operators</h2>
+		</div>
+		<i class="fas fa-arrow-right"></i>
+	</a>
+</section>
+
 </article>
+
+
 
 		</main>
 

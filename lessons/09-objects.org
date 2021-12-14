@@ -2,6 +2,7 @@
 title: Objects
 ---
 
+* Objects
 *Objects* are values useful for grouping pieces of information together. When it comes to representing real-world information in code, we often have pieces of information that are intuitively grouped together. For example, a person has a name, favorite color, and favorite food.
 
 Without objects, how could we group information about one person together, using the tools we have so far? One option would be to create separate variable for each value.

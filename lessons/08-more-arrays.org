@@ -2,6 +2,7 @@
 title: More Arrays
 ---
 
+* More Arrays
 We're not done with arrays yet! Here, we will introduce two very common ways to use arrays: applying a single operation on each element of an array, and converting between arrays and strings.
 
 ** Higher-Order Functions

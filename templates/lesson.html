@@ -1,8 +1,22 @@
-<article>
-	<section id="lesson-body">
-		$body$
-	</section>
+$if(preface)$
 
+$if(toc)$
+<nav id="toc" class="card">
+	<h1>Lessons</h1>
+	<ul>
+		<li><a href="#">&nbsp;</a></li> <!-- dummy to match with the other TOCs -->
+		$for(toc)$
+		<li>
+			<a href="$url$">
+				$lessonNumber$. $title$
+			</a>
+		</li>
+		$endfor$
+	</ul>
+</nav>
+$endif$
+<article class="card">
+	<section id="lesson-body">$body$</section>
 	$if(firstLessonUrl)$$if(firstLessonTitle)$
 	<section id="prev-and-next-links">
 		<a id="next-link" href="$firstLessonUrl$">
@@ -14,17 +28,22 @@
 		</a>
 	</section>
 	$endif$$endif$
-	
-	$if(nextLessonUrl)$$if(nextLessonTitle)$
-	<section id="prev-and-next-links">
-		<a id="next-link" href="$nextLessonUrl$">
-			<div>
-				<p>Next lesson</p>
-				<h2>$nextLessonTitle$</h2>
-			</div>
-			<i class="fas fa-arrow-right"></i>
-		</a>
-	</section>
-	$endif$$endif$
-	
 </article>
+
+$else$
+
+$body$
+$if(nextLessonUrl)$$if(nextLessonTitle)$
+<section id="prev-and-next-links">
+	<a id="next-link" href="$nextLessonUrl$">
+		<div>
+			<p>Next lesson</p>
+			<h2>$nextLessonTitle$</h2>
+		</div>
+		<i class="fas fa-arrow-right"></i>
+	</a>
+</section>
+$endif$$endif$
+</article>
+
+$endif$

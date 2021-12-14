@@ -76,64 +76,86 @@ header nav a:hover {
   text-decoration: none;
 }
 
+nav#toc ul {
+  margin-top: 1em;
+}
+
+nav#toc > ul > li:first-of-type > a {
+  display: none !important;
+}
+
+nav#toc a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-weight: 400;
+}
+
+nav#toc a:hover {
+  color: #70532c;
+  background: #EAEAEA;
+}
+
 main {
-  padding: 1.5em;
-  margin: 2em auto 0 auto;
   max-width: 60em;
+  margin: 0 auto;
+}
+
+.card {
+  margin-top: 2em;
+  padding: 1.5em;
   background: white;
   box-shadow: 0 0 5px 0 rgb(0 0 0 / 25%);
 }
 
-article {
-  margin-top: 1em;
-}
-
-article section#lesson-body {
+main > article > section#lesson-body {
   display: flex;
   flex-direction: column;
 }
 
-article section#lesson-body > * {
+main > article > section#lesson-body > * {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
 
-article section p {
+main > article > section p {
   line-height: 1.2em;
 }
 
-article section h2 {
+main > article > section h2 {
   margin-top: 0.7em;
   margin-bottom: 0.5em;
 }
 
-article section h3 {
+main > article > section h3 {
   margin-top: 0.7em;
   margin-bottom: 0.5em;
 }
 
-article section ul {
+main > article > section ul {
   display: flex;
   flex-direction: column;
   list-style: disc outside none;
   padding-left: 2em;
 }
 
-article section ul li {
+main > article > section ul li {
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
 
-article section ul li::marker {
+main > article > section ul li::marker {
   margin: 0 0.5rem 0 0;
   color: #D2B48C;
 }
 
-article section pre {
+main > article > section pre {
   padding: 0.3em 0.5em;
 }
 
-article section p > code {
+main > article > section p > code {
   background: #EAEAEA;
 }
 
@@ -230,4 +252,8 @@ footer div:nth-of-type(2) > * {
 
 #created-by {
   font-size: 1.2rem;
+}
+
+.lesson-number {
+  display: none;
 }

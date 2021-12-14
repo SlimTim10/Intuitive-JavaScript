@@ -22,12 +22,24 @@
 
 		<main role="main">
 			
-			<h1>01 - Getting Started</h1>
+			<p class="lesson-number">1</p>
 			
 			
-			<article>
-	<section id="lesson-body">
-		<h2 id="command-line">Command Line</h2>
+			
+
+<nav id="toc" class="card">
+<h1>Contents</h1>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#command-line">Command Line</a></li>
+<li><a href="#editor">Editor</a></li>
+<li><a href="#node.js">Node.js</a></li>
+</ul></li>
+</ul>
+</nav>
+<article class="card"><section id="lesson-body"><h1 id="getting-started">Getting Started</h1>
+<h2 id="command-line">Command Line</h2>
 <p>Up until now, you may have thought of the Finder (on macOS), or the File Explorer (on Windows), as the only way to access your files. The <strong>command line</strong> is an older, but still common, way to interact with the files on your computer. With the command line, you can browse, read, copy, move, edit, and do anything with your files just like with the Finder or File Explorer. The difference is, instead of having a graphical representation of your files and clicking around with your mouse, the command line is entirely text-based; meaning you only get to see and type words.</p>
 <p>On macOS, the command line interpreter is the Terminal app. On Windows, it is the Command Prompt.</p>
 <p>There are a few commands and tricks you will need to learn. All commands are run by typing something then pressing <em>return</em>.</p>
@@ -41,27 +53,27 @@
 <h3 id="command-history">Command history</h3>
 <p>It can be tedious to type a new command every time, especially when it’s a command you used moments ago. The terminal keeps a history of the commands you’ve used and you can access it with the <em>up</em> and <em>down</em> arrow keys.</p>
 <h3 id="example-session-on-a-mac">Example session on a Mac</h3>
-<div class="sourceCode" id="cb1" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">Tims-Computer</span>:~ tim$ ls</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">Applications</span> Documents Library Music Public</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">Tims-Computer</span>:~ tim$ cd Desktop</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">Tims-Computer</span>:Desktop tim$ cd Desktop</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="ex">Tims-Computer</span>:Desktop tim$ ls</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">Media</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="ex">Tims-Computer</span>:Desktop tim$ cd Media</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">Tims-Computer</span>:Media tim$ ls</span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="ex">yt-video-01.mp4</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="ex">Tims-Computer</span>:Media tim$ cd ..</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="ex">Tims-Computer</span>:Desktop tim$ ls</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="ex">Media</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="ex">Tims-Computer</span>:Desktop tim$ cd ..</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="ex">Tims-Computer</span>:~ tim$ ls</span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="ex">Applications</span> Documents Library Music Public</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="ex">Tims-Computer</span>:~ tim$ /Users/tim/Desktop/Media</span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="ex">Tims-Computer</span>:Media tim$ ls</span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="ex">yt-video-01.mp4</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="ex">Tims-Computer</span>:Media tim$ </span></code></pre></div>
+<div class="sourceCode" id="cb1" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ ls</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Applications</span> Documents Library Music Public</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ cd Desktop</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd Desktop</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ ls</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Media</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd Media</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ ls</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-video-01.mp4</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ cd ..</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ ls</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Media</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd ..</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ ls</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Applications</span> Documents Library Music Public</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ /Users/tim/Desktop/Media</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ ls</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-video-01.mp4</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ </span></code></pre></div>
 <h2 id="editor">Editor</h2>
 <p>Using a featureful text editor is crucial for an enjoyable programming experience. My recommendation is <a href="https://code.visualstudio.com/download">Visual Studio Code</a> (VS Code). Don’t worry, it’s completely free! VS Code is great because it’s more than just a text editor; it’s an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">integrated development environment</a> (IDE), meaning its features go beyond editing text. It even has a built-in terminal, so you can do all your work solely within VS Code.</p>
 <p>Other text editors popular among programmers include <a href="https://www.gnu.org/software/emacs/">Emacs</a>, <a href="https://www.vim.org/">Vim</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>, <a href="https://atom.io/">Atom</a>, and <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a>.</p>
@@ -70,50 +82,48 @@
 <h3 id="repl">REPL</h3>
 <p>Node.js comes with a sometimes useful feature called a read-eval-print-loop (REPL). If you simply run the <code>node</code> command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You can not type regular command-line commands in this mode.</p>
 <p>Try entering the command <code>2 + 2</code> or <code>console.log('Hello, world!')</code>. To exit the REPL, press <em>control+c</em> twice. You should see something like the following.</p>
-<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">C</span>:\Users\Tim<span class="op">&gt;</span>node</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">Type</span> <span class="st">&quot;.help&quot;</span> for more information.</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="op">&gt;</span> <span class="ex">2</span> + 2</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">4</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="op">&gt;</span> <span class="ex">console.log</span>(<span class="st">'Hello, world!'</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">Hello</span>, world!</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">undefined</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="op">&gt;</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">(</span><span class="ex">To</span> exit, press ^C again or ^D or type .exit<span class="kw">)</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="op">&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">C</span>:\Users\Tim<span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span>node</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">&quot;.help&quot;</span> for more information.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> 2 <span class="ex">+</span> 2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> console.log<span class="kw">(</span><span class="st">'Hello, world!'</span><span class="kw">)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> world!</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">To</span> exit, press ^C again or ^D or type .exit<span class="kw">)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span></span></code></pre></div>
 <h3 id="running-a-file">Running a file</h3>
 <p>Much more useful than the REPL is the ability to have Node.js interpret an entire text file full of JavaScript code. To do this, you can type <code>node</code> followed by the name of the file you want to run. For example, <code>node first.js</code> will run a file called “first.js” that exists in the current directory.</p>
 <p>As a brief walkthrough, go ahead and save a new text file with VS Code named “first.js” and write the following text in it.</p>
-<div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1"></a><span class="va">console</span>.<span class="at">log</span>(<span class="st">'Hello, world!'</span>)<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Hello, world!'</span>)<span class="op">;</span></span></code></pre></div>
 <p>In the terminal, navigate to the directory that contains “first.js” (using <code>cd</code>), then run the command <code>node first.js</code>. You should see <code>Hello, world!</code> appear in your terminal.</p>
-<div class="sourceCode" id="cb4" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">Tims-Computer</span>:~ tim$ ls</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">Applications</span> Documents Library Music Public</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">Tims-Computer</span>:~ tim$ cd Documents</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">Tims-Computer</span>:Documents tim$ ls</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">first.js</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="ex">Tims-Computer</span>:Documents tim$ node first.js</span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="ex">Hello</span>, world!</span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="ex">Tims-Computer</span>:Documents tim$ </span></code></pre></div>
-	</section>
+<div class="sourceCode" id="cb4" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ ls</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Applications</span> Documents Library Music Public</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ cd Documents</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Documents</span> tim$ ls</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">first.js</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Documents</span> tim$ node first.js</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> world!</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Documents</span> tim$ </span></code></pre></div></section>
 
-	
-	
-	
-	<section id="prev-and-next-links">
-		<a id="next-link" href="../lessons/02-values-types-variables.html">
-			<div>
-				<p>Next lesson</p>
-				<h2>Values, Types, and Variables</h2>
-			</div>
-			<i class="fas fa-arrow-right"></i>
-		</a>
-	</section>
-	
-	
+
+<section id="prev-and-next-links">
+	<a id="next-link" href="../lessons/02-values-types-variables.html">
+		<div>
+			<p>Next lesson</p>
+			<h2>Values, Types, and Variables</h2>
+		</div>
+		<i class="fas fa-arrow-right"></i>
+	</a>
+</section>
+
 </article>
+
+
 
 		</main>
 

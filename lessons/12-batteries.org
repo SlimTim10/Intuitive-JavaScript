@@ -2,6 +2,7 @@
 title: Project - batteries.js
 ---
 
+* Project - batteries.js
 When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file ~batteries.js~ that exports the following functions.
 
 ** Functions

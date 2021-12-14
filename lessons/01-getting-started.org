@@ -1,8 +1,8 @@
 ---
 title: Getting Started
-next-title: Values, Types, and Variables
-file: 02-values-types-variables.html
 ---
+
+* Getting Started
 
 ** Command Line
 Up until now, you may have thought of the Finder (on macOS), or the File Explorer (on Windows), as the only way to access your files. The *command line* is an older, but still common, way to interact with the files on your computer. With the command line, you can browse, read, copy, move, edit, and do anything with your files just like with the Finder or File Explorer. The difference is, instead of having a graphical representation of your files and clicking around with your mouse, the command line is entirely text-based; meaning you only get to see and type words.
