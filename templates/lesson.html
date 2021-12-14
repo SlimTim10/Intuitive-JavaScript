@@ -33,17 +33,30 @@ $endif$
 $else$
 
 $body$
-$if(nextLessonUrl)$$if(nextLessonTitle)$
 <section id="prev-and-next-links">
-	<a id="next-link" href="$nextLessonUrl$">
-		<div>
-			<p>Next lesson</p>
-			<h2>$nextLessonTitle$</h2>
-		</div>
-		<i class="fas fa-arrow-right"></i>
-	</a>
+	<div>
+		$if(nextLessonUrl)$$if(nextLessonTitle)$
+		<a id="next-link" href="$nextLessonUrl$">
+			<div>
+				<p>Next lesson</p>
+				<h2>$nextLessonTitle$</h2>
+			</div>
+			<i class="fas fa-arrow-right"></i>
+		</a>
+		$endif$$endif$
+	</div>
+	<div>
+		$if(prevLessonUrl)$$if(prevLessonTitle)$
+		<a id="prev-link" href="$prevLessonUrl$">
+			<i class="fas fa-arrow-left"></i>
+			<div>
+				<p>Prev lesson</p>
+				<h2>$prevLessonTitle$</h2>
+			</div>
+		</a>
+		$endif$$endif$
+	</div>
 </section>
-$endif$$endif$
 </article>
 
 $endif$
