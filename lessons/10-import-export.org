@@ -6,7 +6,7 @@ title: Importing and Exporting
 Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]], familiarly known as "node", and [[https://www.npmjs.com/][npm]].
 
 ** Exporting
-JavaScript code in our files is never automatically *exported*. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called ~module.exports~. If we don't explicitly set this variable to any value, its value is an empty object ~{}~. Whatever value we give to ~module.exports~ is what the file is exporting (meaning it can be imported by another file). (The reason for the name ~module.exports~ is because node considers every JavaScript file a *module*.) It is most common to export an object because, as we've seen, objects allow us to package many things into one value.
+JavaScript code in our files is never automatically *exported*. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called ~module.exports~. If we don't explicitly set this variable to any value, its value is an empty object ~{}~. Whatever value we give to ~module.exports~ is what the file is exporting (meaning it can be imported by another file). The reason for the name ~module.exports~ is because node considers every JavaScript file a *module*. It is most common to export an object because, as we've seen, objects allow us to package many things into one value.
 
 Let's look at an example.
 
@@ -139,34 +139,3 @@ console.log(fileContents); // Print the file's contents
 #+END_SRC
 
 The above example will read the contents of a file named ~my-test-file.txt~ that exists in the same directory as the JavaScript file we're running this code from, then print it out.
-
-** Packages
-A *package* is a collection of modules that are packaged together to solve a single problem, such as adding colors to output in the terminal. Its purpose is to be imported into a project to add some specific functionality. In the JavaScript ecosystem, virtually all packages are found at https://www.npmjs.com/. Node.js comes with npm, the "Node Package Manager" (so if you have the ~node~ command, you should also have ~npm~).
-
-Before we can start to use packages with npm, we need to set up a project directory as recognized by npm:
-
-1. Create a new directory.
-2. Navigate to the directory in a terminal.
-3. In the terminal, enter the command ~npm init~. Keep pressing ~enter/return~ for all of the prompts. (The default for every option is fine.)
-5. Create a file called ~index.js~. This will be the main file of the project.
-
-npm should have created a ~package.json~ file. This contains information about our new project, including the packages that it uses (none yet).
-
-Let's try using the chalk package at https://www.npmjs.com/package/chalk. The package's page has information written by the owner of the package. Don't expect this to always be pretty or helpful; it is completely up to the individual what is written here, sort of like a blog post. To install the package, we enter the terminal command ~npm install <package_name>~. So to install the chalk package in our project, we would make sure our terminal is in the project directory then enter the command ~npm install chalk~. This will do a few things for us:
-
-- Download the package's code.
-- Create a ~node_modules~ directory within our project directory (if it does not already exist).
-- Put the package's code inside ~node_modules~.
-- Add the package name to the ~package.json~ file.
-
-Now that we have the package install, it is available for us to use! As per the chalk package's official example:
-
-#+BEGIN_SRC js
-const chalk = require('chalk'); // Import the chalk package
- 
-console.log(chalk.blue('Hello world!')); // Print a message in blue
-#+END_SRC
-
-Putting that code in our ~index.js~ file and running it with ~node index.js~, we should see a blue "Hello world!" in the terminal.
-
-That's it! Try exploring [[https://www.npmjs.com/][npm]] and playing around with more packages. You can install as many packages in a single project as you wish. You don't even need to use the ones you installed.

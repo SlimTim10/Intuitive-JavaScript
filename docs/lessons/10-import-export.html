@@ -35,14 +35,13 @@
 <li><a href="#exporting">Exporting</a></li>
 <li><a href="#importing">Importing</a></li>
 <li><a href="#built-in-modules">Built-in Modules</a></li>
-<li><a href="#packages">Packages</a></li>
 </ul></li>
 </ul>
 </nav>
 <article class="card"><section id="lesson-body"><h1 id="importing-and-exporting">Importing and Exporting</h1>
 <p>Whether we’re writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with <a href="https://nodejs.org">Node.js</a>, familiarly known as “node”, and <a href="https://www.npmjs.com/">npm</a>.</p>
 <h2 id="exporting">Exporting</h2>
-<p>JavaScript code in our files is never automatically <strong>exported</strong>. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called <code>module.exports</code>. If we don’t explicitly set this variable to any value, its value is an empty object <code>{}</code>. Whatever value we give to <code>module.exports</code> is what the file is exporting (meaning it can be imported by another file). (The reason for the name <code>module.exports</code> is because node considers every JavaScript file a <strong>module</strong>.) It is most common to export an object because, as we’ve seen, objects allow us to package many things into one value.</p>
+<p>JavaScript code in our files is never automatically <strong>exported</strong>. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called <code>module.exports</code>. If we don’t explicitly set this variable to any value, its value is an empty object <code>{}</code>. Whatever value we give to <code>module.exports</code> is what the file is exporting (meaning it can be imported by another file). The reason for the name <code>module.exports</code> is because node considers every JavaScript file a <strong>module</strong>. It is most common to export an object because, as we’ve seen, objects allow us to package many things into one value.</p>
 <p>Let’s look at an example.</p>
 <div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
@@ -143,38 +142,15 @@
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fileContents <span class="op">=</span> <span class="fu">readFileSync</span>(<span class="st">'my-test-file.txt'</span><span class="op">,</span> <span class="st">'utf8'</span>)<span class="op">;</span> <span class="co">// Read the contents of a file</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(fileContents)<span class="op">;</span> <span class="co">// Print the file's contents</span></span></code></pre></div>
-<p>The above example will read the contents of a file named <code>my-test-file.txt</code> that exists in the same directory as the JavaScript file we’re running this code from, then print it out.</p>
-<h2 id="packages">Packages</h2>
-<p>A <strong>package</strong> is a collection of modules that are packaged together to solve a single problem, such as adding colors to output in the terminal. Its purpose is to be imported into a project to add some specific functionality. In the JavaScript ecosystem, virtually all packages are found at <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>. Node.js comes with npm, the “Node Package Manager” (so if you have the <code>node</code> command, you should also have <code>npm</code>).</p>
-<p>Before we can start to use packages with npm, we need to set up a project directory as recognized by npm:</p>
-<ol>
-<li>Create a new directory.</li>
-<li>Navigate to the directory in a terminal.</li>
-<li>In the terminal, enter the command <code>npm init</code>. Keep pressing <code>enter/return</code> for all of the prompts. (The default for every option is fine.)</li>
-<li>Create a file called <code>index.js</code>. This will be the main file of the project.</li>
-</ol>
-<p>npm should have created a <code>package.json</code> file. This contains information about our new project, including the packages that it uses (none yet).</p>
-<p>Let’s try using the chalk package at <a href="https://www.npmjs.com/package/chalk">https://www.npmjs.com/package/chalk</a>. The package’s page has information written by the owner of the package. Don’t expect this to always be pretty or helpful; it is completely up to the individual what is written here, sort of like a blog post. To install the package, we enter the terminal command <code>npm install &lt;package_name&gt;</code>. So to install the chalk package in our project, we would make sure our terminal is in the project directory then enter the command <code>npm install chalk</code>. This will do a few things for us:</p>
-<ul>
-<li>Download the package’s code.</li>
-<li>Create a <code>node_modules</code> directory within our project directory (if it does not already exist).</li>
-<li>Put the package’s code inside <code>node_modules</code>.</li>
-<li>Add the package name to the <code>package.json</code> file.</li>
-</ul>
-<p>Now that we have the package install, it is available for us to use! As per the chalk package’s official example:</p>
-<div class="sourceCode" id="cb8" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> chalk <span class="op">=</span> <span class="pp">require</span>(<span class="st">'chalk'</span>)<span class="op">;</span> <span class="co">// Import the chalk package</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(chalk<span class="op">.</span><span class="fu">blue</span>(<span class="st">'Hello world!'</span>))<span class="op">;</span> <span class="co">// Print a message in blue</span></span></code></pre></div>
-<p>Putting that code in our <code>index.js</code> file and running it with <code>node index.js</code>, we should see a blue “Hello world!” in the terminal.</p>
-<p>That’s it! Try exploring <a href="https://www.npmjs.com/">npm</a> and playing around with more packages. You can install as many packages in a single project as you wish. You don’t even need to use the ones you installed.</p></section>
+<p>The above example will read the contents of a file named <code>my-test-file.txt</code> that exists in the same directory as the JavaScript file we’re running this code from, then print it out.</p></section>
 
 <section id="prev-and-next-links">
 	<div>
 		
-		<a id="next-link" href="../lessons/11-async.html">
+		<a id="next-link" href="../lessons/11-project-batteries.html">
 			<div>
 				<p>Next lesson</p>
-				<h2>Asynchronous Operations</h2>
+				<h2>Project - batteries.js</h2>
 			</div>
 			<i class="fas fa-arrow-right"></i>
 		</a>
