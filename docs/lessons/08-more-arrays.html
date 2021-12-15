@@ -32,18 +32,22 @@
 <ul>
 <li><a href="#more-arrays">More Arrays</a>
 <ul>
-<li><a href="#higher-order-functions">Higher-Order Functions</a></li>
+<li><a href="#every">every()</a></li>
+<li><a href="#some">some()</a></li>
+<li><a href="#map">map()</a></li>
+<li><a href="#foreach">forEach()</a></li>
+<li><a href="#filter">filter()</a></li>
+<li><a href="#reduce">reduce()</a></li>
 <li><a href="#exercises">Exercises</a></li>
 </ul></li>
 </ul>
 </nav>
 <article class="card"><section id="lesson-body"><h1 id="more-arrays">More Arrays</h1>
-<p>We’re not done with arrays yet! Here, we will introduce two very common ways to use arrays: applying a single operation on each element of an array, and converting between arrays and strings.</p>
-<h2 id="higher-order-functions">Higher-Order Functions</h2>
-<p>Methods that allow us to deal with an entire array as a whole, no matter how big, are invaluable for solving real problems. In order to do such a thing, we need to use <strong>higher-order functions</strong>. Keep in mind that methods are just functions with slightly different syntax, so we could call them <strong>higher-order methods</strong> but since this applies to functions in general, we’ll stick to that.</p>
+<p>We’re not done with arrays yet! Here we introduce methods that allow us to deal with an entire array as a whole, no matter how big. This is invaluable for solving real-world problems. In order to do such a thing, we need to use <strong>higher-order functions</strong>. Keep in mind that methods are just functions with slightly different syntax, so we could call them “higher-order <em>methods</em>” but since this applies to functions in general, we’ll stick to the former.</p>
 <p>A higher-order function is one that takes in a function as an argument. That’s right, functions can take other functions as arguments! And why shouldn’t they? After all, functions are values just like any other.</p>
-<p>If you have heard of loops (e.g., the <code>for</code> loop, or the <code>for...of</code> loop), using these methods removes the need for writing our own loops. They do the looping internally (abstracting it) so we can focus on the problem at hand.</p>
-<h3 id="every">every()</h3>
+<p>The important thing to note in this lesson is that we’re looking at <em>patterns</em>. Each of the following higher-order functions (or methods) handles a specific pattern of problem. You will get to know the patterns if you keep an eye out while you practice programming. For instance, when a problem involves an array in which we only want to operate on certain elements, we should use <code>filter()</code>. Recognizing these problem patterns is where real programming power comes from. Not only will it help you solve problems because you can see how they are similar to other problems you’ve seen before, but you will also be able to quickly understand code that uses these higher-order functions because you will know what problem pattern they are solving. To compare, if we were to use a <code>for</code> loop for every problem, then every solution would use the same tool and it would be much harder to recognize patterns or similar problems. It’s best to have more than just a hammer in a toolbox.</p>
+<p>The following built-in array methods (which are higher-order functions) are the most commonly used. For a complete list, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN</a>.</p>
+<h2 id="every">every()</h2>
 <p>The <code>every()</code> method checks if <em>every</em> one of an array’s elements passes a test and returns true if they all pass, otherwise false.</p>
 <p>The argument we need to pass to <code>every()</code> is a function that takes in one element and returns a boolean value (true or false). We get to define the function and give it a name, but we don’t get to decide how it gets called. That’s the trick to higher-order functions. Since the higher-order function gets to call our function, it already has an idea in mind of how it’s going to be called and what arguments to pass to it. So we can just imagine that our function’s argument will become each element of the array.</p>
 <p>In this case, <code>every()</code> is the higher order function. The function that we pass to it as an argument is called a <strong>callback function</strong>. The <code>every()</code> method is expecting the callback function to take a single argument and return a boolean value, so that’s exactly how our callback function has to work.</p>
@@ -70,7 +74,7 @@
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> names3 <span class="op">=</span> [<span class="st">'Alice'</span><span class="op">,</span> <span class="st">'Adam'</span><span class="op">,</span> <span class="st">'April'</span><span class="op">,</span> <span class="st">'Amy'</span><span class="op">,</span> <span class="st">'Bob'</span>]<span class="op">;</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(names3<span class="op">.</span><span class="fu">every</span>(name <span class="kw">=&gt;</span> name<span class="op">.</span><span class="fu">startsWith</span>(<span class="st">'A'</span>)))<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
 <p>A whole category of problems just got a lot easier with <code>every()</code>!</p>
-<h3 id="some">some()</h3>
+<h2 id="some">some()</h2>
 <p>The <code>some()</code> method is like <code>every()</code>, except only <em>one</em> element needs to pass the test to return true. In other words, if <em>any</em> element passes the test, return true, otherwise false.</p>
 <p>Let’s take a look at similar examples as before, but using <code>some()</code> instead of <code>every()</code>.</p>
 <div class="sourceCode" id="cb4" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> isEven <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">===</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -91,7 +95,7 @@
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> names3 <span class="op">=</span> [<span class="st">'Bob'</span><span class="op">,</span> <span class="st">'Carol'</span><span class="op">,</span> <span class="st">'Dave'</span><span class="op">,</span> <span class="st">'Eve'</span>]<span class="op">;</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(names3<span class="op">.</span><span class="fu">some</span>(name <span class="kw">=&gt;</span> name<span class="op">.</span><span class="fu">startsWith</span>(<span class="st">'A'</span>)))<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
-<h3 id="map">map()</h3>
+<h2 id="map">map()</h2>
 <p>Probably the most commonly used of the higher-order array methods is <code>map()</code>. It takes in a function and returns a new array after having applied that function to each element. Because the function we provide to <code>map()</code> is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.</p>
 <p>The kinds of problems that <code>map()</code> helps with are difficult to describe in words, so let’s look at some examples.</p>
 <p>Let’s say we have an array of numbers:</p>
@@ -125,7 +129,7 @@
 <li>do the same thing to each element of the array,</li>
 <li>and end up with a new array of the same size.</li>
 </ul>
-<h3 id="foreach">forEach()</h3>
+<h2 id="foreach">forEach()</h2>
 <p>The <code>forEach()</code> method is <em>exactly</em> the same as <code>map()</code> except it doesn’t return the new array. It takes in a function to operate on each element of the array, but it simply leaves it at that and doesn’t return anything. This is used for when we want to perform some <em>action</em> on each element instead of ending up with a new array. The simplest example of an action is printing, i.e. <code>console.log()</code>.</p>
 <div class="sourceCode" id="cb13" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> names <span class="op">=</span> [<span class="st">'Alice'</span><span class="op">,</span> <span class="st">'Bob'</span><span class="op">,</span> <span class="st">'Carol'</span>]<span class="op">;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -143,7 +147,7 @@
 <p>Printing the lengths of an array of names just became easier!</p>
 <div class="sourceCode" id="cb14" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> names <span class="op">=</span> [<span class="st">'Alice'</span><span class="op">,</span> <span class="st">'Bob'</span><span class="op">,</span> <span class="st">'Carol'</span><span class="op">,</span> <span class="st">'Dean'</span><span class="op">,</span> <span class="st">'Eve'</span><span class="op">,</span> <span class="st">'Frank'</span>]<span class="op">;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">forEach</span>(name <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="at">length</span>))<span class="op">;</span></span></code></pre></div>
-<h3 id="filter">filter()</h3>
+<h2 id="filter">filter()</h2>
 <p>One of the less common, but still useful, higher-order array methods is <code>filter()</code>. It also takes in a function to operate on each element of the array, except the function’s job is to say whether to keep the element or not. After using <code>filter()</code>, we end up with a new <em>filtered</em> array that has only certain elements from the original array. Because we can only either keep an element or not, the callback function should return a boolean value (true or false). The new array will only have the elements for which the function returned true.</p>
 <div class="sourceCode" id="cb15" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> someNumbers <span class="op">=</span> [<span class="dv">3</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -177,7 +181,7 @@
 <li>start with an array,</li>
 <li>and end up with a new array of smaller or equal size as the original, without changing the elements.</li>
 </ul>
-<h3 id="reduce">reduce()</h3>
+<h2 id="reduce">reduce()</h2>
 <p>If the previous methods are for handling certain kinds of problems with arrays, then <code>reduce()</code> is for everything else. Being a very expressive method, <code>reduce()</code> can be difficult to master but very useful.</p>
 <p>The callback function passed to <code>reduce()</code> needs to take two arguments. Let’s call them <code>acc</code> (short for “accumulator”) and <code>x</code>. Like the other methods, <code>x</code> will become each element of the array. <code>acc</code> gets an initial value, given by the argument after the callback function, then takes on the values of each successive result of the callback function. You can think of <code>reduce()</code> as starting with an array and reducing it to a single value (the last value of <code>acc</code>). Some examples will make this more clear.</p>
 <p>We don’t yet have a way to sum a bunch of numbers in an array. A great use case for <code>reduce()</code>.</p>

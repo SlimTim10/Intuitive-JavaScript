@@ -3,16 +3,15 @@ title: More Arrays
 ---
 
 * More Arrays
-We're not done with arrays yet! Here, we will introduce two very common ways to use arrays: applying a single operation on each element of an array, and converting between arrays and strings.
-
-** Higher-Order Functions
-Methods that allow us to deal with an entire array as a whole, no matter how big, are invaluable for solving real problems. In order to do such a thing, we need to use *higher-order functions*. Keep in mind that methods are just functions with slightly different syntax, so we could call them *higher-order methods* but since this applies to functions in general, we'll stick to that.
+We're not done with arrays yet! Here we introduce methods that allow us to deal with an entire array as a whole, no matter how big. This is invaluable for solving real-world problems. In order to do such a thing, we need to use *higher-order functions*. Keep in mind that methods are just functions with slightly different syntax, so we could call them "higher-order /methods/" but since this applies to functions in general, we'll stick to the former.
 
 A higher-order function is one that takes in a function as an argument. That's right, functions can take other functions as arguments! And why shouldn't they? After all, functions are values just like any other.
 
-If you have heard of loops (e.g., the ~for~ loop, or the ~for...of~ loop), using these methods removes the need for writing our own loops. They do the looping internally (abstracting it) so we can focus on the problem at hand.
+The important thing to note in this lesson is that we're looking at /patterns/. Each of the following higher-order functions (or methods) handles a specific pattern of problem. You will get to know the patterns if you keep an eye out while you practice programming. For instance, when a problem involves an array in which we only want to operate on certain elements, we should use ~filter()~. Recognizing these problem patterns is where real programming power comes from. Not only will it help you solve problems because you can see how they are similar to other problems you've seen before, but you will also be able to quickly understand code that uses these higher-order functions because you will know what problem pattern they are solving. To compare, if we were to use a ~for~ loop for every problem, then every solution would use the same tool and it would be much harder to recognize patterns or similar problems. It's best to have more than just a hammer in a toolbox.
 
-*** every()
+The following built-in array methods (which are higher-order functions) are the most commonly used. For a complete list, see [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array][MDN]].
+
+** every()
 The ~every()~ method checks if /every/ one of an array's elements passes a test and returns true if they all pass, otherwise false.
 
 The argument we need to pass to ~every()~ is a function that takes in one element and returns a boolean value (true or false). We get to define the function and give it a name, but we don't get to decide how it gets called. That's the trick to higher-order functions. Since the higher-order function gets to call our function, it already has an idea in mind of how it's going to be called and what arguments to pass to it. So we can just imagine that our function's argument will become each element of the array.
@@ -55,7 +54,7 @@ console.log(names3.every(name => name.startsWith('A'))); // false
 
 A whole category of problems just got a lot easier with ~every()~!
 
-*** some()
+** some()
 The ~some()~ method is like ~every()~, except only /one/ element needs to pass the test to return true. In other words, if /any/ element passes the test, return true, otherwise false.
 
 Let's take a look at similar examples as before, but using ~some()~ instead of ~every()~.
@@ -84,7 +83,7 @@ const names3 = ['Bob', 'Carol', 'Dave', 'Eve'];
 console.log(names3.some(name => name.startsWith('A'))); // false
 #+END_SRC
 
-*** map()
+** map()
 Probably the most commonly used of the higher-order array methods is ~map()~. It takes in a function and returns a new array after having applied that function to each element. Because the function we provide to ~map()~ is meant to operate on each individual element of the array, we must define it as a function that takes one argument and returns a new value.
 
 The kinds of problems that ~map()~ helps with are difficult to describe in words, so let's look at some examples.
@@ -148,7 +147,7 @@ Map is the method to use if we want to:
 - do the same thing to each element of the array,
 - and end up with a new array of the same size.
 
-*** forEach()
+** forEach()
 The ~forEach()~ method is /exactly/ the same as ~map()~ except it doesn't return the new array. It takes in a function to operate on each element of the array, but it simply leaves it at that and doesn't return anything. This is used for when we want to perform some /action/ on each element instead of ending up with a new array. The simplest example of an action is printing, i.e. ~console.log()~.
 
 #+BEGIN_SRC js
@@ -175,7 +174,7 @@ const names = ['Alice', 'Bob', 'Carol', 'Dean', 'Eve', 'Frank'];
 names.forEach(name => console.log(name.length));
 #+END_SRC
 
-*** filter()
+** filter()
 One of the less common, but still useful, higher-order array methods is ~filter()~. It also takes in a function to operate on each element of the array, except the function's job is to say whether to keep the element or not. After using ~filter()~, we end up with a new /filtered/ array that has only certain elements from the original array. Because we can only either keep an element or not, the callback function should return a boolean value (true or false). The new array will only have the elements for which the function returned true.
 
 #+BEGIN_SRC js
@@ -224,7 +223,7 @@ Filter is the method to use if we want to:
 - start with an array,
 - and end up with a new array of smaller or equal size as the original, without changing the elements.
 
-*** reduce()
+** reduce()
 If the previous methods are for handling certain kinds of problems with arrays, then ~reduce()~ is for everything else. Being a very expressive method, ~reduce()~ can be difficult to master but very useful.
 
 The callback function passed to ~reduce()~ needs to take two arguments. Let's call them ~acc~ (short for "accumulator") and ~x~. Like the other methods, ~x~ will become each element of the array. ~acc~ gets an initial value, given by the argument after the callback function, then takes on the values of each successive result of the callback function. You can think of ~reduce()~ as starting with an array and reducing it to a single value (the last value of ~acc~). Some examples will make this more clear.
