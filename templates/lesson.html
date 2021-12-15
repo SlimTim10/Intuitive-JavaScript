@@ -19,15 +19,18 @@ $endif$
 	<section id="lesson-body">$body$</section>
 	$if(firstLessonUrl)$$if(firstLessonTitle)$
 	<section id="prev-and-next-links">
-		<a id="next-link" href="$firstLessonUrl$">
-			<div>
-				<p>First lesson</p>
-				<h2>$firstLessonTitle$</h2>
-			</div>
-			<i class="fas fa-arrow-right"></i>
-		</a>
+		<div>
+			<a id="next-link" href="$firstLessonUrl$">
+				<div>
+					<p>First lesson</p>
+					<h2>$firstLessonTitle$</h2>
+				</div>
+				<i class="fas fa-arrow-right"></i>
+			</a>
+		</div>
 	</section>
 	$endif$$endif$
+	<section id="back-to-top"><a href="#top">Top</a></section>
 </article>
 
 $else$
@@ -57,6 +60,7 @@ $body$
 		$endif$$endif$
 	</div>
 </section>
+<section id="back-to-top"><a href="#top">Top</a></section>
 </article>
 
 $endif$

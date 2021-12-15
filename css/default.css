@@ -110,6 +110,10 @@ main {
   box-shadow: 0 0 5px 0 rgb(0 0 0 / 25%);
 }
 
+main > article.card {
+  padding-bottom: 0.5em;
+}
+
 main > article > section#lesson-body {
   display: flex;
   flex-direction: column;
@@ -217,6 +221,11 @@ table td {
 }
 #prev-link i {
   margin-right: 1em;
+}
+
+#back-to-top {
+  display: flex;
+  justify-content: center;
 }
 
 footer {
