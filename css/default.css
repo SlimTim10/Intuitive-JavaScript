@@ -76,15 +76,15 @@ header nav a:hover {
   text-decoration: none;
 }
 
-nav#toc ul {
+#toc ul {
   margin-top: 1em;
 }
 
-nav#toc > ul > li:first-of-type > a {
-  display: none !important;
+#toc ul > li > ul {
+  margin-left: 1em;
 }
 
-nav#toc a {
+#toc a {
   display: block;
   text-decoration: none;
   color: inherit;
@@ -93,7 +93,7 @@ nav#toc a {
   font-weight: 400;
 }
 
-nav#toc a:hover {
+#toc a:hover {
   color: #70532c;
   background: #EAEAEA;
 }
@@ -114,52 +114,52 @@ main > article.card {
   padding-bottom: 0.5em;
 }
 
-main > article > section#lesson-body {
+#lesson-body {
   display: flex;
   flex-direction: column;
 }
 
-main > article > section#lesson-body > * {
+#lesson-body > * {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
 
-main > article > section p {
+#lesson-body p {
   line-height: 1.2em;
 }
 
-main > article > section h2 {
+#lesson-body h2 {
   margin-top: 0.7em;
   margin-bottom: 0.5em;
 }
 
-main > article > section h3 {
+#lesson-body h3 {
   margin-top: 0.7em;
   margin-bottom: 0.5em;
 }
 
-main > article > section ul {
+#lesson-body ul {
   display: flex;
   flex-direction: column;
   list-style: disc outside none;
   padding-left: 2em;
 }
 
-main > article > section ul li {
+#lesson-body ul li {
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
 
-main > article > section ul li::marker {
+#lesson-body ul li::marker {
   margin: 0 0.5rem 0 0;
   color: #D2B48C;
 }
 
-main > article > section pre {
+#lesson-body pre {
   padding: 0.3em 0.5em;
 }
 
-main > article > section p > code {
+#lesson-body p > code {
   background: #EAEAEA;
 }
 
@@ -185,6 +185,7 @@ table td {
 #prev-and-next-links {
   border-top: 8px solid #D2B48C;
   margin-top: 2em;
+  margin-bottom: 0.5em;
   padding-top: 1em;
   display: flex;
   flex-direction: row-reverse;
@@ -207,6 +208,10 @@ table td {
 #prev-and-next-links a {
   display: flex;
   align-items: center;
+}
+
+#prev-and-next-links h2 {
+  margin-top: 0.5em;
 }
 
 #next-link {
