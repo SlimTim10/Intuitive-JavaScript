@@ -34,11 +34,13 @@
 <ul>
 <li><a href="#functions">Functions</a></li>
 <li><a href="#usage">Usage</a></li>
+<li><a href="#bonus">Bonus</a></li>
 </ul></li>
 </ul>
 </nav>
 <article class="card"><section id="lesson-body"><h1 id="project---batteries.js">Project - batteries.js</h1>
-<p>When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file <code>batteries.js</code> that exports the following functions.</p>
+<p>When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file <code>batteries.js</code> that exports the following functions. This module will act as a library you can use in other projects.</p>
+<p>All of the functions below should be implemented in <code>batteries.js</code> and exported. Nothing should be imported (the module should not depend on anything else). Along the way, it may be helpful to use <code>console.log</code> for testing and debugging. However, the end result should not have any <code>console.log</code> lines, as they will be executed whenever the module is imported.</p>
 <h2 id="functions">Functions</h2>
 <h3 id="numbers">Numbers</h3>
 <ul>
@@ -171,7 +173,27 @@
 <p>If everything is done correctly, you should be able to run the following example in a file that is in the same directory as <code>batteries.js</code>.</p>
 <div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> {sum<span class="op">,</span> range} <span class="op">=</span> <span class="pp">require</span>(<span class="st">'./batteries'</span>)<span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">sum</span>(<span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">5</span>)))<span class="op">;</span> <span class="co">// should print 15</span></span></code></pre></div></section>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">sum</span>(<span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">5</span>)))<span class="op">;</span> <span class="co">// should print 15</span></span></code></pre></div>
+<h2 id="bonus">Bonus</h2>
+<p>Create a separate module <code>batteries.tests.js</code> for testing that the functions in <code>batteries.js</code> work correctly. Import <code>batteries.js</code> and write <code>console.log</code> lines to test a few cases of each function. Look at the previous lesson exercises for ideas on how to write good tests.</p>
+<h3 id="example-output">Example output</h3>
+<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> node batteries.tests.js</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Testing</span> isEven:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Testing</span> isOdd:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Testing</span> divisibleBy:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">false</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">false</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code></pre></div></section>
 
 <section id="prev-and-next-links">
 	<div>
