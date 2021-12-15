@@ -3,7 +3,7 @@ title: Arrays
 ---
 
 * Arrays
-What's more common than dealing with a single primitive value (like a number, boolean, or string), is dealing with a collection of values. That's where *arrays* come in. Arrays are values that are sort of like strings, but instead of holding a list of characters, they can hold a list of any values. If we have an array, we can deal with multiple values all at once. Arrays always have an order; just like writing down a list of groceries, there is an order (top to bottom), even if you don't care about it or use it.
+What's more common than dealing with a single primitive value (like a number, boolean, or string), is dealing with a collection of values. That's where *arrays* come in. Arrays are values that are sort of like strings, but instead of holding a list of characters, they can hold a list of any values. If we have an array, we can deal with multiple values all at once. Arrays always have an order from left-to-right; just like writing down a list of groceries, there is an order (top to bottom), even if you don't care about it or use it. This may sound obvious, but there are other common data structures that are not ordered, such as objects and sets.
 
 ** Create
 To create an array is easy! We use square brackets to surround a bunch of values separated by commas, like so: ~[2, 3, 4, 5]~.
@@ -42,6 +42,14 @@ We can even put arrays in arrays. This /is/ often useful!
 const matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 console.log(matrix);
 #+END_SRC
+
+If we need to create an array and we have a size in mind but not values, sort of like an empty box to fill later, we can use the following syntax as a shortcut.
+
+#+begin_src js
+const xs = [...Array(10)]; // Creates an array of 10 elements, all undefined
+#+end_src
+
+This will come in handy later.
 
 ** Index
 Because an array is a list of values, we often need to get one element from that list. Like strings, we can get an element by its *index* number. Remember that index numbers start from 0, not 1.
