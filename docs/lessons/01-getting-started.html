@@ -41,12 +41,12 @@
 <article class="card"><section id="lesson-body"><h1 id="getting-started">Getting Started</h1>
 <h2 id="command-line">Command Line</h2>
 <p>Up until now, you may have thought of the Finder (on macOS), or the File Explorer (on Windows), as the only way to access your files. The <strong>command line</strong> is an older, but still common, way to interact with the files on your computer. With the command line, you can browse, read, copy, move, edit, and do anything with your files just like with the Finder or File Explorer. The difference is, instead of having a graphical representation of your files and clicking around with your mouse, the command line is entirely text-based; meaning you only get to see and type words.</p>
-<p>On macOS, the command line interpreter is the Terminal app. On Windows, it is the Command Prompt.</p>
-<p>There are a few commands and tricks you will need to learn. All commands are run by typing something then pressing <em>return</em>.</p>
+<p>On macOS, the command line interpreter is the Terminal app. On Windows, it is the Command Prompt. “Command line”, “terminal”, and “command prompt” can be pretty much used interchangeably.</p>
+<p>There are a few commands and tricks you will need to learn for navigating with the terminal. All commands are run by typing something then pressing <em>return</em>.</p>
 <h3 id="the-ls-command">The <code>ls</code> command</h3>
-<p>In the terminal, you are always operating from a specific directory that exists on your computer. To see a <strong>list</strong> of the files in the current directory, type <code>ls</code> then press <em>return</em>. For advanced usage, try <code>ls -alh</code>.</p>
+<p>In the terminal, you are always operating in a specific directory, or folder, that exists on your computer. To see a <strong>list</strong> of the files in the current directory, type <code>ls</code> then press <em>return</em>. For a more detailed list, try <code>ls -alh</code>.</p>
 <h3 id="the-cd-command">The <code>cd</code> command</h3>
-<p>To <strong>change directories</strong>, type <code>cd</code> followed by the name of the directory you want to enter then press <em>return</em>. For example, <code>cd Desktop</code>. Note that the directory typed this way must be a subdirectory of the current directory (i.e., one of the directories that is listed by <code>ls</code>). If you want to go up a level, use <code>cd ..</code>. You can go to a directory that is not a subdirectory, but you need to type the entire path; e.g., <code>cd /Users/Tim/Desktop/Media</code>.</p>
+<p>To <strong>change directories</strong>, type <code>cd</code> followed by the name of the directory you want to enter then press <em>return</em>. For example, <code>cd Desktop</code>. Note that the directory typed this way must be a subdirectory of the current directory (i.e., one of the directories that is listed by <code>ls</code>). If you want to go up a level, use <code>cd ..</code>. You can go to a directory that is not a subdirectory of your current path, but you need to type the entire path; e.g., <code>cd /Users/Tim/Desktop/Media</code>.</p>
 <p>I typically use the <code>ls</code> command every time after changing directories as a way of orienting myself.</p>
 <h3 id="tab-completion">Tab completion</h3>
 <p>Like all programming-related things, precision is important. If you mistype any part of a command, it won’t do what you want it to. Fortunately, the terminal has a feature that reduces mistypes. When you are typing some part of a command, you can try pressing <em>tab</em> and the terminal will try to expand it for you. This is most useful when used with <code>cd</code>. For example, if you type <code>cd Des</code> then press <em>tab</em>, the terminal will expand it to <code>cd Desktop</code>. Note that this may not work if there is more than one option for expanding (e.g., <code>cd D</code> can expand to <code>cd Desktop</code> or <code>cd Documents</code> because both begin with “D”), but you can always type a bit more and try <em>tab</em> again.</p>
@@ -57,31 +57,30 @@
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Applications</span> Documents Library Music Public</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ cd Desktop</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd Desktop</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ ls</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Media</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd Media</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ ls</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-video-01.mp4</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ cd ..</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ ls</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Media</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd ..</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ ls</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Applications</span> Documents Library Music Public</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ /Users/tim/Desktop/Media</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ ls</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-video-01.mp4</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ </span></code></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ ls</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Media</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd Media</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ ls</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-video-01.mp4</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ cd ..</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ ls</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Media</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Desktop</span> tim$ cd ..</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ ls</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Applications</span> Documents Library Music Public</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> Downloads Movies Pictures</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:~</span> tim$ cd /Users/tim/Desktop/Media</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ ls</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">yt-video-01.mp4</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">Tims-Computer:Media</span> tim$ </span></code></pre></div>
 <h2 id="editor">Editor</h2>
-<p>Using a featureful text editor is crucial for an enjoyable programming experience. My recommendation is <a href="https://code.visualstudio.com/download">Visual Studio Code</a> (VS Code). Don’t worry, it’s completely free! VS Code is great because it’s more than just a text editor; it’s an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">integrated development environment</a> (IDE), meaning its features go beyond editing text. It even has a built-in terminal, so you can do all your work solely within VS Code.</p>
+<p>Using a featureful text editor is important for an enjoyable programming experience. My recommendation is <a href="https://code.visualstudio.com/download">Visual Studio Code</a> (VS Code). Don’t worry, it’s completely free! VS Code is great because it’s more than just a text editor; it’s an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">integrated development environment</a> (IDE), meaning its features go beyond editing text. It even has a built-in terminal, so you can do all your work solely within VS Code.</p>
 <p>Other text editors popular among programmers include <a href="https://www.gnu.org/software/emacs/">Emacs</a>, <a href="https://www.vim.org/">Vim</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>, <a href="https://atom.io/">Atom</a>, and <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a>.</p>
 <h2 id="node.js">Node.js</h2>
 <p><a href="https://nodejs.org/en/">Node.js</a> is the industry standard JavaScript interpreter. You will need to download and install it to start programming with JavaScript in your terminal. After it is installed, open a new terminal window and run the command <code>node -v</code>. It should say the version of Node.js that you installed. If it doesn’t, make sure you open a new terminal window before running the command.</p>
 <h3 id="repl">REPL</h3>
-<p>Node.js comes with a sometimes useful feature called a read-eval-print-loop (REPL). If you simply run the <code>node</code> command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You can not type regular command-line commands in this mode.</p>
-<p>Try entering the command <code>2 + 2</code> or <code>console.log('Hello, world!')</code>. To exit the REPL, press <em>control+c</em> twice. You should see something like the following.</p>
+<p>Node.js comes with a useful feature called a read-eval-print-loop (REPL). If you simply run the <code>node</code> command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You cannot type regular command line commands in this mode.</p>
+<p>Try entering the command <code>2 + 2</code> or <code>console.log('Hello, world!')</code>. To exit the REPL, press <em>control+c</em> twice.</p>
 <div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span>node</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">&quot;.help&quot;</span> for more information.</span>

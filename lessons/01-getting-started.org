@@ -7,15 +7,15 @@ title: Getting Started
 ** Command Line
 Up until now, you may have thought of the Finder (on macOS), or the File Explorer (on Windows), as the only way to access your files. The *command line* is an older, but still common, way to interact with the files on your computer. With the command line, you can browse, read, copy, move, edit, and do anything with your files just like with the Finder or File Explorer. The difference is, instead of having a graphical representation of your files and clicking around with your mouse, the command line is entirely text-based; meaning you only get to see and type words.
 
-On macOS, the command line interpreter is the Terminal app. On Windows, it is the Command Prompt.
+On macOS, the command line interpreter is the Terminal app. On Windows, it is the Command Prompt. "Command line", "terminal", and "command prompt" can be pretty much used interchangeably.
 
-There are a few commands and tricks you will need to learn. All commands are run by typing something then pressing /return/.
+There are a few commands and tricks you will need to learn for navigating with the terminal. All commands are run by typing something then pressing /return/.
 
 *** The ~ls~ command
-In the terminal, you are always operating from a specific directory that exists on your computer. To see a *list* of the files in the current directory, type ~ls~ then press /return/. For advanced usage, try ~ls -alh~.
+In the terminal, you are always operating in a specific directory, or folder, that exists on your computer. To see a *list* of the files in the current directory, type ~ls~ then press /return/. For a more detailed list, try ~ls -alh~.
 
 *** The ~cd~ command
-To *change directories*, type ~cd~ followed by the name of the directory you want to enter then press /return/. For example, ~cd Desktop~. Note that the directory typed this way must be a subdirectory of the current directory (i.e., one of the directories that is listed by ~ls~). If you want to go up a level, use ~cd ..~. You can go to a directory that is not a subdirectory, but you need to type the entire path; e.g., ~cd /Users/Tim/Desktop/Media~.
+To *change directories*, type ~cd~ followed by the name of the directory you want to enter then press /return/. For example, ~cd Desktop~. Note that the directory typed this way must be a subdirectory of the current directory (i.e., one of the directories that is listed by ~ls~). If you want to go up a level, use ~cd ..~. You can go to a directory that is not a subdirectory of your current path, but you need to type the entire path; e.g., ~cd /Users/Tim/Desktop/Media~.
 
 I typically use the ~ls~ command every time after changing directories as a way of orienting myself.
 
@@ -31,7 +31,6 @@ It can be tedious to type a new command every time, especially when it's a comma
   Applications Documents Library Music Public
   Desktop Downloads Movies Pictures
   Tims-Computer:~ tim$ cd Desktop
-  Tims-Computer:Desktop tim$ cd Desktop
   Tims-Computer:Desktop tim$ ls
   Media
   Tims-Computer:Desktop tim$ cd Media
@@ -44,14 +43,14 @@ It can be tedious to type a new command every time, especially when it's a comma
   Tims-Computer:~ tim$ ls
   Applications Documents Library Music Public
   Desktop Downloads Movies Pictures
-  Tims-Computer:~ tim$ /Users/tim/Desktop/Media
+  Tims-Computer:~ tim$ cd /Users/tim/Desktop/Media
   Tims-Computer:Media tim$ ls
   yt-video-01.mp4
   Tims-Computer:Media tim$ 
 #+end_src
 
 ** Editor
-Using a featureful text editor is crucial for an enjoyable programming experience. My recommendation is [[https://code.visualstudio.com/download][Visual Studio Code]] (VS Code). Don't worry, it's completely free! VS Code is great because it's more than just a text editor; it's an [[https://en.wikipedia.org/wiki/Integrated_development_environment][integrated development environment]] (IDE), meaning its features go beyond editing text. It even has a built-in terminal, so you can do all your work solely within VS Code.
+Using a featureful text editor is important for an enjoyable programming experience. My recommendation is [[https://code.visualstudio.com/download][Visual Studio Code]] (VS Code). Don't worry, it's completely free! VS Code is great because it's more than just a text editor; it's an [[https://en.wikipedia.org/wiki/Integrated_development_environment][integrated development environment]] (IDE), meaning its features go beyond editing text. It even has a built-in terminal, so you can do all your work solely within VS Code.
 
 Other text editors popular among programmers include [[https://www.gnu.org/software/emacs/][Emacs]], [[https://www.vim.org/][Vim]], [[https://www.sublimetext.com/][Sublime Text]], [[https://atom.io/][Atom]], and [[https://notepad-plus-plus.org/downloads/][Notepad++]].
 
@@ -59,9 +58,9 @@ Other text editors popular among programmers include [[https://www.gnu.org/softw
 [[https://nodejs.org/en/][Node.js]] is the industry standard JavaScript interpreter. You will need to download and install it to start programming with JavaScript in your terminal. After it is installed, open a new terminal window and run the command ~node -v~. It should say the version of Node.js that you installed. If it doesn't, make sure you open a new terminal window before running the command.
 
 *** REPL
-Node.js comes with a sometimes useful feature called a read-eval-print-loop (REPL). If you simply run the ~node~ command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You can not type regular command-line commands in this mode.
+Node.js comes with a useful feature called a read-eval-print-loop (REPL). If you simply run the ~node~ command in your terminal, you will enter the REPL. This is an environment where every command you type will be interpreted as JavaScript. You cannot type regular command line commands in this mode.
 
-Try entering the command ~2 + 2~ or ~console.log('Hello, world!')~. To exit the REPL, press /control+c/ twice. You should see something like the following.
+Try entering the command ~2 + 2~ or ~console.log('Hello, world!')~. To exit the REPL, press /control+c/ twice.
 
 #+begin_src sh
 C:\Users\Tim>node
