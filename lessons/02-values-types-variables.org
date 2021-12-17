@@ -3,12 +3,12 @@ title: Values, Types, and Variables
 ---
 
 * Values, Types, and Variables
-Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.
+Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome is the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.
 
 ** Values and Types
 *Values* represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain *type*. In other words, a value does not exist on its own without a type.
 
-Here is a list of the types that will be used throughout these lessons:
+Here is a list of the types that will be used throughout these lessons[fn:1]:
 - undefined
 - null
 - number
@@ -18,26 +18,24 @@ Here is a list of the types that will be used throughout these lessons:
 - array
 - object
 
-#+begin_quote
-Note: The list of types above differs from the technical list of types in JavaScript. The above types are the intuitive types, meaning it's closer to what goes on in our head when programming with JavaScript. For the technical types in JavaScript, see [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures][MDN]].
-#+end_quote
+This is only the list of predefined types. The *object* type will allow us to define our own types. More on that in the [[./09-objects.html][Objects]] lesson.
 
 Although values can represent any piece of information, in JavaScript there are rules for how we can write values. In general, the ways that we can properly write JavaScript are referred to as *syntax* rules. Writing something that isn't understood by the JavaScript interpreter is called a syntax error and will cause the interpreter to show the error.
 
 Let's look at a brief meaning of each type and some possible values.
 
 *** undefined
-*undefined* exists sort of as a catch-all for when no other value and type fits the situation. Most commonly, it is the value and type given to a variable that hasn't explicitly been given any other value, or a function that doesn't return any other value.
+*undefined* is the value and type given to a variable that hasn't explicitly been given any other value, or a function that doesn't return any other value. This is a special type that we should avoid using. Think of it as a special type that only the JavaScript interpreter should use. We can check if a variable is ~undefined~, but we should never explicitly set a variable to be ~undefined~.[fn:2]
 
 There is only one possible value of the undefined type, of the same name: ~undefined~.
 
 *** null
-*null* is similar to undefined. It is commonly used in the scenario where a value is expected to be an object that may not exist. If the object doesn't exist, null is used. It is preferred to use null when setting a value to mean "this doesn't exist" instead of undefined because undefined gets used by the JavaScript interpreter automatically.
+*null* is similar to undefined, except we should use it. It is commonly used in the scenario where a variable is expected to be an object that may not exist; if the object doesn't exist, null can take its place. It is a good idea to use null when setting a value to mean "this doesn't exist".
 
 There is only one possible value of the null type, of the same name: ~null~.
 
 *** number
-The *number* type is self-explanatory. Anytime we want to represent a number of any sort, we would want to use the number type.
+The *number* type is self-explanatory. Anytime we want to represent a number of any sort, we should use the number type.
 
 Possible values:
 - ~0~
@@ -47,7 +45,7 @@ Possible values:
 - (virtually any number)
 
 *** boolean
-The *boolean* type is for representing something that can only be one of two values:
+The *boolean* type is for representing something that can only be one of the two values:
 - ~true~
 - ~false~
 
@@ -56,7 +54,7 @@ The *function* type is for representing a sort of operation that can be applied 
 
 A function may look something like this: ~(x) => x + 1~.
 
-Functions will be covered later in depth.
+Functions will be covered later in depth (see: [[./05-functions.html][Functions]]).
 
 *** string
 The *string* type is for representing words and general text.
@@ -67,7 +65,7 @@ Possible values:
 - ~'Hello, world!'~
 - (virtually anything surrounded by quotes)
 
-Strings will be covered later in depth.
+Strings will be covered later in depth (see: [[./06-strings.html][Strings]]).
 
 *** array
 The *array* type is for holding a list of values. The values inside of an array can be any type (including arrays themselves).
@@ -79,7 +77,7 @@ Arrays look something like this:
 - ~[false]~
 - (virtually anything in square brackets separated by commas)
 
-Arrays will be covered later in depth.
+Arrays will be covered later in depth (see: [[./07-arrays.html][Arrays]]).
 
 *** object
 The *object* type is for representing a more complex structure that doesn't fit into any of the other types. Defining an object of a particular structure can be thought of as defining a new type.
@@ -89,7 +87,7 @@ Objects look something like this:
 - ~{name: 'Alice', age: 30}~
 - ~{}~
 
-Objects will be covered later in depth.
+Objects will be covered later in depth (see: [[./09-objects.html][Objects]]).
 
 ** Variables
 *Variables* let us assign a name to a value and reuse it wherever we want.
@@ -102,11 +100,11 @@ The syntax to define a variable looks like this:
 const favNumber = 10;
 #+end_src
 
-The line must start with the word "const", followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end JavaScript statements like this with a semicolon. In this example, we are defining a variable named "favNumber" and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use "favNumber", we can substitute 10, and vice versa.
+The line must start with the word "const", followed by the name of the variable, the equals sign, and finally the desired value. In this example, we are defining a variable named "favNumber" and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use "favNumber", we can substitute 10, and vice versa.
 
 Variable names are conventionally written in [[https://en.wikipedia.org/wiki/Camel_case][camelCase]]. It is encouraged to give variables meaningful names, as we will do throughout the lessons.
 
-Defining a variable is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. A variable cannot be used before it is defined.
+Defining a variable is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like you're reading these lessons. A variable cannot be used before it is defined (before its statement has been executed). It is conventional to end JavaScript statements with a semicolon, but not necessary.
 
 ** Example REPL Session
 #+begin_src sh
@@ -157,3 +155,7 @@ undefined
 
 C:\Users\Tim>
 #+end_src
+
+[fn:1] This list of types differs from the technical list of types in JavaScript. The types listed here are the intuitive types, meaning it's closer to what goes on in our heads when programming with JavaScript. For the technical types in JavaScript, see [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures][MDN]].
+
+[fn:2] The reason we shouldn't use undefined explicitly is because the JavaScript interpreter uses it automatically. If we set a variable to be undefined, when we compare its value later we have no way of knowing whether we gave it the value or the JavaScript interpreter did. I would rather undefined not be in this list of types at all, but because it arises so frequently in JavaScript it would be unfair not to mention it.

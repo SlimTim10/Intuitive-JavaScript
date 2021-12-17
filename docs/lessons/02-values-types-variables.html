@@ -39,10 +39,10 @@
 </ul>
 </nav>
 <article class="card"><section id="lesson-body"><h1 id="values-types-and-variables">Values, Types, and Variables</h1>
-<p>Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome be the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.</p>
+<p>Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome is the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.</p>
 <h2 id="values-and-types">Values and Types</h2>
 <p><strong>Values</strong> represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain <strong>type</strong>. In other words, a value does not exist on its own without a type.</p>
-<p>Here is a list of the types that will be used throughout these lessons:</p>
+<p>Here is a list of the types that will be used throughout these lessons<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <ul>
 <li>undefined</li>
 <li>null</li>
@@ -53,19 +53,17 @@
 <li>array</li>
 <li>object</li>
 </ul>
-<blockquote>
-<p>Note: The list of types above differs from the technical list of types in JavaScript. The above types are the intuitive types, meaning it’s closer to what goes on in our head when programming with JavaScript. For the technical types in JavaScript, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">MDN</a>.</p>
-</blockquote>
+<p>This is only the list of predefined types. The <strong>object</strong> type will allow us to define our own types. More on that in the <a href="./09-objects.html">Objects</a> lesson.</p>
 <p>Although values can represent any piece of information, in JavaScript there are rules for how we can write values. In general, the ways that we can properly write JavaScript are referred to as <strong>syntax</strong> rules. Writing something that isn’t understood by the JavaScript interpreter is called a syntax error and will cause the interpreter to show the error.</p>
 <p>Let’s look at a brief meaning of each type and some possible values.</p>
 <h3 id="undefined">undefined</h3>
-<p><strong>undefined</strong> exists sort of as a catch-all for when no other value and type fits the situation. Most commonly, it is the value and type given to a variable that hasn’t explicitly been given any other value, or a function that doesn’t return any other value.</p>
+<p><strong>undefined</strong> is the value and type given to a variable that hasn’t explicitly been given any other value, or a function that doesn’t return any other value. This is a special type that we should avoid using. Think of it as a special type that only the JavaScript interpreter should use. We can check if a variable is <code>undefined</code>, but we should never explicitly set a variable to be <code>undefined</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>There is only one possible value of the undefined type, of the same name: <code>undefined</code>.</p>
 <h3 id="null">null</h3>
-<p><strong>null</strong> is similar to undefined. It is commonly used in the scenario where a value is expected to be an object that may not exist. If the object doesn’t exist, null is used. It is preferred to use null when setting a value to mean “this doesn’t exist” instead of undefined because undefined gets used by the JavaScript interpreter automatically.</p>
+<p><strong>null</strong> is similar to undefined, except we should use it. It is commonly used in the scenario where a variable is expected to be an object that may not exist; if the object doesn’t exist, null can take its place. It is a good idea to use null when setting a value to mean “this doesn’t exist”.</p>
 <p>There is only one possible value of the null type, of the same name: <code>null</code>.</p>
 <h3 id="number">number</h3>
-<p>The <strong>number</strong> type is self-explanatory. Anytime we want to represent a number of any sort, we would want to use the number type.</p>
+<p>The <strong>number</strong> type is self-explanatory. Anytime we want to represent a number of any sort, we should use the number type.</p>
 <p>Possible values:</p>
 <ul>
 <li><code>0</code></li>
@@ -75,7 +73,7 @@
 <li>(virtually any number)</li>
 </ul>
 <h3 id="boolean">boolean</h3>
-<p>The <strong>boolean</strong> type is for representing something that can only be one of two values:</p>
+<p>The <strong>boolean</strong> type is for representing something that can only be one of the two values:</p>
 <ul>
 <li><code>true</code></li>
 <li><code>false</code></li>
@@ -83,7 +81,7 @@
 <h3 id="function">function</h3>
 <p>The <strong>function</strong> type is for representing a sort of operation that can be applied to values to produce another value.</p>
 <p>A function may look something like this: <code>(x) =&gt; x + 1</code>.</p>
-<p>Functions will be covered later in depth.</p>
+<p>Functions will be covered later in depth (see: <a href="./05-functions.html">Functions</a>).</p>
 <h3 id="string">string</h3>
 <p>The <strong>string</strong> type is for representing words and general text.</p>
 <p>Possible values:</p>
@@ -93,7 +91,7 @@
 <li><code>'Hello, world!'</code></li>
 <li>(virtually anything surrounded by quotes)</li>
 </ul>
-<p>Strings will be covered later in depth.</p>
+<p>Strings will be covered later in depth (see: <a href="./06-strings.html">Strings</a>).</p>
 <h3 id="array">array</h3>
 <p>The <strong>array</strong> type is for holding a list of values. The values inside of an array can be any type (including arrays themselves).</p>
 <p>Arrays look something like this:</p>
@@ -104,7 +102,7 @@
 <li><code>[false]</code></li>
 <li>(virtually anything in square brackets separated by commas)</li>
 </ul>
-<p>Arrays will be covered later in depth.</p>
+<p>Arrays will be covered later in depth (see: <a href="./07-arrays.html">Arrays</a>).</p>
 <h3 id="object">object</h3>
 <p>The <strong>object</strong> type is for representing a more complex structure that doesn’t fit into any of the other types. Defining an object of a particular structure can be thought of as defining a new type.</p>
 <p>Objects look something like this:</p>
@@ -113,15 +111,15 @@
 <li><code>{name: 'Alice', age: 30}</code></li>
 <li><code>{}</code></li>
 </ul>
-<p>Objects will be covered later in depth.</p>
+<p>Objects will be covered later in depth (see: <a href="./09-objects.html">Objects</a>).</p>
 <h2 id="variables">Variables</h2>
 <p><strong>Variables</strong> let us assign a name to a value and reuse it wherever we want.</p>
 <p>In functional JavaScript, variables are always declared with <code>const</code>. You may see <code>var</code> or <code>let</code> used in other JavaScript code, but not in these lessons. This is great because there’s less to think about when declaring a variable and there are stricter rules about how variables work.</p>
 <p>The syntax to define a variable looks like this:</p>
 <div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> favNumber <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span></code></pre></div>
-<p>The line must start with the word “const”, followed by the name of the variable, the equals sign, and finally the desired value. It is conventional to end JavaScript statements like this with a semicolon. In this example, we are defining a variable named “favNumber” and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use “favNumber”, we can substitute 10, and vice versa.</p>
+<p>The line must start with the word “const”, followed by the name of the variable, the equals sign, and finally the desired value. In this example, we are defining a variable named “favNumber” and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use “favNumber”, we can substitute 10, and vice versa.</p>
 <p>Variable names are conventionally written in <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>. It is encouraged to give variables meaningful names, as we will do throughout the lessons.</p>
-<p>Defining a variable is a kind of <strong>statement</strong>, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like we read plain English. A variable cannot be used before it is defined.</p>
+<p>Defining a variable is a kind of <strong>statement</strong>, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like you’re reading these lessons. A variable cannot be used before it is defined (before its statement has been executed). It is conventional to end JavaScript statements with a semicolon, but not necessary.</p>
 <h2 id="example-repl-session">Example REPL Session</h2>
 <div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span>node</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
@@ -168,7 +166,14 @@
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">To</span> exit, press ^C again or ^D or type .exit<span class="kw">)</span></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span></span></code></pre></div></section>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span></span></code></pre></div>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>This list of types differs from the technical list of types in JavaScript. The types listed here are the intuitive types, meaning it’s closer to what goes on in our heads when programming with JavaScript. For the technical types in JavaScript, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">MDN</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>The reason we shouldn’t use undefined explicitly is because the JavaScript interpreter uses it automatically. If we set a variable to be undefined, when we compare its value later we have no way of knowing whether we gave it the value or the JavaScript interpreter did. I would rather undefined not be in this list of types at all, but because it arises so frequently in JavaScript it would be unfair not to mention it.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></section>
 
 <section id="prev-and-next-links">
 	<div>
