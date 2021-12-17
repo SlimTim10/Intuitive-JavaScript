@@ -32,6 +32,11 @@ em {
   font-style: italic;
 }
 
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
 a:link {
   color: #70532c;
 }
@@ -144,6 +149,7 @@ main > article.card {
 #lesson-body h3 {
   margin-top: 0.7em;
   margin-bottom: 0.5em;
+  font-style: italic;
 }
 
 #lesson-body ul {
