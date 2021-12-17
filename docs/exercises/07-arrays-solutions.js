@@ -465,49 +465,57 @@ console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
 // Practice using the sort() method
 
 /*
-7.6 Create a function called 'bottom3' that takes an array (of at least 3 elements) and returns the bottom 3 elements in ascending order.
+7.6 Create a function called 'top3' that takes an array (of at least 3 strings) and returns the first 3 strings that occur in alphabetical order.
 
 The following lines should help you see if your function works correctly.
 */
-const bottom3 = xs => take(3, xs.sort((a, b) => a - b));
+const top3 = xs => take(3, xs.sort());
 
-console.log('-- bottom3 tests');
-console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
-console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
-console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
-console.log(bottom3([101, 19, 15, 18]), '=== [15, 18, 19]');
+console.log('-- top3 tests');
+console.log(top3(['apple', 'date', 'cherry', 'banana']), '=== [\'apple\', \'banana\', \'cherry\']');
+console.log(top3(['apple', 'date', 'cherry', 'apple', 'apple', 'banana']), '=== [\'apple\', \'apple\', \'apple\']');
+console.log(top3(['cherry', 'banana', 'apple']), '=== [\'apple\', \'banana\', \'cherry\']');
+console.log(top3(['date', 'cherry', 'banana', 'Elderberry']), '=== [\'Elderberry\', \'banana\', \'cherry\']');
 
 /*
-7.61 Create a function called 'bottomN' that takes a number (n) and an array (of at least n elements). It should return the bottom n elements in ascending order.
-*/
-const bottomN = (n, xs) => take(n, xs.sort());
+7.61 Create a function called 'topN' that takes a number (n) and an array (of at least n strings). It should return the first n strings that occur in alphabetical order.
 
-console.log('-- bottomN tests');
-console.log(bottomN(3, [9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
-console.log(bottomN(2, [9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1]');
-console.log(bottomN(3, [3, 2, 1]), '=== [1, 2, 3]');
+The following lines should help you see if your function works correctly.
+*/
+const topN = (n, xs) => take(n, xs.sort());
+
+console.log('-- topN tests');
+console.log(topN(3, ['apple', 'date', 'cherry', 'banana']), '=== [\'apple\', \'banana\', \'cherry\']');
+console.log(topN(2, ['apple', 'date', 'cherry', 'apple', 'apple', 'banana']), '=== [\'apple\', \'apple\']');
+console.log(topN(1, ['apple', 'date', 'cherry', 'Elderberry', 'apple', 'banana']), '=== [\'Elderberry\']');
+console.log(topN(1, ['apple']), '=== [\'apple\']');
 
 // Practice using the reverse() method
 
 /*
-7.7 Create a function called 'top3' that takes an array (of at least 3 elements) and returns the top 3 elements in descending order.
-*/
-const top3 = xs => take(3, xs.sort().reverse());
+7.7 Create a function called 'bottom3' that takes an array (of at least 3 strings) and returns the last 3 strings that occur in reverse alphabetical order.
 
-console.log('-- top3 tests');
-console.log(top3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [9, 8, 7]');
-console.log(top3([9, 2, 5, 1, 4, 8, 1, 3, 8]), '=== [9, 8, 8]');
-console.log(top3([3, 2, 1]), '=== [3, 2, 1]');
+The following lines should help you see if your function works correctly.
+*/
+const bottom3 = xs => take(3, xs.sort().reverse());
+
+console.log('-- bottom3 tests');
+console.log(bottom3(['apple', 'date', 'cherry', 'banana']), '=== [\'date\', \'cherry\', \'banana\']');
+console.log(bottom3(['apple', 'date', 'cherry', 'apple', 'apple', 'banana']), '=== [\'date\', \'cherry\', \'banana\']');
+console.log(bottom3(['apple', 'banana', 'cherry']), '=== [\'cherry\', \'banana\', \'apple\']');
 
 /*
-7.71 Create a function called 'topN' that takes a number (n) and an array (of at least n elements). It should return the top n elements in descending order.
-*/
-const topN = (n, xs) => take(n, xs.sort().reverse());
+7.71 Create a function called 'bottomN' that takes a number (n) and an array (of at least n strings). It should return the last n strings that occur in reverse alphabetical order.
 
-console.log('-- topN tests');
-console.log(topN(3, [9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [9, 8, 7]');
-console.log(topN(2, [9, 2, 5, 1, 4, 8, 1, 3, 8]), '=== [9, 8]');
-console.log(topN(3, [3, 2, 1]), '=== [3, 2, 1]');
+The following lines should help you see if your function works correctly.
+*/
+const bottomN = (n, xs) => take(n, xs.sort().reverse());
+
+console.log('-- bottomN tests');
+console.log(bottomN(3, ['apple', 'date', 'cherry', 'banana']), '=== [\'date\', \'cherry\', \'banana\']');
+console.log(bottomN(2, ['apple', 'date', 'cherry', 'apple', 'apple', 'banana']), '=== [\'date\', \'cherry\']');
+console.log(bottomN(1, ['apple', 'date', 'cherry', 'Elderberry', 'apple', 'banana']), '=== [\'date\']');
+console.log(bottomN(1, ['apple']), '=== [\'apple\']');
 
 // Practice adding elements to arrays
 
@@ -563,6 +571,8 @@ console.log(nullHead(['a', 'b', 'c']), '=== [null, b, c]');
 
 /*
 7.82 Create a function called 'append' that takes a value and an array, and returns a new array with the value added to the end.
+
+The following lines should help you see if your function works correctly.
 */
 const append = (y, xs) => [...xs, y];
 
@@ -572,6 +582,8 @@ console.log(append(4, [1, 2, 3]), '=== [1, 2, 3, 4]');
 
 /*
 7.821 Create a function called 'appendHead' that takes an array and returns a new array with its first value added to the end.
+
+The following lines should help you see if your function works correctly.
 */
 const appendHead = xs => [...xs, head(xs)];
 
@@ -581,6 +593,8 @@ console.log(appendHead(['a', 'b', 'b']), '=== [a, b, b, a]');
 
 /*
 7.83 Create a function called 'swapEnds' that takes an array and returns a new array with the first and last elements swapped.
+
+The following lines should help you see if your function works correctly.
 
 Tip: Try using our head(), last(), and inner() functions to help.
 */
