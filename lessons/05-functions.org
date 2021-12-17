@@ -7,7 +7,7 @@ As you probably guessed, functions are a very important concept in functional pr
 
 Functions are everywhere in code, right from the start. We've been using node's built-in ~console.log()~ function to print messages. Any JavaScript interpreter you use (node or a web browser) comes with tons of built-in functions ready to use. This lesson is about creating our own functions.
 
-One thing to keep in mind is: functions are a type of value just like the others. Recall that the possible types of values are as follows:
+One thing to keep in mind is: functions are a type of value just like the others. Recall the possible types of values.
 - undefined
 - null
 - number
