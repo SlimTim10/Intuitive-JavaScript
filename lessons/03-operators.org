@@ -147,7 +147,7 @@ A way to combine two boolean values that results in true when either value is tr
 What these operators do will also be familiar in an intuitive sense. These will allow us to compare various types of values, but always give a *boolean* value (true or false) as a result.
 
 *** Less than (~<~), less than or equal (~<=~)
-Checks that a number is less than (or equal to) another number. Results in a boolean value (true or false). These operators can technically work on other types than numbers, but it's not commonly done. [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than][Read more on MDN]].
+Checks that a number is less than (or equal to) another number. Results in a boolean value (true or false). These operators can technically work on other types than numbers, but it's not commonly done (read [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than][MDN]] for more information).
 
 #+begin_src js
   console.log(1 < 2); // true
