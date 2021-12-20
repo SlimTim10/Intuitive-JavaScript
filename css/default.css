@@ -89,6 +89,15 @@ header nav a:hover {
   text-decoration: none;
 }
 
+.lesson-number {
+    margin-top: 1em;
+    font-size: 2em;
+    font-weight: 400;
+    color: #155915;
+    display: flex;
+    justify-content: center;
+}
+
 #toc ul {
   margin-top: 1em;
 }
@@ -291,8 +300,4 @@ footer div:nth-of-type(2) > * {
 
 #created-by {
   font-size: 1.2rem;
-}
-
-.lesson-number {
-  display: none;
 }
