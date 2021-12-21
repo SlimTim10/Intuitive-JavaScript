@@ -182,7 +182,7 @@ main>article.card {
   padding: 0.3em 0.5em;
 }
 
-#lesson-body p>code {
+#lesson-body p>code, li>code {
   background: #EAEAEA;
 }
 
