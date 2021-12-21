@@ -102,7 +102,7 @@ header nav a:hover {
   margin-top: 1em;
 }
 
-#toc ul > li > ul {
+#toc ul>li>ul {
   margin-left: 1em;
 }
 
@@ -132,7 +132,7 @@ main {
   box-shadow: 0 0 5px 0 rgb(0 0 0 / 25%);
 }
 
-main > article.card {
+main>article.card {
   padding-bottom: 0.5em;
 }
 
@@ -141,7 +141,7 @@ main > article.card {
   flex-direction: column;
 }
 
-#lesson-body > * {
+#lesson-body>* {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
@@ -182,7 +182,7 @@ main > article.card {
   padding: 0.3em 0.5em;
 }
 
-#lesson-body p > code {
+#lesson-body p>code {
   background: #EAEAEA;
 }
 
@@ -262,7 +262,7 @@ footer {
   flex-direction: column;
 }
 
-footer > div:first-of-type {
+footer>div:first-of-type {
   background: white;
   padding: 2em 2em;
   display: flex;
@@ -282,7 +282,7 @@ footer > div:first-of-type {
   display: flex;
 }
 
-#social-links > * {
+#social-links>* {
   margin-left: 1em;
 }
 
@@ -293,7 +293,7 @@ footer div:nth-of-type(2) {
   align-items: center;
 }
 
-footer div:nth-of-type(2) > * {
+footer div:nth-of-type(2)>* {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
