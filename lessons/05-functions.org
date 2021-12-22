@@ -3,7 +3,7 @@ title: Functions
 ---
 
 * Functions
-As you probably guessed, functions are a very important concept in functional programming. The good news is functions are not a complicated matter. In fact, the core concept of a function is quite simple; that's what makes it powerful.
+As you probably guessed, functions are a very important concept in functional programming.[fn:1] The good news is functions are not a complicated matter. In fact, the core concept of a function is quite simple; that's what makes it powerful.
 
 Functions are everywhere in code, right from the start. We've been using node's built-in ~console.log()~ function to print messages. Any JavaScript interpreter you use (node or a web browser) comes with tons of built-in functions ready to use. This lesson is about creating our own functions.
 
@@ -20,9 +20,9 @@ One thing to keep in mind is: functions are a type of value just like the others
 This means we can set a variable to be equal to a function, just like any other value. What makes functions different from the other types is their ability to perform some action and return a result.
 
 ** What is a function?
-A function takes things in (called *arguments*) and *returns* something. When we define a function, we need to say how many things it takes in and what it returns. The thing it returns doesn't necessarily need to make use of the things it takes in. Unlike the other types of values, functions have a particular way of being used: they're meant to /do/ something. When we want a function to do its action and return a value, we need to *call* (or "run") the function. Calling a function makes the code inside the function run until it reaches a ~return~ statement (or the end of the function) and returns the value to the place where the function was called.
+A function takes things in (called *arguments*) and *returns* something. When we define a particular function, we need to say how many things it takes in and what it returns. The thing it returns doesn't necessarily need to make use of the things it takes in. Unlike the other types of values, functions have a particular way of being used: they're meant to /do/ something. When we want a function to do its action and return a value, we need to *call* (or "run") the function. Calling a function makes the code inside the function run until it reaches a ~return~ statement (or the end of the function) and returns a value to the place where the function was called.
 
-The arguments that a function takes in can be any type of value (including functions) and the thing that a function returns can also be any type of value (it can even return a function).
+The arguments that a function takes in can be any type of value (including functions) and the thing that a function returns can also be any type of value (it can even return a function!).
 
 ** Anatomy of a function
 #+begin_src js
@@ -32,22 +32,22 @@ const f = (a, b) => {
 #+end_src
 
 - The above code defines a variable named ~f~ and assigns its value to be a function.
-- The ~(a, b)~ part means the function accepts two *arguments* when we *call* it, and they will be referred to as ~a~ and ~b~ inside the scope of the *function body* (between the curly brackets). *Arguments are variables* that a function uses when it is called. Functions can have any number of arguments, most commonly between 0-4.
+- The ~(a, b)~ part means the function accepts two *arguments* when we *call* it, and they will be referred to as ~a~ and ~b~ inside the scope of the *function body* (between the curly brackets). *Arguments are variables* that a function uses when it is called. Functions can have any number of arguments, most commonly between 0-4. If a function has exactly one argument, the round brackets can be omitted.
 - The arrow ~=>~ comes after the list of arguments and the curly brackets ~{ }~ denote the function body.
-- In the function body, the ~return~ statement says what value is returned when the function is called; in this case, the result of adding the two given arguments, ~a~ and ~b~. Functions often have a lot more code in their bodies.
+- In the function body, the ~return~ statement says what value is returned when the function is called; in this case, the result of adding the two given arguments, ~a~ and ~b~. Functions often have a lot more code in their bodies. They may have multiple ~return~ statements as well, but only the first one executed will take effect.
 
-To make use of this function, we need to *call* it. The syntax for calling a function is writing the function's name directly followed by round brackets with values inside, something like: ~f(1, 2)~. The values we put inside the round brackets are given as the arguments to the function, so we should put as many values as the function has arguments (two in the above example). We could call the above function like so:
+To make use of this function, we need to *call* it. The syntax for calling a function is writing the function's name directly followed by round brackets with values inside, something like: ~f(1, 2)~. The values we put inside the round brackets are given as the arguments to the function, so we should put as many values as the function has arguments (two in the above function). We could call the above function like so:
 
 #+begin_src js
-const three = f(1, 2); // store the function's result of 1 + 2 in a variable
+const three = f(1, 2); // Store the function's result of 1 + 2 in a variable
 console.log(three); // 3
 #+end_src
 
-In the above code, the function is being called on the right side of the equals sign: ~f(1, 2)~. We are calling the function ~f~ and passing it two numbers as arguments. In this instance of calling the function, ~a~ takes on the value ~1~, and ~b~ takes on the value ~2~. Then, the result of ~a + b~ gets returned to the place where the function was called, setting the variable named ~three~ equal to ~3~.
+In the above code, the function is being called on the right side of the equals sign: ~f(1, 2)~. We are calling the function ~f~ and passing it two numbers as arguments. In this instance of calling the function, ~a~ takes on the value ~1~ while ~b~ takes on the value ~2~. Then, the result of ~a + b~ gets returned to the place where the function was called, setting the variable named ~three~ equal to ~3~.
 
-Each time a function is called, it executes the body with the newly given values for arguments and produces a new result. In functional programming, functions don't have a memory so each time they're called is a brand new instance. That means whatever values are given as arguments when calling a function have no impact on subsequent calls to the same function. Consequently, this makes it easy to tell what a function is going to return when we call it because we don't have to worry about how the function was used on other lines, and only focus on the line we're interested in and the function itself.
+Each time a function is called, it executes the body with the newly given values for arguments and produces a new result. In functional programming, functions don't have a persistent memory so each time they're called is a brand new instance. That means whatever values are given as arguments when calling a function have no impact on subsequent calls to the same function. Consequently, this makes it easier to tell what a function is going to return when we call it because we don't have to worry about how the function is used elsewhere, and only focus on the line we're interested in and the function itself.
 
-Calling the function a few more times:
+Calling the function a few more ways:
 
 #+begin_src js
 const five = f(2, 3);
@@ -59,7 +59,7 @@ console.log(f(1, f(2, 3))); // 6
 #+end_src
 
 ** Function definition vs function call
-Because functions are values that can be called, there are two ways to use them: you can pass them as a value or you can call them. This is illustrated by the following example. Notice the subtly different syntax of ~func~ and ~func()~:
+Because functions are values that can be called, there are two ways to use them: you can pass them around as a value or you can call them. This is illustrated by the following example. Notice the subtly different syntax of ~func~ vs ~func()~:
 
 #+begin_src js
 const func = () => {
@@ -77,103 +77,7 @@ console.log(x()); // 10
 console.log(y); // 10
 #+end_src
 
-** Motivation
-What makes functions so important is *reusability* and *composability*.
-
-*** Reusability
-Let's say we have the following code for printing a greeting message to a person.
-
-#+BEGIN_SRC js
-const name = 'Alice';
-console.log(name + ', what\'s up?'); // Alice, what's up?
-#+END_SRC
-
-No problems there. What if we have more people and we want to print the same message each time?
-
-#+begin_src js
-const name1 = 'Alice';
-const name2 = 'Bob';
-const name3 = 'Carol';
-console.log(name1 + ', what\'s up?'); // Alice, what's up?
-console.log(name2 + ', what\'s up?'); // Bob, what's up?
-console.log(name3 + ', what\'s up?'); // Carol, what's up?
-#+end_src
-
-This works, but now we have an obvious repeated pattern in our code. All three of the ~console.log~ lines look the same except for the name. What if we want to make a change to the greeting message? Let's say we want the messages to read, "(name), how's it going?" Well, we need to change the three ~console.log~ lines.
-
-#+begin_src js
-const name1 = 'Alice';
-const name2 = 'Bob';
-const name3 = 'Carol';
-console.log(name1 + ', how\'s it going?');
-console.log(name2 + ', how\'s it going?');
-console.log(name3 + ', how\'s it going?');
-#+end_src
-
-This is unnecessarily repetitive work. The more lines we have that use the same pattern, the more code we have to update if we want to make even a small change. By making a function and using the name as an argument, we can have one piece of code to reuse and update:
-
-#+begin_src js
-const name1 = 'Alice';
-const name2 = 'Bob';
-const name3 = 'Carol';
-
-const printGreeting = name => {
-  console.log(name + ', what\'s up?');
-};
-
-printGreeting(name1);
-printGreeting(name2);
-printGreeting(name3);
-#+end_src
-
-Now, whenever we want to make a change to the messages we only need to update the single ~console.log~ line inside the function.
-
-*** Composability
-Functions being composable enables us to break down problems into smaller, easier-to-solve pieces that we can put back together (compose) for the final solution.
-
-As an example, let's look at creating a function to return the [[https://en.wikipedia.org/wiki/Factorial][factorial]] of a number (e.g., 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720). We will also create a function to return the "even factorial" of a number, where we only multiply even numbers (e.g., even factorial of 6 = 2 * 4 * 6 = 48). Some of the techniques in the following example have not been covered in the previous lessons, but you don't need to understand the details of each function in order to see how they are composed. Comments have been added for clarity.
-
-#+begin_src js
-// Return a list of numbers from 1 up to n (inclusive)
-const upTo = n => [...Array(n)].map((_, i) => i + 1);
-
-// Multiply a list of numbers
-const multiply = ns => ns.reduce((acc, n) => acc * n, 1);
-
-// Return n! (from 1 up to n multiplied together)
-const factorial = n => {
-  const xs = upTo(n); // Get a list of numbers from 1 up to n (e.g., [1, 2, 3, 4, 5, 6])
-  return multiply(xs); // Multiply the numbers together (e.g., 1 * 2 * 3 * 4 * 5 * 6)
-};
-
-// Condensed version
-const factorialV2 = n => multiply(upTo(n)); // Multiply the numbers from 1 up to n
-
-console.log(factorial(6)); // 720
-console.log(factorialV2(6)); // 720
-
-// Return true if n is even, otherwise false
-const isEven = n => n % 2 === 0;
-
-// Return the even numbers from 1 up to n multiplied together
-const evenFactorial = n => {
-  const xs = upTo(n); // Get a list of numbers from 1 up to n (e.g., [1, 2, 3, 4, 5, 6])
-  const evens = xs.filter(isEven); // Keep only the even numbers in the list (e.g., [2, 4, 6])
-  return multiply(evens); // Multiply the numbers together (e.g., 2 * 4 * 6)
-};
-
-// Condensed version
-const evenFactorialV2 = n => multiply(upTo(n).filter(isEven)); // Multiply the even numbers from 1 up to n
-
-console.log(evenFactorial(6)); // 48
-console.log(evenFactorialV2(6)); // 48
-#+end_src
-
-What's important to note in the code above is how small functions were made to handle small steps of the overall problem. For example, ~upTo()~ has the job of building a list of numbers from 1 up to the given number. This allows us to focus on small problems (make a list of numbers, multiply a list of numbers, check if a number is even), then compose them together to solve a bigger problem (factorial, even factorial). To get the factorial of a number, n, we can make a list of numbers from 1 up to n, then multiply those numbers together. This is composing ~multiply()~ with ~upTo()~.
-
-The condensed versions of factorial and even factorial work the same way as their uncondensed counterparts; they simply skip the steps of using intermediate variables. Either way is fine, so long as you can read and understand the code. You may find that you prefer the uncondensed versions now, and later after you gain more experience you may prefer the condensed versions.
-
-** More Details
+** More details
 *** Implicit return shortcut
 When we want to define a short function, there's a more compact way of writing it. If we omit the curly brackets ~{ }~, then the expression directly following the arrow ~=>~ becomes the function's return value.
 
@@ -185,12 +89,12 @@ const longVersion = (a, b) => {
 const shortVersion = (a, b) => a + b;
 #+end_src
 
-However, this doesn't help if we want to do more things in the function body before the return.
+However, this doesn't help if we want to do things in the function body before returning the value.
 
 *** No return value
-Functions don't always need to explicitly return a result. However, if a function doesn't explicitly have a ~return~ statement, it will still return a value: ~undefined~. In fact, ~console.log()~ is one such function; it doesn't return a value other than ~undefined~ because its job is to simply perform an action (print to the console).
+Functions don't always need to explicitly return something. However, if a function doesn't explicitly have a ~return~ statement (or use the implicit return shortcut), it will still return a value: ~undefined~. In fact, ~console.log()~ is one such function; it doesn't return a value other than ~undefined~ because its job is to simply perform a visible action (print something to the console).
 
-An example would be something like the following function, which only prints something.
+An example is something like the following function, which only prints something.
 
 #+begin_src js
 const printMessage = () => {
@@ -251,6 +155,102 @@ console.log(betweenV4(1, 2, 3)); // true
 
 The reason that ~betweenV2()~ works is due to the fact that when the code execution reaches a ~return~ statement, it returns the value and stops the rest of the function's code from executing (remember, returning a value is always the last thing a function does). So the ~return false;~ statement will only execute if the previous ~return~ was not reached, that is, when the ~if~ condition is false.
 
+** Motivation
+What makes functions so important is *reusability* and *composability*.
+
+*** Reusability
+Let's say we have the following code for printing a greeting message to a person.
+
+#+BEGIN_SRC js
+const name = 'Alice';
+console.log(name + ', what\'s up?'); // Alice, what's up?
+#+END_SRC
+
+No problems there. What if we have more people and we want to print the same message each time?
+
+#+begin_src js
+const name1 = 'Alice';
+const name2 = 'Bob';
+const name3 = 'Carol';
+console.log(name1 + ', what\'s up?'); // Alice, what's up?
+console.log(name2 + ', what\'s up?'); // Bob, what's up?
+console.log(name3 + ', what\'s up?'); // Carol, what's up?
+#+end_src
+
+This works, but now we have a repeated pattern in our code. All three of the ~console.log~ lines look the same except for the names. What if we want to make a change to the greeting message? Let's say we want the messages to read, "[name], how's it going?" Well, we would need to change the three ~console.log~ lines.
+
+#+begin_src js
+const name1 = 'Alice';
+const name2 = 'Bob';
+const name3 = 'Carol';
+console.log(name1 + ', how\'s it going?');
+console.log(name2 + ', how\'s it going?');
+console.log(name3 + ', how\'s it going?');
+#+end_src
+
+This is unnecessarily repetitive work. The more lines we have that use the same pattern, the more code we have to update if we want to make even a small change. By making a function and using the name as an argument, we can have one piece of code to reuse and update:
+
+#+begin_src js
+const name1 = 'Alice';
+const name2 = 'Bob';
+const name3 = 'Carol';
+
+const printGreeting = name => {
+  console.log(name + ', what\'s up?');
+};
+
+printGreeting(name1);
+printGreeting(name2);
+printGreeting(name3);
+#+end_src
+
+Now, whenever we want to make a change to the messages we only need to update the single ~console.log~ line inside the function.
+
+*** Composability
+Functions being composable enables us to break down problems into smaller, easier-to-solve pieces that we can put back together (compose) for the final solution.
+
+As an example, let's look at creating a function to return the [[https://en.wikipedia.org/wiki/Factorial][factorial]] of a number (e.g., 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720). We will also create a function to return the "even factorial" of a number, where we only multiply even numbers (e.g., even factorial of 6 = 2 * 4 * 6 = 48). Some of the techniques in the following example have not been covered in the previous lessons, but you don't need to understand the details of each function in order to see how they are composed. Comments have been added for clarity.
+
+#+begin_src js
+// Construct a list of numbers from 1 up to n (inclusive)
+const upTo = n => [...Array(n)].map((_, i) => i + 1);
+
+// Multiply a list of numbers
+const multiply = ns => ns.reduce((acc, n) => acc * n, 1);
+
+// Compute n! (whole numbers from 1 up to n multiplied together)
+const factorial = n => {
+  const xs = upTo(n); // Make a list of numbers from 1 up to n (e.g., [1, 2, 3, 4, 5, 6])
+  return multiply(xs); // Multiply the numbers together (e.g., 1 * 2 * 3 * 4 * 5 * 6)
+};
+
+// Condensed version
+const factorialV2 = n => multiply(upTo(n)); // Multiply the numbers from 1 up to n
+
+console.log(factorial(6)); // 720
+console.log(factorialV2(6)); // 720
+
+// Return true if n is even, otherwise false
+const isEven = n => n % 2 === 0;
+
+// Compute the even numbers from 1 up to n multiplied together
+const evenFactorial = n => {
+  const xs = upTo(n); // Make a list of numbers from 1 up to n (e.g., [1, 2, 3, 4, 5, 6])
+  const evens = xs.filter(isEven); // Keep only the even numbers in the list (e.g., [2, 4, 6])
+  return multiply(evens); // Multiply the numbers together (e.g., 2 * 4 * 6)
+};
+
+// Condensed version
+const evenFactorialV2 = n => multiply(upTo(n).filter(isEven)); // Multiply the even numbers from 1 up to n
+
+console.log(evenFactorial(6)); // 48
+console.log(evenFactorialV2(6)); // 48
+#+end_src
+
+What's important to note in the code above is that small functions were made to handle small steps of the overall problem. For example, ~upTo()~ has the job of building a list of numbers from 1 up to the given number. This allows us to focus on small problems (make a list of numbers, multiply a list of numbers, check if a number is even), then compose them together to solve bigger problems (factorial, even factorial). To get the factorial of a number, n, we can make a list of numbers from 1 up to n, then multiply those numbers together. This is composing ~multiply()~ with ~upTo()~.
+
+The condensed versions of factorial and even factorial work the same way as their uncondensed counterparts; they simply skip the steps of using intermediate variables. Either way is fine, so long as you can read and understand the code. You may find that you prefer the uncondensed versions for now, and later, after you gain more experience, prefer the condensed versions.
+
 ** Exercises
 
 #+BEGIN_EXPORT HTML
@@ -261,3 +261,5 @@ The reason that ~betweenV2()~ works is due to the fact that when the code execut
 	<li><a href="/exercises/05-functions-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_EXPORT
+
+[fn:1] For more information on functional programming, read the [[../#preface][preface]], [[https://en.wikipedia.org/wiki/Functional_programming][wikipedia]], or [[https://en.wikibooks.org/wiki/Computer_Programming/Functional_programming][wikibooks]].

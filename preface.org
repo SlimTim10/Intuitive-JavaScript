@@ -19,7 +19,7 @@ I find that functional programming is a fascinating subject with a low barrier o
 
 *** What are the characteristics of functional programming?
 
-- Immutability (variables don't change their value)
+- Immutability (variables don't change their values)
 - Functions as values
 - Higher-order functions (functions as arguments or return values)
 - Pure functions (functions don't cause side effects)
