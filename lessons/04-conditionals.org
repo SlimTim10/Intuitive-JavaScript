@@ -58,7 +58,7 @@ if (apples < 5) {
 }
 #+END_SRC
 
-** Ternary Operator
+** Ternary operator
 The ternary operator works a lot like the ~if-else~ statement, except it allows us to write an expression that results in a value. This is very useful, since we often want to obtain a resulting value depending on a condition.
 
 There are three parts to the ternary operator expression: the condition, the true path value, and the false path value. It's like a shortcut for the ~if-else~ statement (except the ~else~ is mandatory). The structure looks like this:

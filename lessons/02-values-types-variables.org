@@ -5,7 +5,7 @@ title: Values, Types, and Variables
 * Values, Types, and Variables
 Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome is the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.
 
-** Values and Types
+** Values and types
 *Values* represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain *type*. In other words, a value does not exist on its own without a type.
 
 Here is a list of the types that will be used throughout these lessons[fn:1]:
@@ -106,7 +106,7 @@ Variable names are conventionally written in [[https://en.wikipedia.org/wiki/Cam
 
 Defining a variable is a kind of *statement*, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like you're reading these lessons. A variable cannot be used before it is defined (before its statement has been executed). It is conventional to end JavaScript statements with a semicolon, but not necessary.
 
-** Example REPL Session
+** Example REPL session
 #+begin_src sh
 C:\Users\Tim>node
 Welcome to Node.js v12.16.1.

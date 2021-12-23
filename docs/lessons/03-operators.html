@@ -33,11 +33,11 @@
 <li><a href="#operators">Operators</a>
 <ul>
 <li><a href="#arithmetic-operators">Arithmetic operators</a></li>
-<li><a href="#logical-boolean-operators">Logical (Boolean) Operators</a></li>
-<li><a href="#relational-and-equality-operators">Relational and Equality Operators</a></li>
-<li><a href="#string-operators">String Operators</a></li>
-<li><a href="#using-operators">Using Operators</a></li>
-<li><a href="#a-word-about-errors">A Word About Errors</a></li>
+<li><a href="#logical-boolean-operators">Logical (boolean) operators</a></li>
+<li><a href="#relational-and-equality-operators">Relational and equality operators</a></li>
+<li><a href="#string-operators">String operators</a></li>
+<li><a href="#using-operators">Using operators</a></li>
+<li><a href="#a-word-about-errors">A word about errors</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -83,7 +83,7 @@
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">4</span> <span class="op">%</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// 0</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">10</span> <span class="op">%</span> <span class="dv">5</span>)<span class="op">;</span> <span class="co">// 0</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">5</span> <span class="op">%</span> <span class="dv">10</span>)<span class="op">;</span> <span class="co">// 5</span></span></code></pre></div>
-<h2 id="logical-boolean-operators">Logical (Boolean) Operators</h2>
+<h2 id="logical-boolean-operators">Logical (boolean) operators</h2>
 <p>These operators work on <strong>boolean</strong> type values (true or false). These kinds of operations might seem a bit foreign, but you actually use them on a regular basis in normal language even if you don’t notice it. Whenever you say something that is considered true or false, you can use one of the following operators to get a new true-or-false result. We will look at plain English examples along the way.</p>
 <h3 id="not">Not (<code>!</code>)</h3>
 <p>As in plain English, <strong>not</strong> simply inverts a boolean value. When true and false are the only choices, anything not true is false, and anything not false is true.</p>
@@ -129,7 +129,7 @@
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> a <span class="op">||</span> b<span class="op">;</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(c)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
-<h2 id="relational-and-equality-operators">Relational and Equality Operators</h2>
+<h2 id="relational-and-equality-operators">Relational and equality operators</h2>
 <p>What these operators do will also be familiar in an intuitive sense. These will allow us to compare various types of values, but always give a <strong>boolean</strong> value (true or false) as a result.</p>
 <h3 id="less-than-less-than-or-equal">Less than (<code>&lt;</code>), less than or equal (<code>&lt;=</code>)</h3>
 <p>Checks that a number is less than (or equal to) another number. Results in a boolean value (true or false). These operators can technically work on other types than numbers, but it’s not commonly done (read <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than">MDN</a> for more information).</p>
@@ -179,13 +179,13 @@
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'apple'</span> <span class="op">!==</span> <span class="st">'orange'</span>)<span class="op">;</span> <span class="co">// true</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>([] <span class="op">!==</span> [])<span class="op">;</span> <span class="co">// true</span></span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>({} <span class="op">!==</span> {})<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
-<h2 id="string-operators">String Operators</h2>
+<h2 id="string-operators">String operators</h2>
 <h3 id="concatenation">Concatenation (<code>+</code>)</h3>
 <p>Put two strings together. This is the same symbol as addition for numbers.</p>
 <div class="sourceCode" id="cb14" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="st">'Hello, '</span><span class="op">;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="st">'world!'</span><span class="op">;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a <span class="op">+</span> b)<span class="op">;</span> <span class="co">// prints &quot;Hello, world!&quot;</span></span></code></pre></div>
-<h2 id="using-operators">Using Operators</h2>
+<h2 id="using-operators">Using operators</h2>
 <p>Naturally, we don’t have to use these operators in isolation. They can be combined in countless ways to achieve different results.</p>
 <p>Now that we have some interesting tools to use, it’s a good time to try executing a JavaScript file full of code instead of using the REPL. While the REPL allows us to write code directly in it, it’s not so great for general programming where we want to write chunks of code and re-run it with changes. Try copying the following block of code into a file called “script.js”, then run the file with node using the terminal: <code>node script.js</code>.</p>
 <div class="sourceCode" id="cb15" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// This is a comment because it begins with two slashes. It has no effect on the code and is only for humans to read.</span></span>
@@ -225,7 +225,7 @@
 <span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(validPokeBowl)<span class="op">;</span></span></code></pre></div>
 <p>When you run this code, you should notice that the <code>console.log</code> statements are printed in your terminal in the same order they’re written here.</p>
 <p>Try changing the values and adding more code. Get creative!</p>
-<h2 id="a-word-about-errors">A Word About Errors</h2>
+<h2 id="a-word-about-errors">A word about errors</h2>
 <p>Sometimes when you run your code, you may see node produce an error instead of the expected result. That’s not a bad thing! Node is trying to help make sure your code is unambiguous and doesn’t contain any silly mistakes that may cause unexpected problems. Think of errors as a gentle way of pointing out that something needs to be fixed in your code. Understanding the errors that node produces can take a lot of practice. Every error will have a message to let you know why there is an error in the first place and approximately where the problem is in your code (by telling you a line number). Because of the complexity of the code interpretation process, the error message and line number may not actually point you in the right direction! That being said, you should first assume that the error message <em>is</em> helpful and use its guidance, but be aware that it’s not a guarantee and you might need to look elsewhere. You will get to know the common errors with practice.</p>
 <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
