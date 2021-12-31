@@ -35,34 +35,38 @@
 <li><a href="#index">Index</a></li>
 <li><a href="#length">Length</a></li>
 <li><a href="#methods">Methods</a></li>
+<li><a href="#template-literals">Template literals</a></li>
 <li><a href="#further-reading">Further reading</a></li>
 <li><a href="#exercises">Exercises</a></li>
 </ul></li>
 </ul>
 </nav>
 <article class="card"><section id="lesson-body"><h1 id="strings">Strings</h1>
-<p>Used for dealing with words and general text, strings have special properties other types of values don’t have.</p>
+<p>Used for dealing with words and general text, strings have special properties other types of values don’t have. They are created by enclosing text with single quotes (e.g., <code>'Hello, world!'</code>) or double quotes (e.g., <code>"Hello, world!"</code>). These lessons will use single quotes as they are more commonly used in practice.</p>
 <h2 id="index">Index</h2>
-<p>One such property allows us to access specific letters in a string. We call the position of a letter the <strong>index</strong>. For example, the string ‘Alice’ has the letter ‘A’ at index 0. Yes, 0. We can say that ‘A’ is the first letter of the string, so it is at the first position. But <strong>indices</strong> start at 0. In other words, the index of a letter is one less than its position.</p>
+<p>One special property of strings allows us to access individual characters. We call the position of a character the <strong>index</strong>. For example, the string ‘Alice’ has the letter ‘A’ at index 0. Yes, 0. We can say that ‘A’ is the first letter of the string, so it is at the first position. But indices start at 0. In other words, the index of a character is always one less than its conventional position.</p>
 <div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[<span class="dv">0</span>])<span class="op">;</span> <span class="co">// A</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[<span class="dv">3</span>])<span class="op">;</span> <span class="co">// c</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[<span class="dv">4</span>])<span class="op">;</span> <span class="co">// e</span></span></code></pre></div>
-<p>Of course, we can use variables to hold index numbers, since variables are just placeholders for values.</p>
+<p>Of course, we can use variables as indices, since variables are just placeholders for values.</p>
 <div class="sourceCode" id="cb2" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[i])<span class="op">;</span> <span class="co">// A</span></span></code></pre></div>
 <h2 id="length">Length</h2>
-<p>Another useful property of strings is that we can get their length very easily.</p>
+<p>Another special property of strings is their length.</p>
 <div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 5</span></span></code></pre></div>
-<p>The syntax looks a bit odd because <strong>length</strong> is not a function; it’s a property that exists in all strings that we create. The moment we create a string, its length is calculated and stored hidden inside of it. Using <code>someString.length</code> lets us access that precalculated number.</p>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 5</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Alice'</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 5</span></span></code></pre></div>
+<p>The syntax looks a bit odd because <code>length</code> is not a function; it’s a property that exists in all strings that we create. The moment we create a string, its length is calculated and stored hidden inside of it. Using <code>someString.length</code> lets us access that precalculated number.</p>
 <p>One of the most common uses of the length property is to get the last letter of a string without having to guess at its index. The last letter is at the index one less than the length of the string.</p>
 <div class="sourceCode" id="cb4" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[name<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>])<span class="op">;</span> <span class="co">// e</span></span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> lastIndex <span class="op">=</span> name<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[lastIndex])<span class="op">;</span> <span class="co">// e</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[name<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>])<span class="op">;</span> <span class="co">// e</span></span></code></pre></div>
 <h2 id="methods">Methods</h2>
-<p>Methods are functions that act like a property of a value. Like the length property, and unlike regular functions, methods go after the string. Instead of taking the operating string as an argument, it’s like an implicit (hidden) argument.</p>
-<p>One such method is <code>includes()</code>. As its name suggests, we can check if a string includes another string.</p>
+<p>Methods are functions that act like a property of a value. Like the length property, and unlike regular functions, methods go after a dot following the string. Instead of taking the operating string as an argument, it’s like an implicit (hidden) argument.</p>
+<p>One useful string method is <code>includes()</code>. As its name suggests, we can check if a string includes another string.</p>
 <div class="sourceCode" id="cb5" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> frozenWater <span class="op">=</span> <span class="st">'ice'</span><span class="op">;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">includes</span>(<span class="st">'ice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
@@ -82,7 +86,7 @@
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'ice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'Alice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'A'</span>))<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
-<p>There are many more useful methods to play with.</p>
+<p>There are many more useful methods to play with.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="sourceCode" id="cb8" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">toUpperCase</span>())<span class="op">;</span> <span class="co">// ALICE</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">toLowerCase</span>())<span class="op">;</span> <span class="co">// alice</span></span>
@@ -91,6 +95,14 @@
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">replace</span>(<span class="st">'ice'</span><span class="op">,</span> <span class="st">'ejandro'</span>))<span class="op">;</span> <span class="co">// Alejandro</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">slice</span>(<span class="dv">2</span>))<span class="op">;</span> <span class="co">// ice</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">slice</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">4</span>))<span class="op">;</span> <span class="co">// lic</span></span></code></pre></div>
+<h2 id="template-literals">Template literals</h2>
+<p>Template literals are another way of writing a string, where external values can be conveniently be interpolated inside. To write a template literal, use backticks <code>` `</code> instead of single quotes to surround the string.</p>
+<div class="sourceCode" id="cb9" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="vs">`Alice`</span><span class="op">;</span> <span class="co">// This is the same as a normal string</span></span></code></pre></div>
+<p>External values and expressions can be interpolated in template literals using special syntax:</p>
+<div class="sourceCode" id="cb10" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span>name<span class="sc">}</span><span class="vs">! Your name is </span><span class="sc">${</span>name<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> letters long.`</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(greeting)<span class="op">;</span> <span class="co">// Hello, Alice! Your name is 5 letters long.</span></span></code></pre></div>
+<p>Anything inside the <code>${}</code> is evaluated as an expression and put into the string. Note that, in the above example, even though <code>name.length</code> is a number, it is converted into a string so that it can be part of the whole string.</p>
 <h2 id="further-reading">Further reading</h2>
 <p>Read more about strings on MDN:</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String</a></p>
@@ -100,7 +112,14 @@
  <li><a href="../exercises/06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
  <li><a href="../exercises/06-strings-solutions.js">View solutions</a></li>
  <li><a href="../exercises/06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
-</ul></section>
+</ul>
+
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>See all the string methods on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">MDN</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></section>
 
 <section id="prev-and-next-links">
 	<div>

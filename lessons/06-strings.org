@@ -3,10 +3,10 @@ title: Strings
 ---
 
 * Strings
-Used for dealing with words and general text, strings have special properties other types of values don't have.
+Used for dealing with words and general text, strings have special properties other types of values don't have. They are created by enclosing text with single quotes (e.g., ~'Hello, world!'~) or double quotes (e.g., ~"Hello, world!"~). These lessons will use single quotes as they are more commonly used in practice.
 
 ** Index
-One such property allows us to access specific letters in a string. We call the position of a letter the *index*. For example, the string 'Alice' has the letter 'A' at index 0. Yes, 0. We can say that 'A' is the first letter of the string, so it is at the first position. But *indices* start at 0. In other words, the index of a letter is one less than its position.
+One special property of strings allows us to access individual characters. We call the position of a character the *index*. For example, the string 'Alice' has the letter 'A' at index 0. Yes, 0. We can say that 'A' is the first letter of the string, so it is at the first position. But indices start at 0. In other words, the index of a character is always one less than its conventional position.
 
 #+BEGIN_SRC js
 const name = 'Alice';
@@ -15,7 +15,7 @@ console.log(name[3]); // c
 console.log(name[4]); // e
 #+END_SRC
 
-Of course, we can use variables to hold index numbers, since variables are just placeholders for values.
+Of course, we can use variables as indices, since variables are just placeholders for values.
 
 #+BEGIN_SRC js
 const name = 'Alice';
@@ -24,26 +24,29 @@ console.log(name[i]); // A
 #+END_SRC
 
 ** Length
-Another useful property of strings is that we can get their length very easily.
+Another special property of strings is their length.
 
 #+BEGIN_SRC js
 const name = 'Alice';
 console.log(name.length); // 5
+console.log('Alice'.length); // 5
 #+END_SRC
 
-The syntax looks a bit odd because *length* is not a function; it's a property that exists in all strings that we create. The moment we create a string, its length is calculated and stored hidden inside of it. Using ~someString.length~ lets us access that precalculated number.
+The syntax looks a bit odd because ~length~ is not a function; it's a property that exists in all strings that we create. The moment we create a string, its length is calculated and stored hidden inside of it. Using ~someString.length~ lets us access that precalculated number.
 
 One of the most common uses of the length property is to get the last letter of a string without having to guess at its index. The last letter is at the index one less than the length of the string.
 
 #+BEGIN_SRC js
 const name = 'Alice';
+const lastIndex = name.length - 1;
+console.log(name[lastIndex]); // e
 console.log(name[name.length - 1]); // e
 #+END_SRC
 
 ** Methods
-Methods are functions that act like a property of a value. Like the length property, and unlike regular functions, methods go after the string. Instead of taking the operating string as an argument, it's like an implicit (hidden) argument.
+Methods are functions that act like a property of a value. Like the length property, and unlike regular functions, methods go after a dot following the string. Instead of taking the operating string as an argument, it's like an implicit (hidden) argument.
 
-One such method is ~includes()~. As its name suggests, we can check if a string includes another string.
+One useful string method is ~includes()~. As its name suggests, we can check if a string includes another string.
 
 #+BEGIN_SRC js
 const name = 'Alice';
@@ -75,7 +78,7 @@ console.log(name.endsWith('Alice')); // true
 console.log(name.endsWith('A')); // false
 #+END_SRC
 
-There are many more useful methods to play with.
+There are many more useful methods to play with.[fn:1]
 
 #+BEGIN_SRC js
 const name = 'Alice';
@@ -87,6 +90,23 @@ console.log(name.replace('ice', 'ejandro')); // Alejandro
 console.log(name.slice(2)); // ice
 console.log(name.slice(1, 4)); // lic
 #+END_SRC
+
+** Template literals
+Template literals are another way of writing a string, where external values can be conveniently be interpolated inside. To write a template literal, use backticks ~` `~ instead of single quotes to surround the string.
+
+#+BEGIN_SRC js
+const name = `Alice`; // This is the same as a normal string
+#+END_SRC
+
+External values and expressions can be interpolated in template literals using special syntax:
+
+#+BEGIN_SRC js
+const name = 'Alice';
+const greeting = `Hello, ${name}! Your name is ${name.length} letters long.`;
+console.log(greeting); // Hello, Alice! Your name is 5 letters long.
+#+END_SRC
+
+Anything inside the ~${}~ is evaluated as an expression and put into the string. Note that, in the above example, even though ~name.length~ is a number, it is converted into a string so that it can be part of the whole string.
 
 ** Further reading
 Read more about strings on MDN:
@@ -103,3 +123,5 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 	<li><a href="/exercises/06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_EXPORT
+
+[fn:1] See all the string methods on [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String][MDN]].
