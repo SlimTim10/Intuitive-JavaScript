@@ -108,11 +108,6 @@ console.log(greeting); // Hello, Alice! Your name is 5 letters long.
 
 Anything inside the ~${}~ is evaluated as an expression and put into the string. Note that, in the above example, even though ~name.length~ is a number, it is converted into a string so that it can be part of the whole string.
 
-** Further reading
-Read more about strings on MDN:
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-
 ** Exercises
 
 #+BEGIN_EXPORT HTML
