@@ -95,7 +95,7 @@ console.log(name.slice(1, 4)); // lic
 Template literals are another way of writing a string, where external values can be conveniently be interpolated inside. To write a template literal, use backticks ~` `~ instead of single quotes to surround the string.
 
 #+BEGIN_SRC js
-const name = `Alice`; // This is the same as a normal string
+const name = `Alice`; // this is the same as a normal string
 #+END_SRC
 
 External values and expressions can be interpolated in template literals using special syntax:
