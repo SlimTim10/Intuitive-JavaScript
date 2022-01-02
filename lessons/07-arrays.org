@@ -3,10 +3,10 @@ title: Arrays
 ---
 
 * Arrays
-What's more common than dealing with a single primitive value (like a number, boolean, or string), is dealing with a collection of values. That's where *arrays* come in. Arrays are values that are sort of like strings, but instead of holding a list of characters, they can hold a list of any values. If we have an array, we can deal with multiple values all at once. Arrays always have an order from left-to-right; just like writing down a list of groceries, there is an order (top to bottom), even if you don't care about it or use it. This may sound obvious, but there are other common data structures that are not ordered, such as objects and sets.
+What's more common than dealing with a single primitive value, like a number, is dealing with a collection of values. That's where *arrays* come in. Arrays are values that are sort of like strings, but instead of holding a list of characters, they can hold a list of any values. We often refer to the values in arrays as *elements*. If we have an array of values, we can treat those values as a collection and deal with them all at once. Arrays always have an order: from left to right. Just like writing down a list of groceries, there is an order (top-to-bottom), even if you don't care about it or use it. This may sound obvious, but there are other common data structures that are not ordered, such as objects and sets.
 
 ** Create
-To create an array is easy! We use square brackets to surround a bunch of values separated by commas, like so: ~[2, 3, 4, 5]~.
+To create an array, we can use square brackets to surround a bunch of values separated by commas, like so: ~[2, 3, 4, 5]~.
 
 #+BEGIN_SRC js
 console.log([2, 3, 4, 5]); // print the array
@@ -29,14 +29,14 @@ const booleans = [true, false];
 console.log(booleans);
 #+END_SRC
 
-We can also put different types of values in the same array, although it may not be commonly useful.
+JavaScript allows us to put different types of values in the same array, although it may not be useful.
 
 #+BEGIN_SRC js
 const mix = [1, 2, 'apple', true, undefined, null, false, -1000];
 console.log(mix);
 #+END_SRC
 
-We can even put arrays in arrays. This /is/ often useful!
+We can even put arrays in arrays. This is often useful!
 
 #+BEGIN_SRC js
 const matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
@@ -93,11 +93,13 @@ const matrix = [
 ];
 console.log(matrix.length); // 3
 console.log(matrix[matrix.length - 1]); // [7, 8, 9]
-console.log(matrix[0].length); // 3 -- because the first row of the matrix is an array of 3 values
+console.log(matrix[0].length); // 3 -- because the first row of the matrix is an array of 3 elements
 #+END_SRC
 
 ** Gotcha! Equality
-Checking if two arrays are equal (i.e. the same values) is counter-intuitive in JavaScript. Let's look at an example.
+JavaScript has quite a few "gotchas", or quirks that don't work as you would expect them to.
+
+Checking if two arrays are equal (i.e., the same values) is counter-intuitive in JavaScript. Let's look at an example.
 
 #+BEGIN_SRC js
 const numbers = [1, 2, 3];
@@ -106,10 +108,10 @@ console.log(numbers === numbers); // true
 console.log(numbers === sameNumbers); // false!
 #+END_SRC
 
-What? How could this be false? The two arrays are clearly identical. It turns out that JavaScript's equality operator (~===~) is not actually checking equality when it comes to arrays. It's checking whether they are the same exact variable. The bottom line is, don't try to compare arrays with the equality operator (~===~). (If you need to check if two arrays are equal, use a library like [[https://underscorejs.org/#isEqual][Underscore.js]] or [[https://ramdajs.com/docs/#equals][Ramda]].)
+What? How could this be false? The two arrays are clearly identical. It turns out that JavaScript's equality operator (~===~) is not checking intuitive equality when it comes to arrays. It's checking whether they are the same exact variable. The bottom line is, don't try to compare arrays with the equality operator (~===~). In a real project, if you need to check if two arrays are equal, use a library like [[https://ramdajs.com/docs/#equals][Ramda]] or [[https://underscorejs.org/#isEqual][Underscore.js]].
 
 ** Methods
-Let's look at some array methods we can get a lot of use out of.
+Arrays have many methods to make use of.[fn:1] Here we will highlight a few of the most useful ones.
 
 *** includes()
 The ~includes()~ method lets us check if a specific value is included in an array, returning true or false.
@@ -138,7 +140,7 @@ const matrix = [
   [4, 5, 6],
   [7, 8, 9]
 ];
-console.log(matrix.includes([1, 2, 3])); // false -- because of equality!
+console.log(matrix.includes([1, 2, 3])); // false -- because of the equality gotcha!
 console.log(matrix[2].includes(9)); // true
 #+END_SRC
 
@@ -206,19 +208,19 @@ console.log(someNumbers); // [ -6, 0, 10, 3, 99 ] -- updated again!
 We can know that ~sort()~ behaves this way because the [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort][MDN documentation]] says it sorts the array /in place/.
 
 ** Adding to Arrays
-We have seen how we can extract a single element from an array using its index. And we can take a portion of an array using ~slice()~, ending up with fewer elements. But what if we want to add more elements to an array?
+Now that we have seen how to access elements and parts of an array, what about adding more elements to an array? If you search online something like "javascript array add element" you'll probably discover the ~push()~ method. While that method technically works, it goes against the immutability principle of functional programming.[fn:2] Instead, when we think about adding elements to an array, or modifying an array in any way, we should think of producing a modified /copy/ of the array.
 
-If we try to do something like the following, we won't end up with the array we want.
+Now if we take a guess at the syntax, we might try something like the following.
 
 #+BEGIN_SRC js
 const someNumbers = [1, 2, 3];
-const moreNumbers = [someNumbers, 4, 5, 6];
+const moreNumbers = [someNumbers, 4, 5, 6]; // we want: [1, 2, 3, 4, 5, 6]
 console.log(moreNumbers); // [ [ 1, 2, 3 ], 4, 5, 6 ]
 #+END_SRC
 
-The array ~someNumbers~ is treated as a single value, put inside a new array, followed by the next few numbers.
+But this doesn't achieve the intended result. The array ~someNumbers~ is treated as a single value, put inside a new array, followed by the next few numbers.
 
-We need to use some new syntax. The *spread* operator: ~...~ . We can spread out an array's elements as separate values.
+We need some new syntax: the *spread* operator: ~...~ . We can spread out an array's elements as separate values.
 
 #+BEGIN_SRC js
 const someNumbers = [1, 2, 3];
@@ -267,10 +269,11 @@ In fact, the spread operator can be used to copy arrays so the ~sort()~ and ~rev
 
 #+BEGIN_SRC js
 const someNumbers = [3, 99, 0, -6, 10];
-const fakeCopyNumbers = someNumbers; // not a real copy
+const fakeCopyNumbers = someNumbers; // not a real copy, only a reference
 const copyNumbers = [...someNumbers]; // exact copy of someNumbers
 
 console.log(someNumbers); // [3, 99, 0, -6, 10] -- original order
+
 console.log(someNumbers.sort()); // [ -6, 0, 10, 3, 99 ] -- sorted
 
 console.log(someNumbers); // [ -6, 0, 10, 3, 99 ] -- not the original order!
@@ -300,3 +303,14 @@ console.log(staff);// [ 'Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace'
 	<li><a href="/exercises/07-arrays-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_EXPORT
+
+[fn:1] See all the array methods on [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array][MDN]].
+[fn:2] The ~push()~ method will add an element to the operating array, directly modifying it. Once this is done, our original array variable declaration is no longer true. For instance:
+
+#+BEGIN_SRC js
+const someNumbers = [1, 2, 3];
+console.log(someNumbers);
+someNumbers.push(4);
+console.log(someNumbers);
+// Here, someNumbers = [1, 2, 3] is not true.
+#+END_SRC
