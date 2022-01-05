@@ -3,106 +3,124 @@ title: Objects
 ---
 
 * Objects
-*Objects* are values useful for grouping pieces of information together. When it comes to representing real-world information in code, we often have pieces of information that are intuitively grouped together. For example, a person has a name, favorite color, and favorite food.
+So far, the types of values we've covered give us some flexibility but are still rather limiting as to the data we can model in our code. We don't always want to think in terms of plain numbers, strings, or booleans. What if we want to model something more interesting, like a cat? Let's say the properties that matter to us about cats are their age, name, colours, and sex. With what we've covered so far, we could write a cat's data as follows.
 
-Without objects, how could we group information about one person together, using the tools we have so far? One option would be to create separate variable for each value.
+#+begin_src js
+const age = 9;
+const name = 'Marvin';
+const colours = ['black', 'white'];
+const sex = 'female';
 
-#+BEGIN_SRC js
-const personName = 'Alice';
-const favoriteColor = 'red';
-const favoriteFood = 'sushi';
+console.log(`My ${age} year old cat's name is ${name} and ${sex === 'female' ? 'she' : 'he'} is ${colours.join(' and ')}.`);
+#+end_src
 
-console.log(`${personName}'s favorite color is ${favoriteColor} and favorite food is ${favoriteFood}.`);
-#+END_SRC
+This works for such a trivial example, but what about when we want to include more than one cat's information in an array? Or pass information about two cats to a function?
 
-This works fine for such a trivial example, but what about when we want to pass this information to a function, particularly one that expects information about two people?
+#+begin_src js
+const cat1Age = 9;
+const cat1Name = 'Marvin';
+const cat1Colours = ['black', 'white'];
+const cat1Sex = 'female';
 
-#+BEGIN_SRC js
-const coupleDining = (name1, color1, food1, name2, color2, food2) => {
-  console.log(`${name1} and ${name2} would enjoy a meal consisting of ${food1} and ${food2} in a ${color1} and ${color2} room.`);
+const cat2Age = 2;
+const cat2Name = 'Sassy';
+const cat2Colours = ['grey'];
+const cat2Sex = 'male';
+
+const cats = [
+  cat1Age, cat1Name, cat1Colours, cat1Sex,
+  cat2Age, cat2Name, cat2Colours, cat2Sex
+];
+
+const catsSleeping = (name1, colours1, name2, colours2) => {
+  console.log(`${name1} and ${name2} would enjoy sleeping on a carpet that is ${[...colours1, ...colours2].join(' and ')}.`);
 };
 
-coupleDining('Alice', 'red', 'sushi', 'Bob', 'grey', 'bread');
-#+END_SRC
+catsSleeping(cat1Name, cat1Colours, cat2Name, cat2Colours);
+#+end_src
 
-This works, but it's different from how we think about the problem. We want this function to take 2 person arguments and say something about their information, but we're passing it 6 arguments. An option to get around this issue is to involve arrays.
+In the above example, it should be clear that we would benefit from grouping information about a cat together. The ~cats~ array should contain two elements; not six. And the function should take in two arguments; not four[fn:1]. When we think about these two cats, we are thinking of each cat as its own type, and that's exactly what objects help with.
 
-#+BEGIN_SRC js
-// Using indexing
-const coupleDining = (person1, person2) => {
-  console.log(`${person1[0]} and ${person2[0]} would enjoy a meal consisting of ${person1[2]} and ${person2[2]} in a ${person1[1]} and ${person2[1]} room.`);
+*Objects* allow us to define our own custom types.
+
+Using objects, we can imagine we have a /cat/ type and model our cats as follows.
+
+#+begin_src js
+const cat1 = {
+  age: 9,
+  name: 'Marvin',
+  colours: ['black', 'white'],
+  sex: 'female'
 };
 
-coupleDining(['Alice', 'red', 'sushi'], ['Bob', 'grey', 'bread']);
-
-// Using array destructuring
-const coupleDiningAlternate = ([name1, color1, food1], [name2, color2, food2]) => {
-  console.log(`${name1} and ${name2} would enjoy a meal consisting of ${food1} and ${food2} in a ${color1} and ${color2} room.`);
+const cat2 = {
+  age: 2,
+  name: 'Sassy',
+  colours: ['grey'],
+  sex: 'male'
 };
 
-coupleDiningAlternate(['Alice', 'red', 'sushi'], ['Bob', 'grey', 'bread']);
-#+END_SRC
+const cats = [cat1, cat2];
 
-This is a bit better, since we are now grouping the information of each person thus passing only 2 arguments, each representing one person. However, in either case we have to keep track of the order of the information in a person array (the first value is the name, second is color, and third is food). We either use array destructuring for descriptive variable names, or give names to the arrays themselves and use careful indexing. Neither option is ideal. Fortunately, this is where *objects* can help.
-
-#+BEGIN_SRC js
-const coupleDining = (person1, person2) => {
-  console.log(`${person1.name} and ${person2.name} would enjoy a meal consisting of ${person1.favoriteFood} and ${person2.favoriteFood} in a ${person1.favoriteColor} and ${person2.favoriteColor} room.`);
+const catsSleeping = (cat1, cat2) => {
+  console.log(`${cat1.name} and ${cat2.name} would enjoy sleeping on a carpet that is ${[...cat1.colours, ...cat2.colours].join(' and ')}.`);
 };
 
-coupleDining(
-  {name: 'Alice', favoriteColor: 'red', favoriteFood: 'sushi'},
-  {name: 'Bob', favoriteFood: 'bread', favoriteColor: 'grey'}
-);
-#+END_SRC
+catsSleeping(cat1, cat2);
+#+end_src
 
-Now our code reads more clearly! Each person has named properties and the order of those properties doesn't matter.
+Now our code reads more clearly! Each cat has named properties and the order of those properties doesn't matter.
+
+Making objects frees us from the predefined types. But it's important to keep in mind that JavaScript does not enforce the object types that you define, in any way. It is up to you to think of them as new types and treat them as such. Making an object of a particular structure can be thought of as defining a new type. It can be thought of like this: if object A and object B have the exact same keys (not values), then A and B are the same type. In the above example, both ~cat1~ and ~cat2~ can be thought of as being the same /cat/ type because they have all the same keys (in any order). If one of them had an extra key or was missing a key, even though they both still have cat-related information, they shouldn't be considered the same type because they don't share the same set of keys. This becomes especially important when dealing with an array of objects, where each object is expected to have the same keys otherwise errors can easily occur.
 
 ** Creating
-An object is comprised of *key-value pairs*. The keys are strings and their corresponding values can be any type (even objects!). Each key-value pair represents a property of the object. In a single line, an object representing a store product could look like this: ~{name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'}~. Bigger objects are more pleasant to look at when written on multiple lines:
+An object is comprised of *key-value pairs*. The keys are strings and their corresponding values can be any type (even objects!). Each key-value pair represents a property of the object. In a single line, an object representing a store product could look something like this:
+
+#+begin_src js
+{name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'}
+#+end_src
+
+Bigger objects are more pleasant to read when written on multiple lines:
 
 #+BEGIN_SRC js
 {
-  name: 'Marvin',
-  age: 8,
-  species: 'cat',
-  colors: ['black', 'white'],
+  'name': 'Marvin',
+  age: 9,
+  colours: ['black', 'white'],
   sex: 'female',
   friendly: true
 }
 #+END_SRC
 
-Syntactically, curly brackets enclose the entire object. Inside, we have key-value pairs separated by commas. In each key-value pair, the key and value are separated by a colon (keys on the left, values on the right). The keys don't need to have quotation marks like typical strings because they are /always/ strings.
+Syntactically, curly brackets enclose the entire object. Inside, we have key-value pairs separated by commas. In each key-value pair, the key and value are separated by a colon (keys on the left, values on the right). The keys can optionally have quotation marks because they are strings. The quotation marks are optional because keys are always strings.[fn:2]
 
-An object printed in the console sometimes looks slightly different than the same object in your code, but rest assured that if the general structure and syntax are the same, there is no logical difference.
+An object printed in the console may look slightly different than the same object in your code, but rest assured that if the general structure and syntax are the same, there is no logical difference.
 
 #+BEGIN_SRC js
 console.log({name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'});
 
 const myCat = {
   name: 'Marvin',
-  age: 8,
-  species: 'cat',
-  colors: ['black', 'white'],
+  age: 9,
+  colours: ['black', 'white'],
   sex: 'female',
   friendly: true
 };
 console.log(myCat);
 #+END_SRC
 
-If we have any key names inside of variables, we must use square brackets to use them.
+We can also use key names from variables containing strings, but we must use square brackets. Using the variables as values is straightforward.
 
 #+BEGIN_SRC js
 const key1 = 'name';
 const value1 = 'Marvin';
 const key2 = 'age';
-const value2 = 8;
+const value2 = 9;
 
 const myCat = {
   [key1]: value1,
   [key2]: value2,
-  species: 'cat',
-  colors: ['black', 'white'],
+  colours: ['black', 'white'],
   sex: 'female',
   friendly: true
 };
@@ -113,7 +131,7 @@ console.log(myCat);
 There are three ways to access the values of an object's properties.
 
 *** Dot notation
-Dot notation is most similar to plain English. If ~product~ holds an object with a name property, we can use ~product.name~ to access the product's name.
+Dot notation is most similar to plain English. If ~product~ holds an object with a ~name~ property, we can use ~product.name~ to access the product's name.
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
@@ -124,7 +142,7 @@ console.log(product.brand); // Greater Than Games
 #+END_SRC
 
 *** Square bracket notation
-Using square brackets is similar to using index numbers with arrays.
+Using square brackets is similar to using index numbers with arrays, only we're dealing with strings instead of numbers.
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
@@ -146,7 +164,7 @@ console.log(product[n]); // Spirit Island Board Game
 console.log(product[p]); // 95.95
 console.log(product[b]); // Greater Than Games
 
-console.log(product.b); // undefined -- this tries to use a key named 'b' of product, not the variable b
+console.log(product.b); // undefined -- this tries to use a key named 'b' instead of the variable b
 #+END_SRC
 
 *** Destructuring
@@ -162,34 +180,41 @@ console.log(price); // 95.95
 console.log(brand); // Greater Than Games
 #+END_SRC
 
-Notice that the destructuring looks like the same shape as the object, but without the values.
+Notice that the destructuring looks the same as defining the object, but without the values.
 
-This can come in handy when we're not interested in all the properties of an object.
+This can come in handy when we're defining a function that is not interested in all the properties of an object:
 
 #+BEGIN_SRC js
 const myCat = {
   name: 'Marvin',
-  age: 8,
+  age: 9,
   species: 'cat',
-  colors: ['black', 'white'],
-  sex: 'female', friendly: true
+  colours: ['black', 'white'],
+  sex: 'female',
+  friendly: true
 };
 
-// Destructuring in the arguments
-const describeAnimal = ({name, species, colors}) => {
-  const colorString = colors.join(' and ');
-  console.log(`${name} is a ${colorString} ${species}.`);
+// Destructuring in the function arguments
+const describeAnimal = ({name, species, colours}) => {
+  const colourString = colours.join(' and ');
+  console.log(`${name} is a ${colourString} ${species}.`);
+};
+const describeAnimalAlt = (animal) => {
+  const {name, species, colours} = animal;
+  const colourString = colours.join(' and ');
+  console.log(`${name} is a ${colourString} ${species}.`);
 };
 
 describeAnimal(myCat);
+describeAnimalAlt(myCat);
 #+END_SRC
 
-In the end, dot notation and object destructuring are simply shortcuts. We could do all we need with square bracket notation. Choosing between the three comes down to personal preference in any scenario.
+In the end, dot notation and object destructuring are simply shortcuts. We could do everything we need to only using square bracket notation. Choosing between the three comes down to personal preference in any scenario.
 
 ** Updating properties
 When we need to update a property's value in an object, we can make a copy of the object and change only what we need to.
 
-To copy an object, we can use the *spread* operator: ~...~.
+To copy an object, we can use the *spread* operator: ~...~ .
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
@@ -201,7 +226,7 @@ console.log(productCopy); // (an exact copy)
 
 This spreads out all of the object's key-value pairs into a new object.
 
-Let's lower the price of our product object.
+Let's lower the price of our product object:
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
@@ -213,7 +238,7 @@ console.log(productSale); // (the product on sale)
 
 It's important that the /spread comes first/ in the updated object, otherwise our desired change will be overridden.
 
-We can update as many properties as we want in a single operation, even adding new properties.
+We can update as many properties as we want in a single operation, even adding new properties:
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games'};
@@ -223,7 +248,7 @@ console.log(product); // (the original)
 console.log(newProduct); // (changed the price and name, and added stock)
 #+END_SRC
 
-Changing a value based on its previous value is common too.
+Changing a value based on its previous value is quite common:
 
 #+BEGIN_SRC js
 const product = {name: 'Spirit Island Board Game', price: 95.95, brand: 'Greater Than Games', stock: 9};
@@ -233,8 +258,8 @@ console.log(product); // (the original)
 console.log(moreProduct); // (increased stock by 1)
 #+END_SRC
 
-** Functions
-There are a few very useful functions for dealing with objects. Each of the following functions take an object and return an array. After all, we have plenty of ways of dealing with arrays.
+** Methods
+Objects have many methods to make use of.[fn:3] Here we will highlight a few of the most useful ones. Each of the following methods takes an object and returns an array. After all, we have plenty of ways of dealing with arrays.
 
 *** Object.keys()
 Get the keys of an object.
@@ -255,7 +280,7 @@ console.log(Object.values(product)); // [ 'Spirit Island Board Game', 95.95, 'Gr
 #+END_SRC
 
 *** Object.entries()
-Get the key-value pairs of an object. Returns an array of pairs (each pair is an array of two elements).
+Get the key-value pairs of an object. Returns an array of pairs, where each pair is an array of two elements.
 
 #+BEGIN_SRC js
 const obj = {a: 1, b: 2, c: 3};
@@ -273,3 +298,9 @@ console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
 	<li><a href="/exercises/09-objects-solutions.js" download type="application/octet-stream">Download solutions</a></li>
 </ul>
 #+END_EXPORT
+
+[fn:1] An astute reader may suggest that using an array solves this problem as well. The function could take in two arrays, each containing information about one cat. However, this is not an ideal solution. It enforces an order to the cat's properties, which is unnecessary. It also means that the properties are accessed by their index number instead of their name.
+
+[fn:2] Technically, object properties can be [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol][Symbols]], but this is uncommon.
+
+[fn:3] See all the object methods on [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object][MDN]].
