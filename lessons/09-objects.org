@@ -27,10 +27,17 @@ const cat2Name = 'Sassy';
 const cat2Colours = ['grey'];
 const cat2Sex = 'male';
 
-const cats = [
-  cat1Age, cat1Name, cat1Colours, cat1Sex,
-  cat2Age, cat2Name, cat2Colours, cat2Sex
+const myCats = [
+  [cat1Age, cat1Name, cat1Colours, cat1Sex],
+  [cat2Age, cat2Name, cat2Colours, cat2Sex]
 ];
+
+const printCats = cats => {
+  const catNames = cats.map(cat => cat[1]).join(', ');
+  console.log(`I have ${cats.length} cats. Their names are: ${catNames}.`);
+};
+
+printCats(myCats);
 
 const catsSleeping = (name1, colours1, name2, colours2) => {
   console.log(`${name1} and ${name2} would enjoy sleeping on a carpet that is ${[...colours1, ...colours2].join(' and ')}.`);
@@ -39,7 +46,7 @@ const catsSleeping = (name1, colours1, name2, colours2) => {
 catsSleeping(cat1Name, cat1Colours, cat2Name, cat2Colours);
 #+end_src
 
-In the above example, it should be clear that we would benefit from grouping information about a cat together. The ~cats~ array should contain two elements; not six. And the function should take in two arguments; not four[fn:1]. When we think about these two cats, we are thinking of each cat as its own type, and that's exactly what objects help with.
+Again, the above example works, but it should be obvious that this is not ideal. Having a cat be represented by a 4-element array of its properties means we must refer to the properties by their index number instead of their name. And the function would make more sense to take two arguments, the two cats, not four. When we think about these two cats, we are intuitively thinking about them as belonging to some /cat/ type, and that's exactly what objects help with.
 
 *Objects* allow us to define our own custom types.
 
@@ -60,7 +67,14 @@ const cat2 = {
   sex: 'male'
 };
 
-const cats = [cat1, cat2];
+const myCats = [cat1, cat2];
+
+const printCats = cats => {
+  const catNames = cats.map(cat => cat.name).join(', ');
+  console.log(`I have ${cats.length} cats. Their names are: ${catNames}.`);
+};
+
+printCats(myCats);
 
 const catsSleeping = (cat1, cat2) => {
   console.log(`${cat1.name} and ${cat2.name} would enjoy sleeping on a carpet that is ${[...cat1.colours, ...cat2.colours].join(' and ')}.`);
@@ -69,7 +83,7 @@ const catsSleeping = (cat1, cat2) => {
 catsSleeping(cat1, cat2);
 #+end_src
 
-Now our code reads more clearly! Each cat has named properties and the order of those properties doesn't matter.
+Now our code reads much more clearly! Each cat has named properties and the order of those properties doesn't matter.
 
 Making objects frees us from the predefined types. But it's important to keep in mind that JavaScript does not enforce the object types that you define, in any way. It is up to you to think of them as new types and treat them as such. Making an object of a particular structure can be thought of as defining a new type. It can be thought of like this: if object A and object B have the exact same keys (not values), then A and B are the same type. In the above example, both ~cat1~ and ~cat2~ can be thought of as being the same /cat/ type because they have all the same keys (in any order). If one of them had an extra key or was missing a key, even though they both still have cat-related information, they shouldn't be considered the same type because they don't share the same set of keys. This becomes especially important when dealing with an array of objects, where each object is expected to have the same keys otherwise errors can easily occur.
 
@@ -92,7 +106,7 @@ Bigger objects are more pleasant to read when written on multiple lines:
 }
 #+END_SRC
 
-Syntactically, curly brackets enclose the entire object. Inside, we have key-value pairs separated by commas. In each key-value pair, the key and value are separated by a colon (keys on the left, values on the right). The keys can optionally have quotation marks because they are strings. The quotation marks are optional because keys are always strings.[fn:2]
+Syntactically, curly brackets enclose the entire object. Inside, we have key-value pairs separated by commas. In each key-value pair, the key and value are separated by a colon (keys on the left, values on the right). The keys can optionally have quotation marks because they are strings. The quotation marks are optional because keys are always strings.[fn:1]
 
 An object printed in the console may look slightly different than the same object in your code, but rest assured that if the general structure and syntax are the same, there is no logical difference.
 
@@ -259,7 +273,7 @@ console.log(moreProduct); // (increased stock by 1)
 #+END_SRC
 
 ** Methods
-Objects have many methods to make use of.[fn:3] Here we will highlight a few of the most useful ones. Each of the following methods takes an object and returns an array. After all, we have plenty of ways of dealing with arrays.
+Objects have many methods to make use of.[fn:2] Here we will highlight a few of the most useful ones. Each of the following methods takes an object and returns an array. After all, we have plenty of ways of dealing with arrays.
 
 *** Object.keys()
 Get the keys of an object.
@@ -299,8 +313,5 @@ console.log(Object.entries(obj)); // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
 </ul>
 #+END_EXPORT
 
-[fn:1] An astute reader may suggest that using an array solves this problem as well. The function could take in two arrays, each containing information about one cat. However, this is not an ideal solution. It enforces an order to the cat's properties, which is unnecessary. It also means that the properties are accessed by their index number instead of their name.
-
-[fn:2] Technically, object properties can be [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol][Symbols]], but this is uncommon.
-
-[fn:3] See all the object methods on [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object][MDN]].
+[fn:1] Technically, object properties can be [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol][Symbols]], but this is uncommon.
+[fn:2] See all the object methods on [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object][MDN]].
