@@ -3,7 +3,7 @@ title: Importing and Exporting
 ---
 
 * Importing and Exporting
-Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]], familiarly known as "node", and [[https://www.npmjs.com/][npm]].
+Whether we're writing code to be run in web browsers, the console, or anywhere else, having a system for sharing code between files is essential for building projects. Imagine needing to write and read thousands of lines of code in a single file, or using multiple files but needing to copy functions to every file where they need to be used. What horror! This lesson is about the import and export system specifically with [[https://nodejs.org][Node.js]], familiarly known as "node".
 
 ** Exporting
 JavaScript code in our files is never automatically *exported*. In order to be able to share code from one file to another, we need to explicitly write which code can be shared. Every JavaScript file that is run with node has a hidden variable called ~module.exports~. If we don't explicitly set this variable to any value, its value is an empty object ~{}~. Whatever value we give to ~module.exports~ is what the file is exporting (meaning it can be imported by another file). The reason for the name ~module.exports~ is because node considers every JavaScript file a *module*. It is most common to export an object because, as we've seen, objects allow us to package many things into one value.
@@ -19,7 +19,7 @@ module.exports = {
 };
 #+END_SRC
 
-If we have a file with the above code, the file is exporting an object with a single property ~c: 3~. The variables ~a~ and ~b~ are not being exported, thus they cannot be shared with any other file. If we want to share them, we can add them to the exports as well:
+If we have a file with the above code, the file is exporting an object with a single property ~c: 3~. The variables ~a~ and ~b~ are not being exported, thus they are not being shared with any other file. If we want to share them, we can add them to the exports as well:
 
 #+BEGIN_SRC js
 const a = 1;
@@ -32,7 +32,7 @@ module.exports = {
 };
 #+END_SRC
 
-It is common to use a shorthand notation in the object for this.
+It is common to use shorthand notation in the object for this.
 
 #+BEGIN_SRC js
 const a = 1;
@@ -46,10 +46,11 @@ module.exports = {
 #+END_SRC
 
 ** Importing
-The special function for *importing* a module in node is ~require()~. We pass it the name of a module (a JavaScript file) and it runs that module, then retrieves the ~module.exports~ value of that module. Note that if you have any ~console.log~  in the imported module, it will be printed even if you don't run the file directly. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
+The special function for *importing* a module in node is ~require()~. When we call ~require()~ with the name of a module (a JavaScript file), it runs all the code in that module then retrieves the ~module.exports~ value of that module. Now we can look at complete examples. Keep in mind that if you want to try these examples out, you will have to create separate files (suggested file names are given).
 
 #+BEGIN_SRC js
-// inside numbers.js:
+// Inside numbers.js:
+
 const a = 1;
 const b = 2;
 
@@ -58,8 +59,11 @@ module.exports = {
   b,
   c: 3
 };
+#+END_SRC
 
-// inside index.js:
+#+BEGIN_SRC js
+// Inside index.js:
+
 const someNumbers = require('./numbers.js');
 
 console.log(someNumbers.a); // 1
@@ -67,12 +71,13 @@ console.log(someNumbers.b); // 2
 console.log(someNumbers.c); // 3
 #+END_SRC
 
-In the above example, we want to run the ~index.js~ file, since running ~numbers.js~ will not produce any output. So we run the command: ~node index.js~. (The name "index" is commonly used, for historical reasons.) It is important in this example that we write ~require('./numbers.js')~ instead of ~require('numbers.js')~ because we want to import a local file; the latter tells node to import an external package, which is explained in the next section.
+In the above example, we want to run the ~index.js~ file, since running ~numbers.js~ will not produce any output. So we run the command: ~node index.js~. (The name "index" is commonly used for the main file, for historical reasons.) It is important in this example that we write ~require('./numbers.js')~ instead of ~require('numbers.js')~ because we want to import a local file; the latter tells node to import an external module from a different place, which is explained in the next section.
 
-Object destructuring is commonly used when importing because it skips the step of needing to give the export object a name and also allows us to selectively import properties.
+Object destructuring is commonly used when importing because it skips the step of needing to give the export object a name and it allows us to selectively import properties.
 
 #+BEGIN_SRC js
-// inside numbers.js:
+// Inside numbers.js:
+
 const a = 1;
 const b = 2;
 
@@ -81,9 +86,13 @@ module.exports = {
   b,
   c: 3
 };
+#+END_SRC
 
-// inside index.js:
-const {a, c} = require('./numbers.js'); // Import a and b from the numbers module
+#+BEGIN_SRC js
+// Inside index.js:
+
+// Import only a and c from the numbers module
+const {a, c} = require('./numbers.js');
 
 console.log(a); // 1
 console.log(c); // 3
@@ -92,7 +101,8 @@ console.log(c); // 3
 Finally, let's look at a more realistic example: sharing a little library of functions.
 
 #+BEGIN_SRC js
-//inside functions.js:
+//Inside functions.js:
+
 const fToC = ftemp => (ftemp - 32) / 1.8;
 const cToF = ctemp => (ctemp * 1.8) + 32;
 
@@ -112,8 +122,11 @@ module.exports = {
   isEven,
   isOdd
 };
+#+END_SRC
 
-// inside index.js:
+#+BEGIN_SRC js
+// Inside index.js:
+
 const {
   isEven,
   convertTemperature
@@ -126,13 +139,13 @@ if (isEven(x)) {
 }
 #+END_SRC
 
-It is considered good practice to put exports at the bottom of a file and imports at the top of a file.
+It is generally considered good practice to put exports at the bottom of a file and imports at the top of a file.
 
 ** Built-in Modules
-Now that we've seen how to import code from a module that we created, let's look at importing code from a module that we own but didn't create. Node.js comes with some built-in modules that are available for us to use but only if we import them. One such example is the ~fs~ module, for dealing with the file system. Importing a built-in module is the same as importing a module that we created, except the argument we give to ~require()~ should only have the exact name of the module; node knows where to look for built-in modules on our system.
+Now that we've seen how to import code from a module that we created, let's look at importing code from a module that we own but didn't create. Node comes with built-in modules that are available for us to use but only if we import them. One such example is the ~fs~ module, for dealing with the file system. Importing a built-in module is the same as importing a module that we created, except the argument we give to ~require()~ should have the name of the module without the path; node knows where to look for built-in modules on our system.
 
 #+BEGIN_SRC js
-const {readFileSync} = require('fs'); // No dots of slashes before the module name
+const {readFileSync} = require('fs'); // No dots or slashes before the module name
 
 const fileContents = readFileSync('my-test-file.txt', 'utf8'); // Read the contents of a file
 console.log(fileContents); // Print the file's contents
