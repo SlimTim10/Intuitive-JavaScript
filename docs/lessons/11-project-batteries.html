@@ -34,13 +34,13 @@
 <ul>
 <li><a href="#functions">Functions</a></li>
 <li><a href="#usage">Usage</a></li>
-<li><a href="#bonus">Bonus</a></li>
+<li><a href="#bonus-testing">Bonus: Testing</a></li>
 </ul></li>
 </ul>
 </nav>
 <article class="card"><section id="lesson-body"><h1 id="project---batteries.js">Project - batteries.js</h1>
-<p>When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file <code>batteries.js</code> that exports the following functions. This module will act as a library you can use in other projects.</p>
-<p>All of the functions below should be implemented in <code>batteries.js</code> and exported. Nothing should be imported (the module should not depend on anything else). Along the way, it may be helpful to use <code>console.log</code> for testing and debugging. However, the end result should not have any <code>console.log</code> lines, as they will be executed whenever the module is imported.</p>
+<p>When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file <code>batteries.js</code> that exports the following functions. This module will act as a library you can use (import) in other projects.</p>
+<p>All of the functions below should be implemented in <code>batteries.js</code> and exported. <code>batteries.js</code> should not import anything (the module should not depend on anything else). Along the way, it may be helpful to use <code>console.log</code> for testing and debugging. However, the end result should not have any <code>console.log</code> lines as they will be executed whenever the module is imported.</p>
 <h2 id="functions">Functions</h2>
 <h3 id="numbers">Numbers</h3>
 <ul>
@@ -174,8 +174,17 @@
 <div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> {sum<span class="op">,</span> range} <span class="op">=</span> <span class="pp">require</span>(<span class="st">'./batteries'</span>)<span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">sum</span>(<span class="fu">range</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">5</span>)))<span class="op">;</span> <span class="co">// should print 15</span></span></code></pre></div>
-<h2 id="bonus">Bonus</h2>
-<p>Create a separate module <code>batteries.tests.js</code> for testing that the functions in <code>batteries.js</code> work correctly. Import <code>batteries.js</code> and write <code>console.log</code> lines to test a few cases of each function. Look at the previous lesson exercises for ideas on how to write good tests.</p>
+<p>Try adding the rest of the functions to the import and make sure they work!</p>
+<h2 id="bonus-testing">Bonus: Testing</h2>
+<p>Create a separate module <code>batteries.tests.js</code> for testing that the functions in <code>batteries.js</code> work correctly. Import <code>batteries.js</code> and write <code>console.log</code> lines to test a few cases of each function. Look at exercises from the previous lessons for ideas on how to write good tests.</p>
+<p>Tips for writing good tests:</p>
+<ul>
+<li>Tests should only return true or false.</li>
+<li>Test for the obvious case first. Pick any values that should work.</li>
+<li>Don’t test for values of the wrong type. You can assume that the functions should only work when the correct type of value is given. For example, <code>range()</code> should only work for numbers as arguments.</li>
+<li>Test for “edge” cases. Pick values that you might not expect to be used (e.g., empty array, empty string, 0, negative numbers, etc.).</li>
+<li>The more tests the better!</li>
+</ul>
 <h3 id="example-output">Example output</h3>
 <div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> node batteries.tests.js</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Testing</span> isEven:</span>

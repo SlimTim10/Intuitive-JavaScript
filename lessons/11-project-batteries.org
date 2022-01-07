@@ -3,9 +3,9 @@ title: Project - batteries.js
 ---
 
 * Project - batteries.js
-When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file ~batteries.js~ that exports the following functions. This module will act as a library you can use in other projects.
+When starting to code in a standard JavaScript environment, batteries are not included, so to speak. In this project, you will make the batteries so that the next projects are easier from the start. The goal is to create a module with many useful functions that can be used with future projects and code. The result should be a single file ~batteries.js~ that exports the following functions. This module will act as a library you can use (import) in other projects.
 
-All of the functions below should be implemented in ~batteries.js~ and exported. Nothing should be imported (the module should not depend on anything else). Along the way, it may be helpful to use ~console.log~ for testing and debugging. However, the end result should not have any ~console.log~ lines, as they will be executed whenever the module is imported.
+All of the functions below should be implemented in ~batteries.js~ and exported. ~batteries.js~ should not import anything (the module should not depend on anything else). Along the way, it may be helpful to use ~console.log~ for testing and debugging. However, the end result should not have any ~console.log~ lines as they will be executed whenever the module is imported.
 
 ** Functions
 *** Numbers
@@ -113,8 +113,17 @@ const {sum, range} = require('./batteries');
 console.log(sum(range(1, 5))); // should print 15
 #+END_SRC
 
-** Bonus
-Create a separate module ~batteries.tests.js~ for testing that the functions in ~batteries.js~ work correctly. Import ~batteries.js~ and write ~console.log~ lines to test a few cases of each function. Look at the previous lesson exercises for ideas on how to write good tests.
+Try adding the rest of the functions to the import and make sure they work!
+
+** Bonus: Testing
+Create a separate module ~batteries.tests.js~ for testing that the functions in ~batteries.js~ work correctly. Import ~batteries.js~ and write ~console.log~ lines to test a few cases of each function. Look at exercises from the previous lessons for ideas on how to write good tests.
+
+Tips for writing good tests:
+- Tests should only return true or false.
+- Test for the obvious case first. Pick any values that should work.
+- Don't test for values of the wrong type. You can assume that the functions should only work when the correct type of value is given. For example, ~range()~ should only work for numbers as arguments.
+- Test for "edge" cases. Pick values that you might not expect to be used (e.g., empty array, empty string, 0, negative numbers, etc.).
+- The more tests the better!
 
 *** Example output
 #+begin_src sh
