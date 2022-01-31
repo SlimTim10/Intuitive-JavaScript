@@ -22,13 +22,17 @@ All of the functions below should be implemented in ~batteries.js~ and exported.
   - Return: true if ~x~ is divisible by ~y~, otherwise false
 
 *** Arrays
-- append
-  - Arguments: ~y~ (any), ~xs~ (array)
-  - Return: array with ~y~ appended to ~xs~
-
 - eqArrays
   - Arguments: ~xs~ (array), ~ys~ (array)
   - Return: true if ~xs~ and ~ys~ are the same length and all of their elements are equal, otherwise false
+
+- buildArray
+  - Arguments: ~size~ (number)
+  - Return: an array of size ~size~ (all elements can be ~undefined~)
+
+- append
+  - Arguments: ~y~ (any), ~xs~ (array)
+  - Return: array with ~y~ appended to ~xs~
 
 - head
   - Arguments: ~xs~ (array)
@@ -82,10 +86,6 @@ All of the functions below should be implemented in ~batteries.js~ and exported.
 - minimum
   - Arguments: ~ns~ (array)
   - Return: the lowest number in ~ns~
-
-- buildArray
-  - Arguments: ~size~ (number)
-  - Return: an array of size ~size~ (all elements can be ~undefined~)
 
 - range
   - Arguments: ~start~ (number), ~end~ (number)
