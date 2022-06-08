@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-git checkout master
-stack exec site clean
-stack exec site build
-git add -A
-git commit -m "Publish."
-git push origin master:master

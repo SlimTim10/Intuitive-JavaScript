@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid ((<>))
-import           Hakyll
+import Control.Monad (forM_)
+import Data.Monoid ((<>))
+import Hakyll
 import qualified Text.Pandoc as Pandoc
 import qualified GHC.IO.Encoding as E
 import Control.Applicative (empty)
@@ -14,21 +15,23 @@ main :: IO ()
 main = do
   E.setLocaleEncoding E.utf8
   hakyllWith config $ do
-    match "images/*" $ do
-      route   idRoute
-      compile copyFileCompiler
-
-    match "exercises/*" $ do
-      route   idRoute
-      compile copyFileCompiler
+    forM_
+      [ "CNAME"
+      , "favicon.ico"
+      , "robots.txt"
+      , "_config.yml"
+      , "images/*"
+      , "js/*"
+      , "fonts/*"
+      , "exercises/*"
+      ]
+      $ \f -> match f $ do
+        route idRoute
+        compile copyFileCompiler
 
     match "css/*" $ do
       route   idRoute
       compile compressCssCompiler
-
-    match (fromList ["CNAME"]) $ do
-      route idRoute
-      compile copyFileCompiler
 
     match (fromList ["preface.org"]) $ do
       route $ (gsubRoute "preface.org" (const "index")) `composeRoutes` (setExtension "html")
@@ -68,7 +71,12 @@ main = do
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration
-  { destinationDirectory = "docs"
+  { destinationDirectory = "dist"
+  , previewHost = "127.0.0.1"
+  , previewPort = 8000
+  , providerDirectory = "src"
+  , storeDirectory = "ssg/_cache"
+  , tmpDirectory = "ssg/_tmp"
   }
 
 withTOC :: Pandoc.WriterOptions
