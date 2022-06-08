@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid ((<>))
-import           Hakyll
+import Control.Monad (forM_)
+import Data.Monoid ((<>))
+import Hakyll
 import qualified Text.Pandoc as Pandoc
 import qualified GHC.IO.Encoding as E
 import Control.Applicative (empty)
