@@ -6,4 +6,4 @@ Modern JavaScript lessons with practice exercises.
 Live at https://intuitivejs.info/ .
 
 ** Development
-Built with [[https://github.com/jaspervdj/hakyll][Hakyll]].
+Built with [[https://github.com/jaspervdj/hakyll][Hakyll]]. Based off of [[https://github.com/rpearce/hakyll-nix-template][hakyll-nix-template]].
