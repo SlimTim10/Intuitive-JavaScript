@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Values, Types, and Variables - Intuitive JavaScript</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/vs2015.css" />
+	</head>
+	<body>
+		<header id="top">
+			<nav>
+				<a href="../">Intuitive JavaScript</a>
+			</nav>
+		</header>
+
+		<main role="main">
+			
+			<p class="lesson-number">2.</p>
+			
+			
+			
+
+<nav id="toc" class="card">
+<h1>Contents</h1>
+<ul>
+<li><a href="#values-types-and-variables">Values, Types, and Variables</a>
+<ul>
+<li><a href="#values-and-types">Values and types</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#example-repl-session">Example REPL session</a></li>
+</ul></li>
+</ul>
+</nav>
+<article class="card"><section id="lesson-body"><h1 id="values-types-and-variables">Values, Types, and Variables</h1>
+<p>Programming, by and large, is a matter of computing information. While that may sound dull at first, keep in mind that it is up to you, the programmer, to decide what information to deal with and what the outcomes are. For instance, the information could be keys actively being pressed on a keyboard to control a game and the outcome is the visible game itself. Or the information could be user profiles and uploaded images, with the outcome being a social media website (like Instagram). As you can see, when we talk about information we are talking in vague and abstract terms, but we all have an intuition for what information means. In programming, we turn this vague notion into concrete things so the computer can understand them.</p>
+<h2 id="values-and-types">Values and types</h2>
+<p><strong>Values</strong> represent pieces of information, which is as abstract as it sounds. You get to decide what a piece of information is, as information can be broken down and put together in various ways. It is important to think of each value as belonging to a certain <strong>type</strong>. In other words, a value does not exist on its own without a type.</p>
+<p>Here is a list of the types that will be used throughout these lessons<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>number</li>
+<li>boolean</li>
+<li>function</li>
+<li>string</li>
+<li>array</li>
+<li>object</li>
+</ul>
+<p>This is only the list of predefined types. The <strong>object</strong> type will allow us to define our own types. More on that in the <a href="./09-objects.html">Objects</a> lesson.</p>
+<p>Although values can represent any piece of information, in JavaScript there are rules for how we can write values. In general, the ways that we can properly write JavaScript are referred to as <strong>syntax</strong> rules. Writing something that isn’t understood by the JavaScript interpreter is called a syntax error and will cause the interpreter to show the error.</p>
+<p>Let’s look at a brief meaning of each type and some possible values.</p>
+<h3 id="undefined">undefined</h3>
+<p><strong>undefined</strong> is the value and type given to a variable that hasn’t explicitly been given any other value, or a function that doesn’t return any other value. This is a special type that we should avoid using. Think of it as a special type that only the JavaScript interpreter should use. We can check if a variable is <code>undefined</code>, but we should never explicitly set a variable to be <code>undefined</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>There is only one possible value of the undefined type, of the same name: <code>undefined</code>.</p>
+<h3 id="null">null</h3>
+<p><strong>null</strong> is similar to undefined, except we should use it. It is commonly used in the scenario where a variable is expected to be an object that may not exist; if the object doesn’t exist, null can take its place. It is a good idea to use null when setting a value to mean “this doesn’t exist”.</p>
+<p>There is only one possible value of the null type, of the same name: <code>null</code>.</p>
+<h3 id="number">number</h3>
+<p>The <strong>number</strong> type is self-explanatory. Anytime we want to represent a number of any sort, we should use the number type.</p>
+<p>Possible values:</p>
+<ul>
+<li><code>0</code></li>
+<li><code>1</code></li>
+<li><code>-1234</code></li>
+<li><code>0.65</code></li>
+<li>(virtually any number)</li>
+</ul>
+<h3 id="boolean">boolean</h3>
+<p>The <strong>boolean</strong> type is for representing something that can only be one of the two values:</p>
+<ul>
+<li><code>true</code></li>
+<li><code>false</code></li>
+</ul>
+<h3 id="function">function</h3>
+<p>The <strong>function</strong> type is for representing a sort of operation that can be applied to values to produce another value.</p>
+<p>A function may look something like this: <code>(x) =&gt; x + 1</code>.</p>
+<p>Functions will be covered later in depth (see: <a href="./05-functions.html">Functions</a>).</p>
+<h3 id="string">string</h3>
+<p>The <strong>string</strong> type is for representing words and general text.</p>
+<p>Possible values:</p>
+<ul>
+<li><code>'a'</code></li>
+<li><code>'1'</code></li>
+<li><code>'Hello, world!'</code></li>
+<li>(virtually anything surrounded by quotes)</li>
+</ul>
+<p>Strings will be covered later in depth (see: <a href="./06-strings.html">Strings</a>).</p>
+<h3 id="array">array</h3>
+<p>The <strong>array</strong> type is for holding a list of values. The values inside of an array can be any type (including arrays themselves).</p>
+<p>Arrays look something like this:</p>
+<ul>
+<li><code>[1, 2, 3]</code></li>
+<li><code>['apple', 'banana', 'cherry']</code></li>
+<li><code>[]</code></li>
+<li><code>[false]</code></li>
+<li>(virtually anything in square brackets separated by commas)</li>
+</ul>
+<p>Arrays will be covered later in depth (see: <a href="./07-arrays.html">Arrays</a>).</p>
+<h3 id="object">object</h3>
+<p>The <strong>object</strong> type is for representing a more complex structure that doesn’t fit into any of the other types. Defining an object of a particular structure can be thought of as defining a new type.</p>
+<p>Objects look something like this:</p>
+<ul>
+<li><code>{a: 1, b: 2}</code></li>
+<li><code>{name: 'Alice', age: 30}</code></li>
+<li><code>{}</code></li>
+</ul>
+<p>Objects will be covered later in depth (see: <a href="./09-objects.html">Objects</a>).</p>
+<h2 id="variables">Variables</h2>
+<p><strong>Variables</strong> let us assign a name to a value and reuse it wherever we want.</p>
+<p>In functional JavaScript, variables are always declared with <code>const</code>. You may see <code>var</code> or <code>let</code> used in other JavaScript code, but not in these lessons. This is great because there’s less to think about when declaring a variable and there are stricter rules about how variables work.</p>
+<p>The syntax to define a variable looks like this:</p>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> favNumber <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span></code></pre></div>
+<p>The line must start with the word “const”, followed by the name of the variable, the equals sign, and finally the desired value. In this example, we are defining a variable named “favNumber” and assigning it the number 10 as its value. This variable will always be 10. The equals sign works the same as in math; the left side equals the right side. Wherever else in the code we use “favNumber”, we can substitute 10, and vice versa.</p>
+<p>Variable names are conventionally written in <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>. It is encouraged to give variables meaningful names, as we will do throughout the lessons.</p>
+<p>Defining a variable is a kind of <strong>statement</strong>, which is an expression that JavaScript understands as a single instruction. Writing JavaScript code is simply writing a series of statements. The JavaScript interpreter reads these statements left-to-right, top-to-bottom, just like you’re reading these lessons. A variable cannot be used before it is defined (before its statement has been executed). It is conventional to end JavaScript statements with a semicolon, but not necessary.</p>
+<h2 id="example-repl-session">Example REPL session</h2>
+<div class="sourceCode" id="cb2" data-org-language="sh"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span>node</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Welcome</span> to Node.js v12.16.1.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">&quot;.help&quot;</span> for more information.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> undefined</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> null</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">null</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> 1</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> true</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">true</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="kw">(</span><span class="ex">x</span><span class="kw">)</span> <span class="ex">=</span><span class="op">&gt;</span> x + 1<span class="kw">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">[Function]</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="st">'hello'</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">'hello'</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> [1, <span class="ex">2,</span> 3]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> 1, 2, 3 <span class="bu">]</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="ex">{a:</span> 1, b: 2}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span> <span class="ex">a:</span> 1, b: 2 }</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">x</span> = 5<span class="kw">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> x</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ex">5</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> y</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ex">Uncaught</span> ReferenceError: y is not defined</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">y</span> = 10<span class="kw">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> y</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ex">10</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">sameAsX</span> = x<span class="kw">;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> sameAsX</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ex">5</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">alice</span> = {name: <span class="st">'Alice'</span>, age: 30}<span class="kw">;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> alice</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span> <span class="ex">name:</span> <span class="st">'Alice'</span>, age: 30 }</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> const <span class="ex">fruits</span> = [<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span>]<span class="kw">;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ex">undefined</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> fruits</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span> <span class="bu">]</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">To</span> exit, press ^C again or ^D or type .exit<span class="kw">)</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Users\Tim</span><span class="op">&gt;</span></span></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>This list of types differs from the technical list of types in JavaScript. The types listed here are the intuitive types, meaning it’s closer to what goes on in our heads when programming with JavaScript. For the technical types in JavaScript, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">MDN</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>The reason we shouldn’t use undefined explicitly is because the JavaScript interpreter uses it automatically. If we set a variable to be undefined, when we compare its value later we have no way of knowing whether we gave it the value or the JavaScript interpreter did. I would rather undefined not be in this list of types at all, but because it arises so frequently in JavaScript it would be unfair not to mention it.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></section>
+
+<section id="prev-and-next-links">
+	<div>
+		
+		<a id="next-link" href="../lessons/03-operators.html">
+			<div>
+				<p>Next lesson</p>
+				<h2>Operators</h2>
+			</div>
+			<i class="fas fa-arrow-right"></i>
+		</a>
+		
+	</div>
+	<div>
+		
+		<a id="prev-link" href="../lessons/01-getting-started.html">
+			<i class="fas fa-arrow-left"></i>
+			<div>
+				<p>Prev lesson</p>
+				<h2>Getting Started</h2>
+			</div>
+		</a>
+		
+	</div>
+</section>
+<section id="back-to-top"><a href="#top">Top</a></section>
+</article>
+
+
+
+		</main>
+
+		<footer>
+			<div>
+				<h2><span id="created-by">Created by </span><a id="personal-link" href="https://timjohns.ca/">Tim Johns</a></h2>
+				<div id="social-links">
+					<a href="https://github.com/SlimTim10">
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+					</a>
+					<a href="https://www.linkedin.com/in/tim-johns/">
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+					</a>
+				</div>
+			</div>
+			<div>
+				<p>© 2021 Tim Johns</p>
+				<p>Site proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a> | <a href="https://github.com/SlimTim10/Intuitive-JavaScript"> View source</a></p>
+			</div>
+		</footer>
+	</body>
+</html>
