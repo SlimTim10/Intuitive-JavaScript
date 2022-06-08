@@ -314,14 +314,10 @@ For example, 'p4ssw0rd!' gets 9 + 5 + 10 = 24 points.
 
 // Helper function to calculate the points of a password
 const calcPoints = password => {
-  let points = password.length;
-  if (hasDigit(password)) {
-    points += 5;
-  }
-  if (hasPunctuation(password)) {
-    points += 10;
-  }
-  return points;
+  const lengthPoints = password.length;
+  const digitPoints = hasDigit(password) ? 5 : 0;
+  const puncPoints = hasPunctuation(password) ? 10 : 0;
+  return lengthPoints + digitPoints + puncPoints;
 };
 
 const betterPassword = (pass1, pass2) => {
