@@ -192,7 +192,7 @@ console.log({} === {}); // false
 #+end_src
 
 *** Inequality (~!==~)
-Checks that two values are not equal. Results in true if they are equal, otherwise false. This is the opposite of equality. It is the same as using the *!* operator on an expression that uses equality.
+Checks that two values are not equal. Results in false if they are equal, otherwise true. This is the opposite of equality. It is the same as using the *!* operator on an expression that uses equality.
 
 #+begin_src js
 console.log(undefined !== undefined); // false
