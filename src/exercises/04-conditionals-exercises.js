@@ -1,7 +1,10 @@
 // Practice with a single number
 const num = 12;
 
-// Ignore any lines that look like this
+/*
+Ignore any lines that look like the following.
+They are here so you can see the exercise numbers in the output.
+*/
 process.stdout.write('1. ');
 
 /*
@@ -9,6 +12,7 @@ process.stdout.write('1. ');
 Try changing the value of num to make sure your code works.
 */
 console.log('num is greater than 10');
+
 
 process.stdout.write('\n2. ');
 /*
@@ -157,3 +161,5 @@ process.stdout.write('\n16. ');
 - It is divisible by either 5 or 7
 */
 
+
+process.stdout.write('\n');

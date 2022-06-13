@@ -1,7 +1,10 @@
 // Practice with a single number
 const num = 12;
 
-// Ignore any lines that look like this
+/*
+Ignore any lines that look like the following.
+They are here so you can see the exercise numbers in the output.
+*/
 process.stdout.write('1. ');
 
 /*
@@ -12,6 +15,7 @@ if (num > 10) {
   console.log('num is greater than 10');
 }
 
+
 process.stdout.write('\n2. ');
 /*
 2. Only print the message 'num is less than 100' when appropriate.
@@ -19,6 +23,7 @@ process.stdout.write('\n2. ');
 if (num < 100) {
   console.log('num is less than 100');
 }
+
 
 process.stdout.write('\n3. ');
 /*
@@ -28,6 +33,7 @@ if (num > 0) {
   console.log('num is a positive number')
 }
 
+
 process.stdout.write('\n4. ');
 /*
 4. 'num is between 10 and 100' (exclusive)
@@ -35,6 +41,7 @@ process.stdout.write('\n4. ');
 if (num > 10 && num < 100) {
   console.log('num is between 10 and 100');
 }
+
 
 process.stdout.write('\n5. ');
 /*
@@ -44,6 +51,7 @@ if (num % 2 === 0) {
   console.log('num is even');
 }
 
+
 process.stdout.write('\n6. ');
 /*
 6. 'num is an even number between 20 and 30' (inclusive)
@@ -52,6 +60,7 @@ if (num % 2 === 0 && num >= 20 && num <= 30) {
   console.log('num is an even number between 20 and 30');
 }
 
+
 process.stdout.write('\n7. ');
 /*
 7. 'num is odd or negative'
@@ -59,6 +68,7 @@ process.stdout.write('\n7. ');
 if (num % 2 !== 0 || num < 0) {
   console.log('num is odd or negative');
 }
+
 
 // Practice comparing numbers
 const x = 3;
@@ -75,6 +85,7 @@ if (x > y) {
   console.log(y);
 }
 
+
 process.stdout.write('\n9. ');
 /*
 9. Print either message 'x and y are equal' or 'x and y are not equal'.
@@ -84,6 +95,7 @@ if (x === y) {
 } else {
   console.log('x and y are not equal');
 }
+
 
 // Let's add another number into the mix.
 const z = 2;
@@ -101,6 +113,7 @@ if (x > y && x > z) {
 } else {
   console.log(z);
 }
+
 
 // Practice with more operators
 const walletInCents = 25;
@@ -120,6 +133,7 @@ if (walletInCents === priceInDollars * 100) {
   console.log('Not enough money.');
 }
 
+
 process.stdout.write('\n12. ');
 /*
 12. Do the same thing as in 11, but let's add in some error handling. In the case where the wallet is negative, print 'Wallet cannot be negative.' When the price is negative, print 'Price cannot be negative.' Think about the importance of the order of the conditions.
@@ -135,6 +149,7 @@ if (walletInCents < 0) {
 } else {
   console.log('Not enough money.');
 }
+
 
 // Practice comparing strings
 let username = 'Alice';
@@ -153,6 +168,7 @@ if (username === expectedUsername && password === expectedPassword) {
 } else {
   console.log('Wrong password.')
 }
+
 
 // Practice nesting conditionals
 const a = 1;
@@ -183,6 +199,7 @@ if (a === b) {
     console.log('No match.')
   }
 }
+
 
 // Practice with more information
 const myUsername = 'Alice';
@@ -232,6 +249,7 @@ if (myUsername === employeeUsername && myPassword === employeePassword) {
   console.log('Invalid login.')
 }
 
+
 // Practice complex conditions
 const creditCard = 123;
 
@@ -250,3 +268,6 @@ if ((creditCard >= 10000 && creditCard < 100000)
 } else {
   console.log('Invalid credit card.');
 }
+
+
+process.stdout.write('\n');
