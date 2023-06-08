@@ -166,19 +166,19 @@ The following lines should help test if your function works correctly. They shou
 
 process.stdout.write('\n*8·34.\n');
 /*
-*8·34. Create a function called 'makeSquares' that takes an array of numbers and returns an array of squares. A square is an array of two numbers: [length, width].
+ *8·34. Create a function called 'makeRectangles' that takes an array of numbers and returns an array of rectangles, where a rectangle is an array of two numbers: [length, width].
 
 The following lines should help test if your function works correctly. They should print true.
 */
 
 
-// console.log('makeSquares tests');
+// console.log('makeRectangles tests');
 // console.log(eqArrays(
-//   makeSquares([1, 2, 3, 4]),
+//   makeRectangles([1, 2, 3, 4]),
 //   [ [1, 1], [2, 2], [3, 3], [4, 4] ]
 // ));
 // console.log(eqArrays(
-//   makeSquares([-1, 0, 99, 1000]),
+//   makeRectangles([-1, 0, 99, 1000]),
 //   [ [-1, -1], [0, 0], [99, 99], [1000, 1000] ]
 // ));
 
