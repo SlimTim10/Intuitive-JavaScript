@@ -60,12 +60,13 @@ process.stdout.write('\n*8·12.\n');
 /*
 *8·12. Create a function called 'anyZs' that takes an array of words (strings) and returns true if the letter "z" (lowercase or uppercase) is found in any of the words, otherwise false.
 */
-const anyZs = words => words.some(word => word.includes('z'));
+const anyZs = words => words.some(word => word.toLowerCase().includes('z'));
 
 console.log('anyZs tests');
 console.log(anyZs(['apple', 'banana', 'zucchini']));
 console.log(anyZs(['apple', 'maze', 'carrot']));
 console.log(!anyZs(['apple', 'banana', 'carrot']));
+console.log(anyZs(['Alice', 'Bob', 'Zach']));
 
 
 process.stdout.write('\n*8·13.\n');
