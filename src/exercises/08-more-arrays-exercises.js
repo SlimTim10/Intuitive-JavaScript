@@ -92,7 +92,7 @@ process.stdout.write('\n*8·21.\n');
 
 process.stdout.write('\n*8·22.\n');
 /*
-*8·22. Create a function called 'britishGang' that takes an array of surnames (strings) and returns true if they are all likely British. A surname that is likely British starts with "Mac" or "Mc", or is any of the top 10 British surnames: Smith, Jones, Williams, Taylor, Davies, Brown, Wilson, Evans, Thomas, Johson.
+*8·22. Create a function called 'britishGang' that takes an array of surnames (strings) and returns true if they are all likely British. A surname that is likely British starts with "Mac" or "Mc", or is any of the top 10 British surnames: Smith, Jones, Williams, Taylor, Davies, Brown, Wilson, Evans, Thomas, Johnson.
 
 Tip: Consider making a helper function 'isBritish' to check if a single surname is British.
 */
