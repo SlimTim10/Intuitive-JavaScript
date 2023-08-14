@@ -367,13 +367,13 @@ process.stdout.write('\n*7·45.\n');
 
 Tip: Look up the Math.floor() function.
 */
-const middleIndex = xs => Math.floor(xs.length / 2);
+const middleIndex = xs => Math.floor((xs.length - 1) / 2);
 
 console.log('middleIndex tests');
 console.log(middleIndex([1]) === 0);
-console.log(middleIndex([1, 2]) === 1);
+console.log(middleIndex([1, 2]) === 0);
 console.log(middleIndex([1, 2, 3]) === 1);
-console.log(middleIndex([1, 2, 3, 4]) === 2);
+console.log(middleIndex([1, 2, 3, 4]) === 1);
 console.log(middleIndex([1, 2, 3, 4, 5]) === 2);
 
 
@@ -388,11 +388,11 @@ const middle = xs => {
 
 console.log('middle tests');
 console.log(middle([1]) === 1);
-console.log(middle([1, 2]) === 2);
+console.log(middle([1, 2]) === 1);
 console.log(middle([1, 2, 3]) === 2);
-console.log(middle([1, 2, 3, 4]) === 3);
+console.log(middle([1, 2, 3, 4]) === 2);
 console.log(middle([1, 2, 3, 4, 5]) === 3);
-console.log(middle([1, 2, 3, 4, 5, 6]) === 4);
+console.log(middle([1, 2, 3, 4, 5, 6]) === 3);
 
 
 // Practice using the slice() method
@@ -531,9 +531,9 @@ const middle3 = xs => {
 
 console.log('middle3 tests');
 console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
-console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
+console.log(middle3([1, 2, 3, 4]), '=== [1, 2, 3]');
 console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
-console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
+console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [2, 3, 4]');
 console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
 
 
@@ -543,16 +543,27 @@ process.stdout.write('\n*7·551.\n');
 
 The following lines should help you see if your function works correctly.
 */
+const isEven = x => x % 2 === 0;
+
 const middleN = (n, xs) => {
   const m = middleIndex(xs);
   const half = Math.floor(n / 2);
-  return xs.slice(m - half, m + half + 1);
+  if (isEven(n)) {
+    return xs.slice(m - half + 1, m + half + 1);
+  } else {
+    return xs.slice(m - half, m + half + 1);
+  }
 };
 
 console.log('middleN tests');
-console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
 console.log(middleN(1, [1, 2, 3, 4, 5]), '=== [3]');
 console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
+console.log(middleN(3, [1, 2, 3]), '=== [1, 2, 3]');
+console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
+console.log(middleN(2, [1, 2, 3, 4, 5]), '=== [3, 4]');
+console.log(middleN(3, [1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
+console.log(middleN(4, [1, 2, 3, 4, 5, 6, 7, 8, 9]), '=== [4, 5, 6, 7]');
+console.log(middleN(4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), '=== [4, 5, 6, 7]');
 
 
 // Practice using the sort() method
