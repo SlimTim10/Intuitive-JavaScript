@@ -231,7 +231,7 @@ if (myUsername === employeeUsername && myPassword === employeePassword) {
     console.log('Welcome, junior employee Zarya.');
   } else if (salary >= intermediateSalaryMinimum && salary <= intermediateSalaryMaximum) {
     console.log('Welcome, intermediate employee Zarya.');
-  } else if (salary >= upperSalaryMinimum && salary <= upperSalaryMaximum) {
+  } else if (salary >= seniorSalaryMinimum && salary <= seniorSalaryMaximum) {
     console.log('Welcome, senior employee Zarya.');
   } else {
     console.log('Welcome, employee Zarya.');
