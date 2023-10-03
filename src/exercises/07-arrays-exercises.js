@@ -392,13 +392,15 @@ The following lines should help you see if your function works correctly.
 
 // console.log('middleN tests');
 // console.log(middleN(1, [1, 2, 3, 4, 5]), '=== [3]');
-// console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
+// console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [3]');
+// console.log(middleN(2, [1, 2, 3, 4, 5]), '=== [2, 3]');
+// console.log(middleN(2, [1, 2, 3, 4, 5, 6]), '=== [2, 3]');
 // console.log(middleN(3, [1, 2, 3]), '=== [1, 2, 3]');
 // console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
-// console.log(middleN(2, [1, 2, 3, 4, 5]), '=== [3, 4]');
 // console.log(middleN(3, [1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
-// console.log(middleN(4, [1, 2, 3, 4, 5, 6, 7, 8, 9]), '=== [4, 5, 6, 7]');
-// console.log(middleN(4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), '=== [4, 5, 6, 7]');
+// console.log(middleN(3, [1, 2, 3, 4, 5, 6, 7, 8]), '=== [3, 4, 5]');
+// console.log(middleN(4, [1, 2, 3, 4, 5, 6, 7, 8, 9]), '=== [3, 4, 5, 6]');
+// console.log(middleN(4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), '=== [3, 4, 5, 6]');
 
 
 // Practice using the sort() method
