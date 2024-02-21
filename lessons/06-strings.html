@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Strings - Intuitive JavaScript</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/vs2015.css" />
+	</head>
+	<body>
+		<header id="top">
+			<nav>
+				<a href="../">Intuitive JavaScript</a>
+			</nav>
+		</header>
+
+		<main role="main">
+			
+			<p class="lesson-number">6.</p>
+			
+			
+			
+
+<nav id="toc" class="card">
+<h1>Contents</h1>
+<ul>
+<li><a href="#strings" id="toc-strings">Strings</a>
+<ul>
+<li><a href="#index" id="toc-index">Index</a></li>
+<li><a href="#length" id="toc-length">Length</a></li>
+<li><a href="#methods" id="toc-methods">Methods</a></li>
+<li><a href="#template-literals" id="toc-template-literals">Template literals</a></li>
+<li><a href="#exercises" id="toc-exercises">Exercises</a></li>
+</ul></li>
+</ul>
+</nav>
+<article class="card"><section id="lesson-body"><h1 id="strings">Strings</h1>
+<p>Used for dealing with words and general text, strings have special properties other types of values don’t have. They are created by enclosing text with single quotes (e.g., <code>'Hello, world!'</code>) or double quotes (e.g., <code>"Hello, world!"</code>). These lessons will use single quotes as they are more commonly used in practice.</p>
+<h2 id="index">Index</h2>
+<p>One special property of strings allows us to access individual characters. We call the position of a character the <strong>index</strong>. For example, the string ‘Alice’ has the letter ‘A’ at index 0. Yes, 0. We can say that ‘A’ is the first letter of the string, so it is at the first position. But indices start at 0. In other words, the index of a character is always one less than its conventional position.</p>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[<span class="dv">0</span>])<span class="op">;</span> <span class="co">// A</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[<span class="dv">3</span>])<span class="op">;</span> <span class="co">// c</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[<span class="dv">4</span>])<span class="op">;</span> <span class="co">// e</span></span></code></pre></div>
+<p>Of course, we can use variables as indices, since variables are just placeholders for values.</p>
+<div class="sourceCode" id="cb2" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[i])<span class="op">;</span> <span class="co">// A</span></span></code></pre></div>
+<h2 id="length">Length</h2>
+<p>Another special property of strings is their length.</p>
+<div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 5</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Alice'</span><span class="op">.</span><span class="at">length</span>)<span class="op">;</span> <span class="co">// 5</span></span></code></pre></div>
+<p>The syntax looks a bit odd because <code>length</code> is not a function; it’s a property that exists in all strings that we create. The moment we create a string, its length is calculated and stored hidden inside of it. Using <code>someString.length</code> lets us access that precalculated number.</p>
+<p>One of the most common uses of the length property is to get the last letter of a string without having to guess at its index. The last letter is at the index one less than the length of the string.</p>
+<div class="sourceCode" id="cb4" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> lastIndex <span class="op">=</span> name<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[lastIndex])<span class="op">;</span> <span class="co">// e</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name[name<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>])<span class="op">;</span> <span class="co">// e</span></span></code></pre></div>
+<h2 id="methods">Methods</h2>
+<p>Methods are functions that act like a property of a value. Like the length property, and unlike regular functions, methods go after a dot following the string. Instead of taking the operating string as an argument, it’s like an implicit (hidden) argument.</p>
+<p>One useful string method is <code>includes()</code>. As its name suggests, we can check if a string includes another string.</p>
+<div class="sourceCode" id="cb5" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> frozenWater <span class="op">=</span> <span class="st">'ice'</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">includes</span>(<span class="st">'ice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">includes</span>(frozenWater))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">includes</span>(<span class="st">'A'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">includes</span>(<span class="st">'Ace'</span>))<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">includes</span>(<span class="st">'a'</span>))<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<p>Another useful method is <code>startsWith()</code>. We can check if a string starts with another string.</p>
+<div class="sourceCode" id="cb6" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">startsWith</span>(<span class="st">'A'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">startsWith</span>(<span class="st">'Ali'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">startsWith</span>(<span class="st">'Alice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">startsWith</span>(<span class="st">'ice'</span>))<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<p>Of course, there is also <code>endsWith()</code>.</p>
+<div class="sourceCode" id="cb7" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'e'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'ice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'Alice'</span>))<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">endsWith</span>(<span class="st">'A'</span>))<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<p>There are many more useful methods to play with.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb8" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">toUpperCase</span>())<span class="op">;</span> <span class="co">// ALICE</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">toLowerCase</span>())<span class="op">;</span> <span class="co">// alice</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">indexOf</span>(<span class="st">'i'</span>))<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">repeat</span>(<span class="dv">3</span>))<span class="op">;</span> <span class="co">// AliceAliceAlice</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">replace</span>(<span class="st">'ice'</span><span class="op">,</span> <span class="st">'ejandro'</span>))<span class="op">;</span> <span class="co">// Alejandro</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">slice</span>(<span class="dv">2</span>))<span class="op">;</span> <span class="co">// ice</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(name<span class="op">.</span><span class="fu">slice</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">4</span>))<span class="op">;</span> <span class="co">// lic</span></span></code></pre></div>
+<h2 id="template-literals">Template literals</h2>
+<p>Template literals are another way of writing a string, where external values can be conveniently be interpolated inside. To write a template literal, use backticks <code>` `</code> instead of single quotes to surround the string.</p>
+<div class="sourceCode" id="cb9" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="vs">`Alice`</span><span class="op">;</span> <span class="co">// this is the same as a normal string</span></span></code></pre></div>
+<p>External values and expressions can be interpolated in template literals using special syntax:</p>
+<div class="sourceCode" id="cb10" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> name <span class="op">=</span> <span class="st">'Alice'</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span>name<span class="sc">}</span><span class="vs">! Your name is </span><span class="sc">${</span>name<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> letters long.`</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(greeting)<span class="op">;</span> <span class="co">// Hello, Alice! Your name is 5 letters long.</span></span></code></pre></div>
+<p>Anything inside the <code>${}</code> is evaluated as an expression and put into the string. Note that, in the above example, even though <code>name.length</code> is a number, it is converted into a string so that it can be part of the whole string.</p>
+<h2 id="exercises">Exercises</h2>
+<ul>
+ <li><a href="../exercises/06-strings-exercises.js">View exercises</a></li>
+ <li><a href="../exercises/06-strings-exercises.js" download type="application/octet-stream">Download exercises</a></li>
+ <li><a href="../exercises/06-strings-solutions.js">View solutions</a></li>
+ <li><a href="../exercises/06-strings-solutions.js" download type="application/octet-stream">Download solutions</a></li>
+</ul>
+
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>See all the string methods on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">MDN</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></section>
+
+<section id="prev-and-next-links">
+	<div>
+		
+		<a id="next-link" href="../lessons/07-arrays.html">
+			<div>
+				<p>Next lesson</p>
+				<h2>Arrays</h2>
+			</div>
+			<i class="fas fa-arrow-right"></i>
+		</a>
+		
+	</div>
+	<div>
+		
+		<a id="prev-link" href="../lessons/05-functions.html">
+			<i class="fas fa-arrow-left"></i>
+			<div>
+				<p>Prev lesson</p>
+				<h2>Functions</h2>
+			</div>
+		</a>
+		
+	</div>
+</section>
+<section id="back-to-top"><a href="#top">Top</a></section>
+</article>
+
+
+
+		</main>
+
+		<footer>
+			<div>
+				<h2><span id="created-by">Created by </span><a id="personal-link" href="https://timjohns.ca/">Tim Johns</a></h2>
+				<div id="social-links">
+				  <!-- SVG icons from https://simpleicons.org/ -->
+					<a href="https://github.com/SlimTim10" target="_blank">
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+					</a>
+					<a href="https://www.linkedin.com/in/tim-johns/" target="_blank">
+					  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+					</a>
+					<a href="https://www.instagram.com/slimtim10_/" target="_blank">
+					  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path></svg>
+					</a>
+				</div>
+			</div>
+			<div>
+				<p>© 2021 Tim Johns</p>
+				<p>Site proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a> | <a href="https://github.com/SlimTim10/Intuitive-JavaScript"> View source</a></p>
+			</div>
+		</footer>
+	</body>
+</html>

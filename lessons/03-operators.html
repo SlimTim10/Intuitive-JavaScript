@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Operators - Intuitive JavaScript</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Inconsolata:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/vs2015.css" />
+	</head>
+	<body>
+		<header id="top">
+			<nav>
+				<a href="../">Intuitive JavaScript</a>
+			</nav>
+		</header>
+
+		<main role="main">
+			
+			<p class="lesson-number">3.</p>
+			
+			
+			
+
+<nav id="toc" class="card">
+<h1>Contents</h1>
+<ul>
+<li><a href="#operators" id="toc-operators">Operators</a>
+<ul>
+<li><a href="#arithmetic-operators" id="toc-arithmetic-operators">Arithmetic operators</a></li>
+<li><a href="#logical-boolean-operators" id="toc-logical-boolean-operators">Logical (boolean) operators</a></li>
+<li><a href="#relational-and-equality-operators" id="toc-relational-and-equality-operators">Relational and equality operators</a></li>
+<li><a href="#string-operators" id="toc-string-operators">String operators</a></li>
+<li><a href="#using-operators" id="toc-using-operators">Using operators</a></li>
+<li><a href="#a-word-about-errors" id="toc-a-word-about-errors">A word about errors</a></li>
+</ul></li>
+</ul>
+</nav>
+<article class="card"><section id="lesson-body"><h1 id="operators">Operators</h1>
+<p>In the last lesson, we talked about programming being a matter of computing information. Using operators is a big part of doing computations. After all, we haven’t yet covered any tools that allow us to combine values together. As you will see in a moment, operators are symbols that operate on values to obtain a new value. Syntactically, spacing doesn’t make much difference but it makes code easier to read.</p>
+<p>Remember that variables hold values, which means we can either use operators on plain values or on variables. Also, operators will only make sense when applied to values of a specific type.</p>
+<p>The code examples here will use comments (marked by <code>//</code>) to show what the <code>console.log</code> lines should print. Comments are a way of leaving human-friendly notes in code that have no effect when the code is run. Instead of reading passively, I encourage you to follow along by running the code examples with node, either using the REPL or a file.</p>
+<h2 id="arithmetic-operators">Arithmetic operators</h2>
+<p>These operators allow us to perform basic arithmetic on values of the <strong>number</strong> type. You should already be familiar with how most of these operators work from basic math.</p>
+<h3 id="addition">Addition (<code>+</code>)</h3>
+<p>Add two numbers together.</p>
+<div class="sourceCode" id="cb1" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>)<span class="op">;</span> <span class="co">// prints 7</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(x)<span class="op">;</span> <span class="co">// prints 7</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(c)<span class="op">;</span> <span class="co">// prints 7</span></span></code></pre></div>
+<h3 id="subtraction--">Subtraction (<code>-</code>)</h3>
+<p>Subtract one number from another.</p>
+<div class="sourceCode" id="cb2" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">5</span> <span class="op">-</span> <span class="dv">3</span>)<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">5</span> <span class="op">-</span> <span class="dv">7</span>)<span class="op">;</span> <span class="co">// -2</span></span></code></pre></div>
+<h3 id="division">Division (<code>/</code>)</h3>
+<p>Divide one number by another.</p>
+<div class="sourceCode" id="cb3" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">6</span> <span class="op">/</span> <span class="dv">3</span>)<span class="op">;</span> <span class="co">// 2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">6</span> <span class="op">/</span> <span class="op">-</span><span class="dv">5</span>)<span class="op">;</span> <span class="co">// -1.2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">9</span>)<span class="op">;</span> <span class="co">// 1.1111111111111112</span></span></code></pre></div>
+<h3 id="multiplication">Multiplication (<code>*</code>)</h3>
+<p>Multiply two numbers together.</p>
+<div class="sourceCode" id="cb4" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// 4</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">3</span> <span class="op">*</span> <span class="op">-</span><span class="dv">10</span>)<span class="op">;</span> <span class="co">// -30</span></span></code></pre></div>
+<h3 id="exponentiation">Exponentiation (<code>**</code>)</h3>
+<p>Raise one number to the power of another. Usually the <code>^</code> symbol is used, but JavaScript has reserved it for a different operation.</p>
+<div class="sourceCode" id="cb5" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span><span class="op">**</span><span class="dv">3</span>)<span class="op">;</span> <span class="co">// 8</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">9</span><span class="op">**</span><span class="fl">0.5</span>)<span class="op">;</span> <span class="co">// 3</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span><span class="op">**</span><span class="fl">0.5</span>)<span class="op">;</span> <span class="co">// 1.4142135623730951</span></span></code></pre></div>
+<h3 id="remainder">Remainder (<code>%</code>)</h3>
+<p>Get the remainder left over from dividing one number by another. Using the result of <code>n % 2</code> is a neat trick to check if <code>n</code> is even (the result is 0 for even, or 1 for odd).</p>
+<div class="sourceCode" id="cb6" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">%</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// 0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">3</span> <span class="op">%</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// 1</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">4</span> <span class="op">%</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// 0</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">10</span> <span class="op">%</span> <span class="dv">5</span>)<span class="op">;</span> <span class="co">// 0</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">5</span> <span class="op">%</span> <span class="dv">10</span>)<span class="op">;</span> <span class="co">// 5</span></span></code></pre></div>
+<h2 id="logical-boolean-operators">Logical (boolean) operators</h2>
+<p>These operators work on <strong>boolean</strong> type values (true or false). These kinds of operations might seem a bit foreign, but you actually use them on a regular basis in normal language even if you don’t notice it. Whenever you say something that is considered true or false, you can use one of the following operators to get a new true-or-false result. We will look at plain English examples along the way.</p>
+<h3 id="not">Not (<code>!</code>)</h3>
+<p>As in plain English, <strong>not</strong> simply inverts a boolean value. When true and false are the only choices, anything not true is false, and anything not false is true.</p>
+<p>“January is the first month of the year” is true.</p>
+<p>“January is <strong>not</strong> the first month of the year” is false.</p>
+<p>“February is the first month of the year” is false.</p>
+<p>“February is <strong>not</strong> the first month of the year” is true.</p>
+<div class="sourceCode" id="cb7" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="op">!</span><span class="kw">true</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="op">!</span><span class="kw">false</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="op">!</span>a<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> <span class="op">!</span>b<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(c)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<h3 id="and">And (<code>&amp;&amp;</code>)</h3>
+<p>A way to combine two boolean values that results in true only when both values are true, otherwise the result is false.</p>
+<p>“January is the first month of the year <strong>and</strong> February is the second month of the year” is true, because both parts are true.</p>
+<p>“January is the first month of the year <strong>and</strong> February is the first month of the year” is false, because the second part is false.</p>
+<p>“January is the second month of the year <strong>and</strong> February is the second month of the year” is false, because the first part is false.</p>
+<p>“January is the second month of the year <strong>and</strong> February is the first month of the year” is false, because both parts are false.</p>
+<div class="sourceCode" id="cb8" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">&amp;&amp;</span> <span class="kw">true</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">&amp;&amp;</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">false</span> <span class="op">&amp;&amp;</span> <span class="kw">true</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">false</span> <span class="op">&amp;&amp;</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> a <span class="op">&amp;&amp;</span> b<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(c)<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<h3 id="or">Or (<code>||</code>)</h3>
+<p>A way to combine two boolean values that results in true when either value is true, otherwise the result is false. In other words, it is only false when both values are false.</p>
+<p>“January is the first month of the year <strong>or</strong> February is the second month of the year” is true, because both parts are true.</p>
+<p>“January is the first month of the year <strong>or</strong> February is the first month of the year” is true, because the first part is true.</p>
+<p>“January is the second month of the year <strong>or</strong> February is the second month of the year” is true, because the second part is true.</p>
+<p>“January is the second month of the year <strong>or</strong> February is the first month of the year” is false, because both parts are false.</p>
+<div class="sourceCode" id="cb9" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">||</span> <span class="kw">true</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">||</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">false</span> <span class="op">||</span> <span class="kw">true</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">false</span> <span class="op">||</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> a <span class="op">||</span> b<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(c)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<h2 id="relational-and-equality-operators">Relational and equality operators</h2>
+<p>What these operators do will also be familiar in an intuitive sense. These will allow us to compare various types of values, but always give a <strong>boolean</strong> value (true or false) as a result.</p>
+<h3 id="less-than-less-than-or-equal">Less than (<code>&lt;</code>), less than or equal (<code>&lt;=</code>)</h3>
+<p>Checks that a number is less than (or equal to) another number. Results in a boolean value (true or false). These operators can technically work on other types than numbers, but it’s not commonly done (read <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Less_than">MDN</a> for more information).</p>
+<div class="sourceCode" id="cb10" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">&lt;</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">1</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">&lt;=</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">&lt;=</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">3</span> <span class="op">&lt;=</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<h3 id="greater-than-greater-than-or-equal">Greater than (<code>&gt;</code>), greater than or equal (<code>&gt;=</code>)</h3>
+<p>Checks that a number is greater than (or equal to) another number. Results in a boolean value (true or false).</p>
+<div class="sourceCode" id="cb11" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">&gt;</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">&gt;</span> <span class="dv">1</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">&gt;</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">&gt;=</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">&gt;=</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">3</span> <span class="op">&gt;=</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<h3 id="equality">Equality (<code>===</code>)</h3>
+<p>Checks that two values are equal. Results in true if they are equal, otherwise false.</p>
+<p>For the most part, this comparison works the way you would expect it to. If the two values are different types, they can’t be considered equal.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> If they are the same type, they must be the exact same value to be considered equal. Unfortunately, for anything that JavaScript considers an object internally, the intuition breaks down; so it’s best not to use equality operators on functions, arrays, or objects.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="sourceCode" id="cb12" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">undefined</span> <span class="op">===</span> <span class="kw">undefined</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">undefined</span> <span class="op">===</span> <span class="kw">null</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">null</span> <span class="op">===</span> <span class="kw">null</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">null</span> <span class="op">===</span> <span class="dv">1</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">===</span> <span class="dv">1</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">===</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">false</span> <span class="op">===</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">===</span> <span class="kw">true</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">===</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'apple'</span> <span class="op">===</span> <span class="st">'apple'</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'apple'</span> <span class="op">===</span> <span class="st">'orange'</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>([] <span class="op">===</span> [])<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>({} <span class="op">===</span> {})<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<h3 id="inequality">Inequality (<code>!==</code>)</h3>
+<p>Checks that two values are not equal. Results in false if they are equal, otherwise true. This is the opposite of equality. It is the same as using the <strong>!</strong> operator on an expression that uses equality.</p>
+<div class="sourceCode" id="cb13" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">undefined</span> <span class="op">!==</span> <span class="kw">undefined</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="op">!</span>(<span class="kw">undefined</span> <span class="op">===</span> <span class="kw">undefined</span>))<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">undefined</span> <span class="op">!==</span> <span class="kw">null</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">null</span> <span class="op">!==</span> <span class="kw">null</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">null</span> <span class="op">!==</span> <span class="dv">1</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">!==</span> <span class="dv">1</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">!==</span> <span class="dv">2</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">false</span> <span class="op">!==</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">!==</span> <span class="kw">true</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="kw">true</span> <span class="op">!==</span> <span class="kw">false</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'apple'</span> <span class="op">!==</span> <span class="st">'apple'</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'apple'</span> <span class="op">!==</span> <span class="st">'orange'</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>([] <span class="op">!==</span> [])<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>({} <span class="op">!==</span> {})<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<h2 id="string-operators">String operators</h2>
+<h3 id="concatenation">Concatenation (<code>+</code>)</h3>
+<p>Put two strings together. This is the same symbol as addition for numbers.</p>
+<div class="sourceCode" id="cb14" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="st">'Hello, '</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="st">'world!'</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a <span class="op">+</span> b)<span class="op">;</span> <span class="co">// prints &quot;Hello, world!&quot;</span></span></code></pre></div>
+<h2 id="using-operators">Using operators</h2>
+<p>Naturally, we don’t have to use these operators in isolation. They can be combined in countless ways to achieve different results.</p>
+<p>Now that we have some interesting tools to use, it’s a good time to try executing a JavaScript file full of code instead of using the REPL. While the REPL allows us to write code directly in it, it’s not so great for general programming where we want to write chunks of code and re-run it with changes. Try copying the following block of code into a file called “script.js”, then run the file with node using the terminal: <code>node script.js</code>.</p>
+<div class="sourceCode" id="cb15" data-org-language="js"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// This is a comment because it begins with two slashes. It has no effect on the code and is only for humans to read.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">// You will see many comments in code as a way of adding clarification or helpful notes</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> temperatureF <span class="op">=</span> <span class="dv">77</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> temperatureC <span class="op">=</span> (temperatureF <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">9</span>)<span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(temperatureC)<span class="op">;</span> <span class="co">// should be 25</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(temperatureF <span class="op">&gt;</span> temperatureC)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> weatherToday <span class="op">=</span> <span class="st">'rain'</span><span class="op">;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> weatherTomorrow <span class="op">=</span> <span class="st">'sunny'</span><span class="op">;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> rainTodayOrTomorrow <span class="op">=</span> (weatherToday <span class="op">===</span> <span class="st">'rain'</span>) <span class="op">||</span> (weatherTomorrow <span class="op">===</span> <span class="st">'rain'</span>)<span class="op">;</span> <span class="co">// brackets for clarity</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(rainTodayOrTomorrow)<span class="op">;</span> <span class="co">// true, because today is rainy</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> rainTodayAndTomorrow <span class="op">=</span> (weatherToday <span class="op">===</span> <span class="st">'rainy'</span>) <span class="op">&amp;&amp;</span> (weatherTomorrow <span class="op">===</span> <span class="st">'rain'</span>)<span class="op">;</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(rainTodayAndTomorrow)<span class="op">;</span> <span class="co">// false, because tomorrow is sunny</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> berry <span class="op">=</span> <span class="st">'nightshade'</span><span class="op">;</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> berryIsEdible <span class="op">=</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  berry <span class="op">===</span> <span class="st">'blueberry'</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">||</span> berry <span class="op">===</span> <span class="st">'raspberry'</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">||</span> berry <span class="op">===</span> <span class="st">'blackberry'</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">||</span> berry <span class="op">===</span> <span class="st">'strawberry'</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">||</span> berry <span class="op">===</span> <span class="st">'cranberry'</span><span class="op">;</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(berryIsEdible)<span class="op">;</span> <span class="co">// only true if the berry is one of the edible berries</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pokeBowlSize <span class="op">=</span> <span class="st">'small'</span><span class="op">;</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pokeBowlBase <span class="op">=</span> <span class="st">'mixed rice'</span><span class="op">;</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pokeBowlProtein <span class="op">=</span> <span class="st">'salmon'</span><span class="op">;</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pokeBowlSauce <span class="op">=</span> <span class="st">'shoyu'</span><span class="op">;</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co">// This is a long one, but with clever formatting it is not hard to read</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> validPokeBowl <span class="op">=</span> (</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  (pokeBowlSize <span class="op">===</span> <span class="st">'small'</span> <span class="op">||</span> pokeBowlSize <span class="op">===</span> <span class="st">'medium'</span> <span class="op">||</span> pokeBowlSize <span class="op">===</span> <span class="st">'large'</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;&amp;</span> (pokeBowlBase <span class="op">===</span> <span class="st">'sushi rice'</span> <span class="op">||</span> pokeBowlBase <span class="op">===</span> <span class="st">'mixed rice'</span> <span class="op">||</span> pokeBowlBase <span class="op">===</span> <span class="st">'zucchini'</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;&amp;</span> (pokeBowlProtein <span class="op">===</span> <span class="st">'tuna'</span> <span class="op">||</span> pokeBowlProtein <span class="op">===</span> <span class="st">'salmon'</span> <span class="op">||</span> pokeBowlProtein <span class="op">===</span> <span class="st">'shrimp'</span> <span class="op">||</span> pokeBowlProtein <span class="op">===</span> <span class="st">'beef'</span>)</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;&amp;</span> (pokeBowlSauce <span class="op">===</span> <span class="st">'sesame'</span> <span class="op">||</span> pokeBowlSauce <span class="op">===</span> <span class="st">'shoyu'</span> <span class="op">||</span> pokeBowlSauce <span class="op">===</span> <span class="st">'ginger honey'</span> <span class="op">||</span> pokeBowlSauce <span class="op">===</span> <span class="st">'hot sauce'</span>)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(validPokeBowl)<span class="op">;</span></span></code></pre></div>
+<p>When you run this code, you should notice that the <code>console.log</code> statements are printed in your terminal in the same order they’re written here.</p>
+<p>Try changing the values and adding more code. Get creative!</p>
+<h2 id="a-word-about-errors">A word about errors</h2>
+<p>Sometimes when you run your code, you may see node produce an error instead of the expected result. That’s not a bad thing! Node is trying to help make sure your code is unambiguous and doesn’t contain any silly mistakes that may cause unexpected problems. Think of errors as a gentle way of pointing out that something needs to be fixed in your code. Understanding the errors that node produces can take a lot of practice. Every error will have a message to let you know why there is an error in the first place and approximately where the problem is in your code (by telling you a line number). Because of the complexity of the code interpretation process, the error message and line number may not actually point you in the right direction! That being said, you should first assume that the error message <em>is</em> helpful and use its guidance, but be aware that it’s not a guarantee and you might need to look elsewhere. You will get to know the common errors with practice.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>There is also a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality">less strict equality operator</a> (<code>==</code>), but it works unintuitively so it is advised not to use it.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality">More about strict equality on MDN</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></section>
+
+<section id="prev-and-next-links">
+	<div>
+		
+		<a id="next-link" href="../lessons/04-conditionals.html">
+			<div>
+				<p>Next lesson</p>
+				<h2>Conditionals</h2>
+			</div>
+			<i class="fas fa-arrow-right"></i>
+		</a>
+		
+	</div>
+	<div>
+		
+		<a id="prev-link" href="../lessons/02-values-types-variables.html">
+			<i class="fas fa-arrow-left"></i>
+			<div>
+				<p>Prev lesson</p>
+				<h2>Values, Types, and Variables</h2>
+			</div>
+		</a>
+		
+	</div>
+</section>
+<section id="back-to-top"><a href="#top">Top</a></section>
+</article>
+
+
+
+		</main>
+
+		<footer>
+			<div>
+				<h2><span id="created-by">Created by </span><a id="personal-link" href="https://timjohns.ca/">Tim Johns</a></h2>
+				<div id="social-links">
+				  <!-- SVG icons from https://simpleicons.org/ -->
+					<a href="https://github.com/SlimTim10" target="_blank">
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+					</a>
+					<a href="https://www.linkedin.com/in/tim-johns/" target="_blank">
+					  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+					</a>
+					<a href="https://www.instagram.com/slimtim10_/" target="_blank">
+					  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path></svg>
+					</a>
+				</div>
+			</div>
+			<div>
+				<p>© 2021 Tim Johns</p>
+				<p>Site proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a> | <a href="https://github.com/SlimTim10/Intuitive-JavaScript"> View source</a></p>
+			</div>
+		</footer>
+	</body>
+</html>
