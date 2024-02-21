@@ -259,7 +259,7 @@ The following lines should help test if your function works correctly. They shou
 
 process.stdout.write('\n*9·41.\n');
 /*
-*9·41. Create a function called 'anyDebt' that takes an account (object with multiple bank account balances) and returns true if any of the balances is negative.
+*9·41. Create a function called 'anyDebt' that takes an account (object with multiple bank account balances) and returns true if any of the balances are negative.
 
 The following lines should help test if your function works correctly. They should print true.
 */
