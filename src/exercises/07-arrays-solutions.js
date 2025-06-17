@@ -604,7 +604,7 @@ console.log(topN(1, ['apple']), '=== [\'apple\']');
 
 process.stdout.write('\n*7·7.\n');
 /*
-*7·7. Create a function called 'bottom3' that takes an array (of at least 3 strings) and returns the last 3 strings that occur in reverse alphabetical order.
+*7·7. Create a function called 'bottom3' that takes an array (of at least 3 strings) and returns the last 3 strings that occur in alphabetical order.
 
 The following lines should help you see if your function works correctly.
 */
@@ -618,7 +618,7 @@ console.log(bottom3(['apple', 'banana', 'cherry']), '=== [\'cherry\', \'banana\'
 
 process.stdout.write('\n*7·71.\n');
 /*
-*7·71. Create a function called 'bottomN' that takes a number (n) and an array (of at least n strings). It should return the last n strings that occur in reverse alphabetical order.
+*7·71. Create a function called 'bottomN' that takes a number (n) and an array (of at least n strings). It should return the last n strings that occur in alphabetical order.
 
 The following lines should help you see if your function works correctly.
 */
