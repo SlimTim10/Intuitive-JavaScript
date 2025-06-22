@@ -556,7 +556,7 @@ process.stdout.write('\n*8·72.\n');
 /*
 *8·72. Create a function called 'gamePoints' that takes an array of game results and returns the total points, according to the following description. Each game result is a pair of scores: [home team score, away team score]. Games where the home team won are worth 3 points. Games where the home team lost are worth 0 points. Tie games are worth 1 point.
 */
-const gamePoints = ([homeScore, awayScore]) => {
+const points = ([homeScore, awayScore]) => {
   if (homeScore > awayScore) {
     return 3;
   } else if (homeScore < awayScore) {
@@ -565,13 +565,13 @@ const gamePoints = ([homeScore, awayScore]) => {
     return 1;
   }
 };
-const points = games => games.reduce((total, game) => total + gamePoints(game), 0);
+const gamePoints = games => games.reduce((total, game) => total + points(game), 0);
 
-console.log('points tests');
-console.log(points([ [1, 0], [2, 0], [3, 0] ]) === 9);
-console.log(points([ [1, 1], [2, 2], [3, 3] ]) === 3);
-console.log(points([ [0, 1], [0, 2], [0, 3] ]) === 0);
-console.log(points([ [1, 0], [4, 2], [3, 2], [2, 3], [2, 2], [0, 2] ]) === 10);
+console.log('gamePoints tests');
+console.log(gamePoints([ [1, 0], [2, 0], [3, 0] ]) === 9);
+console.log(gamePoints([ [1, 1], [2, 2], [3, 3] ]) === 3);
+console.log(gamePoints([ [0, 1], [0, 2], [0, 3] ]) === 0);
+console.log(gamePoints([ [1, 0], [4, 2], [3, 2], [2, 3], [2, 2], [0, 2] ]) === 10);
 
 
 process.stdout.write('\n');
