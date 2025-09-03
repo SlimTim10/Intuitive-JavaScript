@@ -152,7 +152,7 @@ If you notice you're repeating a certain condition more than once, try nesting i
 
 
 // Practice complex conditions
-const creditCard = 123;
+const creditCard = '55560';
 
 process.stdout.write('\n*4·7. ');
 /*
