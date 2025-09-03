@@ -224,7 +224,7 @@ process.stdout.write('\n*4·61. ');
 
 For example, if the username and password match the employee username and password and their salary is within the junior range, print 'Welcome, junior employee Zarya.' In the case where the salary is not within any of the set ranges, simply print 'Welcome, employee Zarya.' If the username and password match the CEO credentials but the salary is below the CEO's minimum salary, we have an imposter! For an invalid login, just print 'Invalid login.' (don't worry about whether it was the username or password that didn't match).
 
-If you notice you're repeating a certain condition more than once, try nesting if statements to avoid the repeitition.
+If you notice you're repeating a certain condition more than once, try nesting if statements to avoid the repetition.
 */
 if (myUsername === employeeUsername && myPassword === employeePassword) {
   if (salary >= juniorSalaryMinimum && salary <= juniorSalaryMaximum) {
