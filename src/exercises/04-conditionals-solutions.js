@@ -248,7 +248,7 @@ if (myUsername === employeeUsername && myPassword === employeePassword) {
 
 
 // Practice complex conditions
-const creditCard = 123;
+const creditCard = '55560';
 
 process.stdout.write('\n*4·7. ');
 /*
